@@ -1,0 +1,784 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css">
+
+
+  <meta name="keywords" content="正则表达式,">
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1">
+
+
+
+
+
+
+<meta name="description" content="概念正则表达式(RegExp)是强大的字符串匹配工具，可以极大地简化普通字符串操作容易出问题的东西。正则表达式只能操作字符串，且区分大小写。 基本语法 直接量语法: /pattern/attributes 1var re=/a/i;  创建 RegExp 对象的语法：：new RegExp(pattern, attributes); 1var re=new RegExp(&apos;A&apos;,&apos;i&apos;);   注">
+<meta name="keywords" content="正则表达式">
+<meta property="og:type" content="article">
+<meta property="og:title" content="初识正则表达式">
+<meta property="og:url" content="http://yoursite.com/2016/07/30/初识正则表达式/index.html">
+<meta property="og:site_name" content="陈小婷的博客">
+<meta property="og:description" content="概念正则表达式(RegExp)是强大的字符串匹配工具，可以极大地简化普通字符串操作容易出问题的东西。正则表达式只能操作字符串，且区分大小写。 基本语法 直接量语法: /pattern/attributes 1var re=/a/i;  创建 RegExp 对象的语法：：new RegExp(pattern, attributes); 1var re=new RegExp(&apos;A&apos;,&apos;i&apos;);   注">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2016-07-30T15:05:31.002Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="初识正则表达式">
+<meta name="twitter:description" content="概念正则表达式(RegExp)是强大的字符串匹配工具，可以极大地简化普通字符串操作容易出问题的东西。正则表达式只能操作字符串，且区分大小写。 基本语法 直接量语法: /pattern/attributes 1var re=/a/i;  创建 RegExp 对象的语法：：new RegExp(pattern, attributes); 1var re=new RegExp(&apos;A&apos;,&apos;i&apos;);   注">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: "",
+      labels: ""
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2016/07/30/初识正则表达式/">
+
+
+
+
+
+  <title> 初识正则表达式 | 陈小婷的博客 </title>
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="//s95.cnzz.com/z_stat.php?id=1259971316&web_id=1259971316" language="JavaScript"></script>
+  </div>
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">陈小婷的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">前端开发</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope="" itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/07/30/初识正则表达式/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="chen-xt">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/head.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="陈小婷的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                初识正则表达式
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h4 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h4><p><em>正则表达式(RegExp)</em>是强大的字符串匹配工具，可以极大地简化普通字符串操作容易出问题的东西。正则表达式只能操作字符串，且区分大小写。</p>
+<h4 id="基本语法"><a href="#基本语法" class="headerlink" title="基本语法"></a>基本语法</h4><ol>
+<li><p>直接量语法: /pattern/attributes</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> re=<span class="regexp">/a/i</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建 RegExp 对象的语法：：new RegExp(pattern, attributes);</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> re=<span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">'A'</span>,<span class="string">'i'</span>);</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>注意：参数 pattern 是一个字符串，指定了正则表达式的模式或其他正则表达式。参数 attributes 是一个可选的字符串，包含属性 “g”、”i” 和 “m”，分别用于指定全局匹配、区分大小写的匹配和多行匹配。</p>
+<h4 id="RegExp对象方法："><a href="#RegExp对象方法：" class="headerlink" title="RegExp对象方法："></a>RegExp对象方法：</h4><ol>
+<li><p>test()方法：检测一个字符串是否匹配某个模式。返回值是 true 或 false。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> patt1=<span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">"e"</span>);</span><br><span class="line"><span class="built_in">document</span>.write(patt1.test(<span class="string">"The best "</span>)); <span class="comment">//该字符串中存在字母 "e"，所以输出是true</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>exec()方法：检索字符串中的正则表达式的匹配。返回值是被找到的值。如果没有发现匹配，则返回 null。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> patt1=<span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">"e"</span>);</span><br><span class="line"><span class="built_in">document</span>.write(patt1.exec(<span class="string">"The best "</span>)); <span class="comment">//该字符串中存在字母 "e"，所以输出是e</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>compile()方法：改变正则表达式的模式。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//在字符串中全局搜索 "man"，并用 "person" 替换。然后通过 compile() 方法，改变正则表达式，用 "person" 替换 "man" 或 "woman"，</span></span><br><span class="line"><span class="keyword">var</span> str=<span class="string">"Every man in the world! Every woman on earth!"</span>;</span><br><span class="line">patt=<span class="regexp">/(wo)?man/g</span>;</span><br><span class="line">patt.compile(patt);</span><br><span class="line">Str2=str.replace(patt,<span class="string">"person"</span>);<span class="comment">//用 "person" 替换 "man" 或 "woman"，：</span></span><br><span class="line"><span class="built_in">document</span>.write(str2);</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h4 id="支持正则表达式的-String-对象的方法"><a href="#支持正则表达式的-String-对象的方法" class="headerlink" title="支持正则表达式的 String 对象的方法"></a>支持正则表达式的 String 对象的方法</h4><ol>
+<li><p>Search()方法：检索与正则表达式相匹配的值。不执行全局匹配，它将忽略标志 g，同时它也没有regexp对象的lastIndex的属性，且总是从字符串开始位置进行查找，总是返回匹配的第一个位置。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str=<span class="string">"hello,world!"</span></span><br><span class="line"><span class="built_in">document</span>.write(str.search(<span class="regexp">/world/</span>)); <span class="comment">//结果返回6，即w所在的位置</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>match()方法：找到一个或多个正则表达式的匹配,返回指定的值，而不是字符串的位置。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str=<span class="string">'abcd 3458 gea2 ef'</span>;</span><br><span class="line"><span class="built_in">document</span>.write(str.match(<span class="regexp">/\d+/g</span>));<span class="comment">//结果为3548,2</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Replace()方法：查找并替换与正则表达式匹配的子串。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str=<span class="string">"good girl"</span></span><br><span class="line"><span class="built_in">document</span>.write(str.replace(<span class="regexp">/girl/</span>, <span class="string">"boy"</span>));<span class="comment">//使用boy替换girl</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Split()方法：把一个字符串分割为字符串数组。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str=<span class="string">"How are you ?"</span></span><br><span class="line"><span class="built_in">document</span>.write(str.split(<span class="string">""</span>) + <span class="string">"&lt;br /&gt;"</span>);<span class="comment">//结果为"H,o,w, ,a,r,e, ,y,o,u, ,?"</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h4 id="元字符"><a href="#元字符" class="headerlink" title="元字符"></a>元字符</h4><p><em>元字符</em>是拥有特殊含义的字符，javascript中常见的元字符如下：</p>
+<ol>
+<li><p>元字符<em>.</em> ：用于匹配任何单个字符(除了换行符以外)。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = “abcde”;</span><br><span class="line"><span class="built_in">document</span>.write(str.match(<span class="regexp">/a.c/</span>)); <span class="comment">// 结果为“abc”</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>\w：查找任意一个字母或数字或下划线。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = “abcde”;<span class="comment">// 匹配单个字符，找到一个直接返回</span></span><br><span class="line"><span class="built_in">document</span>.write(str.match(<span class="regexp">/\w/</span>)); <span class="comment">//结果为“a”</span></span><br><span class="line"><span class="built_in">document</span>.write(str.match(<span class="regexp">/\w+/</span>)); <span class="comment">//结果为“abcde”</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>\W：查找非单词的字符.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = “abcde”;<span class="comment">// 匹配单个字符，没有找到返回null</span></span><br><span class="line"><span class="built_in">document</span>.write(str.match(<span class="regexp">/\W/</span>)); <span class="comment">// 结果为“null”</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>\d：匹配一个数字字符。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = “abcde111”;</span><br><span class="line"><span class="built_in">document</span>.write(<span class="regexp">/\d/g</span>.exec(str)); <span class="comment">//结果为“1”</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>\D：匹配一个非数字字符。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = “abcde111”;</span><br><span class="line"><span class="built_in">document</span>.write(<span class="regexp">/\D+/g</span>.exec(str)); <span class="comment">//结果为“abcde”</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>\s：匹配任何空白字符，包括空格，制表符，换行符等等。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str=”Is <span class="keyword">this</span> all there is?”;</span><br><span class="line"><span class="built_in">document</span>.write(<span class="regexp">/\s/g</span>.exec(str)); <span class="comment">// 结果为“ ”</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>\S：匹配任何非空白字符。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str=”Is <span class="keyword">this</span> all there is?”;</span><br><span class="line"><span class="built_in">document</span>.write(<span class="regexp">/\S+/g</span>.exec(str)); <span class="comment">//结果为“Is”</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>\b：匹配一个单词边界，也就是指单词和空格间的位置。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str=”Is <span class="keyword">this</span> all there is?”;</span><br><span class="line"><span class="built_in">document</span>.write(<span class="regexp">/\bthis\b/g</span>.exec(str)); <span class="comment">//结果为“this”</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>\B：匹配非单词边界。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str=”Is <span class="keyword">this</span> all there is?”;</span><br><span class="line"><span class="built_in">document</span>.write(<span class="regexp">/\Bhi/g</span>.exec(str)); <span class="comment">// 结果为“hi”</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>\n：匹配一个换行符;返回换行符被找到的位置。如果未找到匹配，则返回 -1。 </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str=”Is <span class="keyword">this</span> all \nthere is?”;</span><br><span class="line"><span class="built_in">document</span>.write(<span class="regexp">/\n/g</span>.exec(str));</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h4 id="正则的方括号"><a href="#正则的方括号" class="headerlink" title="正则的方括号"></a>正则的方括号</h4><p>方括号包含一系列字符，能够匹配其中任意一个字符,如[abc]可以匹配abc中任意一个字符，使用[^abc]包含的字符abc，则能够匹配abc字符之外的任何一个字符，只能是一个字符。常见的几种方括号的用法如下：</p>
+<ul>
+<li>[abc]：查找在方括号中的任意一个字符；</li>
+<li>[^abc]: 查找不在方括号中的任意一个字符；</li>
+<li>[0-9]: 查找0-9中的任意一个数字；</li>
+<li>[a-z]: 查找从小写a到z中的任意一个字符。</li>
+</ul>
+<h4 id="量词"><a href="#量词" class="headerlink" title="量词"></a>量词</h4><ol>
+<li><p>n*：匹配零个或者多个n的字符串。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">"hello longen hello"</span>;</span><br><span class="line"><span class="built_in">document</span>.write(str.match(<span class="regexp">/el*/g</span>)); <span class="comment">//结果为"ell"</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>n+：匹配至少包含一个或者多个n的字符串。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">"hello longen"</span>;</span><br><span class="line"><span class="built_in">document</span>.write(str.match(<span class="regexp">/l+/g</span>)); <span class="comment">//结果为"ll"</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>n？：匹配零个或者1个n的字符串，可以匹配n字符串，也可以只匹配一个n；先尽量匹配，如没有匹配到，就回溯，再进行不匹配；</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">"hello longen hello"</span>;</span><br><span class="line"><span class="built_in">document</span>.write(str.match(<span class="regexp">/hu?/g</span>)); <span class="comment">//结果为"h"</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>n{x}：匹配包含x个的n的序列字符串。X必须是数字。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str=<span class="string">"100, 1000 or 10000?"</span>;</span><br><span class="line"><span class="built_in">document</span>.write(str.match(<span class="regexp">/\d&#123;4&#125;/g</span>)); <span class="comment">//结果为["1000", "1000"]</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>n{x,y}：匹配包含至少x个的n字符串，最多y个n字符串。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str=<span class="string">"100, 1000 or 10000?"</span>;</span><br><span class="line"><span class="built_in">document</span>.write(str.match(<span class="regexp">/\d&#123;3,&#125;/g</span>)); <span class="comment">//结果为["100", "1000", "1000"]</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>n{x,}：匹配至少包含x个n序列的字符串；</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str=<span class="string">"100, 1000 or 10000?"</span>;</span><br><span class="line"><span class="built_in">document</span>.write(str.match(<span class="regexp">/d&#123;3,&#125;/g</span>)); <span class="comment">//结果为["100", "1000", "1000"]</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>n$：匹配任何以n结尾的字符串；</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str=<span class="string">"my name is longen"</span>;</span><br><span class="line"><span class="built_in">document</span>.write(str.match(<span class="regexp">/en$/g</span>)); <span class="comment">//结果为["en"]</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>^n：匹配任何以n开头的字符串；</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str=<span class="string">"my name is longen"</span>;</span><br><span class="line"><span class="built_in">document</span>.write(str.match(<span class="regexp">/^my/g</span>)); <span class="comment">//结果为"my"</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>?=n：匹配任何其后紧接指定字符串n的字符串；</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str=<span class="string">"my name is longen"</span>;</span><br><span class="line"><span class="built_in">document</span>.write(str.match(<span class="regexp">/na(?=m)/g</span>)); <span class="comment">//结果为"na"</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>?!n：匹配任何其后不紧接n的字符串 </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str=<span class="string">"my name is longen"</span>;</span><br><span class="line"><span class="built_in">document</span>.write(str.match(<span class="regexp">/na(?!ma)/g</span>)); <span class="comment">//结果为"na"</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>^ 以字符串开始的地方匹配，不匹配任何字符；</p>
+</li>
+<li>$ 以字符串结束的地方匹配，不匹配任何字符；</li>
+</ol>
+<h4 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h4><p>正则表达式在javascript中的应用挺广泛的，可以说带来很多的方便，这里就列举两个应用：</p>
+<ol>
+<li><p><em>行首行尾去空格</em></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str=<span class="string">' www ee  d;fl  '</span>;</span><br><span class="line"><span class="keyword">var</span> re=<span class="regexp">/^\s+|S+&amp;/</span>;<span class="comment">//行首行尾去空格</span></span><br><span class="line"><span class="built_in">document</span>.write(<span class="string">'('</span>+str.replace(re,<span class="string">''</span>));</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><em>校验邮箱</em></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> re=<span class="regexp">/^\w+@[a-z0-9]+\.[a-z]&#123;2-4&#125;$/</span>;</span><br><span class="line">  <span class="keyword">if</span>(re.test(oTxt.value))</span><br><span class="line">    &#123;  alert(<span class="string">'right'</span>); &#125;</span><br><span class="line"> <span class="keyword">else</span></span><br><span class="line">    &#123;  alert(<span class="string">'wrong'</span>);  &#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/正则表达式/" rel="tag"># 正则表达式</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/07/29/Javascript的异常处理和事件处理/" rel="next" title="Javascript的异常处理和事件处理">
+                <i class="fa fa-chevron-left"></i> Javascript的异常处理和事件处理
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/08/01/JS之绑定事件/" rel="prev" title="JS之绑定事件">
+                JS之绑定事件 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image" src="/images/head.jpg" alt="chen-xt">
+          <p class="site-author-name" itemprop="name">chen-xt</p>
+           
+              <p class="site-description motion-element" itemprop="description">一步一步向前走</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">29</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">28</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#概念"><span class="nav-number">1.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#基本语法"><span class="nav-number">2.</span> <span class="nav-text">基本语法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#RegExp对象方法："><span class="nav-number">3.</span> <span class="nav-text">RegExp对象方法：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#支持正则表达式的-String-对象的方法"><span class="nav-number">4.</span> <span class="nav-text">支持正则表达式的 String 对象的方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#元字符"><span class="nav-number">5.</span> <span class="nav-text">元字符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#正则的方括号"><span class="nav-number">6.</span> <span class="nav-text">正则的方括号</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#量词"><span class="nav-number">7.</span> <span class="nav-text">量词</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#应用"><span class="nav-number">8.</span> <span class="nav-text">应用</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">chen-xt</span>
+</div>
+
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</body>
+</html>

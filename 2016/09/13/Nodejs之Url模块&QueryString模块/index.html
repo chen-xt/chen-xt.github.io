@@ -1,0 +1,696 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css">
+
+
+  <meta name="keywords" content="URL模块&queryString模块,">
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1">
+
+
+
+
+
+
+<meta name="description" content="Url模块url.parse(urlStr, [parseQueryString], [slashesDenoteHost])将URL字符串转换为对象。有3个参数：  urlStr： url字符串。 parseQueryString：可选。设置为true时，会使用querystring模块来解析URL中德查询字符串部分，默认为 false。 slashesDenoteHost：可选。默认为fals">
+<meta name="keywords" content="URL模块&amp;queryString模块">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Nodejs之Url模块&amp;QueryString模块">
+<meta property="og:url" content="http://yoursite.com/2016/09/13/Nodejs之Url模块&QueryString模块/index.html">
+<meta property="og:site_name" content="陈小婷的博客">
+<meta property="og:description" content="Url模块url.parse(urlStr, [parseQueryString], [slashesDenoteHost])将URL字符串转换为对象。有3个参数：  urlStr： url字符串。 parseQueryString：可选。设置为true时，会使用querystring模块来解析URL中德查询字符串部分，默认为 false。 slashesDenoteHost：可选。默认为fals">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2016-09-13T02:25:13.053Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Nodejs之Url模块&amp;QueryString模块">
+<meta name="twitter:description" content="Url模块url.parse(urlStr, [parseQueryString], [slashesDenoteHost])将URL字符串转换为对象。有3个参数：  urlStr： url字符串。 parseQueryString：可选。设置为true时，会使用querystring模块来解析URL中德查询字符串部分，默认为 false。 slashesDenoteHost：可选。默认为fals">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: "",
+      labels: ""
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2016/09/13/Nodejs之Url模块&QueryString模块/">
+
+
+
+
+
+  <title> Nodejs之Url模块&QueryString模块 | 陈小婷的博客 </title>
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="//s95.cnzz.com/z_stat.php?id=1259971316&web_id=1259971316" language="JavaScript"></script>
+  </div>
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">陈小婷的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">前端开发</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope="" itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/09/13/Nodejs之Url模块&QueryString模块/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="chen-xt">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/head.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="陈小婷的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Nodejs之Url模块&QueryString模块
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="Url模块"><a href="#Url模块" class="headerlink" title="Url模块"></a>Url模块</h2><h3 id="url-parse-urlStr-parseQueryString-slashesDenoteHost"><a href="#url-parse-urlStr-parseQueryString-slashesDenoteHost" class="headerlink" title="url.parse(urlStr, [parseQueryString], [slashesDenoteHost])"></a>url.parse(urlStr, [parseQueryString], [slashesDenoteHost])</h3><p>将URL字符串转换为对象。有3个参数：</p>
+<ul>
+<li>urlStr： url字符串。</li>
+<li>parseQueryString：可选。设置为true时，会使用querystring模块来解析URL中德查询字符串部分，默认为 false。</li>
+<li>slashesDenoteHost：可选。默认为false，//foo/bar 形式的字符串将被解释成 { pathname: ‘//foo/bar’ }；<br>如果设置成true，//foo/bar 形式的字符串将被解释成  { host: ‘foo’, pathname: ‘/bar’ }。<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">url.parse('http://www.jb51.net/article/61637.htm')</span><br><span class="line">//结果</span><br><span class="line">url &#123;</span><br><span class="line">  protocol: 'http:',</span><br><span class="line">  slashes: true,</span><br><span class="line">  auth: null,</span><br><span class="line">  host: 'www.jb51.net',</span><br><span class="line">  port: null,</span><br><span class="line">  hostname: 'www.jb51.net',</span><br><span class="line">  hash: null,</span><br><span class="line">  search: null,</span><br><span class="line">  query: null,</span><br><span class="line">  pathname: '/article/61637.htm',</span><br><span class="line">  path: '/article/61637.htm',</span><br><span class="line">  href: 'http://www.jb51.net/article/61637.htm' &#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="url-format-urlObj"><a href="#url-format-urlObj" class="headerlink" title="url.format(urlObj)"></a>url.format(urlObj)</h3><p>将对象格式化为URL字符串，与url.parse()方法刚好相反。只有1个参数——urlObj，表示 URL对象。<br>下面代码会将一串对象格式化为URL字符串：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">url.format(&#123;protocol: 'http:',slashes: true,auth: null,host: 'www.jb51.net',port: null,hostname: 'www.jb51.net',hash: null,search: null,query: null, pathname: '/article/61637.htm',path: '/article/61637.htm',href:'http://www.jb51.net/article/61637.htm'&#125;)</span><br><span class="line">//结果</span><br><span class="line">'http://www.jb51.net/article/61637.htm'</span><br></pre></td></tr></table></figure></p>
+<h3 id="url-resolve-from-to"><a href="#url-resolve-from-to" class="headerlink" title="url.resolve(from, to)"></a>url.resolve(from, to)</h3><p>为URL或 href 插入或替换原有的标签。有2个参数:</p>
+<ul>
+<li>from：源地址。</li>
+<li>to：需要添加或替换的标签。<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">url.resolve('/one/two','three')</span><br><span class="line">//结果</span><br><span class="line">'/one/three'</span><br><span class="line"></span><br><span class="line">url.resolve('http://example.com','two')</span><br><span class="line">//结果</span><br><span class="line">'http://example.com/two'</span><br><span class="line"></span><br><span class="line">url.resolve('http://example.com/two','three')</span><br><span class="line">//结果</span><br><span class="line">'http://example.com/three'</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="QueryString模块"><a href="#QueryString模块" class="headerlink" title="QueryString模块"></a>QueryString模块</h2><h3 id="querystring-stringify-obj-sep-eq"><a href="#querystring-stringify-obj-sep-eq" class="headerlink" title="querystring.stringify(obj, [sep], [eq])"></a>querystring.stringify(obj, [sep], [eq])</h3><p>将对象转换成字符串，字符串里多个参数将用 ‘&amp;’ 分隔，将用 ‘=’ 赋值。有3个参数：</p>
+<ul>
+<li>obj： 欲转换的对象。</li>
+<li>sep：可选。设置分隔符，默认为 ‘&amp;’。</li>
+<li>eq：可选。设置赋值符，默认为 ‘=’。<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">querystring.stringify(&#123;name:'rose',sex:'girl'&#125;)</span><br><span class="line">//结果</span><br><span class="line">'name=rose&amp;sex=girl'</span><br><span class="line"></span><br><span class="line">querystring.stringify(&#123;name:'rose',sex:'girl'&#125;,';',':')//用分号分隔，用冒 号赋值</span><br><span class="line">//结果</span><br><span class="line">'name:rose;sex:girl'</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="querystring-parse-str-sep-eq-options"><a href="#querystring-parse-str-sep-eq-options" class="headerlink" title="querystring.parse(str, [sep], [eq], [options])"></a>querystring.parse(str, [sep], [eq], [options])</h3><p>与querystring.stringify()刚好相反，将字符串转换成对象。有4个参数：</p>
+<ul>
+<li>str：欲转换的字符串。</li>
+<li>sep：可选。设置分隔符，默认为 ‘&amp;’。</li>
+<li>eq：可选。设置赋值符，默认为 ‘=’。</li>
+<li>options：maxKeys可接受字符串的最大长度，默认为1000，如果将其设置为0则表示没这个限制。<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">querystring.parse('name=rose&amp;sex=girl')</span><br><span class="line">//结果</span><br><span class="line">&#123; name: 'rose', sex: 'girl' &#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="querystring-escape"><a href="#querystring-escape" class="headerlink" title="querystring.escape()"></a>querystring.escape()</h3><p>转义。将传入的字符串进行编码返回相应的编码串。<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">querystring.escape('<span class="tag">&lt;<span class="name">哈哈</span>&gt;</span>')</span><br><span class="line">//结果</span><br><span class="line">'%3C%E5%93%88%E5%93%88%3E'</span><br></pre></td></tr></table></figure></p>
+<h3 id="querystring-unescape"><a href="#querystring-unescape" class="headerlink" title="querystring.unescape()"></a>querystring.unescape()</h3><p>反转义。将传入的编码字符串反转回原始字符串。<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">querystring.unescape('%3C%E5%93%88%E5%93%88%3E')</span><br><span class="line">//结果</span><br><span class="line">'<span class="tag">&lt;<span class="name">哈哈</span>&gt;</span>'</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/URL模块-queryString模块/" rel="tag"># URL模块&queryString模块</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/09/08/一个基于Node.js的web应用/" rel="next" title="一个基于Node.js的web 应用">
+                <i class="fa fa-chevron-left"></i> 一个基于Node.js的web 应用
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/09/28/Git的基本使用/" rel="prev" title="Git的基本使用">
+                Git的基本使用 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image" src="/images/head.jpg" alt="chen-xt">
+          <p class="site-author-name" itemprop="name">chen-xt</p>
+           
+              <p class="site-description motion-element" itemprop="description">一步一步向前走</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">29</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">28</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Url模块"><span class="nav-number">1.</span> <span class="nav-text">Url模块</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#url-parse-urlStr-parseQueryString-slashesDenoteHost"><span class="nav-number">1.1.</span> <span class="nav-text">url.parse(urlStr, [parseQueryString], [slashesDenoteHost])</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#url-format-urlObj"><span class="nav-number">1.2.</span> <span class="nav-text">url.format(urlObj)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#url-resolve-from-to"><span class="nav-number">1.3.</span> <span class="nav-text">url.resolve(from, to)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#QueryString模块"><span class="nav-number">2.</span> <span class="nav-text">QueryString模块</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#querystring-stringify-obj-sep-eq"><span class="nav-number">2.1.</span> <span class="nav-text">querystring.stringify(obj, [sep], [eq])</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#querystring-parse-str-sep-eq-options"><span class="nav-number">2.2.</span> <span class="nav-text">querystring.parse(str, [sep], [eq], [options])</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#querystring-escape"><span class="nav-number">2.3.</span> <span class="nav-text">querystring.escape()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#querystring-unescape"><span class="nav-number">2.4.</span> <span class="nav-text">querystring.unescape()</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">chen-xt</span>
+</div>
+
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</body>
+</html>

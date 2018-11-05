@@ -1,0 +1,724 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css">
+
+
+  <meta name="keywords" content="实训总结,">
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1">
+
+
+
+
+
+
+<meta name="description" content="前言&amp;emsp;&amp;emsp;结课考试后，学校安排了一次为期10天的实训，实训方向有安卓和PHP，我选择了PHP，因为PHP跟前端还是有关系的。实训虽然讲的内容不多，但还是从中得到一些收获，并最终做出一个包含增删改查功能的简历投递系统，特此写个总结。 PHP环境配置&amp;emsp;&amp;emsp;主要用到三个软件：PhpStorm—-开发工具，phpStudy—-开发环境，Navicat for MySQL">
+<meta name="keywords" content="实训总结">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PHP实训总结">
+<meta property="og:url" content="http://yoursite.com/2016/12/08/PHP实训总结/index.html">
+<meta property="og:site_name" content="陈小婷的博客">
+<meta property="og:description" content="前言&amp;emsp;&amp;emsp;结课考试后，学校安排了一次为期10天的实训，实训方向有安卓和PHP，我选择了PHP，因为PHP跟前端还是有关系的。实训虽然讲的内容不多，但还是从中得到一些收获，并最终做出一个包含增删改查功能的简历投递系统，特此写个总结。 PHP环境配置&amp;emsp;&amp;emsp;主要用到三个软件：PhpStorm—-开发工具，phpStudy—-开发环境，Navicat for MySQL">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2016-12-09T00:51:34.037Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="PHP实训总结">
+<meta name="twitter:description" content="前言&amp;emsp;&amp;emsp;结课考试后，学校安排了一次为期10天的实训，实训方向有安卓和PHP，我选择了PHP，因为PHP跟前端还是有关系的。实训虽然讲的内容不多，但还是从中得到一些收获，并最终做出一个包含增删改查功能的简历投递系统，特此写个总结。 PHP环境配置&amp;emsp;&amp;emsp;主要用到三个软件：PhpStorm—-开发工具，phpStudy—-开发环境，Navicat for MySQL">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: "",
+      labels: ""
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2016/12/08/PHP实训总结/">
+
+
+
+
+
+  <title> PHP实训总结 | 陈小婷的博客 </title>
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="//s95.cnzz.com/z_stat.php?id=1259971316&web_id=1259971316" language="JavaScript"></script>
+  </div>
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">陈小婷的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">前端开发</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope="" itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/12/08/PHP实训总结/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="chen-xt">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/head.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="陈小婷的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                PHP实训总结
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>&emsp;&emsp;结课考试后，学校安排了一次为期10天的实训，实训方向有安卓和PHP，我选择了PHP，因为PHP跟前端还是有关系的。实训虽然讲的内容不多，但还是从中得到一些收获，并最终做出一个包含增删改查功能的简历投递系统，特此写个总结。</p>
+<h2 id="PHP环境配置"><a href="#PHP环境配置" class="headerlink" title="PHP环境配置"></a>PHP环境配置</h2><p>&emsp;&emsp;主要用到三个软件：PhpStorm—-开发工具，phpStudy—-开发环境，Navicat for MySQL—-MySQL数据库。</p>
+<h3 id="phpStudy的安装"><a href="#phpStudy的安装" class="headerlink" title="phpStudy的安装"></a>phpStudy的安装</h3><ol>
+<li>点击安装包，一直next直至安装完成。</li>
+<li><p>打开phpStudy—&gt;其他选项菜单—&gt;打开配置文件—&gt;找到vhosts.conf文件—&gt;粘贴配置代码—&gt;保存—&gt;重启phpStudy。配置代码如下(其中路径为phpstudy安装目录下www文件所在的路径，如<code>D:\phpstudy\WWW</code>，域名可以自己取，如<code>www.cxt.com</code>)：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;VirtualHost *:80&gt;</span><br><span class="line">    DocumentRoot &quot;路径&quot;</span><br><span class="line">    ServerName 域名</span><br><span class="line">  &lt;Directory &quot;路径&quot;&gt;</span><br><span class="line">      Options +Indexes +FollowSymLinks +ExecCGI</span><br><span class="line">      AllowOverride All</span><br><span class="line">      Order allow,deny</span><br><span class="line">      Allow from all</span><br><span class="line">      Require all granted</span><br><span class="line">  &lt;/Directory&gt;</span><br><span class="line">&lt;/VirtualHost&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>找到路径 <code>C:\Windows\System32\drivers\etc\hosts</code>，对hosts文件进行配置：在最后一行加上<code>127.0.0.1 域名</code>。</p>
+</li>
+<li>打开phpStudy—&gt;其他选项菜单—&gt;PHP扩展及配置—&gt;PHP扩展—&gt;将php_openssl打钩。</li>
+<li>通过域名或者路径“127.0.1.1”或者路径“localhost”打开浏览器，会有欢迎方面，表示安装成功。</li>
+<li>如果想创建多个域名，只要参照(1)(2)步下来即可。</li>
+</ol>
+<h3 id="PhpStorm的安装"><a href="#PhpStorm的安装" class="headerlink" title="PhpStorm的安装"></a>PhpStorm的安装</h3><ol>
+<li>点击安装包，一直next直至安装完成。</li>
+<li><p>打开PhpStorm—&gt;输入以下License进行破解：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">User name:</span><br><span class="line">        EMBRACE</span><br><span class="line"></span><br><span class="line">     License key:</span><br><span class="line">        ===== LICENSE BEGIN =====</span><br><span class="line">        43136-12042010随机加上一串数字，防止验证码冲突(数字随便写几个)</span><br><span class="line">        00002UsvSON704l&quot;dILe1PVx3y4&quot;B3</span><br><span class="line">        49AU6oSDJrsjE8nMOQh&quot;8HTDJHIUUh</span><br><span class="line">        gd1BebYc5U&quot;6OxDbVsALB4Eb10PW8&quot;</span><br><span class="line">        ===== LICENSE END =====</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>将软件关闭进行汉化：找到phpstorm安装位置，找到里面的<code>\lib\messages</code>,把汉化包<code>resources_cn.jar</code>放入进去，重启phpstrom，即可发现汉化成功。</p>
+</li>
+</ol>
+<h3 id="Navicat-for-MySQL的安装"><a href="#Navicat-for-MySQL的安装" class="headerlink" title="Navicat for MySQL的安装"></a>Navicat for MySQL的安装</h3><ol>
+<li>点击安装包，一直next直至安装完成。</li>
+<li>打开数据库—&gt;连接—&gt;设置连接名和密码都为<code>root</code>—&gt;连接测试—&gt;确定测试成功。</li>
+<li>根据需要创建数据库和表。</li>
+</ol>
+<h2 id="MySQL常用语句"><a href="#MySQL常用语句" class="headerlink" title="MySQL常用语句"></a>MySQL常用语句</h2><h3 id="插入一条数据"><a href="#插入一条数据" class="headerlink" title="插入一条数据"></a>插入一条数据</h3><p>格式：insert  into  表名（字段1，字段2，字段3……）values(值1，值2，值3……)<br>如：<code>insert into type(name) values (&#39;生物&#39;)</code></p>
+<h3 id="查看数据"><a href="#查看数据" class="headerlink" title="查看数据"></a>查看数据</h3><p>格式：select 字段1，字段2，……from  表名<br>&emsp;&emsp;字段之间用<code>,</code>隔开，如果查询所有的字段用<code>*</code>来代替。<br>如：<code>select * from books</code></p>
+<h3 id="修改数据"><a href="#修改数据" class="headerlink" title="修改数据"></a>修改数据</h3><p>格式：update  表名  set 字段名1=‘新值1’，字段名2=‘新值2’ where=’条件’<br>&emsp;&emsp;如果不加where条件那么将会把所有的记录的值都修改掉。<br>如：update type set name=’生物’ where name=’地理’</p>
+<h3 id="删除数据"><a href="#删除数据" class="headerlink" title="删除数据"></a>删除数据</h3><p>格式：delete  from  表名 where 条件<br>&emsp;&emsp;如果不加where条件那么将会把所有的记录都删除掉。<br>如：delete from type where name=’生物’</p>
+<h2 id="PHP知识点"><a href="#PHP知识点" class="headerlink" title="PHP知识点"></a>PHP知识点</h2><p>&emsp;&emsp;这里只列举一些本次实训所用到的PHP知识点。</p>
+<ol>
+<li>PHP中所有的变量必须用<code>$</code>来修饰</li>
+<li>php定界符是<code>&lt;?php ?&gt;</code>，也就是说PHP代码中以<code>&lt;?php</code>开始，以<code>?&gt;</code>结束。</li>
+<li><p>隐藏域：不会显示在页面上，但是会被提交过去。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=’hidden’ name=’hide’value=“eeee”&gt;  //php接收:$_POST[‘hide’]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>$_POST[]</code>接收所有以<code>post</code>方式传递的值，<code>$_GET[]</code>接收所有以<code>get</code>方式传递的值。</p>
+</li>
+<li><p>mysql_query() 函数：执行一条 MySQL 查询。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$data=mysql_query($sql);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>mysql_fetch_assoc() 函数：从结果集中取得一行作为关联数组,其实就是将取得的结果以数组形式返回。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$data=mysql_fetch_assoc($data);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>include文件：将 PHP 文件的内容插入到另一个 PHP 文件中。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">include(&quot;mysql.php&quot;);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>die(status) 函数：输出一条消息，并退出当前脚本。如果 status 是字符串，则该函数会在退出前输出字符串；如果 status 是整数，这个值会被用作退出状态。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$link=mysql_connect(&quot;127.0.0.1&quot;,&quot;root&quot;,&quot;root&quot;) or die(&quot;数据库连接失败&quot;);//连接数据库</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>isset()函数： 一般用来检测变量是否设置。若变量已存在则返回 true 值。其它情形返回 false 值。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$tel=isset($_POST[&quot;tel&quot;])?$_POST[&quot;tel&quot;]:&quot;&quot;;//三元运算符，如果变量值未设置就返回空值</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>explode()：将字符串分割成为数组.有两个参数，第一个是分割符号，第二个是字符串名，返回值为一个分割后的新数组。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$arr=explode(&quot;.&quot;,$_FILES[&quot;myfile&quot;][&quot;name&quot;]);</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>&emsp;&emsp;通过完成一个简单的小项目–<a href="https://github.com/chen-xt/resume" target="_blank" rel="noopener">简历投递系统</a>，我发现用PHP做增删改查功能的原理大致是：处理页面去获取用户提交的值或者路径的参数值，然后执行sql语句，再转入指定的结果显示的页面。而且经常需要手动去添加路径的参数值，以便能被获取到。<br>&emsp;&emsp;明白了原理之后再去做项目其实并不会特别难，但是常常因为变量未获取，sql语句语法出现错误等等各种原因导致错误，所以在敲代码的时候认真细心还是非常重要的，这点还需要后面慢慢去培养。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/实训总结/" rel="tag"># 实训总结</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/11/19/解决Next主题主页空白/" rel="next" title="解决Next主题主页空白">
+                <i class="fa fa-chevron-left"></i> 解决Next主题主页空白
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/12/18/Mongoose的基本使用/" rel="prev" title="Mongoose的基本使用">
+                Mongoose的基本使用 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image" src="/images/head.jpg" alt="chen-xt">
+          <p class="site-author-name" itemprop="name">chen-xt</p>
+           
+              <p class="site-description motion-element" itemprop="description">一步一步向前走</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">29</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">28</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PHP环境配置"><span class="nav-number">2.</span> <span class="nav-text">PHP环境配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#phpStudy的安装"><span class="nav-number">2.1.</span> <span class="nav-text">phpStudy的安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PhpStorm的安装"><span class="nav-number">2.2.</span> <span class="nav-text">PhpStorm的安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Navicat-for-MySQL的安装"><span class="nav-number">2.3.</span> <span class="nav-text">Navicat for MySQL的安装</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MySQL常用语句"><span class="nav-number">3.</span> <span class="nav-text">MySQL常用语句</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#插入一条数据"><span class="nav-number">3.1.</span> <span class="nav-text">插入一条数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查看数据"><span class="nav-number">3.2.</span> <span class="nav-text">查看数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改数据"><span class="nav-number">3.3.</span> <span class="nav-text">修改数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#删除数据"><span class="nav-number">3.4.</span> <span class="nav-text">删除数据</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PHP知识点"><span class="nav-number">4.</span> <span class="nav-text">PHP知识点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">5.</span> <span class="nav-text">总结</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">chen-xt</span>
+</div>
+
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</body>
+</html>
