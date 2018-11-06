@@ -1,0 +1,705 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css">
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1">
+
+
+
+
+
+
+<meta name="description" content="accept属性&amp;emsp;&amp;emsp;规定了可通过文件上传提交的服务器接受的文件类型，仅适用于&amp;lt;input type=&amp;quot;file&amp;quot;&amp;gt;。  audio/* ：接受所有的声音文件。 1&amp;lt;input type=&amp;quot;file&amp;quot; accept=&amp;quot;audio/*&amp;quot;&amp;gt;  video/* ：接受所有的视频文件。 1&amp;lt;inpu">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HTML媒体捕获实例">
+<meta property="og:url" content="http://yoursite.com/2018/11/06/HTML媒体捕获实例/index.html">
+<meta property="og:site_name" content="陈小婷的博客">
+<meta property="og:description" content="accept属性&amp;emsp;&amp;emsp;规定了可通过文件上传提交的服务器接受的文件类型，仅适用于&amp;lt;input type=&amp;quot;file&amp;quot;&amp;gt;。  audio/* ：接受所有的声音文件。 1&amp;lt;input type=&amp;quot;file&amp;quot; accept=&amp;quot;audio/*&amp;quot;&amp;gt;  video/* ：接受所有的视频文件。 1&amp;lt;inpu">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-11-06T15:46:56.322Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="HTML媒体捕获实例">
+<meta name="twitter:description" content="accept属性&amp;emsp;&amp;emsp;规定了可通过文件上传提交的服务器接受的文件类型，仅适用于&amp;lt;input type=&amp;quot;file&amp;quot;&amp;gt;。  audio/* ：接受所有的声音文件。 1&amp;lt;input type=&amp;quot;file&amp;quot; accept=&amp;quot;audio/*&amp;quot;&amp;gt;  video/* ：接受所有的视频文件。 1&amp;lt;inpu">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: "",
+      labels: ""
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/11/06/HTML媒体捕获实例/">
+
+
+
+
+
+  <title> HTML媒体捕获实例 | 陈小婷的博客 </title>
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="//s95.cnzz.com/z_stat.php?id=1259971316&web_id=1259971316" language="JavaScript"></script>
+  </div>
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">陈小婷的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">前端开发</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope="" itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/06/HTML媒体捕获实例/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="chen-xt">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/head.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="陈小婷的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                HTML媒体捕获实例
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="accept属性"><a href="#accept属性" class="headerlink" title="accept属性"></a>accept属性</h2><p>&emsp;&emsp;规定了可通过文件上传提交的服务器接受的文件类型，仅适用于<code>&lt;input type=&quot;file&quot;&gt;</code>。</p>
+<ol>
+<li><p><code>audio/*</code> ：接受所有的声音文件。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=&quot;file&quot; accept=&quot;audio/*&quot;&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>video/*</code> ：接受所有的视频文件。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=&quot;file&quot; accept=&quot;video/*&quot;&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>image/*</code> ：接受所有的图像文件。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=&quot;file&quot; accept=&quot;image/*&quot;&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="capture属性"><a href="#capture属性" class="headerlink" title="capture属性"></a>capture属性</h2><p>&emsp;&emsp;可以捕获到系统默认的设备。</p>
+<ol>
+<li><p><code>camera</code> ：照相机。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=&quot;file&quot; accept=&quot;image/*&quot; capture=&quot;camera&quot;&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>camcorder</code> ：摄像机。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=&quot;file&quot; accept=&quot;video/*&quot; capture=&quot;camcorder&quot;&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>microphone</code> ：录音。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=&quot;file&quot; accept=&quot;audio/*&quot; capture=&quot;microphone&quot;&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>&emsp;&emsp;注：input:file标签有个multiple属性，表示可以支持多选。加了这个属性，capture就没效果了。</p>
+<h2 id="常见例子"><a href="#常见例子" class="headerlink" title="常见例子"></a>常见例子</h2><ol>
+<li><p>调用拍照：微信环境以及浏览器环境下，苹果手机、安卓手机均可以拍照。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type =”file”  accept =”image / *”  capture&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>调用录像：微信环境以及浏览器环境下，苹果手机可以录像，安卓手机可以录像。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type =”file”  accept =”video / *”  capture&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>调用音频：微信环境，苹果手机、安卓手机均可以调起录音机和文件；浏览器环境，苹果手机、安卓手机只能调起录音机。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type =”file”  accept =”audio / *”  capture&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>高级用例：在标记中指定capture属性，并通过XMLHttpRequest在脚本中处理文件上载。微信环境以及浏览器环境下，苹果手机、安卓手机均可以拍照。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type =”file”  accept =”image / *”  capture&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>无capture：微信环境，苹果手机、安卓手机均可以调起拍照和文件；浏览器环境，苹果手机可以调起拍照和相册，安卓手机可以调起拍照和文件。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type =”file”  accept =”image / *”&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>无capture：微信环境，苹果手机、安卓手机均可以调起文件；浏览器环境，苹果手机可以调起拍照、相册和文件，安卓手机可以调起拍照和文件。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type =”file”&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="浏览器环境判断"><a href="#浏览器环境判断" class="headerlink" title="浏览器环境判断"></a>浏览器环境判断</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">var ua = navigator.userAgent.toLowerCase();//获取浏览器的userAgent</span><br><span class="line">if(ua.match(/MicroMessenger/i) == &quot;micromessenger&quot;) &#123;</span><br><span class="line">    // true为微信环境</span><br><span class="line">    alert(&quot;微信环境&quot;);</span><br><span class="line">&#125;</span><br><span class="line">else&#123;</span><br><span class="line">   // false为浏览器环境</span><br><span class="line">    alert(&quot;浏览器环境&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="苹果、安卓设备判断"><a href="#苹果、安卓设备判断" class="headerlink" title="苹果、安卓设备判断"></a>苹果、安卓设备判断</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">   var ua = navigator.userAgent.toLowerCase();//获取浏览器的userAgent</span><br><span class="line">var isIos = (ua.indexOf(&apos;iphone&apos;) != -1) || (ua.indexOf(&apos;ipad&apos;) != -1);</span><br><span class="line">   if (isIos) &#123;</span><br><span class="line">       //true为苹果</span><br><span class="line">   alert(&quot;苹果手机&quot;);</span><br><span class="line">   &#125;</span><br><span class="line">   else&#123;</span><br><span class="line">       // false为安卓</span><br><span class="line">       alert(&quot;安卓手机&quot;);</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<h2 id="参考地址"><a href="#参考地址" class="headerlink" title="参考地址"></a>参考地址</h2><ul>
+<li><a href="http://anssiko.github.io/html-media-capture/" target="_blank" rel="noopener">参考网址1</a></li>
+<li><a href="https://blog.csdn.net/bbt_yyc/article/details/78337501" target="_blank" rel="noopener">参考网址2</a></li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/08/31/layer弹层组件之移动版/" rel="next" title="layer弹层组件之移动版">
+                <i class="fa fa-chevron-left"></i> layer弹层组件之移动版
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image" src="/images/head.jpg" alt="chen-xt">
+          <p class="site-author-name" itemprop="name">chen-xt</p>
+           
+              <p class="site-description motion-element" itemprop="description">一步一步向前走</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">30</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">28</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#accept属性"><span class="nav-number">1.</span> <span class="nav-text">accept属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#capture属性"><span class="nav-number">2.</span> <span class="nav-text">capture属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常见例子"><span class="nav-number">3.</span> <span class="nav-text">常见例子</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#浏览器环境判断"><span class="nav-number">4.</span> <span class="nav-text">浏览器环境判断</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#苹果、安卓设备判断"><span class="nav-number">5.</span> <span class="nav-text">苹果、安卓设备判断</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考地址"><span class="nav-number">6.</span> <span class="nav-text">参考地址</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">chen-xt</span>
+</div>
+
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</body>
+</html>
