@@ -95,7 +95,7 @@
 <meta property="og:site_name" content="陈小婷的博客">
 <meta property="og:description" content="accept属性&amp;emsp;&amp;emsp;规定了可通过文件上传提交的服务器接受的文件类型，仅适用于&amp;lt;input type=&amp;quot;file&amp;quot;&amp;gt;。  audio/* ：接受所有的声音文件。 1&amp;lt;input type=&amp;quot;file&amp;quot; accept=&amp;quot;audio/*&amp;quot;&amp;gt;  video/* ：接受所有的视频文件。 1&amp;lt;inpu">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-06T15:50:24.631Z">
+<meta property="og:updated_time" content="2018-11-07T14:16:10.867Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="HTML媒体捕获实例">
 <meta name="twitter:description" content="accept属性&amp;emsp;&amp;emsp;规定了可通过文件上传提交的服务器接受的文件类型，仅适用于&amp;lt;input type=&amp;quot;file&amp;quot;&amp;gt;。  audio/* ：接受所有的声音文件。 1&amp;lt;input type=&amp;quot;file&amp;quot; accept=&amp;quot;audio/*&amp;quot;&amp;gt;  video/* ：接受所有的视频文件。 1&amp;lt;inpu">
@@ -353,18 +353,18 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=&quot;file&quot; accept=&quot;audio/*&quot; capture=&quot;microphone&quot;&gt;</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
-<p>&emsp;&emsp;注：input:file标签有个multiple属性，表示可以支持多选。加了这个属性，capture就没效果了。</p>
+<p>&emsp;&emsp;注：<code>input:file</code>标签有个<code>multiple</code>属性，表示可以支持多选。加了这个属性，<code>capture</code>就没效果了。</p>
 <h2 id="常见例子"><a href="#常见例子" class="headerlink" title="常见例子"></a>常见例子</h2><ol>
-<li><p>调用拍照：微信环境以及浏览器环境下，苹果手机、安卓手机均可以拍照。</p>
+<li><p>调用拍照：微信环境及浏览器环境下，苹果手机、安卓手机均可以拍照。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type =”file”  accept =”image / *”  capture&gt;</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>调用录像：微信环境以及浏览器环境下，苹果手机可以录像，安卓手机可以录像。</p>
+<li><p>调用录像：微信环境及浏览器环境下，苹果手机、安卓手机均可以录像。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type =”file”  accept =”video / *”  capture&gt;</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>调用音频：微信环境，苹果手机、安卓手机均可以调起录音机和文件；浏览器环境，苹果手机、安卓手机只能调起录音机。</p>
+<li><p>调用音频：微信环境，苹果手机、安卓手机均可以调起录音机和文件；浏览器环境，苹果手机、安卓手机均只能调起录音机。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type =”file”  accept =”audio / *”  capture&gt;</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>高级用例：在标记中指定capture属性，并通过XMLHttpRequest在脚本中处理文件上载。微信环境以及浏览器环境下，苹果手机、安卓手机均可以拍照。</p>
+<li><p>高级用例：在标记中指定capture属性，并通过XMLHttpRequest在脚本中处理文件上载。微信环境及浏览器环境下，苹果手机、安卓手机均可以拍照。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type =”file”  accept =”image / *”  capture&gt;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>无capture：微信环境，苹果手机、安卓手机均可以调起拍照和文件；浏览器环境，苹果手机可以调起拍照和相册，安卓手机可以调起拍照和文件。</p>
