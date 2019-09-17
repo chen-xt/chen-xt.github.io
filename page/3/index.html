@@ -252,6 +252,214 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/12/08/PHP实训总结/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="chen-xt">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/head.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="陈小婷的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/12/08/PHP实训总结/" itemprop="url">PHP实训总结</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-12-08T16:49:11+08:00">
+                2016-12-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/PHP/" itemprop="url" rel="index">
+                    <span itemprop="name">PHP</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>&emsp;&emsp;结课考试后，学校安排了一次为期10天的实训，实训方向有安卓和PHP，我选择了PHP，因为PHP跟前端还是有关系的。实训虽然讲的内容不多，但还是从中得到一些收获，并最终做出一个包含增删改查功能的简历投递系统，特此写个总结。</p>
+<h2 id="PHP环境配置"><a href="#PHP环境配置" class="headerlink" title="PHP环境配置"></a>PHP环境配置</h2><p>&emsp;&emsp;主要用到三个软件：PhpStorm—-开发工具，phpStudy—-开发环境，Navicat for MySQL—-MySQL数据库。</p>
+<h3 id="phpStudy的安装"><a href="#phpStudy的安装" class="headerlink" title="phpStudy的安装"></a>phpStudy的安装</h3><ol>
+<li><p>点击安装包，一直next直至安装完成。</p>
+</li>
+<li><p>打开phpStudy—&gt;其他选项菜单—&gt;打开配置文件—&gt;找到vhosts.conf文件—&gt;粘贴配置代码—&gt;保存—&gt;重启phpStudy。配置代码如下(其中路径为phpstudy安装目录下www文件所在的路径，如<code>D:\phpstudy\WWW</code>，域名可以自己取，如<code>www.cxt.com</code>)：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;VirtualHost *:80&gt;</span><br><span class="line">    DocumentRoot &quot;路径&quot;</span><br><span class="line">    ServerName 域名</span><br><span class="line">  &lt;Directory &quot;路径&quot;&gt;</span><br><span class="line">      Options +Indexes +FollowSymLinks +ExecCGI</span><br><span class="line">      AllowOverride All</span><br><span class="line">      Order allow,deny</span><br><span class="line">      Allow from all</span><br><span class="line">      Require all granted</span><br><span class="line">  &lt;/Directory&gt;</span><br><span class="line">&lt;/VirtualHost&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>找到路径 <code>C:\Windows\System32\drivers\etc\hosts</code>，对hosts文件进行配置：在最后一行加上<code>127.0.0.1 域名</code>。</p>
+</li>
+<li><p>打开phpStudy—&gt;其他选项菜单—&gt;PHP扩展及配置—&gt;PHP扩展—&gt;将php_openssl打钩。</p>
+</li>
+<li><p>通过域名或者路径“127.0.1.1”或者路径“localhost”打开浏览器，会有欢迎方面，表示安装成功。</p>
+</li>
+<li><p>如果想创建多个域名，只要参照(1)(2)步下来即可。</p>
+</li>
+</ol>
+<h3 id="PhpStorm的安装"><a href="#PhpStorm的安装" class="headerlink" title="PhpStorm的安装"></a>PhpStorm的安装</h3><ol>
+<li><p>点击安装包，一直next直至安装完成。</p>
+</li>
+<li><p>打开PhpStorm—&gt;输入以下License进行破解：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">User name:</span><br><span class="line">        EMBRACE</span><br><span class="line"></span><br><span class="line">     License key:</span><br><span class="line">        ===== LICENSE BEGIN =====</span><br><span class="line">        43136-12042010随机加上一串数字，防止验证码冲突(数字随便写几个)</span><br><span class="line">        00002UsvSON704l&quot;dILe1PVx3y4&quot;B3</span><br><span class="line">        49AU6oSDJrsjE8nMOQh&quot;8HTDJHIUUh</span><br><span class="line">        gd1BebYc5U&quot;6OxDbVsALB4Eb10PW8&quot;</span><br><span class="line">        ===== LICENSE END =====</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>将软件关闭进行汉化：找到phpstorm安装位置，找到里面的<code>\lib\messages</code>,把汉化包<code>resources_cn.jar</code>放入进去，重启phpstrom，即可发现汉化成功。</p>
+</li>
+</ol>
+<h3 id="Navicat-for-MySQL的安装"><a href="#Navicat-for-MySQL的安装" class="headerlink" title="Navicat for MySQL的安装"></a>Navicat for MySQL的安装</h3><ol>
+<li>点击安装包，一直next直至安装完成。</li>
+<li>打开数据库—&gt;连接—&gt;设置连接名和密码都为<code>root</code>—&gt;连接测试—&gt;确定测试成功。</li>
+<li>根据需要创建数据库和表。</li>
+</ol>
+<h2 id="MySQL常用语句"><a href="#MySQL常用语句" class="headerlink" title="MySQL常用语句"></a>MySQL常用语句</h2><h3 id="插入一条数据"><a href="#插入一条数据" class="headerlink" title="插入一条数据"></a>插入一条数据</h3><p>格式：insert  into  表名（字段1，字段2，字段3……）values(值1，值2，值3……)<br>如：<code>insert into type(name) values (&#39;生物&#39;)</code></p>
+<h3 id="查看数据"><a href="#查看数据" class="headerlink" title="查看数据"></a>查看数据</h3><p>格式：select 字段1，字段2，……from  表名<br>&emsp;&emsp;字段之间用<code>,</code>隔开，如果查询所有的字段用<code>*</code>来代替。<br>如：<code>select * from books</code></p>
+<h3 id="修改数据"><a href="#修改数据" class="headerlink" title="修改数据"></a>修改数据</h3><p>格式：update  表名  set 字段名1=‘新值1’，字段名2=‘新值2’ where=’条件’<br>&emsp;&emsp;如果不加where条件那么将会把所有的记录的值都修改掉。<br>如：update type set name=’生物’ where name=’地理’</p>
+<h3 id="删除数据"><a href="#删除数据" class="headerlink" title="删除数据"></a>删除数据</h3><p>格式：delete  from  表名 where 条件<br>&emsp;&emsp;如果不加where条件那么将会把所有的记录都删除掉。<br>如：delete from type where name=’生物’</p>
+<h2 id="PHP知识点"><a href="#PHP知识点" class="headerlink" title="PHP知识点"></a>PHP知识点</h2><p>&emsp;&emsp;这里只列举一些本次实训所用到的PHP知识点。</p>
+<ol>
+<li><p>PHP中所有的变量必须用<code>$</code>来修饰</p>
+</li>
+<li><p>php定界符是<code>&lt;?php ?&gt;</code>，也就是说PHP代码中以<code>&lt;?php</code>开始，以<code>?&gt;</code>结束。</p>
+</li>
+<li><p>隐藏域：不会显示在页面上，但是会被提交过去。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=’hidden’ name=’hide’value=“eeee”&gt;  //php接收:$_POST[‘hide’]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>$_POST[]</code>接收所有以<code>post</code>方式传递的值，<code>$_GET[]</code>接收所有以<code>get</code>方式传递的值。</p>
+</li>
+<li><p>mysql_query() 函数：执行一条 MySQL 查询。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$data=mysql_query($sql);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>mysql_fetch_assoc() 函数：从结果集中取得一行作为关联数组,其实就是将取得的结果以数组形式返回。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$data=mysql_fetch_assoc($data);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>include文件：将 PHP 文件的内容插入到另一个 PHP 文件中。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">include(&quot;mysql.php&quot;);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>die(status) 函数：输出一条消息，并退出当前脚本。如果 status 是字符串，则该函数会在退出前输出字符串；如果 status 是整数，这个值会被用作退出状态。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$link=mysql_connect(&quot;127.0.0.1&quot;,&quot;root&quot;,&quot;root&quot;) or die(&quot;数据库连接失败&quot;);//连接数据库</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>isset()函数： 一般用来检测变量是否设置。若变量已存在则返回 true 值。其它情形返回 false 值。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$tel=isset($_POST[&quot;tel&quot;])?$_POST[&quot;tel&quot;]:&quot;&quot;;//三元运算符，如果变量值未设置就返回空值</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>explode()：将字符串分割成为数组.有两个参数，第一个是分割符号，第二个是字符串名，返回值为一个分割后的新数组。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$arr=explode(&quot;.&quot;,$_FILES[&quot;myfile&quot;][&quot;name&quot;]);</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>&emsp;&emsp;通过完成一个简单的小项目–<a href="https://github.com/chen-xt/resume" target="_blank" rel="noopener">简历投递系统</a>，我发现用PHP做增删改查功能的原理大致是：处理页面去获取用户提交的值或者路径的参数值，然后执行sql语句，再转入指定的结果显示的页面。而且经常需要手动去添加路径的参数值，以便能被获取到。<br>&emsp;&emsp;明白了原理之后再去做项目其实并不会特别难，但是常常因为变量未获取，sql语句语法出现错误等等各种原因导致错误，所以在敲代码的时候认真细心还是非常重要的，这点还需要后面慢慢去培养。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/11/19/解决Next主题主页空白/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -946,188 +1154,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/09/13/Nodejs之Url模块&QueryString模块/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="chen-xt">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/head.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="陈小婷的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2016/09/13/Nodejs之Url模块&QueryString模块/" itemprop="url">Nodejs之Url模块&QueryString模块</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-09-13T09:38:41+08:00">
-                2016-09-13
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Node-js/" itemprop="url" rel="index">
-                    <span itemprop="name">Node.js</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="Url模块"><a href="#Url模块" class="headerlink" title="Url模块"></a>Url模块</h2><h3 id="url-parse-urlStr-parseQueryString-slashesDenoteHost"><a href="#url-parse-urlStr-parseQueryString-slashesDenoteHost" class="headerlink" title="url.parse(urlStr, [parseQueryString], [slashesDenoteHost])"></a>url.parse(urlStr, [parseQueryString], [slashesDenoteHost])</h3><p>将URL字符串转换为对象。有3个参数：</p>
-<ul>
-<li>urlStr： url字符串。</li>
-<li>parseQueryString：可选。设置为true时，会使用querystring模块来解析URL中德查询字符串部分，默认为 false。</li>
-<li>slashesDenoteHost：可选。默认为false，//foo/bar 形式的字符串将被解释成 { pathname: ‘//foo/bar’ }；<br>如果设置成true，//foo/bar 形式的字符串将被解释成  { host: ‘foo’, pathname: ‘/bar’ }。<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">url.parse('http://www.jb51.net/article/61637.htm')</span><br><span class="line">//结果</span><br><span class="line">url &#123;</span><br><span class="line">  protocol: 'http:',</span><br><span class="line">  slashes: true,</span><br><span class="line">  auth: null,</span><br><span class="line">  host: 'www.jb51.net',</span><br><span class="line">  port: null,</span><br><span class="line">  hostname: 'www.jb51.net',</span><br><span class="line">  hash: null,</span><br><span class="line">  search: null,</span><br><span class="line">  query: null,</span><br><span class="line">  pathname: '/article/61637.htm',</span><br><span class="line">  path: '/article/61637.htm',</span><br><span class="line">  href: 'http://www.jb51.net/article/61637.htm' &#125;</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<h3 id="url-format-urlObj"><a href="#url-format-urlObj" class="headerlink" title="url.format(urlObj)"></a>url.format(urlObj)</h3><p>将对象格式化为URL字符串，与url.parse()方法刚好相反。只有1个参数——urlObj，表示 URL对象。<br>下面代码会将一串对象格式化为URL字符串：</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">url.format(&#123;protocol: 'http:',slashes: true,auth: null,host: 'www.jb51.net',port: null,hostname: 'www.jb51.net',hash: null,search: null,query: null, pathname: '/article/61637.htm',path: '/article/61637.htm',href:'http://www.jb51.net/article/61637.htm'&#125;)</span><br><span class="line">//结果</span><br><span class="line">'http://www.jb51.net/article/61637.htm'</span><br></pre></td></tr></table></figure>
-
-<h3 id="url-resolve-from-to"><a href="#url-resolve-from-to" class="headerlink" title="url.resolve(from, to)"></a>url.resolve(from, to)</h3><p>为URL或 href 插入或替换原有的标签。有2个参数:</p>
-<ul>
-<li>from：源地址。</li>
-<li>to：需要添加或替换的标签。<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">url.resolve('/one/two','three')</span><br><span class="line">//结果</span><br><span class="line">'/one/three'</span><br><span class="line"></span><br><span class="line">url.resolve('http://example.com','two')</span><br><span class="line">//结果</span><br><span class="line">'http://example.com/two'</span><br><span class="line"></span><br><span class="line">url.resolve('http://example.com/two','three')</span><br><span class="line">//结果</span><br><span class="line">'http://example.com/three'</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<h2 id="QueryString模块"><a href="#QueryString模块" class="headerlink" title="QueryString模块"></a>QueryString模块</h2><h3 id="querystring-stringify-obj-sep-eq"><a href="#querystring-stringify-obj-sep-eq" class="headerlink" title="querystring.stringify(obj, [sep], [eq])"></a>querystring.stringify(obj, [sep], [eq])</h3><p>将对象转换成字符串，字符串里多个参数将用 ‘&amp;’ 分隔，将用 ‘=’ 赋值。有3个参数：</p>
-<ul>
-<li>obj： 欲转换的对象。</li>
-<li>sep：可选。设置分隔符，默认为 ‘&amp;’。</li>
-<li>eq：可选。设置赋值符，默认为 ‘=’。<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">querystring.stringify(&#123;name:'rose',sex:'girl'&#125;)</span><br><span class="line">//结果</span><br><span class="line">'name=rose&amp;sex=girl'</span><br><span class="line"></span><br><span class="line">querystring.stringify(&#123;name:'rose',sex:'girl'&#125;,';',':')//用分号分隔，用冒 号赋值</span><br><span class="line">//结果</span><br><span class="line">'name:rose;sex:girl'</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<h3 id="querystring-parse-str-sep-eq-options"><a href="#querystring-parse-str-sep-eq-options" class="headerlink" title="querystring.parse(str, [sep], [eq], [options])"></a>querystring.parse(str, [sep], [eq], [options])</h3><p>与querystring.stringify()刚好相反，将字符串转换成对象。有4个参数：</p>
-<ul>
-<li>str：欲转换的字符串。</li>
-<li>sep：可选。设置分隔符，默认为 ‘&amp;’。</li>
-<li>eq：可选。设置赋值符，默认为 ‘=’。</li>
-<li>options：maxKeys可接受字符串的最大长度，默认为1000，如果将其设置为0则表示没这个限制。<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">querystring.parse('name=rose&amp;sex=girl')</span><br><span class="line">//结果</span><br><span class="line">&#123; name: 'rose', sex: 'girl' &#125;</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<h3 id="querystring-escape"><a href="#querystring-escape" class="headerlink" title="querystring.escape()"></a>querystring.escape()</h3><p>转义。将传入的字符串进行编码返回相应的编码串。</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">querystring.escape('<span class="tag">&lt;<span class="name">哈哈</span>&gt;</span>')</span><br><span class="line">//结果</span><br><span class="line">'%3C%E5%93%88%E5%93%88%3E'</span><br></pre></td></tr></table></figure>
-
-<h3 id="querystring-unescape"><a href="#querystring-unescape" class="headerlink" title="querystring.unescape()"></a>querystring.unescape()</h3><p>反转义。将传入的编码字符串反转回原始字符串。</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">querystring.unescape('%3C%E5%93%88%E5%93%88%3E')</span><br><span class="line">//结果</span><br><span class="line">'<span class="tag">&lt;<span class="name">哈哈</span>&gt;</span>'</span><br></pre></td></tr></table></figure>
-
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1180,7 +1206,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">32</span>
+                  <span class="site-state-item-count">33</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

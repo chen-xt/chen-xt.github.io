@@ -252,6 +252,272 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/07/30/初识正则表达式/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="chen-xt">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/head.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="陈小婷的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/07/30/初识正则表达式/" itemprop="url">初识正则表达式</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-07-30T20:22:08+08:00">
+                2016-07-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">javascript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h4><p><em>正则表达式(RegExp)</em>是强大的字符串匹配工具，可以极大地简化普通字符串操作容易出问题的东西。正则表达式只能操作字符串，且区分大小写。</p>
+<h4 id="基本语法"><a href="#基本语法" class="headerlink" title="基本语法"></a>基本语法</h4><ol>
+<li><p>直接量语法: /pattern/attributes</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> re=<span class="regexp">/a/i</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建 RegExp 对象的语法：：new RegExp(pattern, attributes);</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> re=<span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">'A'</span>,<span class="string">'i'</span>);</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p>注意：参数 pattern 是一个字符串，指定了正则表达式的模式或其他正则表达式。参数 attributes 是一个可选的字符串，包含属性 “g”、”i” 和 “m”，分别用于指定全局匹配、区分大小写的匹配和多行匹配。</p>
+<h4 id="RegExp对象方法："><a href="#RegExp对象方法：" class="headerlink" title="RegExp对象方法："></a>RegExp对象方法：</h4><ol>
+<li><p>test()方法：检测一个字符串是否匹配某个模式。返回值是 true 或 false。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> patt1=<span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">"e"</span>);</span><br><span class="line"><span class="built_in">document</span>.write(patt1.test(<span class="string">"The best "</span>)); <span class="comment">//该字符串中存在字母 "e"，所以输出是true</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>exec()方法：检索字符串中的正则表达式的匹配。返回值是被找到的值。如果没有发现匹配，则返回 null。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> patt1=<span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">"e"</span>);</span><br><span class="line"><span class="built_in">document</span>.write(patt1.exec(<span class="string">"The best "</span>)); <span class="comment">//该字符串中存在字母 "e"，所以输出是e</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>compile()方法：改变正则表达式的模式。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//在字符串中全局搜索 "man"，并用 "person" 替换。然后通过 compile() 方法，改变正则表达式，用 "person" 替换 "man" 或 "woman"，</span></span><br><span class="line"><span class="keyword">var</span> str=<span class="string">"Every man in the world! Every woman on earth!"</span>;</span><br><span class="line">patt=<span class="regexp">/(wo)?man/g</span>;</span><br><span class="line">patt.compile(patt);</span><br><span class="line">Str2=str.replace(patt,<span class="string">"person"</span>);<span class="comment">//用 "person" 替换 "man" 或 "woman"，：</span></span><br><span class="line"><span class="built_in">document</span>.write(str2);</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h4 id="支持正则表达式的-String-对象的方法"><a href="#支持正则表达式的-String-对象的方法" class="headerlink" title="支持正则表达式的 String 对象的方法"></a>支持正则表达式的 String 对象的方法</h4><ol>
+<li><p>Search()方法：检索与正则表达式相匹配的值。不执行全局匹配，它将忽略标志 g，同时它也没有regexp对象的lastIndex的属性，且总是从字符串开始位置进行查找，总是返回匹配的第一个位置。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str=<span class="string">"hello,world!"</span></span><br><span class="line"><span class="built_in">document</span>.write(str.search(<span class="regexp">/world/</span>)); <span class="comment">//结果返回6，即w所在的位置</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>match()方法：找到一个或多个正则表达式的匹配,返回指定的值，而不是字符串的位置。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str=<span class="string">'abcd 3458 gea2 ef'</span>;</span><br><span class="line"><span class="built_in">document</span>.write(str.match(<span class="regexp">/\d+/g</span>));<span class="comment">//结果为3548,2</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Replace()方法：查找并替换与正则表达式匹配的子串。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str=<span class="string">"good girl"</span></span><br><span class="line"><span class="built_in">document</span>.write(str.replace(<span class="regexp">/girl/</span>, <span class="string">"boy"</span>));<span class="comment">//使用boy替换girl</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Split()方法：把一个字符串分割为字符串数组。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str=<span class="string">"How are you ?"</span></span><br><span class="line"><span class="built_in">document</span>.write(str.split(<span class="string">""</span>) + <span class="string">"&lt;br /&gt;"</span>);<span class="comment">//结果为"H,o,w, ,a,r,e, ,y,o,u, ,?"</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h4 id="元字符"><a href="#元字符" class="headerlink" title="元字符"></a>元字符</h4><p><em>元字符</em>是拥有特殊含义的字符，javascript中常见的元字符如下：</p>
+<ol>
+<li><p>元字符<em>.</em> ：用于匹配任何单个字符(除了换行符以外)。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = “abcde”;</span><br><span class="line"><span class="built_in">document</span>.write(str.match(<span class="regexp">/a.c/</span>)); <span class="comment">// 结果为“abc”</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>\w：查找任意一个字母或数字或下划线。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = “abcde”;<span class="comment">// 匹配单个字符，找到一个直接返回</span></span><br><span class="line"><span class="built_in">document</span>.write(str.match(<span class="regexp">/\w/</span>)); <span class="comment">//结果为“a”</span></span><br><span class="line"><span class="built_in">document</span>.write(str.match(<span class="regexp">/\w+/</span>)); <span class="comment">//结果为“abcde”</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>\W：查找非单词的字符.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = “abcde”;<span class="comment">// 匹配单个字符，没有找到返回null</span></span><br><span class="line"><span class="built_in">document</span>.write(str.match(<span class="regexp">/\W/</span>)); <span class="comment">// 结果为“null”</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>\d：匹配一个数字字符。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = “abcde111”;</span><br><span class="line"><span class="built_in">document</span>.write(<span class="regexp">/\d/g</span>.exec(str)); <span class="comment">//结果为“1”</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>\D：匹配一个非数字字符。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = “abcde111”;</span><br><span class="line"><span class="built_in">document</span>.write(<span class="regexp">/\D+/g</span>.exec(str)); <span class="comment">//结果为“abcde”</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>\s：匹配任何空白字符，包括空格，制表符，换行符等等。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str=”Is <span class="keyword">this</span> all there is?”;</span><br><span class="line"><span class="built_in">document</span>.write(<span class="regexp">/\s/g</span>.exec(str)); <span class="comment">// 结果为“ ”</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>\S：匹配任何非空白字符。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str=”Is <span class="keyword">this</span> all there is?”;</span><br><span class="line"><span class="built_in">document</span>.write(<span class="regexp">/\S+/g</span>.exec(str)); <span class="comment">//结果为“Is”</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>\b：匹配一个单词边界，也就是指单词和空格间的位置。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str=”Is <span class="keyword">this</span> all there is?”;</span><br><span class="line"><span class="built_in">document</span>.write(<span class="regexp">/\bthis\b/g</span>.exec(str)); <span class="comment">//结果为“this”</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>\B：匹配非单词边界。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str=”Is <span class="keyword">this</span> all there is?”;</span><br><span class="line"><span class="built_in">document</span>.write(<span class="regexp">/\Bhi/g</span>.exec(str)); <span class="comment">// 结果为“hi”</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>\n：匹配一个换行符;返回换行符被找到的位置。如果未找到匹配，则返回 -1。 </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str=”Is <span class="keyword">this</span> all \nthere is?”;</span><br><span class="line"><span class="built_in">document</span>.write(<span class="regexp">/\n/g</span>.exec(str));</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h4 id="正则的方括号"><a href="#正则的方括号" class="headerlink" title="正则的方括号"></a>正则的方括号</h4><p>方括号包含一系列字符，能够匹配其中任意一个字符,如[abc]可以匹配abc中任意一个字符，使用[^abc]包含的字符abc，则能够匹配abc字符之外的任何一个字符，只能是一个字符。常见的几种方括号的用法如下：</p>
+<ul>
+<li>[abc]：查找在方括号中的任意一个字符；</li>
+<li>[^abc]: 查找不在方括号中的任意一个字符；</li>
+<li>[0-9]: 查找0-9中的任意一个数字；</li>
+<li>[a-z]: 查找从小写a到z中的任意一个字符。</li>
+</ul>
+<h4 id="量词"><a href="#量词" class="headerlink" title="量词"></a>量词</h4><ol>
+<li><p>n*：匹配零个或者多个n的字符串。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">"hello longen hello"</span>;</span><br><span class="line"><span class="built_in">document</span>.write(str.match(<span class="regexp">/el*/g</span>)); <span class="comment">//结果为"ell"</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>n+：匹配至少包含一个或者多个n的字符串。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">"hello longen"</span>;</span><br><span class="line"><span class="built_in">document</span>.write(str.match(<span class="regexp">/l+/g</span>)); <span class="comment">//结果为"ll"</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>n？：匹配零个或者1个n的字符串，可以匹配n字符串，也可以只匹配一个n；先尽量匹配，如没有匹配到，就回溯，再进行不匹配；</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">"hello longen hello"</span>;</span><br><span class="line"><span class="built_in">document</span>.write(str.match(<span class="regexp">/hu?/g</span>)); <span class="comment">//结果为"h"</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>n{x}：匹配包含x个的n的序列字符串。X必须是数字。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str=<span class="string">"100, 1000 or 10000?"</span>;</span><br><span class="line"><span class="built_in">document</span>.write(str.match(<span class="regexp">/\d&#123;4&#125;/g</span>)); <span class="comment">//结果为["1000", "1000"]</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>n{x,y}：匹配包含至少x个的n字符串，最多y个n字符串。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str=<span class="string">"100, 1000 or 10000?"</span>;</span><br><span class="line"><span class="built_in">document</span>.write(str.match(<span class="regexp">/\d&#123;3,&#125;/g</span>)); <span class="comment">//结果为["100", "1000", "1000"]</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>n{x,}：匹配至少包含x个n序列的字符串；</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str=<span class="string">"100, 1000 or 10000?"</span>;</span><br><span class="line"><span class="built_in">document</span>.write(str.match(<span class="regexp">/d&#123;3,&#125;/g</span>)); <span class="comment">//结果为["100", "1000", "1000"]</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>n$：匹配任何以n结尾的字符串；</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str=<span class="string">"my name is longen"</span>;</span><br><span class="line"><span class="built_in">document</span>.write(str.match(<span class="regexp">/en$/g</span>)); <span class="comment">//结果为["en"]</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>^n：匹配任何以n开头的字符串；</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str=<span class="string">"my name is longen"</span>;</span><br><span class="line"><span class="built_in">document</span>.write(str.match(<span class="regexp">/^my/g</span>)); <span class="comment">//结果为"my"</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>?=n：匹配任何其后紧接指定字符串n的字符串；</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str=<span class="string">"my name is longen"</span>;</span><br><span class="line"><span class="built_in">document</span>.write(str.match(<span class="regexp">/na(?=m)/g</span>)); <span class="comment">//结果为"na"</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>?!n：匹配任何其后不紧接n的字符串 </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str=<span class="string">"my name is longen"</span>;</span><br><span class="line"><span class="built_in">document</span>.write(str.match(<span class="regexp">/na(?!ma)/g</span>)); <span class="comment">//结果为"na"</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>^ 以字符串开始的地方匹配，不匹配任何字符；</p>
+</li>
+<li><p>$ 以字符串结束的地方匹配，不匹配任何字符；</p>
+</li>
+</ol>
+<h4 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h4><p>正则表达式在javascript中的应用挺广泛的，可以说带来很多的方便，这里就列举两个应用：</p>
+<ol>
+<li><p><em>行首行尾去空格</em></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str=<span class="string">' www ee  d;fl  '</span>;</span><br><span class="line"><span class="keyword">var</span> re=<span class="regexp">/^\s+|S+&amp;/</span>;<span class="comment">//行首行尾去空格</span></span><br><span class="line"><span class="built_in">document</span>.write(<span class="string">'('</span>+str.replace(re,<span class="string">''</span>));</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><em>校验邮箱</em></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> re=<span class="regexp">/^\w+@[a-z0-9]+\.[a-z]&#123;2-4&#125;$/</span>;</span><br><span class="line">  <span class="keyword">if</span>(re.test(oTxt.value))</span><br><span class="line">    &#123;  alert(<span class="string">'right'</span>); &#125;</span><br><span class="line"> <span class="keyword">else</span></span><br><span class="line">    &#123;  alert(<span class="string">'wrong'</span>);  &#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/07/29/Javascript的异常处理和事件处理/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -866,174 +1132,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/07/21/JS之面向对象1/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="chen-xt">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/head.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="陈小婷的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2016/07/21/JS之面向对象1/" itemprop="url">JS之面向对象1</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-07-21T00:00:00+08:00">
-                2016-07-21
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/javascript/" itemprop="url" rel="index">
-                    <span itemprop="name">javascript</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>今天学习了JS的面向对象部分内容。首先是理解面向对象的概念，因为之前在学校学的几门编程语言都有接触面向对象这个概念，所以理解起来相对来说还是比较容易的。面向对象只关注对象提供的功能，不关注其内部细节，就像我们使用收音机时不需要知道收音机里面的构造以及连线方式，而只需要知道收音机各个按钮的功能即可，收音机就是一个对象。面向对象具有三个特性：封装，继承，多态，并且由方法和属性组成。这些大都已经记在心中了，考过好几次了。</p>
-<p>接着就是学会用工厂方式构造对象，分为三步：</p>
-<ol>
-<li><p>工厂制作产品首先需要的是原料，对应的我们需要创建一个空白的对象；</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj=<span class="keyword">new</span> <span class="built_in">Object</span>();</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>对原料进行加工，即对应的我们需要为对象添加属性和方法；</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">obj.name=name;</span><br><span class="line">obj.sex=sex;</span><br><span class="line">obj.showName=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    alert(<span class="string">'我的名字叫'</span>+<span class="keyword">this</span>.name);</span><br><span class="line">&#125;</span><br><span class="line">obj.showSex=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    alert(<span class="string">'我是'</span>+<span class="keyword">this</span>.sex+<span class="string">'的'</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>将加工好的产品送出厂，所以我们需要返回对象。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">return</span> obj;</span><br></pre></td></tr></table></figure>
-
-</li>
-</ol>
-<p>虽然工厂方式看起来挺完美的，但是还是存在两个问题：其一，没有new；其二，函数重复定义，即每个对象都有一套自己的函数，浪费资源。问题一解决相对来说比较简单，添加一个new即可，主要还是问题二的解决。问题二可以用原型prototype为对象添加方法，原型prototype又是今天新学到的一个概念，通过原型添加方法可以在已有对象中加入自己的方法，可以扩展系统对象，添加一些本不支持的方法。用原型添加方法不仅给构造函数于极度的简化，而且使所有同类的对象都只有一套方法，节省了大量的资源，有效地解决了工厂方法的第二个问题。所以对上述的工厂方法进行改进，首先是将原来的构造函数删除部分，再将剩下的关于属性的部分稍微修改成如下形式：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name,sex</span>)//构造函数，添加属性</span></span><br><span class="line"><span class="function">        </span>&#123;</span><br><span class="line">            <span class="keyword">this</span>.name=name;</span><br><span class="line">            <span class="keyword">this</span>.sex=sex;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
-
-<p>接着就是解决问题一了，加new，如下：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> p=<span class="keyword">new</span> Person(<span class="string">'Rose'</span>,<span class="string">'女'</span>);</span><br></pre></td></tr></table></figure>
-
-<p>然后就是解决问题二了，用原型为对象添加方法：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Person.prototype.showName=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)//原型，添加方法</span></span><br><span class="line"><span class="function">        </span>&#123;</span><br><span class="line">            alert(<span class="keyword">this</span>.name);</span><br><span class="line">        &#125;</span><br><span class="line">        Person.prototype.showSex=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">        </span>&#123;</span><br><span class="line">            alert(<span class="keyword">this</span>.sex);</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
-
-<p>最后，调用方法即可，这样子一来，一套相对比较完美的构造对象方法就出炉了。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">p.showName();</span><br><span class="line">p.showSex();</span><br></pre></td></tr></table></figure>
-
-<p>以上就是今天主要学到的三方面的内容：面向对象概念，工厂方法构造对象，原型添加方法。原型为对象添加方法真的很好用，今天学到的可能只是一小部分，更多的需要后期接触再去深入学习了。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1086,7 +1184,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">32</span>
+                  <span class="site-state-item-count">33</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
