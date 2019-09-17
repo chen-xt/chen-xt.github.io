@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 
 
 
@@ -6,15 +6,23 @@
 
 
 <html class="theme-next muse use-motion" lang="zh-Hans">
-<head><meta name="generator" content="Hexo 3.8.0">
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
 
 
 
 <meta http-equiv="Cache-Control" content="no-transform">
 <meta http-equiv="Cache-Control" content="no-siteapp">
+
 
 
 
@@ -37,38 +45,27 @@
 
 
 
-  
-  
-  
-  
-
-  
-    
-    
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-    
-    
-    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-  
-
-
-
 
 
 
 <link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
 
-<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css">
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
 
 
   <meta name="keywords" content="node规范,">
@@ -76,11 +73,6 @@
 
 
 
-
-
-
-
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1">
 
 
 
@@ -95,7 +87,7 @@
 <meta property="og:site_name" content="陈小婷的博客">
 <meta property="og:description" content="前言&amp;emsp;&amp;emsp;其实并没有一个官方的文档规定Node.js应用程序代码的风格，但Node.js代码分割有着一些“事实上的约定”，大多数项目的代码都一定程度上遵循了这一标准。 所以遵守这些约定还是有一定的必要的，因为它可能会让你的程序避免很多意外的错误和性能损失。 缩进&amp;emsp;&amp;emsp;选择两空格作为Node.js代码的缩进标记。为什么不用常见的四空格缩进呢？因为Node.js代码">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2016-10-14T13:44:36.275Z">
+<meta property="og:updated_time" content="2016-10-14T13:44:36.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Node.js 编程规范">
 <meta name="twitter:description" content="前言&amp;emsp;&amp;emsp;其实并没有一个官方的文档规定Node.js应用程序代码的风格，但Node.js代码分割有着一些“事实上的约定”，大多数项目的代码都一定程度上遵循了这一标准。 所以遵守这些约定还是有一定的必要的，因为它可能会让你的程序避免很多意外的错误和性能损失。 缩进&amp;emsp;&amp;emsp;选择两空格作为Node.js代码的缩进标记。为什么不用常见的四空格缩进呢？因为Node.js代码">
@@ -107,9 +99,11 @@
   var CONFIG = {
     root: '/',
     scheme: 'Muse',
-    sidebar: {"position":"left","display":"post"},
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
-    motion: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     duoshuo: {
       userId: '0',
       author: '博主'
@@ -118,8 +112,8 @@
       applicationID: '',
       apiKey: '',
       indexName: '',
-      hits: "",
-      labels: ""
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
     }
   };
 </script>
@@ -132,11 +126,7 @@
 
 
 
-  <title> Node.js 编程规范 | 陈小婷的博客 </title>
-</head>
-
-<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
-
+  <title>Node.js 编程规范 | 陈小婷的博客</title>
   
 
 
@@ -146,27 +136,19 @@
 
 
 
+</head>
 
-
-
-  <div style="display: none;">
-    <script src="//s95.cnzz.com/z_stat.php?id=1259971316&web_id=1259971316" language="JavaScript"></script>
-  </div>
-
-
-
-
-
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
   
   
     
   
 
-  <div class="container one-collumn sidebar-position-left page-post-detail ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
   <div class="site-meta ">
     
@@ -209,32 +191,12 @@
         </li>
       
         
-        <li class="menu-item menu-item-categories">
-          <a href="/categories" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
-            
-            分类
-          </a>
-        </li>
-      
-        
         <li class="menu-item menu-item-archives">
-          <a href="/archives" rel="section">
+          <a href="/archives/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
             
             归档
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-tags">
-          <a href="/tags" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
-            
-            标签
           </a>
         </li>
       
@@ -266,16 +228,20 @@
   
   
 
-  <article class="post post-type-normal " itemscope="" itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/10/14/Node.js-编程规范/">
 
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="chen-xt">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/head.jpg">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="陈小婷的博客">
     </span>
 
@@ -284,18 +250,21 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                Node.js 编程规范
-              
-            
-          </h1>
+          <h1 class="post-title" itemprop="name headline">Node.js 编程规范</h1>
         
 
         <div class="post-meta">
           <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-10-14T16:03:26+08:00">
+                2016-10-14
+              </time>
             
 
             
@@ -303,6 +272,28 @@
             
           </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Node-js/" itemprop="url" rel="index">
+                    <span itemprop="name">Node.js</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -322,7 +313,9 @@
       </header>
     
 
-
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -330,36 +323,50 @@
 
       
         <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>&emsp;&emsp;其实并没有一个官方的文档规定Node.js应用程序代码的风格，但Node.js代码分割有着一些“事实上的约定”，大多数项目的代码都一定程度上遵循了这一标准。 所以遵守这些约定还是有一定的必要的，因为它可能会让你的程序避免很多意外的错误和性能损失。</p>
-<h2 id="缩进"><a href="#缩进" class="headerlink" title="缩进"></a>缩进</h2><p>&emsp;&emsp;选择<strong>两空格</strong>作为Node.js代码的缩进标记。为什么不用常见的四空格缩进呢？因为Node.js代码中很容易写出深层的函数嵌套，过多的空格会给阅读带来不便。<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">//正确的缩进</span><br><span class="line">function func(boolVar) &#123;</span><br><span class="line">   if (boolVar) &#123;</span><br><span class="line">     console.log('True');</span><br><span class="line">   &#125; else &#123;</span><br><span class="line">     console.log('False');</span><br><span class="line">   &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">//错误的缩进</span><br><span class="line">function func(boolVar)</span><br><span class="line">&#123;</span><br><span class="line">     if (boolVar)</span><br><span class="line">    &#123;</span><br><span class="line">       console.log('True');</span><br><span class="line">     &#125;</span><br><span class="line">    else</span><br><span class="line">    &#123;</span><br><span class="line">       console.log('False');</span><br><span class="line">     &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<h2 id="缩进"><a href="#缩进" class="headerlink" title="缩进"></a>缩进</h2><p>&emsp;&emsp;选择<strong>两空格</strong>作为Node.js代码的缩进标记。为什么不用常见的四空格缩进呢？因为Node.js代码中很容易写出深层的函数嵌套，过多的空格会给阅读带来不便。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">//正确的缩进</span><br><span class="line">function func(boolVar) &#123;</span><br><span class="line">   if (boolVar) &#123;</span><br><span class="line">     console.log('True');</span><br><span class="line">   &#125; else &#123;</span><br><span class="line">     console.log('False');</span><br><span class="line">   &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">//错误的缩进</span><br><span class="line">function func(boolVar)</span><br><span class="line">&#123;</span><br><span class="line">     if (boolVar)</span><br><span class="line">    &#123;</span><br><span class="line">       console.log('True');</span><br><span class="line">     &#125;</span><br><span class="line">    else</span><br><span class="line">    &#123;</span><br><span class="line">       console.log('False');</span><br><span class="line">     &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
 <h2 id="行宽"><a href="#行宽" class="headerlink" title="行宽"></a>行宽</h2><p>&emsp;&emsp;建议把行宽限制为<strong>80个字符</strong>，可以保证在任何设备上都可以方便地阅读。</p>
-<h2 id="语句分隔符"><a href="#语句分隔符" class="headerlink" title="语句分隔符"></a>语句分隔符</h2><p>&emsp;&emsp; JavaScript不仅支持像C语言一样的分号<code>;</code>作为语句之间的分隔符，还支持像Python语言那样的换行作为语句之间的界限。但是建议一律使用<strong>分号</strong>，哪怕一行只有一个语句，也不要省略分号。<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">//正确的语句分隔</span><br><span class="line">var a = 1;</span><br><span class="line">var b = 'world';</span><br><span class="line">var c = function(x) &#123;</span><br><span class="line">    console.log('hello ' + x + a);</span><br><span class="line">&#125;;</span><br><span class="line">c(b);</span><br><span class="line"></span><br><span class="line">//错误的语句分隔</span><br><span class="line">var a = 1</span><br><span class="line">var b = 'world'</span><br><span class="line">var c = function(x) &#123;</span><br><span class="line">    console.log('hello ' + x + a)</span><br><span class="line">&#125;</span><br><span class="line">c(b)</span><br></pre></td></tr></table></figure></p>
-<h2 id="变量定义"><a href="#变量定义" class="headerlink" title="变量定义"></a>变量定义</h2><p>（1）不要通过赋值隐式定义变量，因为通过赋值隐式定义的变量总是全局变量，会造成命名空间污染。所以要通过 <code>var</code> 把所有变量定义为局部变量。<br>（2）使用<code>var</code>定义多个变量时，不要通过逗号<code>,</code>把多个变量隔开。<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">//正确的变量定义格式</span><br><span class="line">var foo;</span><br><span class="line">var bar;</span><br><span class="line">var arr = [40, 'foo'];</span><br><span class="line">var obj = &#123;&#125;;</span><br><span class="line"></span><br><span class="line">//错误的变量定义格式</span><br><span class="line">var foo, bar;</span><br><span class="line">var arr = [40, 'foo'],</span><br><span class="line">obj = &#123;&#125;;</span><br></pre></td></tr></table></figure></p>
-<h2 id="变量名和属性名"><a href="#变量名和属性名" class="headerlink" title="变量名和属性名"></a>变量名和属性名</h2><p>&emsp;&emsp;使用<strong>小驼峰式命名法</strong>作为所有变量和属性的命名规则。小驼峰式命名法，即第一个单字以小写字母开始，第二个单字的首字母大写，如firstName。<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">//正确的命名</span><br><span class="line">var yourName = 'BYVoid';</span><br><span class="line"></span><br><span class="line">//错误的命名</span><br><span class="line">var YourName = 'BYVoid';</span><br><span class="line">//或者</span><br><span class="line">var your_name = 'BYVoid';</span><br></pre></td></tr></table></figure></p>
-<h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><p>&emsp;&emsp;对于<strong>一般的函数</strong>我们使用小驼峰式命名法。但对于<strong>对象的构造函数</strong>名称（或者不严格地说“类”的名称），使用大驼峰式命名法。大驼峰式命名法，即每一个单字的首字母都采用大写字母，如FirstName。<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">//正确</span><br><span class="line">var someFunction = function() &#123;</span><br><span class="line">   return 'something';</span><br><span class="line">&#125;;</span><br><span class="line">function anotherFunction() &#123;</span><br><span class="line">   return 'anything';</span><br><span class="line">&#125;</span><br><span class="line">function DataStructure() &#123;</span><br><span class="line">   this.someProperty = 'initialized';</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//错误</span><br><span class="line">var SomeFunction = function()</span><br><span class="line">&#123;</span><br><span class="line">   return 'something';</span><br><span class="line">&#125;;</span><br><span class="line">function another_function () &#123;</span><br><span class="line">   return 'anything';</span><br><span class="line">&#125;</span><br><span class="line">function dataStructure() &#123;</span><br><span class="line">this.someProperty = 'initialized';&#125;</span><br></pre></td></tr></table></figure></p>
-<h2 id="引号"><a href="#引号" class="headerlink" title="引号"></a>引号</h2><p>&emsp;&emsp;在JavaScript中单引号<code>&#39;</code>和双引号<code>&quot;</code>没有任何语义区别，两者都是可用的。建议用<strong>单引号</strong>，因为JSON、 XML都规定了必须是双引号，这样便于无转义地直接引用。<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">//正确的引号用法</span><br><span class="line">console.log('Hello world.');</span><br><span class="line"></span><br><span class="line">//错误的引号用法</span><br><span class="line">console.log("Hello world.");</span><br></pre></td></tr></table></figure></p>
-<h2 id="关联数组的初始化"><a href="#关联数组的初始化" class="headerlink" title="关联数组的初始化"></a>关联数组的初始化</h2><p>&emsp;&emsp;按<code>var = { 放在一行，下面每行一对键值，保持两空格的缩进，以分号结尾， };</code>的形式，最后单独另起一行。对于每对键值，除非键名之中有空格或者有非法字符，否则一律不用引号。<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">//正确</span><br><span class="line">var anObject = &#123;</span><br><span class="line">    name: 'BYVoid',</span><br><span class="line">    website: 'http://www.byvoid.com/',</span><br><span class="line">    'is good': true,</span><br><span class="line">&#125;;</span><br><span class="line">//错误</span><br><span class="line">    var anObject = &#123;'name': 'BYVoid',</span><br><span class="line">    website: 'http://www.byvoid.com/'</span><br><span class="line">    , "is good": true&#125;;</span><br></pre></td></tr></table></figure></p>
+<h2 id="语句分隔符"><a href="#语句分隔符" class="headerlink" title="语句分隔符"></a>语句分隔符</h2><p>&emsp;&emsp; JavaScript不仅支持像C语言一样的分号<code>;</code>作为语句之间的分隔符，还支持像Python语言那样的换行作为语句之间的界限。但是建议一律使用<strong>分号</strong>，哪怕一行只有一个语句，也不要省略分号。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">//正确的语句分隔</span><br><span class="line">var a = 1;</span><br><span class="line">var b = 'world';</span><br><span class="line">var c = function(x) &#123;</span><br><span class="line">    console.log('hello ' + x + a);</span><br><span class="line">&#125;;</span><br><span class="line">c(b);</span><br><span class="line"></span><br><span class="line">//错误的语句分隔</span><br><span class="line">var a = 1</span><br><span class="line">var b = 'world'</span><br><span class="line">var c = function(x) &#123;</span><br><span class="line">    console.log('hello ' + x + a)</span><br><span class="line">&#125;</span><br><span class="line">c(b)</span><br></pre></td></tr></table></figure>
+
+<h2 id="变量定义"><a href="#变量定义" class="headerlink" title="变量定义"></a>变量定义</h2><p>（1）不要通过赋值隐式定义变量，因为通过赋值隐式定义的变量总是全局变量，会造成命名空间污染。所以要通过 <code>var</code> 把所有变量定义为局部变量。<br>（2）使用<code>var</code>定义多个变量时，不要通过逗号<code>,</code>把多个变量隔开。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">//正确的变量定义格式</span><br><span class="line">var foo;</span><br><span class="line">var bar;</span><br><span class="line">var arr = [40, 'foo'];</span><br><span class="line">var obj = &#123;&#125;;</span><br><span class="line"></span><br><span class="line">//错误的变量定义格式</span><br><span class="line">var foo, bar;</span><br><span class="line">var arr = [40, 'foo'],</span><br><span class="line">obj = &#123;&#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="变量名和属性名"><a href="#变量名和属性名" class="headerlink" title="变量名和属性名"></a>变量名和属性名</h2><p>&emsp;&emsp;使用<strong>小驼峰式命名法</strong>作为所有变量和属性的命名规则。小驼峰式命名法，即第一个单字以小写字母开始，第二个单字的首字母大写，如firstName。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">//正确的命名</span><br><span class="line">var yourName = 'BYVoid';</span><br><span class="line"></span><br><span class="line">//错误的命名</span><br><span class="line">var YourName = 'BYVoid';</span><br><span class="line">//或者</span><br><span class="line">var your_name = 'BYVoid';</span><br></pre></td></tr></table></figure>
+
+<h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><p>&emsp;&emsp;对于<strong>一般的函数</strong>我们使用小驼峰式命名法。但对于<strong>对象的构造函数</strong>名称（或者不严格地说“类”的名称），使用大驼峰式命名法。大驼峰式命名法，即每一个单字的首字母都采用大写字母，如FirstName。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">//正确</span><br><span class="line">var someFunction = function() &#123;</span><br><span class="line">   return 'something';</span><br><span class="line">&#125;;</span><br><span class="line">function anotherFunction() &#123;</span><br><span class="line">   return 'anything';</span><br><span class="line">&#125;</span><br><span class="line">function DataStructure() &#123;</span><br><span class="line">   this.someProperty = 'initialized';</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//错误</span><br><span class="line">var SomeFunction = function()</span><br><span class="line">&#123;</span><br><span class="line">   return 'something';</span><br><span class="line">&#125;;</span><br><span class="line">function another_function () &#123;</span><br><span class="line">   return 'anything';</span><br><span class="line">&#125;</span><br><span class="line">function dataStructure() &#123;</span><br><span class="line">this.someProperty = 'initialized';&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="引号"><a href="#引号" class="headerlink" title="引号"></a>引号</h2><p>&emsp;&emsp;在JavaScript中单引号<code>&#39;</code>和双引号<code>&quot;</code>没有任何语义区别，两者都是可用的。建议用<strong>单引号</strong>，因为JSON、 XML都规定了必须是双引号，这样便于无转义地直接引用。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">//正确的引号用法</span><br><span class="line">console.log('Hello world.');</span><br><span class="line"></span><br><span class="line">//错误的引号用法</span><br><span class="line">console.log("Hello world.");</span><br></pre></td></tr></table></figure>
+
+<h2 id="关联数组的初始化"><a href="#关联数组的初始化" class="headerlink" title="关联数组的初始化"></a>关联数组的初始化</h2><p>&emsp;&emsp;按<code>var = { 放在一行，下面每行一对键值，保持两空格的缩进，以分号结尾， };</code>的形式，最后单独另起一行。对于每对键值，除非键名之中有空格或者有非法字符，否则一律不用引号。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">//正确</span><br><span class="line">var anObject = &#123;</span><br><span class="line">    name: 'BYVoid',</span><br><span class="line">    website: 'http://www.byvoid.com/',</span><br><span class="line">    'is good': true,</span><br><span class="line">&#125;;</span><br><span class="line">//错误</span><br><span class="line">    var anObject = &#123;'name': 'BYVoid',</span><br><span class="line">    website: 'http://www.byvoid.com/'</span><br><span class="line">    , "is good": true&#125;;</span><br></pre></td></tr></table></figure>
+
 <h2 id="等号"><a href="#等号" class="headerlink" title="等号"></a>等号</h2><p>&emsp;&emsp;尽量使用 <code>===</code>而不是<code>==</code>来判断相等，因为<code>==</code> 包含了隐式类型转换，很多时候可能会出错。</p>
-<h2 id="命名函数"><a href="#命名函数" class="headerlink" title="命名函数"></a>命名函数</h2><p>&emsp;&emsp;尽量给构造函数和回调函数命名。对于回调函数，Node.js的API和各个第三方的模块通常约定回调函数的第一个参数是错误对象<code>err</code>，如果没有错误发生，其值为 <code>undefined</code>。<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">//正确</span><br><span class="line">req.on('end', function onEnd(err, message) &#123;</span><br><span class="line">   if (err) &#123;</span><br><span class="line">    console.log('Error.');</span><br><span class="line">   &#125;</span><br><span class="line">&#125;);</span><br><span class="line">function FooObj() &#123;</span><br><span class="line">    this.foo = 'bar';</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//错误</span><br><span class="line">req.on('end', function (message, err) &#123;</span><br><span class="line">    if (err === false) &#123;</span><br><span class="line">      console.log('Error.');</span><br><span class="line">   &#125;</span><br><span class="line">&#125;);</span><br><span class="line">var FooObj = function() &#123;</span><br><span class="line">this.foo = 'bar';</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h2 id="对象定义"><a href="#对象定义" class="headerlink" title="对象定义"></a>对象定义</h2><p>&emsp;&emsp;尽量将所有的成员函数通过原型定义，将属性在构造函数内定义，然后对构造函数使用<code>new</code>关键字创建对象。避免把成员函数定义在构造函数内部，否则会有运行时的闭包开销。<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">//正确:</span><br><span class="line">function FooObj(bar) &#123;</span><br><span class="line">//在构造函数中初始化属性</span><br><span class="line">    this.bar = bar;</span><br><span class="line">    this.arr = [1, 2, 3];</span><br><span class="line">&#125;</span><br><span class="line">//使用原型定义成员函数</span><br><span class="line">FooObj.prototype.func = function() &#123;</span><br><span class="line">    console.log(this.arr);</span><br><span class="line">&#125;;</span><br><span class="line">var obj1 = new FooObj('obj1');</span><br><span class="line">var obj2 = new FooObj('obj2');</span><br><span class="line">obj1.arr.push(4);</span><br><span class="line">obj1.func(); // [1, 2, 3, 4]</span><br><span class="line">obj2.func(); // [1, 2, 3]</span><br><span class="line"></span><br><span class="line">//错误：</span><br><span class="line">function FooObj(bar) &#123;</span><br><span class="line">    this.bar = bar;</span><br><span class="line">this.func = function() &#123;</span><br><span class="line">    console.log(this.arr);</span><br><span class="line">&#125;;</span><br><span class="line">&#125;</span><br><span class="line">FooObj.prototype.arr = [1, 2, 3];</span><br><span class="line">var obj1 = new FooObj('obj1');</span><br><span class="line">var obj2 = new FooObj('obj2');</span><br><span class="line">obj1.arr.push(4);</span><br><span class="line">obj1.func(); // [1, 2, 3, 4]</span><br><span class="line">obj2.func(); // [1, 2, 3, 4]</span><br></pre></td></tr></table></figure></p>
-<h2 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h2><p>&emsp;&emsp;避免使用复杂的<strong>继承</strong>，如果的确需要继承，那么尽量使用Node.js的util模块中提供的<code>inherits</code>函数。<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var util = require('util');</span><br><span class="line">var events = require('events');</span><br><span class="line">function Foo() &#123;</span><br><span class="line">   &#125;</span><br><span class="line">util.inherits(Foo, events.EventEmitter); //让Foo继承EventEmitter</span><br></pre></td></tr></table></figure></p>
+<h2 id="命名函数"><a href="#命名函数" class="headerlink" title="命名函数"></a>命名函数</h2><p>&emsp;&emsp;尽量给构造函数和回调函数命名。对于回调函数，Node.js的API和各个第三方的模块通常约定回调函数的第一个参数是错误对象<code>err</code>，如果没有错误发生，其值为 <code>undefined</code>。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">//正确</span><br><span class="line">req.on('end', function onEnd(err, message) &#123;</span><br><span class="line">   if (err) &#123;</span><br><span class="line">    console.log('Error.');</span><br><span class="line">   &#125;</span><br><span class="line">&#125;);</span><br><span class="line">function FooObj() &#123;</span><br><span class="line">    this.foo = 'bar';</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//错误</span><br><span class="line">req.on('end', function (message, err) &#123;</span><br><span class="line">    if (err === false) &#123;</span><br><span class="line">      console.log('Error.');</span><br><span class="line">   &#125;</span><br><span class="line">&#125;);</span><br><span class="line">var FooObj = function() &#123;</span><br><span class="line">this.foo = 'bar';</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="对象定义"><a href="#对象定义" class="headerlink" title="对象定义"></a>对象定义</h2><p>&emsp;&emsp;尽量将所有的成员函数通过原型定义，将属性在构造函数内定义，然后对构造函数使用<code>new</code>关键字创建对象。避免把成员函数定义在构造函数内部，否则会有运行时的闭包开销。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">//正确:</span><br><span class="line">function FooObj(bar) &#123;</span><br><span class="line">//在构造函数中初始化属性</span><br><span class="line">    this.bar = bar;</span><br><span class="line">    this.arr = [1, 2, 3];</span><br><span class="line">&#125;</span><br><span class="line">//使用原型定义成员函数</span><br><span class="line">FooObj.prototype.func = function() &#123;</span><br><span class="line">    console.log(this.arr);</span><br><span class="line">&#125;;</span><br><span class="line">var obj1 = new FooObj('obj1');</span><br><span class="line">var obj2 = new FooObj('obj2');</span><br><span class="line">obj1.arr.push(4);</span><br><span class="line">obj1.func(); // [1, 2, 3, 4]</span><br><span class="line">obj2.func(); // [1, 2, 3]</span><br><span class="line"></span><br><span class="line">//错误：</span><br><span class="line">function FooObj(bar) &#123;</span><br><span class="line">    this.bar = bar;</span><br><span class="line">this.func = function() &#123;</span><br><span class="line">    console.log(this.arr);</span><br><span class="line">&#125;;</span><br><span class="line">&#125;</span><br><span class="line">FooObj.prototype.arr = [1, 2, 3];</span><br><span class="line">var obj1 = new FooObj('obj1');</span><br><span class="line">var obj2 = new FooObj('obj2');</span><br><span class="line">obj1.arr.push(4);</span><br><span class="line">obj1.func(); // [1, 2, 3, 4]</span><br><span class="line">obj2.func(); // [1, 2, 3, 4]</span><br></pre></td></tr></table></figure>
+
+<h2 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h2><p>&emsp;&emsp;避免使用复杂的<strong>继承</strong>，如果的确需要继承，那么尽量使用Node.js的util模块中提供的<code>inherits</code>函数。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var util = require('util');</span><br><span class="line">var events = require('events');</span><br><span class="line">function Foo() &#123;</span><br><span class="line">   &#125;</span><br><span class="line">util.inherits(Foo, events.EventEmitter); //让Foo继承EventEmitter</span><br></pre></td></tr></table></figure>
+
 
       
     </div>
+    
+    
+    
 
-    <div>
-      
-        
+    
 
-      
-    </div>
+    
 
-    <div>
-      
-        
-
-      
-    </div>
-
+    
 
     <footer class="post-footer">
       
@@ -371,7 +378,7 @@
       
 
       
-        
+      
       
 
       
@@ -399,6 +406,10 @@
       
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -408,15 +419,15 @@
     </div>
   </div>
 
-          
+
           </div>
           
 
 
           
-  <div class="comments" id="comments">
-    
-  </div>
+
+  
+
 
 
         </div>
@@ -432,6 +443,7 @@
   </div>
 
   <aside id="sidebar" class="sidebar">
+    
     <div class="sidebar-inner">
 
       
@@ -441,70 +453,70 @@
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
             文章目录
           </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
             站点概览
           </li>
         </ul>
       
 
-      <section class="site-overview sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image" src="/images/head.jpg" alt="chen-xt">
-          <p class="site-author-name" itemprop="name">chen-xt</p>
-           
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">chen-xt</p>
               <p class="site-description motion-element" itemprop="description">一步一步向前走</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">32</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">31</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
           
+
+          
+
+          
+          
+
+          
+          
+
+          
+
         </div>
-        <nav class="site-state motion-element">
-
-          
-            <div class="site-state-item site-state-posts">
-              <a href="/archives">
-                <span class="site-state-item-count">32</span>
-                <span class="site-state-item-name">日志</span>
-              </a>
-            </div>
-          
-
-          
-            
-            
-            <div class="site-state-item site-state-categories">
-              <a href="/categories/index.html">
-                <span class="site-state-item-count">10</span>
-                <span class="site-state-item-name">分类</span>
-              </a>
-            </div>
-          
-
-          
-            
-            
-            <div class="site-state-item site-state-tags">
-              <a href="/tags/index.html">
-                <span class="site-state-item-count">31</span>
-                <span class="site-state-item-name">标签</span>
-              </a>
-            </div>
-          
-
-        </nav>
-
-        
-
-        <div class="links-of-author motion-element">
-          
-        </div>
-
-        
-        
-
-        
-        
-
-        
-
-
       </section>
 
       
@@ -537,19 +549,36 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">
-  
-  &copy; 
-  <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
-    <i class="fa fa-"></i>
+    <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">chen-xt</span>
+
+  
 </div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
 
 
 
         
+
+
+
+
+
+
 
         
       </div>
@@ -561,7 +590,9 @@
         
       </div>
     
+
     
+
   </div>
 
   
@@ -585,52 +616,71 @@
 
 
 
-  
-  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-
-  
-  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-
-  
-  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
 
 
-  
 
 
-  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
 
-  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
 
 
 
   
   
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
-
-
-
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
   
 
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
 
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
 
 
 
   
 
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
 
 
   
@@ -656,21 +706,31 @@
 
 
 
-  
 
 
 
-  
-  
 
-  
+
+
 
   
 
+
+
+
+
+  
+
   
 
   
 
+  
+  
+
+  
+
+  
 
   
 

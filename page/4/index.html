@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 
 
 
@@ -6,15 +6,23 @@
 
 
 <html class="theme-next muse use-motion" lang="zh-Hans">
-<head><meta name="generator" content="Hexo 3.8.0">
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
 
 
 
 <meta http-equiv="Cache-Control" content="no-transform">
 <meta http-equiv="Cache-Control" content="no-siteapp">
+
 
 
 
@@ -37,38 +45,27 @@
 
 
 
-  
-  
-  
-  
-
-  
-    
-    
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-    
-    
-    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-  
-
-
-
 
 
 
 <link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
 
-<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css">
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
 
 
   <meta name="keywords" content="Hexo, NexT">
@@ -76,11 +73,6 @@
 
 
 
-
-
-
-
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1">
 
 
 
@@ -105,9 +97,11 @@
   var CONFIG = {
     root: '/',
     scheme: 'Muse',
-    sidebar: {"position":"left","display":"post"},
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
-    motion: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     duoshuo: {
       userId: '0',
       author: '博主'
@@ -116,8 +110,8 @@
       applicationID: '',
       apiKey: '',
       indexName: '',
-      hits: "",
-      labels: ""
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
     }
   };
 </script>
@@ -130,11 +124,7 @@
 
 
 
-  <title> 陈小婷的博客 </title>
-</head>
-
-<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
-
+  <title>陈小婷的博客</title>
   
 
 
@@ -144,29 +134,20 @@
 
 
 
+</head>
 
-
-
-  <div style="display: none;">
-    <script src="//s95.cnzz.com/z_stat.php?id=1259971316&web_id=1259971316" language="JavaScript"></script>
-  </div>
-
-
-
-
-
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
   
   
     
   
 
-  <div class="container one-collumn sidebar-position-left 
-   page-home 
- ">
+  <div class="container sidebar-position-left 
+  page-home">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
   <div class="site-meta ">
     
@@ -209,32 +190,12 @@
         </li>
       
         
-        <li class="menu-item menu-item-categories">
-          <a href="/categories" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
-            
-            分类
-          </a>
-        </li>
-      
-        
         <li class="menu-item menu-item-archives">
-          <a href="/archives" rel="section">
+          <a href="/archives/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
             
             归档
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-tags">
-          <a href="/tags" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
-            
-            标签
           </a>
         </li>
       
@@ -266,16 +227,20 @@
   
   
 
-  <article class="post post-type-normal " itemscope="" itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/09/08/一个基于Node.js的web应用/">
 
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="chen-xt">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/head.jpg">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="陈小婷的博客">
     </span>
 
@@ -285,20 +250,22 @@
         
         
           <h1 class="post-title" itemprop="name headline">
-            
-            
-              
                 
-                <a class="post-title-link" href="/2016/09/08/一个基于Node.js的web应用/" itemprop="url">
-                  一个基于Node.js的web 应用
-                </a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/2016/09/08/一个基于Node.js的web应用/" itemprop="url">一个基于Node.js的web 应用</a></h1>
         
 
         <div class="post-meta">
           <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-09-08T13:12:51+08:00">
+                2016-09-08
+              </time>
             
 
             
@@ -306,6 +273,28 @@
             
           </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Node-js/" itemprop="url" rel="index">
+                    <span itemprop="name">Node.js</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -325,7 +314,9 @@
       </header>
     
 
-
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -334,27 +325,128 @@
       
         
           
-          前言Node.js是一个JavaScript运行环境，允许在后端（脱离浏览器环境）运行JavaScript代码。那么在后台中又是如何运行JavaScript代码的呢？Node.js使用了 Google 的V8 虚拟机（Google 的Chrome 浏览器使用的JavaScript 执行环境）来解释和
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2016/09/08/一个基于Node.js的web应用/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>Node.js是一个JavaScript运行环境，允许在后端（脱离浏览器环境）运行JavaScript代码。那么在后台中又是如何运行JavaScript代码的呢？Node.js使用了 Google 的V8 虚拟机（Google 的Chrome 浏览器使用的JavaScript 执行环境）来解释和执行 JavaScript代码。<br>初识Node.js，通过完成一个完整的基于 Node.js 的 web 应用来让自己对Node.js有个初步的认识，下面就是完成该应用的具体过程。</p>
+<h2 id="应用目标"><a href="#应用目标" class="headerlink" title="应用目标"></a>应用目标</h2><ol>
+<li><p>用户可以通过浏览器使用我们的应用。</p>
+</li>
+<li><p>当用户请求 <a href="http://domain/start" target="_blank" rel="noopener">http://domain/start</a> 时，可以看到一个欢迎页面，<br>页面上有一个文本框和提交按钮。</p>
+</li>
+<li><p>用户可以在文本框输入相应的内容并提交表单，随后文本框的内容将被上传到<br><a href="http://domain/upload，" target="_blank" rel="noopener">http://domain/upload，</a> 该页面完成上传后会把文本框内容显示在页面上。</p>
+</li>
+</ol>
+<h2 id="应用不同模块分析"><a href="#应用不同模块分析" class="headerlink" title="应用不同模块分析"></a>应用不同模块分析</h2><ol>
+<li><p>需要一个 <strong>HTTP 服务器</strong>，用于提供 Web 页面。</p>
+</li>
+<li><p>需要一个 <strong>路由</strong>，用于把请求对应到请求处理程序（对于不同的请求，服务器需要给予不同的响应）。</p>
+</li>
+<li><p>需要一个最终的 <strong>请求处理程序</strong>，用于处理被服务器接收并通过路由传递之后的请求。</p>
+</li>
+<li><p>需要 <strong>请求数据处理功能</strong>。路由应该能处理 POST 数据，并且把数据封装成更友好的格式传递给请求处理入程序。</p>
+</li>
+<li><p>需要一些 <strong>视图逻辑</strong>供请求处理程序使用，用于将内容发送给用户的浏览器，显示给用户。</p>
+</li>
+</ol>
+<h2 id="构建应用的模块"><a href="#构建应用的模块" class="headerlink" title="构建应用的模块"></a>构建应用的模块</h2><h3 id="构建HTTP-服务器"><a href="#构建HTTP-服务器" class="headerlink" title="构建HTTP 服务器"></a>构建HTTP 服务器</h3><p>创建一个叫server.js 的文件，并写入以下代码：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> http=<span class="built_in">require</span>(<span class="string">"http"</span>);</span><br><span class="line"><span class="comment">//请求Node.js 自带的 http 模块，并且把它赋值给 http 变量</span></span><br><span class="line"></span><br><span class="line">http.createServer(<span class="function"><span class="keyword">function</span> (<span class="params">request,response</span>)</span>&#123;</span><br><span class="line"><span class="comment">//createServer为http 模块提供的函数</span></span><br><span class="line">    response.writeHead(<span class="number">200</span>,&#123;<span class="string">"Content-Type"</span>:<span class="string">"text/plain"</span>&#125;);</span><br><span class="line">    response.write(<span class="string">"hello world"</span>);</span><br><span class="line">    response.end();</span><br><span class="line"> &#125;).listen(<span class="number">8888</span>); </span><br><span class="line"><span class="comment">// listen方法里的数值参数，指定这个 HTTP 服务器监听的端口号(这里为8888)</span></span><br></pre></td></tr></table></figure>
+
+<p>输入node.js命令“node server.js”执行文件,打开浏览器<a href="http://localhost:8888/，" target="_blank" rel="noopener">http://localhost:8888/，</a> 可以看到一个写着“Hello World”的网页。</p>
+<h4 id="函数传递是如何让-HTTP-服务器工作的"><a href="#函数传递是如何让-HTTP-服务器工作的" class="headerlink" title="函数传递是如何让 HTTP 服务器工作的"></a>函数传递是如何让 HTTP 服务器工作的</h4><p>通过函数传递的方法让HTTP 服务器工作，我们可以将上述的代码修改成如下的，当然二者的实现结果是相同的。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> http=<span class="built_in">require</span>(<span class="string">"http"</span>);</span><br><span class="line">   <span class="function"><span class="keyword">function</span> <span class="title">onRequest</span>(<span class="params">request,response</span>)</span>&#123;</span><br><span class="line">    response.writeHead(<span class="number">200</span>,&#123;<span class="string">"Content-Type"</span>:<span class="string">"text/plain"</span>&#125;);</span><br><span class="line">    response.write(<span class="string">"hello world"</span>);</span><br><span class="line">    response.end();</span><br><span class="line">&#125;</span><br><span class="line">http.createServer(onRequest).listen(<span class="number">8888</span>);</span><br></pre></td></tr></table></figure>
+
+<p>将修改后的代码与之前未修改的代码进行比较，可以发现修改前我们向 createServer 函数传递了的是一个匿名函数；而经过修改后，我们首先定义一个“onRequest”函数，然后再将该函数以参数的形式传递给createServer 函数。</p>
+<h4 id="服务器处理请求"><a href="#服务器处理请求" class="headerlink" title="服务器处理请求"></a>服务器处理请求</h4><p>函数 onRequest() 里面的内容就是服务器处理请求的内容。当onRequest() 函数被触发的时候，有两个参数被传入：request 和response。这2个都是对象，通过使用它们的方法可以处理 HTTP 请求的细节，并且响应请求。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">onRequest</span>(<span class="params">request,response</span>)</span>&#123;</span><br><span class="line">    response.writeHead(<span class="number">200</span>,&#123;<span class="string">"Content-Type"</span>:<span class="string">"text/plain"</span>&#125;);</span><br><span class="line">    response.write(<span class="string">"hello world"</span>);</span><br><span class="line">    response.end();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>上述代码表示，当收到请求时，使用 response.writeHead() 函数发送一个 HTTP 状态 200 和 HTTP 头的内容类型；使用 response.write() 函数在 HTTP 相应主体中发送文本 “HelloWorld”；最后调用 response.end() 完成响应。</p>
+<h4 id="调用HTTP-服务器模块"><a href="#调用HTTP-服务器模块" class="headerlink" title="调用HTTP 服务器模块"></a>调用HTTP 服务器模块</h4><p>通常我们会有一个叫 index.js 的文件去调用应用的其他模块来引导和启动应用。所以要让server.js能被index.js 主文件(还没创建)使用，应该先把 server.js 变成一个真正的 Node.js 模块。把某段代码变成模块只要将希望提供其功能的部分导出到请求这个模块的脚本即可。</p>
+<p> （1） 修改server.js的代码，将server.js中的服务器脚本放到一个叫做 start 的函数里，再导出这个函数，代码如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> http=<span class="built_in">require</span>(<span class="string">"http"</span>);</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">start</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">   <span class="function"><span class="keyword">function</span> <span class="title">onRequest</span>(<span class="params">request,response</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"Request received."</span>);</span><br><span class="line">    response.writeHead(<span class="number">200</span>,&#123;<span class="string">"Content-Type"</span>:<span class="string">"text/plain"</span>&#125;);</span><br><span class="line">    response.write(<span class="string">"hello world"</span>);</span><br><span class="line">    response.end();</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">http.createServer(onRequest).listen(<span class="number">8888</span>);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"Server has started"</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">exports.start=start;  <span class="comment">//导出</span></span><br></pre></td></tr></table></figure>
+
+
+<p> （2） 创建index.js主文件，然后通过index.js来启动HTTP服务器。index.js主文件的代码如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> server=<span class="built_in">require</span>(<span class="string">"./server"</span>);</span><br><span class="line">server.start();</span><br></pre></td></tr></table></figure>
+
+<h4 id="执行应用"><a href="#执行应用" class="headerlink" title="执行应用"></a>执行应用</h4><p>输入node.js命令“node index.js”执行文件，在命令编辑框中会显示“Server has started”；打开浏览器<a href="http://localhost:8888/" target="_blank" rel="noopener">http://localhost:8888/</a> ，同样可以看到一个写着“Hello World”的网页，此时命令编辑框中会再显示“Request received.”。</p>
+<h3 id="构建路由模块"><a href="#构建路由模块" class="headerlink" title="构建路由模块"></a>构建路由模块</h3><p>编写一个路由模块——即创建一个叫server.js 的文件，并写入以下代码：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">route</span>(<span class="params">pathname</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"About to route a request for"</span>+pathname);</span><br><span class="line">&#125;</span><br><span class="line">exports.route=route;</span><br></pre></td></tr></table></figure>
+
+<h4 id="修改srever-js文件"><a href="#修改srever-js文件" class="headerlink" title="修改srever.js文件"></a>修改srever.js文件</h4><p>为了获取浏览器请求的URL路径，需要给 onRequest()函数加上一些逻辑。然后我们就可以通过获取的URL路径区别POST请求和GET请求了。同时，我们也需要将路由函数作为参数传递过去。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> http=<span class="built_in">require</span>(<span class="string">"http"</span>);</span><br><span class="line"><span class="keyword">var</span> url=<span class="built_in">require</span>(<span class="string">"url"</span>);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">start</span>(<span class="params">route</span>)</span>&#123; <span class="comment">//将路由参数作为参数</span></span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">onRequest</span>(<span class="params">request,response</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> pathname=url.parse(request.url).pathname;  <span class="comment">//获取URL路径</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"Request for"</span>+pathname+<span class="string">"received"</span>);</span><br><span class="line"></span><br><span class="line">    route(pathname);</span><br><span class="line"></span><br><span class="line">    response.writeHead(<span class="number">200</span>,&#123;<span class="string">"Content-Type"</span>:<span class="string">"text/plain"</span>&#125;);</span><br><span class="line">    response.write(<span class="string">"hello world"</span>);</span><br><span class="line">    response.end();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">http.createServer(onRequest).listen(<span class="number">8888</span>);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"Server has started"</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">exports.start=start;</span><br></pre></td></tr></table></figure>
+
+<h4 id="修改index-js文件"><a href="#修改index-js文件" class="headerlink" title="修改index.js文件"></a>修改index.js文件</h4><p>通过修改index.js，使得路由函数可以被注入到服务器中：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> server=<span class="built_in">require</span>(<span class="string">"./server"</span>);</span><br><span class="line"><span class="keyword">var</span> router=<span class="built_in">require</span>(<span class="string">"./router"</span>);</span><br><span class="line"></span><br><span class="line">server.start(router.route);</span><br></pre></td></tr></table></figure>
+
+<h4 id="执行应用-1"><a href="#执行应用-1" class="headerlink" title="执行应用"></a>执行应用</h4><p>输入node.js命令“node index.js”执行文件，然后打开浏览器 <a href="http://localhost:8888/" target="_blank" rel="noopener">http://localhost:8888/</a>   ， 同样可以看到一个写着“Hello World”的网页，此时命令编辑框中会显示：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Server has started</span><br><span class="line">Request <span class="keyword">for</span>/received</span><br><span class="line">About to route a request <span class="keyword">for</span>/</span><br><span class="line">Request <span class="keyword">for</span>/favicon.icoreceived</span><br><span class="line">About to route a request <span class="keyword">for</span>/favicon.ico</span><br></pre></td></tr></table></figure>
+
+<p>以上信息表明HTTP 服务器已经在使用路由模块了，并且会将请求的路径传递给路由。</p>
+<h3 id="构建请求处理程序"><a href="#构建请求处理程序" class="headerlink" title="构建请求处理程序"></a>构建请求处理程序</h3><p>针对被服务器接收并通过路由传递过来的不同请求，我们需要有不同的处理方式，因此需要请求处理程序来分别进行处理。创建一个“requestHandlers.js”文件，添加2个请求处理程序，并分别为其添加一个函数，然后再将这些函数作为模块的方法导出。requestHandlers.js中代码如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">start</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"Request handle 'start' was called."</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">upload</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"Request handle 'upload' was called."</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">exports.start=start;</span><br><span class="line">exports.upload=upload;</span><br></pre></td></tr></table></figure>
+
+<h4 id="修改index-js文件-1"><a href="#修改index-js文件-1" class="headerlink" title="修改index.js文件"></a>修改index.js文件</h4><p>将一系列请求处理程序通过对象来传递。先将对象引入到index.js中，对index.js进行修改，如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> server=<span class="built_in">require</span>(<span class="string">"./server"</span>);</span><br><span class="line"><span class="keyword">var</span> router=<span class="built_in">require</span>(<span class="string">"./router"</span>);</span><br><span class="line"><span class="keyword">var</span> requestHandlers=<span class="built_in">require</span>(<span class="string">"./requestHandlers"</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> handle=&#123;&#125;</span><br><span class="line">handle[<span class="string">"/"</span>]=requestHandlers.start;  <span class="comment">//"/"的请求由start处理程序处理</span></span><br><span class="line">handle[<span class="string">"/start"</span>]=requestHandlers.start;  <span class="comment">//"/start"的请求由start处理程序处理</span></span><br><span class="line">handle[<span class="string">"/upload"</span>]=requestHandlers.upload;  <span class="comment">//"/upload"的请求由upload处理程序处理</span></span><br><span class="line"></span><br><span class="line">server.start(router.route,handle);</span><br></pre></td></tr></table></figure>
+
+<h4 id="修改server-js文件"><a href="#修改server-js文件" class="headerlink" title="修改server.js文件"></a>修改server.js文件</h4><p>将对象传递给服务器，对server.js进行修改，如下:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> http=<span class="built_in">require</span>(<span class="string">"http"</span>);</span><br><span class="line"><span class="keyword">var</span> url=<span class="built_in">require</span>(<span class="string">"url"</span>);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">start</span>(<span class="params">route,handle</span>)</span>&#123; <span class="comment">//将handle 参数传给start()函数</span></span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">onRequest</span>(<span class="params">request,response</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> pathname=url.parse(request.url).pathname; <span class="comment">//获取URL路径</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"Request for"</span>+pathname+<span class="string">"received"</span>);</span><br><span class="line"></span><br><span class="line">    route(handle,pathname); <span class="comment">//将handle 参数传给route()函数</span></span><br><span class="line"></span><br><span class="line">    response.writeHead(<span class="number">200</span>,&#123;<span class="string">"Content-Type"</span>:<span class="string">"text/plain"</span>&#125;);</span><br><span class="line">    response.write(<span class="string">"hello world"</span>);</span><br><span class="line">    response.end();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">http.createServer(onRequest).listen(<span class="number">8888</span>);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"Server has started"</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">exports.start=start;</span><br></pre></td></tr></table></figure>
+
+<h4 id="修改route-js文件"><a href="#修改route-js文件" class="headerlink" title="修改route.js文件"></a>修改route.js文件</h4><p>修改route.js文件，将handle 参数传给route()函数，修改如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">route</span>(<span class="params">handle,pathname</span>)</span>&#123;<span class="comment">//将handle 参数传给route()函数</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"About to route a request for"</span>+pathname);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(<span class="keyword">typeof</span> handle[pathname]==<span class="string">'function'</span>)&#123;</span><br><span class="line">        handle[pathname]();  <span class="comment">//从传递的对象中获取请求处理函数</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">"No request handle found for"</span>+pathname);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">exports.route=route;</span><br></pre></td></tr></table></figure>
+
+<p>通过以上代码，我们首先检查给定的路径对应的请求处理程序是否存在，如果存在的话直接调用相应的函数。</p>
+<h4 id="执行文件"><a href="#执行文件" class="headerlink" title="执行文件"></a>执行文件</h4><p>经过以上的处理，就可以把服务器、 路由和请求处理程序在一起了。启动应用程序并在浏览器中访问  <a href="http://localhost:8888/start" target="_blank" rel="noopener">http://localhost:8888/start</a>   ，请求会由start处理程序处理，命令编辑框显示结果如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Server has started</span><br><span class="line">Request <span class="keyword">for</span>/startreceived</span><br><span class="line">About to route a request <span class="keyword">for</span>/start</span><br><span class="line">Request handle <span class="string">'start'</span> was called.</span><br><span class="line">Request <span class="keyword">for</span>/favicon.icoreceived</span><br><span class="line">About to route a request <span class="keyword">for</span>/favicon.ico</span><br><span class="line">No request handle found <span class="keyword">for</span>/favicon.ico</span><br></pre></td></tr></table></figure>
+
+<p>在浏览器中访问 <a href="http://localhost:8888，" target="_blank" rel="noopener">http://localhost:8888，</a> 请求同样由start处理程序处理，命令编辑框显示结果如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Server has started</span><br><span class="line">Request <span class="keyword">for</span>/received</span><br><span class="line">About to route a request <span class="keyword">for</span>/</span><br><span class="line">Request handle <span class="string">'start'</span> was called.</span><br></pre></td></tr></table></figure>
+
+<p>在浏览器中访问<a href="http://localhost:8888/upload，" target="_blank" rel="noopener">http://localhost:8888/upload，</a> 请求会由upload处理程序处理，命令编辑框显示结果如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Server has started</span><br><span class="line">Request <span class="keyword">for</span>/uploadreceived</span><br><span class="line">About to route a request <span class="keyword">for</span>/upload</span><br><span class="line">Request handle <span class="string">'upload'</span> was called.</span><br></pre></td></tr></table></figure>
+
+<h3 id="让请求处理程序作出响应"><a href="#让请求处理程序作出响应" class="headerlink" title="让请求处理程序作出响应"></a>让请求处理程序作出响应</h3><p>采用将服务器“传递”给内容的方式，就是将 response 对象（从服务器的回调函数 onRequest()获取）通过请求路由传递给请求处理程序。 随后，处理程序就可以采用该对象上的函数来对请求作出响应。</p>
+<h4 id="修改server-js文件-1"><a href="#修改server-js文件-1" class="headerlink" title="修改server.js文件"></a>修改server.js文件</h4><p>不再从 route()函数获取返回值，而是将 response 对象作为第三个参数传递给 route()函数；然后将 onRequest()处理程序中所有有关 response 的函数调用都移除，这部分工作会让route()函数来完成。对server.js进行修改，如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> http=<span class="built_in">require</span>(<span class="string">"http"</span>);</span><br><span class="line"><span class="keyword">var</span> url=<span class="built_in">require</span>(<span class="string">"url"</span>);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">start</span>(<span class="params">route,handle</span>)</span>&#123; <span class="comment">//将handle 参数传给start()函数</span></span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">onRequest</span>(<span class="params">request,response</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> pathname=url.parse(request.url).pathname; <span class="comment">//获取URL路径</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"Request for"</span>+pathname+<span class="string">"received"</span>);</span><br><span class="line"></span><br><span class="line">    route(handle,pathname,response); </span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">http.createServer(onRequest).listen(<span class="number">8888</span>);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"Server has started"</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">exports.start=start;</span><br></pre></td></tr></table></figure>
+
+<h4 id="修改router-js文件"><a href="#修改router-js文件" class="headerlink" title="修改router.js文件"></a>修改router.js文件</h4><p>不再从请求处理程序中获取返回值，而是直接传递 response 对象。如果没有对应的请求处理器处理，我们就直接返回“404”错误。对router.js进行修改，如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">route</span>(<span class="params">handle,pathname,response</span>)</span>&#123;</span><br><span class="line">   <span class="built_in">console</span>.log(<span class="string">"About to route a request for"</span>+pathname);</span><br><span class="line"></span><br><span class="line">   <span class="keyword">if</span>(<span class="keyword">typeof</span> handle[pathname]==<span class="string">'function'</span>)&#123;</span><br><span class="line">       handle[pathname](response);</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">else</span>&#123;</span><br><span class="line">       <span class="built_in">console</span>.log(<span class="string">"No request handle found for"</span>+pathname);</span><br><span class="line">       response.writeHead(<span class="number">404</span>, &#123;<span class="string">"Content-Type"</span>: <span class="string">"text/plain"</span>&#125;);</span><br><span class="line">       response.write(<span class="string">"404 Not found"</span>);</span><br><span class="line">       response.end();</span><br><span class="line">    &#125;</span><br><span class="line"> &#125;</span><br><span class="line">exports.route=route;</span><br></pre></td></tr></table></figure>
+
+<h4 id="修改-requestHandler-js文件"><a href="#修改-requestHandler-js文件" class="headerlink" title="修改 requestHandler.js文件"></a>修改 requestHandler.js文件</h4><p>处理程序函数需要接收 response 参数，为了对请求作出直接的响应。start 处理程序在 exec()的匿名函数中做请求响应的操作，而upload 处理程序仍然是回复“Hello World”，只是这次是使用response 对象而已。对requestHandler.js进行修改，如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> exec = <span class="built_in">require</span>(<span class="string">"child_process"</span>).exec;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">start</span>(<span class="params">response</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"Request handle 'start' was called."</span>);</span><br><span class="line">    exec(<span class="string">"ls -lah"</span>, <span class="function"><span class="keyword">function</span> (<span class="params">error, stdout, stderr</span>) </span>&#123;</span><br><span class="line">    response.writeHead(<span class="number">200</span>, &#123;<span class="string">"Content-Type"</span>: <span class="string">"text/plain"</span>&#125;);</span><br><span class="line">    response.write(stdout);</span><br><span class="line">    response.end();</span><br><span class="line">&#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">upload</span>(<span class="params">response</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"Request handle 'upload' was called."</span>);</span><br><span class="line">    response.writeHead(<span class="number">200</span>, &#123;<span class="string">"Content-Type"</span>: <span class="string">"text/plain"</span>&#125;);</span><br><span class="line">    response.write(<span class="string">"Hello Upload"</span>);</span><br><span class="line">    response.end();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">exports.start=start;</span><br><span class="line">exports.upload=upload;</span><br></pre></td></tr></table></figure>
+
+<h4 id="执行文件-1"><a href="#执行文件-1" class="headerlink" title="执行文件"></a>执行文件</h4><p>通过node.js命令执行文件，然后通过浏览器访问页面，可以发现一切正常工作，对于不同的请求，会由对应的处理程序去进行处理。</p>
+<h3 id="上传内容功能"><a href="#上传内容功能" class="headerlink" title="上传内容功能"></a>上传内容功能</h3><p>通过显示一个文本区供用户输入内容，然后通过 POST 请求提交给服务器。最后，服务器接受到请求，通过处理程序将输入的内容展示到浏览器中。</p>
+<h4 id="构建一个表单"><a href="#构建一个表单" class="headerlink" title="构建一个表单"></a>构建一个表单</h4><p>用/start 请求处理程序生成带文本区的表单，在requestHandlers.js添加一些html代码。对requestHandlers.js 进行修改，如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">var exec = require(&quot;child_process&quot;).exec;</span><br><span class="line"></span><br><span class="line">function start(response)&#123;</span><br><span class="line">    console.log(&quot;Request handle &apos;start&apos; was called.&quot;);</span><br><span class="line">    </span><br><span class="line">var body = &apos;&lt;html&gt;&apos;+</span><br><span class="line">&apos;&lt;head&gt;&apos;+</span><br><span class="line">&apos;&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; &apos;+</span><br><span class="line">&apos;charset=UTF-8&quot; /&gt;&apos;+</span><br><span class="line">&apos;&lt;/head&gt;&apos;+</span><br><span class="line">&apos;&lt;body&gt;&apos;+</span><br><span class="line">&apos;&lt;form action=&quot;/upload&quot; method=&quot;post&quot;&gt;&apos;+</span><br><span class="line">&apos;&lt;textarea name=&quot;text&quot; rows=&quot;20&quot; cols=&quot;60&quot;&gt;&lt;/textarea&gt;&apos;+</span><br><span class="line">&apos;&lt;input type=&quot;submit&quot; value=&quot;Submit text&quot; /&gt;&apos;+</span><br><span class="line">&apos;&lt;/form&gt;&apos;+</span><br><span class="line">&apos;&lt;/body&gt;&apos;+</span><br><span class="line">&apos;&lt;/html&gt;&apos;;</span><br><span class="line">    </span><br><span class="line">    response.writeHead(200, &#123;&quot;Content-Type&quot;: &quot;text/html&quot;&#125;);</span><br><span class="line">    response.write(body);</span><br><span class="line">    response.end();</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function upload(response)&#123;</span><br><span class="line">    console.log(&quot;Request handle &apos;upload&apos; was called.&quot;);</span><br><span class="line">    response.writeHead(200, &#123;&quot;Content-Type&quot;: &quot;text/plain&quot;&#125;);</span><br><span class="line">    response.write(&quot;Hello Upload&quot;);</span><br><span class="line">    response.end();</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">exports.start=start;</span><br><span class="line">exports.upload=upload;</span><br></pre></td></tr></table></figure>
+
+<p>启动应用，即可看到简单的表单了，提交表单，会触发/upload 请求处理程序处理POST请求。</p>
+<h4 id="处理-POST-请求"><a href="#处理-POST-请求" class="headerlink" title="处理 POST 请求"></a>处理 POST 请求</h4><p>一个简单的表单已经完成了，接下来就是需要实现当用户提交表单时，触发/upload 请求处理程序处理 POST 请求了。<br>这里，还需要注意一点，由于对于POST请求，用户可能会输入大量的内容，所以Node.js 会将 POST 数据拆分成很多小的数据块， 然后通过触发特定的事件，将这些小数据块传递给回调函数。当这些事件触发的时候，具体回调哪些函数需要通过在 request 对象上注册监听器（ listener） 来实现。</p>
+<p> （1） 修改server.js文件：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> http = <span class="built_in">require</span>(<span class="string">"http"</span>);</span><br><span class="line"><span class="keyword">var</span> url = <span class="built_in">require</span>(<span class="string">"url"</span>);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">start</span>(<span class="params">route, handle</span>) </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">onRequest</span>(<span class="params">request, response</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> postData = <span class="string">""</span>;</span><br><span class="line">        <span class="keyword">var</span> pathname = url.parse(request.url).pathname;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">"Request for "</span> + pathname + <span class="string">" received."</span>);</span><br><span class="line">        </span><br><span class="line">        request.setEncoding(<span class="string">"utf8"</span>);</span><br><span class="line">        </span><br><span class="line">        request.addListener(<span class="string">"data"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">postDataChunk</span>) </span>&#123;</span><br><span class="line">            postData += postDataChunk;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">"Received POST data chunk '"</span>+</span><br><span class="line">            postDataChunk + <span class="string">"'."</span>);</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">        request.addListener(<span class="string">"end"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            route(handle, pathname, response, postData);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">    http.createServer(onRequest).listen(<span class="number">8888</span>);</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"Server has started."</span>);</span><br><span class="line">&#125;</span><br><span class="line">    exports.start = start;</span><br></pre></td></tr></table></figure>
+
+<p>上述代码完成了三件事情：<br>①设置了接收数据的编码格式为UTF-8；<br>②注册了“data”事件的监听器，用于收集每次接收到的新数据块，并将其赋值给 postData 变量；<br>③我们将请求路由的调用移到 end 事件处理程序中，以确保它只会当所有数据接收完毕后才触发，并且只触发一次。同时还把 POST 数据传递给请求路由，因为这些数据，请求处理程序会用到。</p>
+<p> （2） 修改 router.js文件：<br>要在/upload 页面，展示用户输入的内容，需要将 postData 传递给请求处理程序，因此对router.js 进行修改，如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">route</span>(<span class="params">handle,pathname,response,postData</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"About to route a request for"</span>+pathname);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(<span class="keyword">typeof</span> handle[pathname]==<span class="string">'function'</span>)&#123;</span><br><span class="line">        handle[pathname](response,postData);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">"No request handle found for"</span>+pathname);</span><br><span class="line">        response.writeHead(<span class="number">404</span>, &#123;<span class="string">"Content-Type"</span>: <span class="string">"text/plain"</span>&#125;);</span><br><span class="line">        response.write(<span class="string">"404 Not found"</span>);</span><br><span class="line">        response.end();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">exports.route=route;</span><br></pre></td></tr></table></figure>
+
+
+<p> （3） 修改 requestHandlers.js：<br>为了实现将数据包含在对 upload 请求的响应中，对 requestHandlers.js进行修改，如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">var querystring = require(&quot;querystring&quot;);</span><br><span class="line"></span><br><span class="line">function start(response, postData) &#123;</span><br><span class="line">    console.log(&quot;Request handler &apos;start&apos; was called.&quot;);</span><br><span class="line">    var body = &apos;&lt;html&gt;&apos;+</span><br><span class="line">        &apos;&lt;head&gt;&apos;+</span><br><span class="line">        &apos;&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; &apos;+</span><br><span class="line">        &apos;charset=UTF-8&quot; /&gt;&apos;+</span><br><span class="line">        &apos;&lt;/head&gt;&apos;+</span><br><span class="line">        &apos;&lt;body&gt;&apos;+</span><br><span class="line">        &apos;&lt;form action=&quot;/upload&quot; method=&quot;post&quot;&gt;&apos;+</span><br><span class="line">        &apos;&lt;textarea name=&quot;text&quot; rows=&quot;20&quot; cols=&quot;60&quot;&gt;&lt;/textarea&gt;&apos;+</span><br><span class="line">        &apos;&lt;input type=&quot;submit&quot; value=&quot;Submit text&quot; /&gt;&apos;+</span><br><span class="line">        &apos;&lt;/form&gt;&apos;+</span><br><span class="line">        &apos;&lt;/body&gt;&apos;+</span><br><span class="line">        &apos;&lt;/html&gt;&apos;;</span><br><span class="line">    response.writeHead(200, &#123;&quot;Content-Type&quot;: &quot;text/html&quot;&#125;);</span><br><span class="line">    response.write(body);</span><br><span class="line">    response.end();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function upload(response, postData) &#123;</span><br><span class="line">    console.log(&quot;Request handler &apos;upload&apos; was called.&quot;);</span><br><span class="line">    response.writeHead(200, &#123;&quot;Content-Type&quot;: &quot;text/plain&quot;&#125;);</span><br><span class="line">    response.write(&quot;You&apos;ve sent the text: &quot;+</span><br><span class="line">    querystring.parse(postData).text);</span><br><span class="line">    response.end();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">exports.start = start;</span><br><span class="line">exports.upload = upload;</span><br></pre></td></tr></table></figure>
+
+<p>到此，一个简单的web应用已经完成了。启动应用，然后通过浏览器访问<br><a href="http://localhost:8888/start，" target="_blank" rel="noopener">http://localhost:8888/start，</a> 在页面的文本框输入文本“hello world!”，点击提交按钮后，请求会被upload处理程序处理,然后在新的浏览器页面显示提交的内容：“You’ve sent the text: hello world!”。</p>
+<h3 id="出现的问题"><a href="#出现的问题" class="headerlink" title="出现的问题"></a>出现的问题</h3><h4 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h4><p>Node.js中的html代码以源码出现，而不能被解析。</p>
+<h4 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h4><p>响应的 Content-Type属性 如果设置成 “text/plain”，表示以 <strong>文本形式</strong> 输出。只有将其设置成“text/html ”，才能让浏览器 <strong>解析</strong> html文档。</p>
+
+          
         
       
     </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
 
+    
 
     <footer class="post-footer">
       
@@ -368,6 +460,10 @@
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -380,16 +476,20 @@
   
   
 
-  <article class="post post-type-normal " itemscope="" itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/08/21/Ajax详解/">
 
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="chen-xt">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/head.jpg">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="陈小婷的博客">
     </span>
 
@@ -399,20 +499,22 @@
         
         
           <h1 class="post-title" itemprop="name headline">
-            
-            
-              
                 
-                <a class="post-title-link" href="/2016/08/21/Ajax详解/" itemprop="url">
-                  Ajax详解
-                </a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/2016/08/21/Ajax详解/" itemprop="url">Ajax详解</a></h1>
         
 
         <div class="post-meta">
           <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-08-21T20:47:28+08:00">
+                2016-08-21
+              </time>
             
 
             
@@ -420,6 +522,28 @@
             
           </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">javascript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -439,7 +563,9 @@
       </header>
     
 
-
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -448,27 +574,49 @@
       
         
           
-          什么是Ajax?Ajax (Asynchronous JavaScript and XML)，是一种使网页实现异步更新的技术。Ajax的核心对象是XMLHttpRequest对象，XMLHttpRequest通过在后台与服务器进行少量数据交换，可以实现在不重新加载整个网页的情况下，对网页的某部分进行
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2016/08/21/Ajax详解/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+            <h2 id="什么是Ajax"><a href="#什么是Ajax" class="headerlink" title="什么是Ajax?"></a>什么是Ajax?</h2><p><strong>Ajax</strong> (Asynchronous JavaScript and XML)，是一种使网页实现异步更新的技术。Ajax的核心对象是<strong>XMLHttpRequest对象</strong>，XMLHttpRequest通过在后台与服务器进行少量数据交换，可以实现在不重新加载整个网页的情况下，对网页的某部分进行更新。<br>传统的网页（不用Ajax技术的网页），想要更新内容或者提交一个表单，就要重新载入页面。而如果让网页使用Ajax技术，通过后台跟服务器进行少量的数据交换，网页就可以实现异步局部更新。我们身边有很多Ajax的应用案例，如新浪微博、开心网等等。</p>
+<h2 id="Ajax的属性"><a href="#Ajax的属性" class="headerlink" title="Ajax的属性"></a>Ajax的属性</h2><p><strong>1. responseText属性：</strong>作为响应主体被返回的文本。</p>
+<p><strong>2. responseXML属性：</strong>如果响应的内容类型是“text/xml”或“applocation/xml”，这个属性就将保存相应数据的XML DOM文档。</p>
+<p><strong>3. status属性：</strong>响应的HTTP状态。只有当HTTP状态代码为200，才表示响应成功。此时可以访问responseText或者responseXML的内容。</p>
+<p><strong>4. statusText属性：</strong>HTTP状态的说明。</p>
+<p><strong>5. readyState属性：</strong>表示请求/响应过程的当前活动阶段。</p>
+<ul>
+<li>0：未初始化。还没有调用open()方法。</li>
+<li>1：启动。已调用open()方法，还没有调用send()方法</li>
+<li>2：发送。已调用send()方法，还没有接收到响应。</li>
+<li>3：接收。已接收到部分响应数据。</li>
+<li>4：（完成）已接收到全部响应数据，可以在客户端调用了。(此时仅代表完成（结束），是否成功还需要看status属性)</li>
+</ul>
+<h2 id="Ajax的使用"><a href="#Ajax的使用" class="headerlink" title="Ajax的使用"></a>Ajax的使用</h2><h4 id="创建XMLHttpRequest对象"><a href="#创建XMLHttpRequest对象" class="headerlink" title="创建XMLHttpRequest对象"></a>创建XMLHttpRequest对象</h4><p>创建XMLHttpRequest对象时需要考虑一个浏览器兼容性的问题，因为IE6及以下版本的浏览器不支持XMLHttpRequest对象，所以需要先检查浏览器是否支持 XMLHttpRequest 对象。如果支持，则创建 XMLHttpRequest 对象。如果不支持，则创建 ActiveXObject对象(IE6及以下版本的浏览器支持)。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> oAjax=<span class="literal">null</span>;</span><br><span class="line">  <span class="keyword">if</span>(<span class="built_in">window</span>.XMLHttpRequest)         </span><br><span class="line">  &#123;</span><br><span class="line">      oAjax=<span class="keyword">new</span> XMLHttpRequest();</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">else</span></span><br><span class="line">  &#123;</span><br><span class="line">      oAjax=<span class="keyword">new</span> ActiveXObject(<span class="string">"Microsoft.XMLHTTP"</span>);</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="连接服务器"><a href="#连接服务器" class="headerlink" title="连接服务器"></a>连接服务器</h4><p>XMLHttpRequest对象连接服务器使用的是open()方法，它接受3个参数：要发送的请求的类型（“GET”或者“POST”）、请求的URL和表示是否异步发送请求的布尔值（“false”表示同步，“true”表示异步）。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">oAjax.open(<span class="string">'GET'</span>,”login.php”,<span class="literal">true</span>);</span><br></pre></td></tr></table></figure>
+
+<p>这行代码会启动一个针对login.php的GET请求，且支持异步发送请求。使用open()方法并不会真正发送请求，而只是启动一个请求以备发送。</p>
+<h4 id="发送请求"><a href="#发送请求" class="headerlink" title="发送请求"></a>发送请求</h4><p>要真正发送特定的请求，需要在添加open()方法的基础上再添加send()方法。send()方法接受1个可选的参数，即要作为请求主体发送的数据。当发送的请求为POST请求时，必须使用 setRequestHeader() 来添加 HTTP 头，然后在 send() 方法中设置发送的数据。特别要注意的是，setRequestHeader() 方法必须在调用open(0方法之后且调用send()方法之前调用才可以成功发送头部信息。下面为一个POST请求的例子。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">oAjax.open(<span class="string">"POST"</span>,<span class="string">"login.php"</span>,<span class="literal">true</span>);</span><br><span class="line">oAjax.setRequestHeader(<span class="string">"Content-type"</span>,<span class="string">"application/x-www-form-urlencoded"</span>);</span><br><span class="line">oAjax.send(<span class="string">"fname=Bill&amp;lname=Gates"</span>);</span><br></pre></td></tr></table></figure>
+
+<h4 id="接收返回"><a href="#接收返回" class="headerlink" title="接收返回"></a>接收返回</h4><p>当请求被发送到服务器时，我们需要执行一些基于响应的任务。每当 readyState改变时，就会触发 onreadystatechange 事件。readyState 属性存有 XMLHttpRequest 的状态信息。在 onreadystatechange 事件中，我们规定当服务器响应已做好被处理的准备时所执行的任务。<br>只有当 readyState 等于 4 且状态为 200 时，才表示响应已就绪，而我们通常也只关注这2种状态。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">oAjax.onreadystatechange=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">   </span>&#123;</span><br><span class="line">     <span class="keyword">if</span>(oAjax.readyState==<span class="number">4</span>)<span class="comment">//4表示（完成）响应内容解析完成，可以在客户端调用了</span></span><br><span class="line">             &#123;</span><br><span class="line">                 <span class="keyword">if</span>(oAjax.status==<span class="number">200</span>)<span class="comment">//结果为200，代表成功</span></span><br><span class="line">                 &#123;</span><br><span class="line">                     <span class="comment">//成功，服务器返回的内容</span></span><br><span class="line">                 &#125;</span><br><span class="line">                 <span class="keyword">else</span></span><br><span class="line">                 &#123;</span><br><span class="line">                     <span class="comment">//失败返回的内容                       </span></span><br><span class="line">                     </span><br><span class="line">                 &#125;</span><br><span class="line">             &#125;</span><br><span class="line">     &#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Ajax应用举例"><a href="#Ajax应用举例" class="headerlink" title="Ajax应用举例"></a>Ajax应用举例</h2><p>这里通过一个读取文件信息的Ajax小例子来加深对Ajax的理解。这个例子通过Ajax技术去读取文件名为“abc.txt”的文档里面的内容，并返回。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//1.创建ajax对象</span></span><br><span class="line"><span class="keyword">var</span> oAjax=<span class="literal">null</span>;</span><br><span class="line"><span class="keyword">if</span>(<span class="built_in">window</span>.XMLHttpRequest)</span><br><span class="line">&#123;</span><br><span class="line">    oAjax=<span class="keyword">new</span> XMLHttpRequest();</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">&#123;</span><br><span class="line">    oAjax=<span class="keyword">new</span> ActiveXObject(<span class="string">"Microsoft.XMLHTTP"</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//2.连接服务器  open(方法, url, 是否异步)</span></span><br><span class="line">oAjax.open(<span class="string">'GET'</span>,<span class="string">"abc.txt"</span>,<span class="literal">true</span>);  <span class="comment">//异步</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//3.发送请求</span></span><br><span class="line">oAjax.send();</span><br><span class="line"></span><br><span class="line"><span class="comment">//4.接收返回</span></span><br><span class="line">oAjax.onreadystatechange=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(oAjax.readyState==<span class="number">4</span>)<span class="comment">//4表示（完成）响应内容解析完成，可以在客户端调用了</span></span><br><span class="line">    &#123;   </span><br><span class="line">        <span class="keyword">if</span>(oAjax.status==<span class="number">200</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            alert(<span class="string">'成功：'</span>+oAjax.responseText);<span class="comment">//服务器返回的内容  </span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            alert(<span class="string">'失败'</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+          
         
       
     </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
 
+    
 
     <footer class="post-footer">
       
@@ -482,6 +630,10 @@
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -494,16 +646,20 @@
   
   
 
-  <article class="post post-type-normal " itemscope="" itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/08/19/JS之JSON/">
 
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="chen-xt">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/head.jpg">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="陈小婷的博客">
     </span>
 
@@ -513,20 +669,22 @@
         
         
           <h1 class="post-title" itemprop="name headline">
-            
-            
-              
                 
-                <a class="post-title-link" href="/2016/08/19/JS之JSON/" itemprop="url">
-                  JS之JSON
-                </a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/2016/08/19/JS之JSON/" itemprop="url">JS之JSON</a></h1>
         
 
         <div class="post-meta">
           <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-08-19T23:43:27+08:00">
+                2016-08-19
+              </time>
             
 
             
@@ -534,6 +692,28 @@
             
           </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">javascript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -553,7 +733,9 @@
       </header>
     
 
-
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -562,29 +744,52 @@
       
         
           
-          JSON(JavaScript Object Notation，JavaScript对象表示法)，是一个轻量级的数据格式，可以简化表示复杂数据结构的工作量。
-语法JSON的语法可以有3种类型的值：简单值、对象和数组。
-简单值简单值是最简单的JavaScript数据形式。在JSON中可以表示字符串、数
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2016/08/19/JS之JSON/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+            <p><strong>JSON</strong>(JavaScript Object Notation，JavaScript对象表示法)，是一个轻量级的数据格式，可以简化表示复杂数据结构的工作量。</p>
+<h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><p>JSON的语法可以有3种类型的值：简单值、对象和数组。</p>
+<h3 id="简单值"><a href="#简单值" class="headerlink" title="简单值"></a>简单值</h3><p>简单值是最简单的JavaScript数据形式。在JSON中可以表示字符串、数值、布尔值和null，比如可以表示字符串：”good night”，但是JSON不支持JavaScript中的特殊值undefined。<br>注意：JSON字符串必须使用双引号(单引号会导致语法错误)，这是JSON字符串与JavaScript字符串的最大区别。</p>
+<h3 id="对象"><a href="#对象" class="headerlink" title="对象"></a>对象</h3><p>JSON对象同JavaScript对象字面量相似，但是也有两点不同之处：(1)JSON对象没有声明变量，因此JSON中没有变量的概念。(2)JSON没有末尾的分号。JSON对象允许对象中嵌入对象。<br>注意：对象的属性必须加双引号；同一个对象中绝不能出现两个同名属性。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    “name”:”rose”,</span><br><span class="line">    “age”:<span class="number">20</span>,</span><br><span class="line">    “school”:&#123; <span class="comment">//对象中嵌套对象</span></span><br><span class="line">        “name”:”WuYi College”,</span><br><span class="line">        “location”:”NanPing”  <span class="comment">//没有末尾的分号</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h3><p>JSON数组采用的是JavaScript中的数组字面量形式。比如：[23,”hello”,false]。<br>注意，JSON数组也没有变量和分号。把数组和对象结合起来，可以构成更复杂的数据集合。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[&#123;</span><br><span class="line">    “name”:”rose”,</span><br><span class="line">    “age”:<span class="number">20</span>,</span><br><span class="line">    “school”:[</span><br><span class="line">    ”WuYi College”</span><br><span class="line">    ]</span><br><span class="line">&#125;]</span><br></pre></td></tr></table></figure>
+
+<h2 id="解析与序列化"><a href="#解析与序列化" class="headerlink" title="解析与序列化"></a>解析与序列化</h2><p>JSON可以把JSON数据结构解析为有用的JavaScript对象，这是其一大优势。通过两个方法JSON对象可以对JavaScript对象进行序列化和解析：</p>
+<ul>
+<li>stringify()方法：把JavaScript对象序列化为JSON字符串。在序列化JavaScript对象时，所有函数及原型成员都会被忽略，值为undefined的任何属性也会被跳过。</li>
+<li>parse()方法：把JSON字符串解析原生JavaScript值。</li>
+</ul>
+<h3 id="stringify-方法"><a href="#stringify-方法" class="headerlink" title="stringify()方法"></a>stringify()方法</h3><p>JSON. stringify()方法接收3个参数：①要序列化的对象；②过滤器，可以是一个数组或一个函数(替换(过滤)函数)；③一个选项，表示是否在 JSON字符串中保留缩进。</p>
+<h4 id="过滤结果"><a href="#过滤结果" class="headerlink" title="过滤结果"></a>过滤结果</h4><p>(1) 过滤器参数为数组：<br>JSON. stringify()的结果中将只包含数组中列出的属性。看下面一个例子：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">var person=&#123;</span><br><span class="line">    "name":"rose",</span><br><span class="line">    "age":20,</span><br><span class="line">    "school":[</span><br><span class="line">        "WuYi College"</span><br><span class="line">    ]</span><br><span class="line">    &#125;</span><br><span class="line">    var jsonText = JSON.stringify(person,["name","age"]);</span><br></pre></td></tr></table></figure>
+
+<p>如上面的例子，JSON. stringify()的第二个参数是一个数组，包含name和age两个属性，所以在返回的结果字符串中，就只会包含这两个属性，序列化的结果如下：{“name”:”rose”,“age”:20}。<br>(2) 过滤器参数为函数：<br>传入的函数接收2个参数：属性(键)名和属性值。函数返回的值就是相应键的值，当函数返回了undefined，那么相应的属性会被忽略。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">var person=&#123;</span><br><span class="line">    "name":"rose",</span><br><span class="line">    "age":20,</span><br><span class="line">    "school":[</span><br><span class="line">        "WuYi College"</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br><span class="line">var jsonText = JSON.stringify(person,function(key,value)&#123;</span><br><span class="line"> switch(key)&#123;</span><br><span class="line">                case "name":</span><br><span class="line">                  return value.join(",")</span><br><span class="line">                case "age":</span><br><span class="line">                  return 25;</span><br><span class="line">                case "school":</span><br><span class="line">                  return undefined;</span><br><span class="line">                default:</span><br><span class="line">                  return value;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>上面的例子中，如果键为”name”，就将数组连接为一个字符串；如果键为 “age”，则将其值设置为25；如果键为”school”，通过返回undefined删除该属性。最后，提供一个default项，返回传入的值。序列化的结果如下：{“name”:”rose”,”age”:25,}。</p>
+<h4 id="字符串缩进"><a href="#字符串缩进" class="headerlink" title="字符串缩进"></a>字符串缩进</h4><p>JSON. stringify()的第3个参数用于控制结果中缩进和空白符，它的类型有2种：数值和字符串。<br>(1) 参数是数值<br>数值表示的是每个级别缩进的空格数。但是缩进的空格数是有限制的，最大缩进空格数为10，所以大于10的值都会自动转换为10。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> jsonText = <span class="built_in">JSON</span>.stringify(person, <span class="literal">null</span>, <span class="number">3</span>);<span class="comment">//每个级别缩进3个空格</span></span><br></pre></td></tr></table></figure>
+
+<p>(2) 参数是字符串<br>字符串将在JSON字符串中被用作缩进字符，不再使用空格。同样的，字符串的长度也是有限制的，最长不能超过10，一旦超过，只会显示前10个字符。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> jsonText = <span class="built_in">JSON</span>.stringify(person, <span class="literal">null</span>, <span class="string">"--"</span>);<span class="comment">//每个级别缩进两个短划线</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="parse-方法"><a href="#parse-方法" class="headerlink" title="parse()方法"></a>parse()方法</h3><p> JSON. parse()方法接收2个参数：①要序列化的对象；②一个函数(还原函数)。<br>传入的函数接收2个参数：属性(键)名和属性值。函数返回的值就是相应键的值。当函数返回了undefined，那么相应的属性会被删除；当函数返回其他值，则将该值插入到结果中。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">var person=&#123;</span><br><span class="line">    "name":"rose",</span><br><span class="line">    "age":20,</span><br><span class="line">    "school":[</span><br><span class="line">        "WuYi College"</span><br><span class="line">    ],</span><br><span class="line">    releaseDate: new Date(2016,8,18) </span><br><span class="line">   &#125;</span><br><span class="line">var jsonText = JSON.stringify(person);</span><br><span class="line"></span><br><span class="line">var personCopy = JSON.parse(jsonText,function(key,value)&#123;</span><br><span class="line">      if (key == "releaseDate")&#123;</span><br><span class="line">                return new Date(value);</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                return value;</span><br><span class="line">            &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">    alert(personCopy.releaseDate.getFullYear());//2016</span><br></pre></td></tr></table></figure>
+
+<p>如上面的例子，先为person对象新增一个releaseDate属性，该属性保存一个Date对象，这个对象经过序列化后变成有效的JSON字符串，然后经过解析又在 personCopy中还原为一个Date对象。还原对象在遇到”releaseDate”键时，会基于相应的值创建一个新的Date对象。结果就是personCopy.releaseDate属性中会保存一个Date对象，因此才能调用getFullYear()方法。</p>
+
+          
         
       
     </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
 
+    
 
     <footer class="post-footer">
       
@@ -598,6 +803,10 @@
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -610,16 +819,20 @@
   
   
 
-  <article class="post post-type-normal " itemscope="" itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/08/17/get和post的区别/">
 
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="chen-xt">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/head.jpg">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="陈小婷的博客">
     </span>
 
@@ -629,20 +842,22 @@
         
         
           <h1 class="post-title" itemprop="name headline">
-            
-            
-              
                 
-                <a class="post-title-link" href="/2016/08/17/get和post的区别/" itemprop="url">
-                  get和post的区别
-                </a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/2016/08/17/get和post的区别/" itemprop="url">get和post的区别</a></h1>
         
 
         <div class="post-meta">
           <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-08-17T22:03:23+08:00">
+                2016-08-17
+              </time>
             
 
             
@@ -650,6 +865,28 @@
             
           </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/http/" itemprop="url" rel="index">
+                    <span itemprop="name">http</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -669,7 +906,9 @@
       </header>
     
 
-
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -678,30 +917,41 @@
       
         
           
-          HTTP（超文本传输协议）的设计目的是保证客户机与服务器之间的通信。它的两种最常用的 HTTP 方法是：get和post。下面就这两种方法的一些主要区别进行分析。
-主要任务
-get请求：一般用于获取/查询资源信息，从指定的资源请求数据。
-post请求：一般用于更新资源信息，向指定的资源提交要被处理的
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2016/08/17/get和post的区别/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+            <p>HTTP（超文本传输协议）的设计目的是保证客户机与服务器之间的通信。它的两种最常用的 HTTP 方法是：get和post。下面就这两种方法的一些主要区别进行分析。</p>
+<h2 id="主要任务"><a href="#主要任务" class="headerlink" title="主要任务"></a>主要任务</h2><ul>
+<li><strong>get请求：</strong>一般用于获取/查询资源信息，从指定的资源请求数据。</li>
+<li><strong>post请求：</strong>一般用于更新资源信息，向指定的资源提交要被处理的数据。</li>
+</ul>
+<h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><ul>
+<li><strong>get请求：</strong>请求的数据会附加在URL之后，以?分割URL和传输数据，多个参数用&amp;连接。get的数据类型只限ASCII编码，也就是说所有的非ASCII字符都要编码之后再传输。</li>
+<li><strong>post请求：</strong>请求的数据会被放置在HTTP请求包的包体中。post的数据类型没有限制，可以是ASCII编码，也可以是二进制数据。<br>因此，get请求的数据会暴露在地址栏中，而post请求则不会。</li>
+</ul>
+<h2 id="传输数据的大小"><a href="#传输数据的大小" class="headerlink" title="传输数据的大小"></a>传输数据的大小</h2><ul>
+<li><strong>get请求：</strong>在HTTP规范中，没有对URL的长度和传输的数据大小进行限制。但是在实际开发过程中，对于get，特定的浏览器和服务器对URL的长度有限制。因此，在使用get请求时，传输数据会受到URL长度的限制。</li>
+<li><strong>post请求：</strong>对于post，由于不是URL传值，理论上是不会受限制的，但是实际上各个服务器会规定对post提交数据大小进行限制，Apache、IIS都有各自的配置。</li>
+</ul>
+<h2 id="安全性"><a href="#安全性" class="headerlink" title="安全性"></a>安全性</h2><ul>
+<li><strong>get请求：</strong>与 POST 相比，get的安全性较差，因为所发送的数据是URL的一部分。比如，在进行登录操作，通过get请求，用户名和密码都会暴露在URL上，因为登录页面有可能被浏览器缓存或者被其他人查看浏览器的历史记录，所以用户名和密码就很容易被他人拿到了。</li>
+<li><strong>post请求：</strong>post的安全性比get的高，因为参数不会被保存在浏览器历史或 web 服务器日志中。</li>
+</ul>
+<h2 id="缓存"><a href="#缓存" class="headerlink" title="缓存"></a>缓存</h2><ul>
+<li><strong>get请求：</strong>在发送后,能被缓存；</li>
+<li><strong>post请求：</strong>在发送后,不能被缓存。</li>
+</ul>
+
+          
         
       
     </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
 
+    
 
     <footer class="post-footer">
       
@@ -715,6 +965,10 @@ post请求：一般用于更新资源信息，向指定的资源提交要被处�
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -727,16 +981,20 @@ post请求：一般用于更新资源信息，向指定的资源提交要被处�
   
   
 
-  <article class="post post-type-normal " itemscope="" itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/08/14/JS之数组/">
 
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="chen-xt">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/head.jpg">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="陈小婷的博客">
     </span>
 
@@ -746,20 +1004,22 @@ post请求：一般用于更新资源信息，向指定的资源提交要被处�
         
         
           <h1 class="post-title" itemprop="name headline">
-            
-            
-              
                 
-                <a class="post-title-link" href="/2016/08/14/JS之数组/" itemprop="url">
-                  JS之数组
-                </a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/2016/08/14/JS之数组/" itemprop="url">JS之数组</a></h1>
         
 
         <div class="post-meta">
           <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-08-14T17:06:15+08:00">
+                2016-08-14
+              </time>
             
 
             
@@ -767,6 +1027,28 @@ post请求：一般用于更新资源信息，向指定的资源提交要被处�
             
           </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">javascript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -786,7 +1068,9 @@ post请求：一般用于更新资源信息，向指定的资源提交要被处�
       </header>
     
 
-
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -795,35 +1079,111 @@ post请求：一般用于更新资源信息，向指定的资源提交要被处�
       
         
           
-          创建数组创建数组的方式有2种，如下：
-使用Array构造函数
-不传入参数
-1var students= new Array();//创建一个空数组
+            <h2 id="创建数组"><a href="#创建数组" class="headerlink" title="创建数组"></a>创建数组</h2><p>创建数组的方式有2种，如下：</p>
+<h4 id="使用Array构造函数"><a href="#使用Array构造函数" class="headerlink" title="使用Array构造函数"></a>使用Array构造函数</h4><ol>
+<li><p>不传入参数</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> students= <span class="keyword">new</span> <span class="built_in">Array</span>();<span class="comment">//创建一个空数组</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>传入一个数值作为参数，指定数组的长度</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> students= <span class="keyword">new</span> <span class="built_in">Array</span>(<span class="number">10</span>); <span class="comment">//创建一个length值为10的数组</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>传入一个或者多个数组元素作为参数</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> students= <span class="keyword">new</span> <span class="built_in">Array</span>(“red”,”blue”); <span class="comment">//创建包含2个字符串值的数组</span></span><br></pre></td></tr></table></figure>
 
-传入一个数值作为参数，指定数组的长度
-1var students= new Array(10); //创建一个length值为10的数组
+</li>
+</ol>
+<h4 id="使用数组字面量表示法"><a href="#使用数组字面量表示法" class="headerlink" title="使用数组字面量表示法"></a>使用数组字面量表示法</h4><p>数组字面量由一对包含数组项的方括号表示，多个数组项之间以逗号隔开。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> names = [];<span class="comment">//创建一个空数组</span></span><br><span class="line"><span class="keyword">var</span> colors = [<span class="string">"red"</span>, <span class="string">"blue"</span>];<span class="comment">//创建包含2个字符串值的数组</span></span><br></pre></td></tr></table></figure>
 
-传入一个或
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2016/08/14/JS之数组/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+<h2 id="检测数组"><a href="#检测数组" class="headerlink" title="检测数组"></a>检测数组</h2><p>对于一个网页或者一个全局作用域而言，使用<strong>instanceof操作符</strong>即可确定某个对象是不是数组。但是在当存在多个全局作用域(如一个页面包含多个frame)的情况下，使用instanceof操作符就会出现各种问题。因此可以使用<strong>Array.isArray()</strong>方法，该方法的目的是最终确定某个值是不是数组，而不管它是在哪个全局执行环境中创建的。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(value <span class="keyword">instanceof</span> <span class="built_in">Array</span>)&#123;  <span class="comment">//instanceof操作符</span></span><br><span class="line"><span class="comment">//对数组执行某些操作</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span>(<span class="built_in">Array</span>.isArray(value))&#123;  <span class="comment">//Array.isArray()方法</span></span><br><span class="line"><span class="comment">//对数组执行某些操作</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="转换方法"><a href="#转换方法" class="headerlink" title="转换方法"></a>转换方法</h2><ul>
+<li><strong>toLocaleString()：</strong>返回对象的字符串表示，该字符串与执行环境的地区对应。</li>
+<li><strong>toString()：</strong>返回对象的字符串表示。</li>
+<li><strong>valueOf()：</strong>返回对象的字符串、数组或布尔值。通常与toString()方法的返回值相同。</li>
+<li><strong>join()：</strong>返回对象用符号连接的的字符串表示。join()方法只接收一个参数，即作为分隔符的字符串，如果没有传入参数，则默认以逗号作为分隔符。<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> colors = [<span class="string">"red"</span>, <span class="string">"blue"</span>, <span class="string">"green"</span>]; <span class="comment">//创建一个包含3个字符串的数组  </span></span><br><span class="line">alert(colors.toString());    <span class="comment">//red,blue,green</span></span><br><span class="line">alert(colors.valueOf());    <span class="comment">//red,blue,green</span></span><br><span class="line">alert(colors.toLocaleString());    <span class="comment">//red,blue,green</span></span><br><span class="line">alert(colors.join(<span class="string">'||'</span>));    <span class="comment">//red||blue||green</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="栈方法"><a href="#栈方法" class="headerlink" title="栈方法"></a>栈方法</h2><p>栈是一种后进先出的数据结构，最新添加的项最早被移除。栈中项的插入和移除都只发生在一个位置——栈的顶部。数组可以表现的像栈一样，通过push()方法和pop()方法实现类似栈的行为。</p>
+<ul>
+<li><strong>push()：</strong>可以接收任何数量的参数，把它们逐个添加到数组的末尾，并<strong>返回数组的长度</strong>。</li>
+<li><strong>pop()：</strong>从数组末尾移除最后一项，减少数组的length值，然后<strong>返回移除的项</strong>。<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> colors = <span class="keyword">new</span> <span class="built_in">Array</span>(); <span class="comment">//创建一个数组</span></span><br><span class="line"><span class="keyword">var</span> count = colors.push(<span class="string">"red"</span>, <span class="string">"green"</span>);  <span class="comment">//推入两项</span></span><br><span class="line">alert(count);  <span class="comment">//2  </span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> item = colors.pop();         <span class="comment">//取得最后一项</span></span><br><span class="line">alert(item);   <span class="comment">//"green"</span></span><br><span class="line">alert(colors.length);  <span class="comment">//1</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="队列方法"><a href="#队列方法" class="headerlink" title="队列方法"></a>队列方法</h2><p>队列是一种先进先出的数据结构，队列在列表的末端添加项，从列表的前端移除项。数组可以表现的像队列一样，通过push()方法和shift()方法实现类似队列的行为。</p>
+<ul>
+<li><strong>push()：</strong>向数组末端添加项。</li>
+<li><strong>shift()：</strong>移除数组中的第一个想并返回该项，同时将数组长度减1。<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> colors = <span class="keyword">new</span> <span class="built_in">Array</span>();     <span class="comment">//创建一个数组</span></span><br><span class="line"><span class="keyword">var</span> count = colors.push(<span class="string">"red"</span>, <span class="string">"green"</span>,<span class="string">"black"</span>);   <span class="comment">//从末端推入三项</span></span><br><span class="line">alert(count);  <span class="comment">//3</span></span><br><span class="line">        </span><br><span class="line"><span class="keyword">var</span> item = colors.shift();    <span class="comment">//取得第一项</span></span><br><span class="line">alert(item);   <span class="comment">//"red"</span></span><br><span class="line">alert(colors.length);  <span class="comment">//2</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>数组还有一个<strong>unshift()方法</strong>，与shift()方法的用途恰恰相反，在数组的前端添加任意个项并返回新数组的长度，同时使用unshift()方法和pop()方法，可以实现模拟队列的效果，即在数组的前端添加项，从数组的末端移除项。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> colors = <span class="keyword">new</span> <span class="built_in">Array</span>();   <span class="comment">//创建一个数组</span></span><br><span class="line"><span class="keyword">var</span> count = colors.unshift(<span class="string">"red"</span>, <span class="string">"green"</span>,<span class="string">"black"</span>);    <span class="comment">//从前端推入三项</span></span><br><span class="line">alert(count);  <span class="comment">//3</span></span><br><span class="line">       </span><br><span class="line"><span class="keyword">var</span> item = colors.pop();   <span class="comment">//取得最后一项</span></span><br><span class="line">alert(item);   <span class="comment">//"black"</span></span><br><span class="line">alert(colors.length);  <span class="comment">//2</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="重排序方法"><a href="#重排序方法" class="headerlink" title="重排序方法"></a>重排序方法</h2><p>数组中有两种可以直接用来重排序的方法：reverse()和sort()。</p>
+<ul>
+<li><p><strong>reverse()：</strong>反转数组项的顺序。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> values = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>];</span><br><span class="line">values.reverse();</span><br><span class="line">alert(values);       <span class="comment">//5,4,3,2,1</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>sort()：</strong>对数组进行排序。sort()方法比较的是字符串，即使数组中的每一项都是数值，可以看下面的例子：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> values = [<span class="number">0</span>, <span class="number">1</span>, <span class="number">5</span>, <span class="number">10</span>, <span class="number">15</span>];</span><br><span class="line">values.sort();</span><br><span class="line">alert(values);    <span class="comment">//0,1,10,15,5</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>上面的例子中，虽然数值5小于10，但在进行字符串比较时，“10”则位于“5”前面，所以并非像我们所想象的那样，按数值的大小进行排序。<br>因此sort()方法可以接收一个比较函数compare(a,b)作为参数，这个比较函数接收两个参数a和b，a,b表示数组中的任意两个元素。如果a应该位于b之前，则返回一个负数；如果a等于b，则返回0；如果a应该位于b之后，则返回一个正数。这里产生的是升序排列的结果。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">compare</span>(<span class="params">a, b</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> a&lt; b) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (a &gt; b) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> values = [<span class="number">0</span>, <span class="number">1</span>, <span class="number">5</span>, <span class="number">10</span>, <span class="number">15</span>];</span><br><span class="line">values.sort(compare);</span><br><span class="line">alert(values);    <span class="comment">//0,1,5,10,15</span></span><br></pre></td></tr></table></figure>
+
+<p>如果想产生降序排列的结果，只需交换比较函数的返回值即可。</p>
+<h2 id="操作方法"><a href="#操作方法" class="headerlink" title="操作方法"></a>操作方法</h2><ul>
+<li><p><strong>concat()：</strong>基于当前数组中所有项创建一个新数组。这个方法会先创建当前数组一个副本，然后将接收到的参数添加到这个副本的末尾，最后返回新构建的数组。<br>(1) 没有参数：只是复制当前数组并返回副本。<br>(2)有参数：传递值或者数组，则将这些值或者或者数组中每一项都添加到结果数组的末尾。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> colors = [<span class="string">"red"</span>, <span class="string">"green"</span>, <span class="string">"blue"</span>];</span><br><span class="line"><span class="keyword">var</span> colors2 = colors.concat(<span class="string">"yellow"</span>, [<span class="string">"black"</span>, <span class="string">"brown"</span>]);</span><br><span class="line">alert(colors);     <span class="comment">//red,green,blue        </span></span><br><span class="line">alert(colors2);    <span class="comment">//red,green,blue,yellow,black,brown</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>slice()：</strong>基于当前数组中的一或多个项创建一个新数组。该方法接收一或<br>两个参数，即要返回项的起始和结束位置。<br>(1) 一个参数：返回从参数指定位置开始到当前数组末尾的所有项。<br>(2) 两个参数：返回起始和结束位置之间的项，但不包括结束位置的项。<br>(3) 参数为负数：使用数组长度加上该数来确定相应的位置。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> colors = [<span class="string">"red"</span>, <span class="string">"green"</span>, <span class="string">"blue"</span>, <span class="string">"yellow"</span>, <span class="string">"purple"</span>];</span><br><span class="line"><span class="keyword">var</span> colors2 = colors.slice(<span class="number">1</span>);</span><br><span class="line"><span class="keyword">var</span> colors3 = colors.slice(<span class="number">1</span>,<span class="number">4</span>);<span class="comment">//不包括结束位置的项</span></span><br><span class="line"><span class="keyword">var</span> colors4 = colors.slice(<span class="number">-2</span>,<span class="number">-1</span>);<span class="comment">//与slice(3,-4)结果相同</span></span><br><span class="line"></span><br><span class="line">alert(colors2);   <span class="comment">//green,blue,yellow,purple</span></span><br><span class="line">alert(colors3);   <span class="comment">//green,blue,yellow</span></span><br><span class="line">alert(colors4);  <span class="comment">//yellow</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>splice()：</strong>向数组的中部插入项。可以实现三种效果：<br>(1) <strong>删除：</strong>可以删除任意数量的项。指定2个参数：要删除的第一项的位置和要删除的项数。例如：splice(0,1)会删除数组中的第一项。<br>(2) <strong>插入：</strong>可以向指定位置插入任意数量的项。指定3个参数：起始位置、<br>0（要删除的项数）和要插入的项。例如：splice(1,0,3)会从位置1插入数字3。<br>(3) <strong>替换：</strong>可以向指定位置插入任意数量的项，且同时删除任意数量的项，指定3个参数：起始位置、要删除的项数和要插入的任意数量的项。插入的数量不必与删除的数量相等。例如，splice(1,1,3,2)会删除当前数组位置1的项，容纳后再从位置1开始插入数字3和2。</p>
+</li>
+</ul>
+<h2 id="位置方法"><a href="#位置方法" class="headerlink" title="位置方法"></a>位置方法</h2><p><strong>indexOf()和lastIndexOf()方法</strong>是数组的两个位置方法，这两个方法接收两个参数：要查找的项和表示查找起点位置的索引(可选的)，都是返回要查找的项在数组中的位置，如果没找到，则返回-1.<br>两个方法主要的区别：indexOf()方法从数组的<strong>开头</strong>(位置为0)开始向后查找，而lastIndexOf()方法则是从数组的<strong>末尾</strong>开始向前查找。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> numbers = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">4</span>,<span class="number">3</span>];   </span><br><span class="line">alert(numbers.indexOf(<span class="number">4</span>));        <span class="comment">//3</span></span><br><span class="line">alert(numbers.lastIndexOf(<span class="number">4</span>));    <span class="comment">//5</span></span><br><span class="line">        </span><br><span class="line">alert(numbers.indexOf(<span class="number">4</span>, <span class="number">3</span>));     <span class="comment">//3</span></span><br><span class="line">alert(numbers.lastIndexOf(<span class="number">4</span>, <span class="number">5</span>)); <span class="comment">//5</span></span><br><span class="line">alert(numbers.indexOf(<span class="number">6</span>));  <span class="comment">//-1</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="迭代方法"><a href="#迭代方法" class="headerlink" title="迭代方法"></a>迭代方法</h2><p>数组具有5个迭代方法，每个方法都接收2个参数：①要在每一项运行的函数；②(可选的)运行在该函数的作用域对象——影响this的值。对于参数一传入的函数会接收3个参数：数组项的值、该项在数组中的位置和数组对象本身。</p>
+<ul>
+<li><p><strong>every()和some()方法：</strong>用于查询数组中的项是否满足某个条件，返回true或false。二者的区别在于，every()方法，传入的函数必须对<strong>每一项</strong>都返回true，这个方法才返回true；而some()方法则只有传入的函数对数组的<strong>某一项</strong>返回true，就会返回true。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> numbers = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">4</span>];   </span><br><span class="line"><span class="keyword">var</span> everyResult = numbers.every(<span class="function"><span class="keyword">function</span>(<span class="params">item, index, array</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (item &gt; <span class="number">2</span>);</span><br><span class="line">  &#125;);</span><br><span class="line">alert(everyResult);       <span class="comment">//false</span></span><br><span class="line">        </span><br><span class="line"><span class="keyword">var</span> someResult = numbers.some(<span class="function"><span class="keyword">function</span>(<span class="params">item, index, array</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (item &gt; <span class="number">2</span>);</span><br><span class="line">  &#125;);</span><br><span class="line">alert(someResult);       <span class="comment">//true</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>filter()：</strong>对数组中的每一项运行给定函数，返回该函数会返回true的项组成的数组。这个方法对查询某些符合条件的所有数组项非常有用。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> numbers = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">4</span>];</span><br><span class="line"><span class="keyword">var</span> filterResult = numbers.filter(<span class="function"><span class="keyword">function</span>(<span class="params">item, index, array</span>)</span>&#123;</span><br><span class="line">     <span class="keyword">return</span> (item &gt; <span class="number">2</span>);</span><br><span class="line">    &#125;);</span><br><span class="line">alert(filterResult);   <span class="comment">//返回所有数值大于2的数组：[3,4,5,4]</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>map()：</strong>对数组中的每一项运行给定函数，返回每次函数调用的结果组成的数组。这个方法适合创建包含的项与另一个数组一一对应的数组。下面例子返回数组中每一项乘于2所得乘积组成的数组。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> numbers = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>];    </span><br><span class="line"><span class="keyword">var</span> mapResult = numbers.map(<span class="function"><span class="keyword">function</span>(<span class="params">item, index, array</span>)</span>&#123;</span><br><span class="line">      <span class="keyword">return</span> item * <span class="number">2</span>;</span><br><span class="line">   &#125;);</span><br><span class="line">alert(mapResult);   <span class="comment">//[2,4,6,8,10]</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>forEach()：</strong>对数组中的每一项运行给定函数，没有返回值。本质上与使用for迭代数组一样。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> numbers = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>];  </span><br><span class="line">numbers.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">item, index, arry</span>)</span>&#123;  <span class="comment">//对数组的每个元素累加</span></span><br><span class="line">  arry[index] = item+<span class="number">1</span>;</span><br><span class="line">&#125;)</span><br><span class="line">alert(numbers);  <span class="comment">//[ 2, 3, 4, 5, 6]</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="归并方法"><a href="#归并方法" class="headerlink" title="归并方法"></a>归并方法</h2><p><strong>reduce()和reduceRight()方法</strong>： 都会迭代数组的所有项，然后构建一个最终返回的值。两个方法都接收2个参数：①一个在每一项调用的函数；②作为归并基础的初始值（可选的），这个参数如果没有指定，那么将使用数组的第一个元素作为初始值。对于传入到两种方法的函数也接收4个参数：前一个值、当前值、项的索引和数组对象。<br>那么两种方法区别在哪呢？跟indexOf()和lastIndexOf()方法很相似，二者的区别在于，reduce()方法从数组的<strong>第一项</strong>开始，逐个遍历到最后；而reduceRight()方法则从数组的<strong>最后一项</strong>开始，向前遍历到第一项。下面例子为对数组中所有值进行求和的结果。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> values = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>];</span><br><span class="line"><span class="keyword">var</span> sum1 = values.reduce(<span class="function"><span class="keyword">function</span>(<span class="params">prev, cur, index, array</span>)</span>&#123;</span><br><span class="line">      <span class="keyword">return</span> prev + cur;</span><br><span class="line">    &#125;);</span><br><span class="line">alert(sum1);<span class="comment">//15</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> sum2 = values.reduceRight(<span class="function"><span class="keyword">function</span>(<span class="params">prev, cur, index, array</span>)</span>&#123;</span><br><span class="line">       <span class="keyword">return</span> prev + cur;</span><br><span class="line">    &#125;);</span><br><span class="line">alert(sum2);<span class="comment">//15</span></span><br></pre></td></tr></table></figure>
+
+<p>可以看到，除了遍历数组的方向相反外，reduce()和reduceRight()方法完全相同。</p>
+
+          
         
       
     </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
 
+    
 
     <footer class="post-footer">
       
@@ -837,6 +1197,10 @@ post请求：一般用于更新资源信息，向指定的资源提交要被处�
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -849,7 +1213,7 @@ post请求：一般用于更新资源信息，向指定的资源提交要被处�
   </nav>
 
 
-          
+
           </div>
           
 
@@ -869,70 +1233,71 @@ post请求：一般用于更新资源信息，向指定的资源提交要被处�
   </div>
 
   <aside id="sidebar" class="sidebar">
+    
     <div class="sidebar-inner">
 
       
 
       
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
-        <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image" src="/images/head.jpg" alt="chen-xt">
-          <p class="site-author-name" itemprop="name">chen-xt</p>
-           
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">chen-xt</p>
               <p class="site-description motion-element" itemprop="description">一步一步向前走</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">32</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">31</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
           
+
+          
+
+          
+          
+
+          
+          
+
+          
+
         </div>
-        <nav class="site-state motion-element">
-
-          
-            <div class="site-state-item site-state-posts">
-              <a href="/archives">
-                <span class="site-state-item-count">32</span>
-                <span class="site-state-item-name">日志</span>
-              </a>
-            </div>
-          
-
-          
-            
-            
-            <div class="site-state-item site-state-categories">
-              <a href="/categories/index.html">
-                <span class="site-state-item-count">10</span>
-                <span class="site-state-item-name">分类</span>
-              </a>
-            </div>
-          
-
-          
-            
-            
-            <div class="site-state-item site-state-tags">
-              <a href="/tags/index.html">
-                <span class="site-state-item-count">31</span>
-                <span class="site-state-item-name">标签</span>
-              </a>
-            </div>
-          
-
-        </nav>
-
-        
-
-        <div class="links-of-author motion-element">
-          
-        </div>
-
-        
-        
-
-        
-        
-
-        
-
-
       </section>
 
       
@@ -949,19 +1314,36 @@ post请求：一般用于更新资源信息，向指定的资源提交要被处�
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">
-  
-  &copy; 
-  <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
-    <i class="fa fa-"></i>
+    <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">chen-xt</span>
+
+  
 </div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
 
 
 
         
+
+
+
+
+
+
 
         
       </div>
@@ -973,7 +1355,9 @@ post请求：一般用于更新资源信息，向指定的资源提交要被处�
         
       </div>
     
+
     
+
   </div>
 
   
@@ -997,48 +1381,67 @@ post请求：一般用于更新资源信息，向指定的资源提交要被处�
 
 
 
-  
-  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-
-  
-  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-
-  
-  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
 
 
-  
 
 
-  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
 
-  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
 
 
 
   
   
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
 
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
   
 
   
 
+  
 
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
 
 
 
   
-
 
 
   
@@ -1064,21 +1467,31 @@ post请求：一般用于更新资源信息，向指定的资源提交要被处�
 
 
 
-  
 
 
 
-  
-  
 
-  
+
+
 
   
 
+
+
+
+
+  
+
   
 
   
 
+  
+  
+
+  
+
+  
 
   
 

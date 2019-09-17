@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 
 
 
@@ -6,15 +6,23 @@
 
 
 <html class="theme-next muse use-motion" lang="zh-Hans">
-<head><meta name="generator" content="Hexo 3.8.0">
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
 
 
 
 <meta http-equiv="Cache-Control" content="no-transform">
 <meta http-equiv="Cache-Control" content="no-siteapp">
+
 
 
 
@@ -37,38 +45,27 @@
 
 
 
-  
-  
-  
-  
-
-  
-    
-    
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-    
-    
-    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-  
-
-
-
 
 
 
 <link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
 
-<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css">
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
 
 
   <meta name="keywords" content="Hexo, NexT">
@@ -76,11 +73,6 @@
 
 
 
-
-
-
-
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1">
 
 
 
@@ -105,9 +97,11 @@
   var CONFIG = {
     root: '/',
     scheme: 'Muse',
-    sidebar: {"position":"left","display":"post"},
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
-    motion: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     duoshuo: {
       userId: '0',
       author: '博主'
@@ -116,8 +110,8 @@
       applicationID: '',
       apiKey: '',
       indexName: '',
-      hits: "",
-      labels: ""
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
     }
   };
 </script>
@@ -130,11 +124,7 @@
 
 
 
-  <title> 陈小婷的博客 </title>
-</head>
-
-<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
-
+  <title>陈小婷的博客</title>
   
 
 
@@ -144,29 +134,20 @@
 
 
 
+</head>
 
-
-
-  <div style="display: none;">
-    <script src="//s95.cnzz.com/z_stat.php?id=1259971316&web_id=1259971316" language="JavaScript"></script>
-  </div>
-
-
-
-
-
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
   
   
     
   
 
-  <div class="container one-collumn sidebar-position-left 
-   page-home 
- ">
+  <div class="container sidebar-position-left 
+  page-home">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
   <div class="site-meta ">
     
@@ -209,32 +190,12 @@
         </li>
       
         
-        <li class="menu-item menu-item-categories">
-          <a href="/categories" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
-            
-            分类
-          </a>
-        </li>
-      
-        
         <li class="menu-item menu-item-archives">
-          <a href="/archives" rel="section">
+          <a href="/archives/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
             
             归档
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-tags">
-          <a href="/tags" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
-            
-            标签
           </a>
         </li>
       
@@ -266,16 +227,20 @@
   
   
 
-  <article class="post post-type-normal " itemscope="" itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/07/29/Javascript的异常处理和事件处理/">
 
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="chen-xt">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/head.jpg">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="陈小婷的博客">
     </span>
 
@@ -285,20 +250,22 @@
         
         
           <h1 class="post-title" itemprop="name headline">
-            
-            
-              
                 
-                <a class="post-title-link" href="/2016/07/29/Javascript的异常处理和事件处理/" itemprop="url">
-                  Javascript的异常处理和事件处理
-                </a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/2016/07/29/Javascript的异常处理和事件处理/" itemprop="url">Javascript的异常处理和事件处理</a></h1>
         
 
         <div class="post-meta">
           <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-07-29T23:05:19+08:00">
+                2016-07-29
+              </time>
             
 
             
@@ -306,6 +273,28 @@
             
           </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">javascript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -325,7 +314,9 @@
       </header>
     
 
-
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -334,27 +325,41 @@
       
         
           
-          Javascript的异常处理Javascript的异常就是当javascript引擎执行javascript代码时，发生了错误，导致程序停止运行的一种现象。当异常产生时，会创建一个异常类对象，该异常类对象将被提交给浏览器，这个过程称为“抛出异常”。当浏览器接收到异常对象时，会寻找能处理这一异常的代
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2016/07/29/Javascript的异常处理和事件处理/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+            <h4 id="Javascript的异常处理"><a href="#Javascript的异常处理" class="headerlink" title="Javascript的异常处理"></a>Javascript的异常处理</h4><p>Javascript的异常就是当javascript引擎执行javascript代码时，发生了错误，导致程序停止运行的一种现象。当异常产生时，会创建一个异常类对象，该异常类对象将被提交给浏览器，这个过程称为“抛出异常”。当浏览器接收到异常对象时，会寻找能处理这一异常的代码并把当前异常对象提交给其处理，这一过程被称为“捕获异常”。<br>Javascript使用try..catch..finally语句来进行异常的捕获，try..catch..finally语句的基本语法格式为： </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span>&#123;</span><br><span class="line">    <span class="comment">//可能抛出异常的代码 </span></span><br><span class="line">    &#125;<span class="keyword">catch</span>(error)&#123;</span><br><span class="line">     <span class="comment">//如果发生异常会执行的代码，error为发生的异常类对象 </span></span><br><span class="line">    &#125;<span class="keyword">finally</span>&#123;</span><br><span class="line">    <span class="comment">//无条件执行的代码 </span></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>try块中的语句首先被执行。如果运行中发生了错误，控制就会转移到位于catch块中语句，其中括号中的error参数被作为例外变量传递。否则，catch块的语句被跳过不执行。无论是发生错误时catch块中的语句执行完毕，或者没有发生错误try块中的语句执行完毕，最后将执行 finally块中的语句。在try..catch..finally语句中，try是必需的，catch和finally均为可选语句，但catch和finally中必须至少出现一个。<br>下面例子为捕获到的是变量未定义的异常：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">demo</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">        </span>&#123;   <span class="keyword">var</span> str=<span class="string">"你好"</span>; <span class="comment">//没有声明str的话会有异常</span></span><br><span class="line">            <span class="keyword">try</span>&#123;</span><br><span class="line">                alert(str);</span><br><span class="line">            &#125;<span class="keyword">catch</span>(er)&#123;</span><br><span class="line">                alert(er);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        demo();</span><br></pre></td></tr></table></figure>
+
+<p>Javascript抛出异常使用的是throw语句，可创建一个自定义异常。将throw语句于try..catch..finally语句结合使用，能够控制程序流，并生成自定义的错误消息。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">demo</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">        </span>&#123;   </span><br><span class="line">            <span class="keyword">try</span>&#123;</span><br><span class="line">                <span class="keyword">var</span> e=<span class="built_in">document</span>.getElementById(<span class="string">'txt'</span>).value;</span><br><span class="line">                <span class="keyword">if</span>(e==<span class="string">''</span>)</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="keyword">throw</span> <span class="string">"第一个用户输入异常==空"</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;<span class="keyword">catch</span>(er)&#123;</span><br><span class="line">                alert(er);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        demo();</span><br></pre></td></tr></table></figure>
+
+<h4 id="Javascript的事件处理"><a href="#Javascript的事件处理" class="headerlink" title="Javascript的事件处理"></a>Javascript的事件处理</h4><p>事件指的是文档或者浏览器窗口中发生的一些特定交互瞬间。与浏览器进行交互的时候浏览器就会触发各种事件。比如当我们打开某一个网页的时候，浏览器加载完成了这个网页，就会触发一个load事件；当我们点击页面中的某一个“地方”，浏览器就会在那个“地方”触发一个 click 事件。这里列举了Javascript几个常用的事件：    </p>
+<ul>
+<li>onClick：鼠标点击触发的事件，多用在某个对象控制的范围内的鼠标点击</li>
+<li>onMouseOver：鼠标移入元素时触发的事件。</li>
+<li>onMouseOut：鼠标移开元素时触发的事件。</li>
+<li>onChnange：当文本内容改变时触发的事件。</li>
+<li>onSelect：当文本框被选中时触发的事件。</li>
+<li>onFocus：光标聚集事件，即在对象获得焦点时触发的事件。</li>
+<li>onBlur：移开光标事件，即在对象失去焦点时触发的事件。</li>
+<li>onLoad：网页加载事件，即在网页加载完成触发的事件。</li>
+<li>onUnload：关闭网页事件，即退出网页时触发的事件</li>
+</ul>
+
+          
         
       
     </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
 
+    
 
     <footer class="post-footer">
       
@@ -368,6 +373,10 @@
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -380,16 +389,20 @@
   
   
 
-  <article class="post post-type-normal " itemscope="" itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/07/27/简单的PHP-MySql实现动态页面/">
 
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="chen-xt">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/head.jpg">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="陈小婷的博客">
     </span>
 
@@ -399,20 +412,22 @@
         
         
           <h1 class="post-title" itemprop="name headline">
-            
-            
-              
                 
-                <a class="post-title-link" href="/2016/07/27/简单的PHP-MySql实现动态页面/" itemprop="url">
-                  简单的PHP+MySql实现动态页面
-                </a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/2016/07/27/简单的PHP-MySql实现动态页面/" itemprop="url">简单的PHP+MySql实现动态页面</a></h1>
         
 
         <div class="post-meta">
           <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-07-27T20:20:51+08:00">
+                2016-07-27
+              </time>
             
 
             
@@ -420,6 +435,28 @@
             
           </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/PHP/" itemprop="url" rel="index">
+                    <span itemprop="name">PHP</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -439,7 +476,9 @@
       </header>
     
 
-
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -448,29 +487,33 @@
       
         
           
-          虽说自己学的是前端，但是关于前后端的一些交互还是有必要做简单的了解的。这两天学会了简单的PHP加上MySql数据库来实现动态页面，在WAMP的集成环境下设计了一个简单的注册页面，并将注册信息通过后端传送到数据库。
+            <p>虽说自己学的是前端，但是关于前后端的一些交互还是有必要做简单的了解的。这两天学会了简单的PHP加上MySql数据库来实现动态页面，在WAMP的集成环境下设计了一个简单的注册页面，并将注册信息通过后端传送到数据库。</p>
+<ol>
+<li><p>首先创建好数据库，在WAMP的环境下，建立数据库“register”，并创建具有两个字段的“message”表，存放用户名(username)及密码(password)。当有用户注册填写相关信息时，所填信息会被保存到该数据库中。</p>
+</li>
+<li><p>首先创建”register.php”文件，在里面编写相关的前端代码。创建两个文本框分别为用户的姓名输入框和密码输入框，再加一个注册按钮，为注册按钮添加调用ajax的相关语句。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">oBtn.onclick=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"> </span>&#123;</span><br><span class="line"><span class="keyword">var</span> url=<span class="string">'register_post.php?act=add&amp;username='</span>+oTxt1.value+<span class="string">'&amp;password='</span>+oTxt2.value;</span><br><span class="line">ajax(url, <span class="function"><span class="keyword">function</span> (<span class="params">str</span>)</span>&#123;          </span><br><span class="line">        &#125;);</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建”register_post.php”文件，在里面编写与数据库连接的代码以及数据库的执行操作语句。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">switch($_GET[&apos;act&apos;])</span><br><span class="line">&#123;</span><br><span class="line"> case &apos;add&apos;:</span><br><span class="line">  $username=$_GET[&apos;username&apos;];//接收前端上传的数据</span><br><span class="line">  $password=$_GET[&apos;password&apos;];</span><br><span class="line">  $sql=&quot;INSERT INTO message (username, password) VALUES(&apos;&#123;$username&#125;&apos;, &apos;&#123;$password&#125;&apos;)&quot;;</span><br><span class="line">  mysql_connect(&apos;localhost&apos;, &apos;root&apos;, &apos;&apos;);</span><br><span class="line">  mysql_select_db(&apos;register&apos;);</span><br><span class="line">  mysql_query($sql);</span><br><span class="line">  break;</span><br><span class="line">&#125;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>执行”register.php”文件，输入用户名和密码，点击注册按钮，即可发现数据库多了所填写的用户名和密码字段，到此，一个小的动态注册页面完成。这里只是通过简单的做个小例子来让自己明白前后端的一些交互方式，并不做深入的学习。</p>
+</li>
+</ol>
 
-首先创建好数据库，在WAMP的环境下，建立数据库“register”，并创建具有两个
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2016/07/27/简单的PHP-MySql实现动态页面/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
         
       
     </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
 
+    
 
     <footer class="post-footer">
       
@@ -484,6 +527,10 @@
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -496,16 +543,20 @@
   
   
 
-  <article class="post post-type-normal " itemscope="" itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/07/25/表格的排序和搜索/">
 
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="chen-xt">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/head.jpg">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="陈小婷的博客">
     </span>
 
@@ -515,20 +566,22 @@
         
         
           <h1 class="post-title" itemprop="name headline">
-            
-            
-              
                 
-                <a class="post-title-link" href="/2016/07/25/表格的排序和搜索/" itemprop="url">
-                  表格的排序和搜索
-                </a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/2016/07/25/表格的排序和搜索/" itemprop="url">表格的排序和搜索</a></h1>
         
 
         <div class="post-meta">
           <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-07-25T21:29:31+08:00">
+                2016-07-25
+              </time>
             
 
             
@@ -536,6 +589,28 @@
             
           </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">javascript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -555,7 +630,9 @@
       </header>
     
 
-
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -564,28 +641,45 @@
       
         
           
-          这两天学习了DOM的高级操作，主要是以对表格的一些排序和搜索处理为例子来进行学习的。
-排序表格的排序主要分为三个步骤:转换————排序————插入。第一步，转换成数组。只有将获得的对象元素转换成数组才能进行大小的比较。1234for(i=0;i&lt;oTab.tBodies[0].rows.len
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2016/07/25/表格的排序和搜索/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+            <p>这两天学习了DOM的高级操作，主要是以对表格的一些排序和搜索处理为例子来进行学习的。</p>
+<h3 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h3><p>表格的排序主要分为三个步骤:转换————排序————插入。<br>第一步，转换成数组。只有将获得的对象元素转换成数组才能进行大小的比较。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;oTab.tBodies[<span class="number">0</span>].rows.length;i++)</span><br><span class="line">        &#123;</span><br><span class="line">            arr[i]=oTab.tBodies[<span class="number">0</span>].rows[i];</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+
+<p>第二步，数组排序。这里是升序排列的。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">arr.sort(<span class="function"><span class="keyword">function</span> (<span class="params">tr1, tr2</span>)</span>&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="built_in">parseInt</span>(tr1.cells[<span class="number">0</span>].innerHTML)-<span class="built_in">parseInt</span>(tr2.cells[<span class="number">0</span>].innerHTML);</span><br><span class="line">        &#125;);</span><br></pre></td></tr></table></figure>
+
+<p>第三步，重新插入。将排列好的数组插入到表格中。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;arr.length;i++)</span><br><span class="line">        &#123;</span><br><span class="line">          oTab.tBodies[<span class="number">0</span>].appendChild(arr[i]);</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+
+<p>上述代码已经能实现将表格进行升序排列，若还想实现降序排列需要如下的改进。先创建一个布尔变量，当值为true时，进行升序排列，否则为降序排列。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> bAsc=<span class="literal">true</span>;<span class="comment">//判断是否升序排列</span></span><br></pre></td></tr></table></figure>
+
+<p>然后，添加降序排列代码，就可以通过if-else语句判断是降序排列还是升序排列。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">return</span> <span class="built_in">parseInt</span>(tr2.cells[<span class="number">0</span>].innerHTML)-<span class="built_in">parseInt</span>(tr1.cells[<span class="number">0</span>].innerHTML);</span><br></pre></td></tr></table></figure>
+
+<p>最后，就是添加以下一行代码，就可以实现通过按钮的点击来交替实现两种排列方式。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bAsc=!bAsc;</span><br></pre></td></tr></table></figure>
+
+<h3 id="搜索"><a href="#搜索" class="headerlink" title="搜索"></a>搜索</h3><p>表格的搜索是通过将文本框的字符串与表格指定位置的字符串进行比较，如果是相等的，则将那行的背景颜色变为黄色(也可以是其他颜色）。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;oTab.tBodies[<span class="number">0</span>].rows.length;i++)</span><br><span class="line">&#123;   <span class="comment">//全部化成小写(大写也行)再比较，实现不区分大小写</span></span><br><span class="line">  <span class="keyword">var</span> sValueInTab=oTab.tBodies[<span class="number">0</span>].rows[i].cells[<span class="number">1</span>].innerHTML.toLowerCase();</span><br><span class="line">  <span class="keyword">var</span> sValueInTxt=oTxt.value.toLowerCase();</span><br><span class="line">    <span class="keyword">if</span>(sValueInTab==sValueInTxt)</span><br><span class="line">    &#123;</span><br><span class="line">       oTab.tBodies[<span class="number">0</span>].rows[i].style.background=<span class="string">'yellow'</span>;</span><br><span class="line">     &#125;</span><br><span class="line">     <span class="keyword">else</span></span><br><span class="line">     &#123;</span><br><span class="line">       oTab.tBodies[<span class="number">0</span>].rows[i].style.background=<span class="string">''</span>;</span><br><span class="line">       &#125;   &#125;</span><br></pre></td></tr></table></figure>
+
+<p>但是如果想实现多关键词搜索，还需要做以下的改进，先将文本框的关键字用空格作为分割的标记对输入的关键字进行分割，然后利用search()方法去搜索，看看表格的字符串与文本框的字符串是否有一样的，如果搜索不到一样的字符串，则返回-1。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr=sValueInTxt.split(<span class="string">' '</span>);<span class="comment">//将关键字分割</span></span><br><span class="line"><span class="keyword">var</span> bFound=<span class="literal">false</span>;</span><br><span class="line"> <span class="keyword">for</span>(j=<span class="number">0</span>;j&lt;arr.length;j++)</span><br><span class="line"> &#123;</span><br><span class="line">   <span class="keyword">if</span>(sValueInTab.search(arr[j])!=<span class="number">-1</span>)</span><br><span class="line">   &#123;   <span class="comment">//搜索不到</span></span><br><span class="line">       bFound=<span class="literal">true</span>;</span><br><span class="line">       <span class="keyword">break</span>;</span><br><span class="line">    &#125;      &#125;</span><br><span class="line">  <span class="keyword">if</span>(bFound)</span><br><span class="line">   &#123;</span><br><span class="line">     oTab.tBodies[<span class="number">0</span>].rows[i].style.background=<span class="string">'yellow'</span>;</span><br><span class="line">    &#125;</span><br><span class="line">   <span class="keyword">else</span></span><br><span class="line">   &#123;</span><br><span class="line">    oTab.tBodies[<span class="number">0</span>].rows[i].style.background=<span class="string">''</span>;</span><br><span class="line">           &#125;</span><br></pre></td></tr></table></figure>
+
+
+          
         
       
     </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
 
+    
 
     <footer class="post-footer">
       
@@ -599,6 +693,10 @@
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -611,16 +709,20 @@
   
   
 
-  <article class="post post-type-normal " itemscope="" itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/07/23/JS之面向对象2/">
 
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="chen-xt">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/head.jpg">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="陈小婷的博客">
     </span>
 
@@ -630,20 +732,22 @@
         
         
           <h1 class="post-title" itemprop="name headline">
-            
-            
-              
                 
-                <a class="post-title-link" href="/2016/07/23/JS之面向对象2/" itemprop="url">
-                  JS之面向对象2
-                </a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/2016/07/23/JS之面向对象2/" itemprop="url">JS之面向对象2</a></h1>
         
 
         <div class="post-meta">
           <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-07-23T00:00:00+08:00">
+                2016-07-23
+              </time>
             
 
             
@@ -651,6 +755,28 @@
             
           </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">javascript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -670,7 +796,9 @@
       </header>
     
 
-
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -679,28 +807,24 @@
       
         
           
-          今天学习了JS面向对象的一个特性–继承。JS是一门基于面向对象的语言，也就是说，JS并非真正的面向对象，相对的，Java，PHP5以上等的编程语言则是真正面向对象的、真正意义上的面向对象语言。所以这里通过对PHP语言的继承的学习来延伸到对JS继承的学习。
-PHP是一门常用的后端开发语言，因为学习JS
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2016/07/23/JS之面向对象2/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+            <p>今天学习了JS面向对象的一个特性–继承。JS是一门基于面向对象的语言，也就是说，JS并非真正的面向对象，相对的，Java，PHP5以上等的编程语言则是真正面向对象的、真正意义上的面向对象语言。所以这里通过对PHP语言的继承的学习来延伸到对JS继承的学习。</p>
+<p>PHP是一门常用的后端开发语言，因为学习JS的继承，让我有机会第一次接触到这门语言。PHP的工作过程就是服务器先读取PHP文件，把服务器端的标记（如<?php ...?>）里面的内容选出来运行，再把结果返回来给客户端，所以客户端看不到服务端程序的源码，这就是PHP保密性好的原因。出于只是为了帮助对JS继承的学习的出发点，所以只对PHP一些简单语法进行学习与了解。PHP中用echo来进行输出，跟JS中的alert作用是一样的；PHP定义变量一定要用美元符号，如定义值为12 的变量a，则写作“$a=12”。PHP有两个比较特别的地方，其一，在PHP中，字符串两边可以不加引号，如“echo abc”；其二，JS中要连接两个字符串可以使用加号，但是PHP中加号只能是数字相加，所以要做字符串连接要用点，如“$a.$b”。那么又有新的疑问出现了，PHP中用点来连接两个字符串，点在JS中常用来访问对象的属性，那么PHP中用什么符号访问对象的属性呢？答案是-&gt;，如“$this-&gt;name”。PHP学起来还是蛮有意思的。</p>
+<p>接下来就是学习PHP的继承。所谓继承，就是从已有的类去派生出新的类，说白点就是把其他类的内容copy过来，再加上自己的东西，由此产生属于自己的类。对象由属性和方法组成，所以要继承一个对象，需要继承那个对象的属性和方法。PHP的继承是先创建一个父类，里面添加好属性和方法，然后用extends关键字让子类去继承父类的属性和方法，再添加子类自己独有的属性和方法，最终形成独有的子类。过程其实并不难。</p>
+<p>最后由PHP的继承类比到JS的继承，同样的先创建一个父类，利用构造函数添加其属性，利用原型添加其方法。接着也是利用extends关键字让子类去继承父类，通过调用父类的构造函数来继承父类的属性，这里采用call方法，如“Person.call(this,name,sex);”；通过原型来继承父类的方法，如“Worker.prototype=Person.prototype;”。然后添加子类自己的属性和方法，一个完整的子类就创建好了。JS的继承里面涉及到两个重要的知识点，call()方法和原型链，这将通过后续的学习再进一步掌握。</p>
+
+          
         
       
     </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
 
+    
 
     <footer class="post-footer">
       
@@ -714,6 +838,10 @@ PHP是一门常用的后端开发语言，因为学习JS
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -726,16 +854,20 @@ PHP是一门常用的后端开发语言，因为学习JS
   
   
 
-  <article class="post post-type-normal " itemscope="" itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/07/21/JS之面向对象1/">
 
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="chen-xt">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/head.jpg">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="陈小婷的博客">
     </span>
 
@@ -745,20 +877,22 @@ PHP是一门常用的后端开发语言，因为学习JS
         
         
           <h1 class="post-title" itemprop="name headline">
-            
-            
-              
                 
-                <a class="post-title-link" href="/2016/07/21/JS之面向对象1/" itemprop="url">
-                  JS之面向对象1
-                </a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/2016/07/21/JS之面向对象1/" itemprop="url">JS之面向对象1</a></h1>
         
 
         <div class="post-meta">
           <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-07-21T00:00:00+08:00">
+                2016-07-21
+              </time>
             
 
             
@@ -766,6 +900,28 @@ PHP是一门常用的后端开发语言，因为学习JS
             
           </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">javascript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -785,7 +941,9 @@ PHP是一门常用的后端开发语言，因为学习JS
       </header>
     
 
-
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -794,27 +952,47 @@ PHP是一门常用的后端开发语言，因为学习JS
       
         
           
-          今天学习了JS的面向对象部分内容。首先是理解面向对象的概念，因为之前在学校学的几门编程语言都有接触面向对象这个概念，所以理解起来相对来说还是比较容易的。面向对象只关注对象提供的功能，不关注其内部细节，就像我们使用收音机时不需要知道收音机里面的构造以及连线方式，而只需要知道收音机各个按钮的功能即可，收
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2016/07/21/JS之面向对象1/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+            <p>今天学习了JS的面向对象部分内容。首先是理解面向对象的概念，因为之前在学校学的几门编程语言都有接触面向对象这个概念，所以理解起来相对来说还是比较容易的。面向对象只关注对象提供的功能，不关注其内部细节，就像我们使用收音机时不需要知道收音机里面的构造以及连线方式，而只需要知道收音机各个按钮的功能即可，收音机就是一个对象。面向对象具有三个特性：封装，继承，多态，并且由方法和属性组成。这些大都已经记在心中了，考过好几次了。</p>
+<p>接着就是学会用工厂方式构造对象，分为三步：</p>
+<ol>
+<li><p>工厂制作产品首先需要的是原料，对应的我们需要创建一个空白的对象；</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj=<span class="keyword">new</span> <span class="built_in">Object</span>();</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>对原料进行加工，即对应的我们需要为对象添加属性和方法；</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">obj.name=name;</span><br><span class="line">obj.sex=sex;</span><br><span class="line">obj.showName=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    alert(<span class="string">'我的名字叫'</span>+<span class="keyword">this</span>.name);</span><br><span class="line">&#125;</span><br><span class="line">obj.showSex=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    alert(<span class="string">'我是'</span>+<span class="keyword">this</span>.sex+<span class="string">'的'</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>将加工好的产品送出厂，所以我们需要返回对象。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">return</span> obj;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p>虽然工厂方式看起来挺完美的，但是还是存在两个问题：其一，没有new；其二，函数重复定义，即每个对象都有一套自己的函数，浪费资源。问题一解决相对来说比较简单，添加一个new即可，主要还是问题二的解决。问题二可以用原型prototype为对象添加方法，原型prototype又是今天新学到的一个概念，通过原型添加方法可以在已有对象中加入自己的方法，可以扩展系统对象，添加一些本不支持的方法。用原型添加方法不仅给构造函数于极度的简化，而且使所有同类的对象都只有一套方法，节省了大量的资源，有效地解决了工厂方法的第二个问题。所以对上述的工厂方法进行改进，首先是将原来的构造函数删除部分，再将剩下的关于属性的部分稍微修改成如下形式：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name,sex</span>)//构造函数，添加属性</span></span><br><span class="line"><span class="function">        </span>&#123;</span><br><span class="line">            <span class="keyword">this</span>.name=name;</span><br><span class="line">            <span class="keyword">this</span>.sex=sex;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+
+<p>接着就是解决问题一了，加new，如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> p=<span class="keyword">new</span> Person(<span class="string">'Rose'</span>,<span class="string">'女'</span>);</span><br></pre></td></tr></table></figure>
+
+<p>然后就是解决问题二了，用原型为对象添加方法：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Person.prototype.showName=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)//原型，添加方法</span></span><br><span class="line"><span class="function">        </span>&#123;</span><br><span class="line">            alert(<span class="keyword">this</span>.name);</span><br><span class="line">        &#125;</span><br><span class="line">        Person.prototype.showSex=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">        </span>&#123;</span><br><span class="line">            alert(<span class="keyword">this</span>.sex);</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+
+<p>最后，调用方法即可，这样子一来，一套相对比较完美的构造对象方法就出炉了。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">p.showName();</span><br><span class="line">p.showSex();</span><br></pre></td></tr></table></figure>
+
+<p>以上就是今天主要学到的三方面的内容：面向对象概念，工厂方法构造对象，原型添加方法。原型为对象添加方法真的很好用，今天学到的可能只是一小部分，更多的需要后期接触再去深入学习了。</p>
+
+          
         
       
     </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
 
+    
 
     <footer class="post-footer">
       
@@ -828,6 +1006,10 @@ PHP是一门常用的后端开发语言，因为学习JS
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -840,7 +1022,7 @@ PHP是一门常用的后端开发语言，因为学习JS
   </nav>
 
 
-          
+
           </div>
           
 
@@ -860,70 +1042,71 @@ PHP是一门常用的后端开发语言，因为学习JS
   </div>
 
   <aside id="sidebar" class="sidebar">
+    
     <div class="sidebar-inner">
 
       
 
       
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
-        <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image" src="/images/head.jpg" alt="chen-xt">
-          <p class="site-author-name" itemprop="name">chen-xt</p>
-           
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">chen-xt</p>
               <p class="site-description motion-element" itemprop="description">一步一步向前走</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">32</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">31</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
           
+
+          
+
+          
+          
+
+          
+          
+
+          
+
         </div>
-        <nav class="site-state motion-element">
-
-          
-            <div class="site-state-item site-state-posts">
-              <a href="/archives">
-                <span class="site-state-item-count">32</span>
-                <span class="site-state-item-name">日志</span>
-              </a>
-            </div>
-          
-
-          
-            
-            
-            <div class="site-state-item site-state-categories">
-              <a href="/categories/index.html">
-                <span class="site-state-item-count">10</span>
-                <span class="site-state-item-name">分类</span>
-              </a>
-            </div>
-          
-
-          
-            
-            
-            <div class="site-state-item site-state-tags">
-              <a href="/tags/index.html">
-                <span class="site-state-item-count">31</span>
-                <span class="site-state-item-name">标签</span>
-              </a>
-            </div>
-          
-
-        </nav>
-
-        
-
-        <div class="links-of-author motion-element">
-          
-        </div>
-
-        
-        
-
-        
-        
-
-        
-
-
       </section>
 
       
@@ -940,19 +1123,36 @@ PHP是一门常用的后端开发语言，因为学习JS
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">
-  
-  &copy; 
-  <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
-    <i class="fa fa-"></i>
+    <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">chen-xt</span>
+
+  
 </div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
 
 
 
         
+
+
+
+
+
+
 
         
       </div>
@@ -964,7 +1164,9 @@ PHP是一门常用的后端开发语言，因为学习JS
         
       </div>
     
+
     
+
   </div>
 
   
@@ -988,48 +1190,67 @@ PHP是一门常用的后端开发语言，因为学习JS
 
 
 
-  
-  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-
-  
-  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-
-  
-  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
 
 
-  
 
 
-  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
 
-  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
 
 
 
   
   
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
 
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
   
 
   
 
+  
 
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
 
 
 
   
-
 
 
   
@@ -1055,21 +1276,31 @@ PHP是一门常用的后端开发语言，因为学习JS
 
 
 
-  
 
 
 
-  
-  
 
-  
+
+
 
   
 
+
+
+
+
+  
+
   
 
   
 
+  
+  
+
+  
+
+  
 
   
 

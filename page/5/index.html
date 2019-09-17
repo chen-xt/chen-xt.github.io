@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 
 
 
@@ -6,15 +6,23 @@
 
 
 <html class="theme-next muse use-motion" lang="zh-Hans">
-<head><meta name="generator" content="Hexo 3.8.0">
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
 
 
 
 <meta http-equiv="Cache-Control" content="no-transform">
 <meta http-equiv="Cache-Control" content="no-siteapp">
+
 
 
 
@@ -37,38 +45,27 @@
 
 
 
-  
-  
-  
-  
-
-  
-    
-    
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-    
-    
-    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-  
-
-
-
 
 
 
 <link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
 
-<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css">
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
 
 
   <meta name="keywords" content="Hexo, NexT">
@@ -76,11 +73,6 @@
 
 
 
-
-
-
-
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1">
 
 
 
@@ -105,9 +97,11 @@
   var CONFIG = {
     root: '/',
     scheme: 'Muse',
-    sidebar: {"position":"left","display":"post"},
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
-    motion: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     duoshuo: {
       userId: '0',
       author: '博主'
@@ -116,8 +110,8 @@
       applicationID: '',
       apiKey: '',
       indexName: '',
-      hits: "",
-      labels: ""
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
     }
   };
 </script>
@@ -130,11 +124,7 @@
 
 
 
-  <title> 陈小婷的博客 </title>
-</head>
-
-<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
-
+  <title>陈小婷的博客</title>
   
 
 
@@ -144,29 +134,20 @@
 
 
 
+</head>
 
-
-
-  <div style="display: none;">
-    <script src="//s95.cnzz.com/z_stat.php?id=1259971316&web_id=1259971316" language="JavaScript"></script>
-  </div>
-
-
-
-
-
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
   
   
     
   
 
-  <div class="container one-collumn sidebar-position-left 
-   page-home 
- ">
+  <div class="container sidebar-position-left 
+  page-home">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
   <div class="site-meta ">
     
@@ -209,32 +190,12 @@
         </li>
       
         
-        <li class="menu-item menu-item-categories">
-          <a href="/categories" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
-            
-            分类
-          </a>
-        </li>
-      
-        
         <li class="menu-item menu-item-archives">
-          <a href="/archives" rel="section">
+          <a href="/archives/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
             
             归档
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-tags">
-          <a href="/tags" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
-            
-            标签
           </a>
         </li>
       
@@ -266,16 +227,20 @@
   
   
 
-  <article class="post post-type-normal " itemscope="" itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/08/10/JS之闭包/">
 
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="chen-xt">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/head.jpg">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="陈小婷的博客">
     </span>
 
@@ -285,20 +250,22 @@
         
         
           <h1 class="post-title" itemprop="name headline">
-            
-            
-              
                 
-                <a class="post-title-link" href="/2016/08/10/JS之闭包/" itemprop="url">
-                  JS之闭包
-                </a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/2016/08/10/JS之闭包/" itemprop="url">JS之闭包</a></h1>
         
 
         <div class="post-meta">
           <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-08-10T00:00:00+08:00">
+                2016-08-10
+              </time>
             
 
             
@@ -306,6 +273,28 @@
             
           </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">javascript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -325,7 +314,9 @@
       </header>
     
 
-
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -334,27 +325,73 @@
       
         
           
-          什么是闭包？闭包是指有权访问另外一个函数作用域中的变量的函数。简单的说，在Javascript中，函数内部作用域可以访问外部作用域的变量，而外部作用域却无权访问内部作用域的局部变量。但是有时候我们需要在函数作用域外访问到函数内部的变量，这个时候就需要闭包的出场了。通过在函数的内部在创建一个函数，将内
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2016/08/10/JS之闭包/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+            <h2 id="什么是闭包？"><a href="#什么是闭包？" class="headerlink" title="什么是闭包？"></a>什么是闭包？</h2><p>闭包是指有权访问另外一个函数作用域中的变量的函数。<br>简单的说，在Javascript中，函数内部作用域可以访问外部作用域的变量，而外部作用域却无权访问内部作用域的局部变量。但是有时候我们需要在函数作用域外访问到函数内部的变量，这个时候就需要闭包的出场了。通过在函数的内部在创建一个函数，将内部函数作为返回值，就可以在函数外去访问到函数的内部变量。</p>
+<h2 id="闭包的特点"><a href="#闭包的特点" class="headerlink" title="闭包的特点"></a>闭包的特点</h2><p>先看下面的一段关于闭包的代码，通过这段代码来逐一分析闭包的特点：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">aaa</span>(<span class="params">a</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> b=<span class="number">5</span>;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">bbb</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        alert(a);</span><br><span class="line">        alert(b);</span><br><span class="line">&#125;&#125;</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li><strong>函数嵌套函数</strong>：<br>aaa()函数里再嵌套了一个bbb()函数。</li>
+<li><strong>内部函数可以引用外部函数的参数和变量</strong>：<br> bbb()函数里可以引用aaa()函数中的a参数和b变量。</li>
+<li><strong>参数和变量不会被垃圾回收机制所收回</strong>：<br> a和b的值不会被垃圾回收机制回收，因为它们都要在内部函数bbb()中被引用。</li>
+</ol>
+<h2 id="使用闭包的好处"><a href="#使用闭包的好处" class="headerlink" title="使用闭包的好处"></a>使用闭包的好处</h2><ol>
+<li><p><strong>希望一个变量长期驻扎在内存当中（不会被垃圾回收机制回收）。</strong></p>
+</li>
+<li><p><strong>避免全局变量的污染(为了提高性能，尽量避免出现全局变量)。</strong><br> (1) 全局变量的累加：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">var</span> a=<span class="number">1</span>;<span class="comment">//全局变量</span></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">aaa</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    a++;</span><br><span class="line">    alert(a);</span><br><span class="line">&#125;</span><br><span class="line">    aaa();<span class="comment">//2</span></span><br><span class="line">    aaa();<span class="comment">//3</span></span><br></pre></td></tr></table></figure>
+
+<p> (2) 将全局变量a变成局部变量(但是不能累加)：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">aaa</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> a=<span class="number">1</span>;</span><br><span class="line">    a++;</span><br><span class="line">    alert(a);</span><br><span class="line">&#125;</span><br><span class="line">    aaa();<span class="comment">//2</span></span><br><span class="line">    aaa();<span class="comment">//2</span></span><br></pre></td></tr></table></figure>
+
+<p> (3) 不仅将全局变量a变成局部变量，还可以实现累加(采用闭包)：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">aaa</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> a=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    a++;</span><br><span class="line">    alert(a);&#125;&#125;</span><br><span class="line">    <span class="keyword">var</span> b=aaa();</span><br><span class="line">    b();<span class="comment">//2</span></span><br><span class="line">    b();<span class="comment">//3</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>私有成员的存在</strong></p>
+</li>
+</ol>
+<h2 id="使用闭包的注意事项"><a href="#使用闭包的注意事项" class="headerlink" title="使用闭包的注意事项"></a>使用闭包的注意事项</h2><h3 id="内存泄露"><a href="#内存泄露" class="headerlink" title="内存泄露"></a>内存泄露</h3><p>由于闭包会携带私有成员的存在包含它的函数的作用域，因此会比其他函数占用更多的内存。过度使用闭包可能会导致内存占用过多。所以不能滥用闭包，否则会造成网页的性能问题，在IE中可能导致内存泄露。<br>解决方法是，在退出函数之前，将不使用的局部变量全部删除。</p>
+<h3 id="闭包和变量"><a href="#闭包和变量" class="headerlink" title="闭包和变量"></a>闭包和变量</h3><p>闭包只能取得包含函数中的任何变量的最后一个值。闭包保存的是整个变量对象，而不是某个特殊的变量。看下面的例子：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> result=[];</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">aa</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i= <span class="number">0</span>;i&lt;<span class="number">3</span>;i=i+<span class="number">1</span>)&#123;</span><br><span class="line">        result[i]=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            alert(i)</span><br><span class="line">        &#125;   &#125;   &#125;;</span><br><span class="line">aa();</span><br><span class="line">result[<span class="number">0</span>](); <span class="comment">// 3</span></span><br><span class="line">result[<span class="number">1</span>](); <span class="comment">// 3</span></span><br><span class="line">result[<span class="number">2</span>](); <span class="comment">// 3</span></span><br></pre></td></tr></table></figure>
+
+<p>这段代码中,表面上看，aa函数中的变量i被内部循环的函数使用,并且能分别获得他们的索引值,而实际上,只能获得该变量最后保留的值。因为闭包中所记录的自由变量,只是对这个变量的一个引用,而非变量的值,当这个变量被改变了,闭包里获取到的变量值,也会被改变。<br>解决的方法：是让内部函数在循环创建的时候立即执行,并且捕捉当前的索引值,然后记录在自己的一个本地变量里.再利用返回函数的方法,重写内部函数,让下一次调用的时候,返回本地变量的值,改进后的代码:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> result=[];</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">aa</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">for</span> ( <span class="keyword">var</span> i= <span class="number">0</span>;i&lt;<span class="number">3</span>;i=i+<span class="number">1</span>)&#123;</span><br><span class="line">        result[i]=(<span class="function"><span class="keyword">function</span>(<span class="params">j</span>)</span>&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">                alert(j);</span><br><span class="line">            &#125;;</span><br><span class="line">        &#125;)(i);</span><br><span class="line">    &#125;   &#125;;</span><br><span class="line">aa();</span><br><span class="line">result[<span class="number">0</span>](); <span class="comment">// 0</span></span><br><span class="line">result[<span class="number">1</span>](); <span class="comment">// 1</span></span><br><span class="line">result[<span class="number">2</span>](); <span class="comment">// 2</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="关于this对象"><a href="#关于this对象" class="headerlink" title="关于this对象"></a>关于this对象</h3><p>我们都知道，this对象是在运行时基于函数的执行环境绑定的，在全局函数中，this等于window。而当函数被作为某个对象的方法调用时，this等于那个对象。不过，在匿名函数中，其执行环境具有全局性，因此其this对象通常指的是window。下面看下一个例子：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> name = “The <span class="built_in">window</span>”;</span><br><span class="line"><span class="keyword">var</span> object = &#123;</span><br><span class="line">    name: “My <span class="built_in">Object</span>”,</span><br><span class="line">    getNameFunc: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">this</span>.name;</span><br><span class="line">        &#125;  &#125;      &#125;</span><br><span class="line"><span class="built_in">console</span>.log(object.getNameFunc()()); <span class="comment">//The window</span></span><br></pre></td></tr></table></figure>
+
+<p>以上代码先创建了一个全局变量name，又创建了一个包含name属性的对象，这个对象还包含一个getNameFunc()方法，它返回一个匿名函数，而匿名函数又返回this.name。因此调用object.getNameFunc()()会立即调用它返回的函数，结果就是返回一个字符串，这个字符中就是全局name的值，即“The window”。如果想访问匿名函数外部作用域的this对象，可以做如下的改进：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> name = “The <span class="built_in">window</span>”;</span><br><span class="line"><span class="keyword">var</span> object = &#123;</span><br><span class="line">    name: “My <span class="built_in">Object</span>”,</span><br><span class="line">    getNameFunc: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> that= <span class="keyword">this</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> that.name;</span><br><span class="line">        &#125;    &#125;  &#125;</span><br><span class="line"><span class="built_in">console</span>.log(object.getNameFunc()()); <span class="comment">//My Object</span></span><br></pre></td></tr></table></figure>
+
+<p>上述改进后的代码，在定义匿名函数之前，把this对象赋值给了一个名叫that的变量，而定义了闭包之后，闭包也可以访问这个变量，因为他是在包含函数中特意声明的一个变量，即使在函数返回后，that依旧引用着object，所以调用object.getNameFunc()()就返回了“My Object”。</p>
+<h2 id="闭包的用途"><a href="#闭包的用途" class="headerlink" title="闭包的用途"></a>闭包的用途</h2><h3 id="匿名自执行函数"><a href="#匿名自执行函数" class="headerlink" title="匿名自执行函数"></a>匿名自执行函数</h3><p>函数内部声明变量的时候，如果不加上var关键字，就会默认声明一个全局变量，这样的临时变量加入全局对象有很多坏处，可能造成全局对象过于庞大，影响访问速度等等。除了每次使用变量都是用var关键字外，也遇到这样一种情况，就是有的函数只需要执行一次，其内部变量无需维护，这个时候就可以使用闭包。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> data= &#123;    </span><br><span class="line">    table : [],    </span><br><span class="line">    tree : &#123;&#125;    </span><br><span class="line">&#125;;      </span><br><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params">dm</span>)</span>&#123;    </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; dm.table.rows; i++)&#123;    </span><br><span class="line">       <span class="keyword">var</span> row = dm.table.rows[i];    </span><br><span class="line">       <span class="keyword">for</span>(<span class="keyword">var</span> j = <span class="number">0</span>; j &lt; row.cells; i++)&#123;    </span><br><span class="line">           drawCell(i, j);    </span><br><span class="line">       &#125;    </span><br><span class="line">    &#125;         </span><br><span class="line">&#125;)(data);</span><br></pre></td></tr></table></figure>
+
+<p>我们创建了一个匿名的函数，并立即执行它，由于外部无法引用它内部的变量，因此在执行完后很快就会被释放，这种机制不会污染全局对象。</p>
+<h3 id="结果缓存"><a href="#结果缓存" class="headerlink" title="结果缓存"></a>结果缓存</h3><p>在开发过程中，设想我们有一个处理过程很耗时的函数对象，每次调用都会花费很长时间，那么我们就需要将计算出来的值存储起来，当调用这个函数的时候，首先在缓存中查找，如果找不到，则进行计算，然后更新缓存并返回值，如果找到了，直接返回查找到的值即可。闭包正是可以做到这一点，因为它不会释放外部的引用，从而函数内部的值可以得以保留。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> CachedSearchBox = (<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;    </span><br><span class="line">    <span class="keyword">var</span> cache = &#123;&#125;,    </span><br><span class="line">       count = [];    </span><br><span class="line">    <span class="keyword">return</span> &#123;    </span><br><span class="line">       attachSearchBox : <span class="function"><span class="keyword">function</span>(<span class="params">dsid</span>)</span>&#123;    </span><br><span class="line">           <span class="keyword">if</span>(dsid <span class="keyword">in</span> cache)&#123;<span class="comment">//如果结果在缓存中    </span></span><br><span class="line">              <span class="keyword">return</span> cache[dsid];<span class="comment">//直接返回缓存中的对象    </span></span><br><span class="line">           &#125;    </span><br><span class="line">           <span class="keyword">var</span> fsb = <span class="keyword">new</span> uikit.webctrl.SearchBox(dsid);<span class="comment">//新建    </span></span><br><span class="line">           cache[dsid] = fsb;<span class="comment">//更新缓存    </span></span><br><span class="line">           <span class="keyword">if</span>(count.length &gt; <span class="number">100</span>)&#123;<span class="comment">//保正缓存的大小&lt;=100    </span></span><br><span class="line">              <span class="keyword">delete</span> cache[count.shift()];    </span><br><span class="line">           &#125;    </span><br><span class="line">           <span class="keyword">return</span> fsb;          </span><br><span class="line">       &#125;,    </span><br><span class="line">       clearSearchBox : <span class="function"><span class="keyword">function</span>(<span class="params">dsid</span>)</span>&#123;    </span><br><span class="line">           <span class="keyword">if</span>(dsid <span class="keyword">in</span> cache)&#123;    </span><br><span class="line">              cache[dsid].clearSelection();      </span><br><span class="line">           &#125;     &#125;     &#125;;    </span><br><span class="line">&#125;)();      </span><br><span class="line">CachedSearchBox.attachSearchBox(<span class="string">"input1"</span>);</span><br></pre></td></tr></table></figure>
+
+<p>当我们第二次调用CachedSearchBox.attachSerachBox(“input1”)的时候，我们就可以从缓存中读取到该对象，而不用再去创建一个新的searchbox对象。</p>
+<h3 id="封装"><a href="#封装" class="headerlink" title="封装"></a>封装</h3><p>来看下面的一个例子，在person之外的地方无法访问其内部的变量，但是可以通过提供闭包的形式来访问。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> person = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;    </span><br><span class="line">    <span class="comment">//变量作用域为函数内部，外部无法访问    </span></span><br><span class="line">    <span class="keyword">var</span> name = <span class="string">"default"</span>;       </span><br><span class="line">       </span><br><span class="line">    <span class="keyword">return</span> &#123;    </span><br><span class="line">       getName : <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;    </span><br><span class="line">           <span class="keyword">return</span> name;    </span><br><span class="line">       &#125;,    </span><br><span class="line">       setName : <span class="function"><span class="keyword">function</span>(<span class="params">newName</span>)</span>&#123;    </span><br><span class="line">           name = newName;    </span><br><span class="line">       &#125;    </span><br><span class="line">    &#125;    </span><br><span class="line">&#125;();    </span><br><span class="line">print(person.name);<span class="comment">//直接访问，结果为undefined    </span></span><br><span class="line">print(person.getName());    <span class="comment">//default  </span></span><br><span class="line">person.setName(<span class="string">"abruzzi"</span>);    </span><br><span class="line">print(person.getName());  <span class="comment">//abruzzi</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="实现类和继承"><a href="#实现类和继承" class="headerlink" title="实现类和继承"></a>实现类和继承</h3><p>闭包的一个重要用途是实现面向对象中的对象，传统的对象语言都提供类的模板机制，这样不同的对象(类的实例)拥有独立的成员及状态，互不干涉。虽然JavaScript中没有类这样的机制，但是通过使用闭包，我们可以模拟出这样的机制。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>)</span>&#123;    </span><br><span class="line">    <span class="keyword">var</span> name = <span class="string">"default"</span>;       </span><br><span class="line">    <span class="keyword">return</span> &#123;    </span><br><span class="line">       getName : <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;    </span><br><span class="line">           <span class="keyword">return</span> name;    </span><br><span class="line">       &#125;,    </span><br><span class="line">       setName : <span class="function"><span class="keyword">function</span>(<span class="params">newName</span>)</span>&#123;    </span><br><span class="line">           name = newName;    </span><br><span class="line">       &#125;    </span><br><span class="line">    &#125;    </span><br><span class="line">&#125;;    </span><br><span class="line">     </span><br><span class="line"><span class="keyword">var</span> john = Person();    </span><br><span class="line">print(john.getName());    <span class="comment">//default</span></span><br><span class="line">john.setName(<span class="string">"john"</span>);    </span><br><span class="line">print(john.getName());    <span class="comment">//john</span></span><br><span class="line">     </span><br><span class="line"><span class="keyword">var</span> jack = Person();    </span><br><span class="line">print(jack.getName());    <span class="comment">//default</span></span><br><span class="line">jack.setName(<span class="string">"jack"</span>);    </span><br><span class="line">print(jack.getName());    <span class="comment">//jack</span></span><br></pre></td></tr></table></figure>
+
+<p>上述的代码，定义了Person，它就像一个类，可以通过new一个Person对象，来访问它的方法。john和jack都可以称为是Person这个类的实例，它们继承了Person，并添加自己的方法，并且这两个实例对name这个成员的访问是独立的，互不影响的。</p>
+
+          
         
       
     </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
 
+    
 
     <footer class="post-footer">
       
@@ -368,6 +405,10 @@
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -380,16 +421,20 @@
   
   
 
-  <article class="post post-type-normal " itemscope="" itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/08/07/JS之事件/">
 
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="chen-xt">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/head.jpg">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="陈小婷的博客">
     </span>
 
@@ -399,20 +444,22 @@
         
         
           <h1 class="post-title" itemprop="name headline">
-            
-            
-              
                 
-                <a class="post-title-link" href="/2016/08/07/JS之事件/" itemprop="url">
-                  JS之事件
-                </a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/2016/08/07/JS之事件/" itemprop="url">JS之事件</a></h1>
         
 
         <div class="post-meta">
           <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-08-07T10:30:18+08:00">
+                2016-08-07
+              </time>
             
 
             
@@ -420,6 +467,28 @@
             
           </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">javascript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -439,7 +508,9 @@
       </header>
     
 
-
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -448,29 +519,75 @@
       
         
           
-          事件什么是事件呢？用户在某些内容上的点击、鼠标经过某个特定元素或按下键盘上的某些按键等等这些都算是事件。所以说白点，事件就是文档或浏览器窗口中发生的一些特定的交互瞬间。
-事件流事件流是从页面中接收事件的顺序。主要有IE提出的事件冒泡流和Netscape开发团队提出的事件捕获流。
-事件冒泡事件冒泡，即
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2016/08/07/JS之事件/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+            <h2 id="事件"><a href="#事件" class="headerlink" title="事件"></a>事件</h2><p>什么是事件呢？用户在某些内容上的点击、鼠标经过某个特定元素或按下键盘上的某些按键等等这些都算是事件。所以说白点，事件就是文档或浏览器窗口中发生的一些特定的交互瞬间。</p>
+<h2 id="事件流"><a href="#事件流" class="headerlink" title="事件流"></a>事件流</h2><p>事件流是从页面中接收事件的顺序。主要有IE提出的事件冒泡流和Netscape开发团队提出的事件捕获流。</p>
+<h3 id="事件冒泡"><a href="#事件冒泡" class="headerlink" title="事件冒泡"></a>事件冒泡</h3><p>事件冒泡，即事件开始时由最具体的元素接收，然后逐级向上传播到较为不具体的节点(文档)。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">title</span>&gt;</span>事件冒泡<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">”div1”</span>&gt;</span>传播顺序为：<span class="tag">&lt;<span class="name">div</span>&gt;</span>,<span class="tag">&lt;<span class="name">body</span>&gt;</span>,<span class="tag">&lt;<span class="name">html</span>&gt;</span>,document <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>如上的例子，click事件首先在div元素(我们单击的元素)上发生，然后，click事件沿DOM树向上传播，在每一级节点都会发生，直至传播到document对象。</p>
+<h3 id="事件捕获"><a href="#事件捕获" class="headerlink" title="事件捕获"></a>事件捕获</h3><p>事件捕获，即不太具体的节点应该更早接收到事件，而最具体的节点应该最后接收到事件。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">title</span>&gt;</span>事件冒泡<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">”div1”</span>&gt;</span>传播顺序为：document,<span class="tag">&lt;<span class="name">html</span>&gt;</span>,<span class="tag">&lt;<span class="name">body</span>&gt;</span>,<span class="tag">&lt;<span class="name">div</span>&gt;</span> <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>如上的例子，document对象首先接收到clcik事件，然后事件沿DOM树依次向下，一直传播到事件的实际目标，即div元素。</p>
+<h3 id="DOM事件流"><a href="#DOM事件流" class="headerlink" title="DOM事件流"></a>DOM事件流</h3><p>DOM事件流包括三阶段：事件捕获阶段，处于目标阶段和事件冒泡阶段。首先发生的是事件捕获，为截获事件提供了机会；然后是实际的目标接收到事件；最后一个阶段是冒泡阶段，可以在这个阶段对事件做出响应。</p>
+<h2 id="事件处理程序"><a href="#事件处理程序" class="headerlink" title="事件处理程序"></a>事件处理程序</h2><p>产生了事件，我们就要去处理他，因此需要事件处理程序，即响应某个事件的函数。主要有以下几种方式：</p>
+<h3 id="HTML事件处理程序"><a href="#HTML事件处理程序" class="headerlink" title="HTML事件处理程序"></a>HTML事件处理程序</h3><p>HTML事件处理程序：直接在HTML代码中添加事件处理程序。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span></span><br><span class="line"><span class="javascript">        <span class="function"><span class="keyword">function</span> <span class="title">showMessage</span>(<span class="params"></span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">            alert(<span class="string">"Hello world!"</span>);</span></span><br><span class="line">        &#125;</span><br><span class="line"> <span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">value</span>=<span class="string">"Click Me"</span> <span class="attr">onclick</span>=<span class="string">"showMessage()"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>从上面的代码中，我们可以看出，事件处理是直接嵌套在元素里头的，这样有一个缺点就是html和js代码紧密耦合，如果要更换事件处理程序，不但要修改js，还需要修改html。一两处修改尚可接受，当你的代码达到万行级别时，修改起来就将会是件工程量浩大的事情了。因此并不推荐使用。</p>
+<h3 id="DOM0级事件处理程序"><a href="#DOM0级事件处理程序" class="headerlink" title="DOM0级事件处理程序"></a>DOM0级事件处理程序</h3><p>DOM0级事件处理程序：为指定对象添加事件处理。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> btn = <span class="built_in">document</span>.getElementById(<span class="string">"myBtn"</span>);</span><br><span class="line"> btn.onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            alert(<span class="keyword">this</span>.id);</span><br><span class="line">        &#125;;</span><br></pre></td></tr></table></figure>
+
+<p>从上面的代码中，我们能看出，相对于HTML事件处理程序，DOM0级事件处理程序中html代码和js代码的耦合性已经大大降低。</p>
+<h3 id="DOM2级事件处理程序"><a href="#DOM2级事件处理程序" class="headerlink" title="DOM2级事件处理程序"></a>DOM2级事件处理程序</h3><p>DOM2级事件处理程序：也是对特定的对象添加事件处理程序。定义了两个方法addEventListener()和removeEventListener()，用于处理指定和删除事件处理程序的操作。它们都接收三个参数：要处理的事件名、作为事件处理程序的函数和一个布尔值（是否在捕获阶段处理事件）。</p>
+<ol>
+<li>addEventListener()方法：添加事件处理程序。使用该方法的一个好处就是可以添加多个事件处理程序。<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> btn = <span class="built_in">document</span>.getElementById(<span class="string">"myBtn"</span>);</span><br><span class="line">  btn.addEventListener(<span class="string">"click"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            alert(<span class="keyword">this</span>.id);</span><br><span class="line">        &#125;, <span class="literal">false</span>); <span class="comment">//false，表示在冒泡阶段调用事件处理程序</span></span><br><span class="line"> btn.addEventListener(<span class="string">"click"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            alert(<span class="string">"Hello world!"</span>);</span><br><span class="line">        &#125;, <span class="literal">false</span>);</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p>上面的代码为一个按钮添加了两个事件处理程序，这两个事件处理程序会按照添加它们的<strong>顺序触发</strong>，因此首先会显示元素的ID，其次会显示“Hello world!”消息。</p>
+<ol start="2">
+<li>removeEventListener()方法：删除通过addEventListener()方法添加的事件处理程序，删除时传入的参数必须与添加处理程序时使用的参数相同，也就是说，无法删除匿名函数。我们来看一个例子：<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> btn = <span class="built_in">document</span>.getElementById(<span class="string">"myBtn"</span>);</span><br><span class="line">  btn.addEventListener(<span class="string">"click"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            alert(<span class="keyword">this</span>.id);</span><br><span class="line">        &#125;, <span class="literal">false</span>); </span><br><span class="line">btn.removeEventListener(<span class="string">"click"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            alert(<span class="keyword">this</span>.id);</span><br><span class="line">        &#125;, <span class="literal">false</span>);  <span class="comment">//无法删除</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p>上面的代码，我们使用addEventListener()添加了一个事件处理程序，虽然调用removeEventListener()时看似使用了相同的参数，但实际上，第二个参数与传入addEventListener()中那个是完全不同的函数，所以没办法删除。那么应该如何进行改进，才能使removeEventListener()发挥其真正的作用呢？</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> btn = <span class="built_in">document</span>.getElementById(<span class="string">"myBtn"</span>);</span><br><span class="line">        <span class="keyword">var</span> handler = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            alert(<span class="keyword">this</span>.id);</span><br><span class="line">        &#125;;</span><br><span class="line">        btn.addEventListener(<span class="string">"click"</span>, handler, <span class="literal">false</span>); </span><br><span class="line">        </span><br><span class="line">        <span class="keyword">var</span> removeBtn = <span class="built_in">document</span>.getElementById(<span class="string">"myRemoveBtn"</span>);</span><br><span class="line">        removeBtn.onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            btn.removeEventListener(<span class="string">"click"</span>, handler, <span class="literal">false</span>);  <span class="comment">//成功删除        </span></span><br><span class="line">        &#125;;</span><br></pre></td></tr></table></figure>
+
+<p>上述重写后的例子，在addEventListener()和removeEventListener()中使用了相同的函数，因此，成功地删除所添加的事件处理程序。</p>
+<h3 id="IE事件处理程序"><a href="#IE事件处理程序" class="headerlink" title="IE事件处理程序"></a>IE事件处理程序</h3><p>IE实现了与DOM类似的两个方法：attachEvent()和detachEvent()方法，它们都接受两个参数，事件处理程序名称与事件处理程序函数。</p>
+<ol>
+<li>attachEvent()方法：添加事件处理程序。<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> btn = <span class="built_in">document</span>.getElementById(<span class="string">"myBtn"</span>);</span><br><span class="line">btn.attachEvent(<span class="string">"onclick"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            alert(<span class="string">"Clicked"</span>);</span><br><span class="line">        &#125;);</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p>上述例子，使用attachEvent()方法添加了一个事件处理程序，需要注意的一点是，attachEvent()第一个参数是“onclick”，而addEventListener()方法中是“click”。同样的，attachEvent()方法也可以用来添加多个事件处理程序，只是触发顺序是<strong>逆序</strong>的，与addEventListener()多事件处理程序的触发顺序相反。</p>
+<ol start="2">
+<li>detachEvent()方法：删除通过attachEvent()方法添加的事件处理程序，条件是必须提供相同的参数，同样的，detachEvent()方法无法删除匿名函数。<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> btn = <span class="built_in">document</span>.getElementById(<span class="string">"myBtn"</span>);</span><br><span class="line"> <span class="keyword">var</span> handler = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            alert(<span class="string">"Clicked"</span>);</span><br><span class="line">        &#125;;</span><br><span class="line">  btn.attachEvent(<span class="string">"onclick"</span>, handler);     </span><br><span class="line"> <span class="keyword">var</span> removeBtn = <span class="built_in">document</span>.getElementById(<span class="string">"myRemoveBtn"</span>);</span><br><span class="line">  removeBtn.onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    btn.detachEvent(<span class="string">"onclick"</span>, handler); </span><br><span class="line">        &#125;;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p>上述例子，首先利用attachEvent()方法成功添加一个事件处理程序，然后利用detachEvent()删除所添加的事件处理程序。</p>
+<h3 id="跨浏览器的事件处理程序"><a href="#跨浏览器的事件处理程序" class="headerlink" title="跨浏览器的事件处理程序"></a>跨浏览器的事件处理程序</h3><p>综合前面所提到的几种事件处理程序方法，我们封装一个EventUtil对象，实现跨浏览器处理事件。如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> EventUtil = &#123;</span><br><span class="line">    addHandler: <span class="function"><span class="keyword">function</span>(<span class="params">element, type, handler</span>)</span>&#123;  <span class="comment">//添加事件</span></span><br><span class="line">        <span class="keyword">if</span> (element.addEventListener)&#123;</span><br><span class="line">            element.addEventListener(type, handler, <span class="literal">false</span>);</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (element.attachEvent)&#123;</span><br><span class="line">            element.attachEvent(<span class="string">"on"</span> + type, handler);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            element[<span class="string">"on"</span> + type] = handler;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"> removeHandler: <span class="function"><span class="keyword">function</span>(<span class="params">element, type, handler</span>)</span>&#123;  <span class="comment">//删除事件</span></span><br><span class="line">        <span class="keyword">if</span> (element.removeEventListener)&#123;</span><br><span class="line">            element.removeEventListener(type, handler, <span class="literal">false</span>);</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (element.detachEvent)&#123;</span><br><span class="line">            element.detachEvent(<span class="string">"on"</span> + type, handler);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            element[<span class="string">"on"</span> + type] = <span class="literal">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>上述两个方法首先都会检测传入的元素中是否存在DOM2级方法。如果存在DOM2级方法，则使用该方法，传入三个参数；如果存在的是IE的方法，则采取第二种方案。如果前面两者都不存在的话，那就是采取最后一张方案，使用DOM0级方法。<br>对EventUtil对象进行使用：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">EventUtil.addHandler(btn, <span class="string">"click"</span>, handler); </span><br><span class="line">EventUtil.removeHandler(btn, <span class="string">"click"</span>, handler);</span><br></pre></td></tr></table></figure>
+
+
+          
         
       
     </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
 
+    
 
     <footer class="post-footer">
       
@@ -484,6 +601,10 @@
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -496,16 +617,20 @@
   
   
 
-  <article class="post post-type-normal " itemscope="" itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/08/04/使用document-write输出覆盖HTML文档问题/">
 
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="chen-xt">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/head.jpg">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="陈小婷的博客">
     </span>
 
@@ -515,20 +640,22 @@
         
         
           <h1 class="post-title" itemprop="name headline">
-            
-            
-              
                 
-                <a class="post-title-link" href="/2016/08/04/使用document-write输出覆盖HTML文档问题/" itemprop="url">
-                  使用document.write输出覆盖HTML文档问题
-                </a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/2016/08/04/使用document-write输出覆盖HTML文档问题/" itemprop="url">使用document.write输出覆盖HTML文档问题</a></h1>
         
 
         <div class="post-meta">
           <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-08-04T23:16:23+08:00">
+                2016-08-04
+              </time>
             
 
             
@@ -536,6 +663,28 @@
             
           </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">javascript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -555,7 +704,9 @@
       </header>
     
 
-
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -564,28 +715,27 @@
       
         
           
-          今天在W3C学习时，看到一行提示：“您只能在 HTML 输出中使用 document.write。如果您在文档加载后使用该方法，会覆盖整个文档。”感到很困惑，什么是文档加载后？为什么会覆盖整个文档？为此上网去查找了些资料。下面做下总结。
-什么情况是文档加载后？HTML文档加载，是自上而下的加载HTM
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2016/08/04/使用document-write输出覆盖HTML文档问题/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+            <p>今天在W3C学习时，看到一行提示：“您只能在 HTML 输出中使用 document.write。如果您在文档加载后使用该方法，会覆盖整个文档。”感到很困惑，什么是文档加载后？为什么会覆盖整个文档？为此上网去查找了些资料。下面做下总结。</p>
+<h3 id="什么情况是文档加载后？"><a href="#什么情况是文档加载后？" class="headerlink" title="什么情况是文档加载后？"></a>什么情况是文档加载后？</h3><p>HTML文档加载，是自上而下的加载HTML表示的内容，当整个页面内容都加载完毕之后，再调用document.write()这方法会导致文档上所有内容被清空，只留下 document.write 中的内容。如下代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">&lt;button onclick=&quot;after()&quot;&gt;点击这里&lt;/button&gt; </span><br><span class="line">   &lt;script type=&quot;text/javascript&quot;&gt;</span><br><span class="line">    document.write(&quot;hello&quot;);</span><br><span class="line">    function after()</span><br><span class="line">    &#123;</span><br><span class="line">     document.write(&quot;点击按钮后，会清除所有 &quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    &lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure>
+
+<p>文档加载完成后，页面显示“hello”，当点击按钮后会清除并覆盖当前内容，显示“点击按钮后，会清除所有”。</p>
+<h3 id="为什么将该方法嵌套在函数中，就相当于文档加载后？"><a href="#为什么将该方法嵌套在函数中，就相当于文档加载后？" class="headerlink" title="为什么将该方法嵌套在函数中，就相当于文档加载后？"></a>为什么将该方法嵌套在函数中，就相当于文档加载后？</h3><p>代码都是写在body标签中的，不是应该在加载时就执行了所有的内容，包括函数中的内容吗？其实不是这样的，如果将document.write直接写在script标签中，那么文档加载完成前会运行该代码；但是如果把document.write嵌套在函数中，则在文档加载完成前，只会声明该函数，而不会执行函数内的代码，具体函数内代码的执行，是等到文档加载完成后的。</p>
+<h3 id="为什么文档加载后使用该方法，会覆盖整个文档？"><a href="#为什么文档加载后使用该方法，会覆盖整个文档？" class="headerlink" title="为什么文档加载后使用该方法，会覆盖整个文档？"></a>为什么文档加载后使用该方法，会覆盖整个文档？</h3><p>文档加载时，相当于打开一个document对象，此时如果遇到document.wirte，就会把内容加入到document中。但是当文档加载完成后，document对象就会被关闭，此时若再使用该方法，相当于重新打开一个document对象，这次打开，就会覆盖上一次打开所写的内容，对document对象进行重写。</p>
+
+          
         
       
     </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
 
+    
 
     <footer class="post-footer">
       
@@ -599,6 +749,10 @@
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -611,16 +765,20 @@
   
   
 
-  <article class="post post-type-normal " itemscope="" itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/08/01/JS之绑定事件/">
 
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="chen-xt">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/head.jpg">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="陈小婷的博客">
     </span>
 
@@ -630,20 +788,22 @@
         
         
           <h1 class="post-title" itemprop="name headline">
-            
-            
-              
                 
-                <a class="post-title-link" href="/2016/08/01/JS之绑定事件/" itemprop="url">
-                  JS之绑定事件
-                </a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/2016/08/01/JS之绑定事件/" itemprop="url">JS之绑定事件</a></h1>
         
 
         <div class="post-meta">
           <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-08-01T21:45:30+08:00">
+                2016-08-01
+              </time>
             
 
             
@@ -651,6 +811,28 @@
             
           </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">javascript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -670,7 +852,9 @@
       </header>
     
 
-
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -679,27 +863,43 @@
       
         
           
-          当我们给一个元素绑定一个方法后，再绑定一个方法时，第一个方法往往会被覆盖掉。如下例子，结果只会执行第二个方法，也就是说只弹出“b”。123456window.onload=function()&#123;    alert('a');&#125;window.onload=function()&#1
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2016/08/01/JS之绑定事件/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+            <p>当我们给一个元素绑定一个方法后，再绑定一个方法时，第一个方法往往会被覆盖掉。如下例子，结果只会执行第二个方法，也就是说只弹出“b”。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.onload=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    alert(<span class="string">'a'</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">window</span>.onload=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    alert(<span class="string">'b'</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>因此为了保证两个及以上的方法能够正常执行，可以对元素进行事件绑定。<br>绑定事件有两个函数，attachEvent()和addEventListener()。</p>
+<ol>
+<li><p>attachEvent(事件名称, 函数)，IE浏览器兼容，这个函数的执行顺序是相反的，即先绑定的方法后面执行。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">oBtn.attachEvent(<span class="string">'onclick'</span>,bb);</span><br><span class="line">oBtn.attachEvent(<span class="string">'onclick'</span>,aa);<span class="comment">//先执行方法aa,再执行方法bb</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>addEventListener(事件名称,函数, 捕获)，ff和chrome浏览器兼容，这个函数的执行顺序是按正常的顺序执行的，即先绑定的方法先执行。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">oBtn.addEventListener(<span class="string">'click'</span>,aa,<span class="literal">false</span>);</span><br><span class="line">oBtn.addEventListener(<span class="string">'click'</span>,bb,<span class="literal">false</span>);<span class="comment">//先执行方法aa,再执行方法bb</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p>为了解决浏览器兼容性问题，使用if-else语句来处理兼容性，使其兼容所有的浏览器。这里要注意一点，attachEvent()的事件名称要比addEventListener()的事件名称前面多了个‘on’。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">if</span>(oBtn.attachEvent)<span class="comment">//IE</span></span><br><span class="line"> &#123;</span><br><span class="line">     oBtn.attachEvent(<span class="string">'onclick'</span>,bb);</span><br><span class="line">     oBtn.attachEvent(<span class="string">'onclick'</span>,aa);</span><br><span class="line"> &#125;</span><br><span class="line"><span class="keyword">else</span><span class="comment">//ff、chrome</span></span><br><span class="line"> &#123;</span><br><span class="line">     oBtn.addEventListener(<span class="string">'click'</span>,aa,<span class="literal">false</span>);</span><br><span class="line">     oBtn.addEventListener(<span class="string">'click'</span>,bb,<span class="literal">false</span>);</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+
+<p>到此一个事件绑定就完成了，但是为了使代码更加简洁明了，且方便调用，可以将此解决兼容性的if-else语句封装成一个函数。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">myAddEvent</span>(<span class="params">obj,sEvent,fn</span>)</span></span><br><span class="line"><span class="function">        </span>&#123;</span><br><span class="line">            <span class="keyword">if</span>(obj.attachEvent)</span><br><span class="line">            &#123;</span><br><span class="line">                obj.attachEvent(<span class="string">'on'</span>+sEvent,fn);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123;</span><br><span class="line">                obj.addEventListener(sEvent,fn,<span class="literal">false</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+
+<p>之后就可以根据需要调用该封装函数了。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">myAddEvent(oBtn,<span class="string">'click'</span>,aa)</span><br><span class="line">myAddEvent(oBtn,<span class="string">'click'</span>,bb);</span><br></pre></td></tr></table></figure>
+
+<p>既然可以对元素进行事件绑定，当然也可以解除绑定。解除绑定同样有两个函数detachEvent(事件名称, 函数)和removeEventListener(事件名称, 函数, 捕获)，分别对应attachEvent()和addEventListener()的解绑。由于二者的用法同attachEvent()和addEventListener()的用法类似，所以这里就不再进行详细的说明了。</p>
+
+          
         
       
     </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
 
+    
 
     <footer class="post-footer">
       
@@ -713,6 +913,10 @@
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -725,16 +929,20 @@
   
   
 
-  <article class="post post-type-normal " itemscope="" itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/07/30/初识正则表达式/">
 
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="chen-xt">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/head.jpg">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="陈小婷的博客">
     </span>
 
@@ -744,20 +952,22 @@
         
         
           <h1 class="post-title" itemprop="name headline">
-            
-            
-              
                 
-                <a class="post-title-link" href="/2016/07/30/初识正则表达式/" itemprop="url">
-                  初识正则表达式
-                </a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/2016/07/30/初识正则表达式/" itemprop="url">初识正则表达式</a></h1>
         
 
         <div class="post-meta">
           <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-07-30T20:22:08+08:00">
+                2016-07-30
+              </time>
             
 
             
@@ -765,6 +975,28 @@
             
           </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">javascript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -784,7 +1016,9 @@
       </header>
     
 
-
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -793,32 +1027,145 @@
       
         
           
-          概念正则表达式(RegExp)是强大的字符串匹配工具，可以极大地简化普通字符串操作容易出问题的东西。正则表达式只能操作字符串，且区分大小写。
-基本语法
-直接量语法: /pattern/attributes
-1var re=/a/i;
+            <h4 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h4><p><em>正则表达式(RegExp)</em>是强大的字符串匹配工具，可以极大地简化普通字符串操作容易出问题的东西。正则表达式只能操作字符串，且区分大小写。</p>
+<h4 id="基本语法"><a href="#基本语法" class="headerlink" title="基本语法"></a>基本语法</h4><ol>
+<li><p>直接量语法: /pattern/attributes</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> re=<span class="regexp">/a/i</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建 RegExp 对象的语法：：new RegExp(pattern, attributes);</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> re=<span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">'A'</span>,<span class="string">'i'</span>);</span><br></pre></td></tr></table></figure>
 
-创建 RegExp 对象的语法：：new RegExp(patt
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2016/07/30/初识正则表达式/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+</li>
+</ol>
+<p>注意：参数 pattern 是一个字符串，指定了正则表达式的模式或其他正则表达式。参数 attributes 是一个可选的字符串，包含属性 “g”、”i” 和 “m”，分别用于指定全局匹配、区分大小写的匹配和多行匹配。</p>
+<h4 id="RegExp对象方法："><a href="#RegExp对象方法：" class="headerlink" title="RegExp对象方法："></a>RegExp对象方法：</h4><ol>
+<li><p>test()方法：检测一个字符串是否匹配某个模式。返回值是 true 或 false。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> patt1=<span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">"e"</span>);</span><br><span class="line"><span class="built_in">document</span>.write(patt1.test(<span class="string">"The best "</span>)); <span class="comment">//该字符串中存在字母 "e"，所以输出是true</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>exec()方法：检索字符串中的正则表达式的匹配。返回值是被找到的值。如果没有发现匹配，则返回 null。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> patt1=<span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">"e"</span>);</span><br><span class="line"><span class="built_in">document</span>.write(patt1.exec(<span class="string">"The best "</span>)); <span class="comment">//该字符串中存在字母 "e"，所以输出是e</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>compile()方法：改变正则表达式的模式。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//在字符串中全局搜索 "man"，并用 "person" 替换。然后通过 compile() 方法，改变正则表达式，用 "person" 替换 "man" 或 "woman"，</span></span><br><span class="line"><span class="keyword">var</span> str=<span class="string">"Every man in the world! Every woman on earth!"</span>;</span><br><span class="line">patt=<span class="regexp">/(wo)?man/g</span>;</span><br><span class="line">patt.compile(patt);</span><br><span class="line">Str2=str.replace(patt,<span class="string">"person"</span>);<span class="comment">//用 "person" 替换 "man" 或 "woman"，：</span></span><br><span class="line"><span class="built_in">document</span>.write(str2);</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h4 id="支持正则表达式的-String-对象的方法"><a href="#支持正则表达式的-String-对象的方法" class="headerlink" title="支持正则表达式的 String 对象的方法"></a>支持正则表达式的 String 对象的方法</h4><ol>
+<li><p>Search()方法：检索与正则表达式相匹配的值。不执行全局匹配，它将忽略标志 g，同时它也没有regexp对象的lastIndex的属性，且总是从字符串开始位置进行查找，总是返回匹配的第一个位置。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str=<span class="string">"hello,world!"</span></span><br><span class="line"><span class="built_in">document</span>.write(str.search(<span class="regexp">/world/</span>)); <span class="comment">//结果返回6，即w所在的位置</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>match()方法：找到一个或多个正则表达式的匹配,返回指定的值，而不是字符串的位置。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str=<span class="string">'abcd 3458 gea2 ef'</span>;</span><br><span class="line"><span class="built_in">document</span>.write(str.match(<span class="regexp">/\d+/g</span>));<span class="comment">//结果为3548,2</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Replace()方法：查找并替换与正则表达式匹配的子串。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str=<span class="string">"good girl"</span></span><br><span class="line"><span class="built_in">document</span>.write(str.replace(<span class="regexp">/girl/</span>, <span class="string">"boy"</span>));<span class="comment">//使用boy替换girl</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Split()方法：把一个字符串分割为字符串数组。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str=<span class="string">"How are you ?"</span></span><br><span class="line"><span class="built_in">document</span>.write(str.split(<span class="string">""</span>) + <span class="string">"&lt;br /&gt;"</span>);<span class="comment">//结果为"H,o,w, ,a,r,e, ,y,o,u, ,?"</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h4 id="元字符"><a href="#元字符" class="headerlink" title="元字符"></a>元字符</h4><p><em>元字符</em>是拥有特殊含义的字符，javascript中常见的元字符如下：</p>
+<ol>
+<li><p>元字符<em>.</em> ：用于匹配任何单个字符(除了换行符以外)。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = “abcde”;</span><br><span class="line"><span class="built_in">document</span>.write(str.match(<span class="regexp">/a.c/</span>)); <span class="comment">// 结果为“abc”</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>\w：查找任意一个字母或数字或下划线。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = “abcde”;<span class="comment">// 匹配单个字符，找到一个直接返回</span></span><br><span class="line"><span class="built_in">document</span>.write(str.match(<span class="regexp">/\w/</span>)); <span class="comment">//结果为“a”</span></span><br><span class="line"><span class="built_in">document</span>.write(str.match(<span class="regexp">/\w+/</span>)); <span class="comment">//结果为“abcde”</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>\W：查找非单词的字符.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = “abcde”;<span class="comment">// 匹配单个字符，没有找到返回null</span></span><br><span class="line"><span class="built_in">document</span>.write(str.match(<span class="regexp">/\W/</span>)); <span class="comment">// 结果为“null”</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>\d：匹配一个数字字符。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = “abcde111”;</span><br><span class="line"><span class="built_in">document</span>.write(<span class="regexp">/\d/g</span>.exec(str)); <span class="comment">//结果为“1”</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>\D：匹配一个非数字字符。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = “abcde111”;</span><br><span class="line"><span class="built_in">document</span>.write(<span class="regexp">/\D+/g</span>.exec(str)); <span class="comment">//结果为“abcde”</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>\s：匹配任何空白字符，包括空格，制表符，换行符等等。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str=”Is <span class="keyword">this</span> all there is?”;</span><br><span class="line"><span class="built_in">document</span>.write(<span class="regexp">/\s/g</span>.exec(str)); <span class="comment">// 结果为“ ”</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>\S：匹配任何非空白字符。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str=”Is <span class="keyword">this</span> all there is?”;</span><br><span class="line"><span class="built_in">document</span>.write(<span class="regexp">/\S+/g</span>.exec(str)); <span class="comment">//结果为“Is”</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>\b：匹配一个单词边界，也就是指单词和空格间的位置。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str=”Is <span class="keyword">this</span> all there is?”;</span><br><span class="line"><span class="built_in">document</span>.write(<span class="regexp">/\bthis\b/g</span>.exec(str)); <span class="comment">//结果为“this”</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>\B：匹配非单词边界。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str=”Is <span class="keyword">this</span> all there is?”;</span><br><span class="line"><span class="built_in">document</span>.write(<span class="regexp">/\Bhi/g</span>.exec(str)); <span class="comment">// 结果为“hi”</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>\n：匹配一个换行符;返回换行符被找到的位置。如果未找到匹配，则返回 -1。 </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str=”Is <span class="keyword">this</span> all \nthere is?”;</span><br><span class="line"><span class="built_in">document</span>.write(<span class="regexp">/\n/g</span>.exec(str));</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h4 id="正则的方括号"><a href="#正则的方括号" class="headerlink" title="正则的方括号"></a>正则的方括号</h4><p>方括号包含一系列字符，能够匹配其中任意一个字符,如[abc]可以匹配abc中任意一个字符，使用[^abc]包含的字符abc，则能够匹配abc字符之外的任何一个字符，只能是一个字符。常见的几种方括号的用法如下：</p>
+<ul>
+<li>[abc]：查找在方括号中的任意一个字符；</li>
+<li>[^abc]: 查找不在方括号中的任意一个字符；</li>
+<li>[0-9]: 查找0-9中的任意一个数字；</li>
+<li>[a-z]: 查找从小写a到z中的任意一个字符。</li>
+</ul>
+<h4 id="量词"><a href="#量词" class="headerlink" title="量词"></a>量词</h4><ol>
+<li><p>n*：匹配零个或者多个n的字符串。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">"hello longen hello"</span>;</span><br><span class="line"><span class="built_in">document</span>.write(str.match(<span class="regexp">/el*/g</span>)); <span class="comment">//结果为"ell"</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>n+：匹配至少包含一个或者多个n的字符串。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">"hello longen"</span>;</span><br><span class="line"><span class="built_in">document</span>.write(str.match(<span class="regexp">/l+/g</span>)); <span class="comment">//结果为"ll"</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>n？：匹配零个或者1个n的字符串，可以匹配n字符串，也可以只匹配一个n；先尽量匹配，如没有匹配到，就回溯，再进行不匹配；</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">"hello longen hello"</span>;</span><br><span class="line"><span class="built_in">document</span>.write(str.match(<span class="regexp">/hu?/g</span>)); <span class="comment">//结果为"h"</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>n{x}：匹配包含x个的n的序列字符串。X必须是数字。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str=<span class="string">"100, 1000 or 10000?"</span>;</span><br><span class="line"><span class="built_in">document</span>.write(str.match(<span class="regexp">/\d&#123;4&#125;/g</span>)); <span class="comment">//结果为["1000", "1000"]</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>n{x,y}：匹配包含至少x个的n字符串，最多y个n字符串。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str=<span class="string">"100, 1000 or 10000?"</span>;</span><br><span class="line"><span class="built_in">document</span>.write(str.match(<span class="regexp">/\d&#123;3,&#125;/g</span>)); <span class="comment">//结果为["100", "1000", "1000"]</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>n{x,}：匹配至少包含x个n序列的字符串；</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str=<span class="string">"100, 1000 or 10000?"</span>;</span><br><span class="line"><span class="built_in">document</span>.write(str.match(<span class="regexp">/d&#123;3,&#125;/g</span>)); <span class="comment">//结果为["100", "1000", "1000"]</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>n$：匹配任何以n结尾的字符串；</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str=<span class="string">"my name is longen"</span>;</span><br><span class="line"><span class="built_in">document</span>.write(str.match(<span class="regexp">/en$/g</span>)); <span class="comment">//结果为["en"]</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>^n：匹配任何以n开头的字符串；</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str=<span class="string">"my name is longen"</span>;</span><br><span class="line"><span class="built_in">document</span>.write(str.match(<span class="regexp">/^my/g</span>)); <span class="comment">//结果为"my"</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>?=n：匹配任何其后紧接指定字符串n的字符串；</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str=<span class="string">"my name is longen"</span>;</span><br><span class="line"><span class="built_in">document</span>.write(str.match(<span class="regexp">/na(?=m)/g</span>)); <span class="comment">//结果为"na"</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>?!n：匹配任何其后不紧接n的字符串 </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str=<span class="string">"my name is longen"</span>;</span><br><span class="line"><span class="built_in">document</span>.write(str.match(<span class="regexp">/na(?!ma)/g</span>)); <span class="comment">//结果为"na"</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>^ 以字符串开始的地方匹配，不匹配任何字符；</p>
+</li>
+<li><p>$ 以字符串结束的地方匹配，不匹配任何字符；</p>
+</li>
+</ol>
+<h4 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h4><p>正则表达式在javascript中的应用挺广泛的，可以说带来很多的方便，这里就列举两个应用：</p>
+<ol>
+<li><p><em>行首行尾去空格</em></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str=<span class="string">' www ee  d;fl  '</span>;</span><br><span class="line"><span class="keyword">var</span> re=<span class="regexp">/^\s+|S+&amp;/</span>;<span class="comment">//行首行尾去空格</span></span><br><span class="line"><span class="built_in">document</span>.write(<span class="string">'('</span>+str.replace(re,<span class="string">''</span>));</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><em>校验邮箱</em></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> re=<span class="regexp">/^\w+@[a-z0-9]+\.[a-z]&#123;2-4&#125;$/</span>;</span><br><span class="line">  <span class="keyword">if</span>(re.test(oTxt.value))</span><br><span class="line">    &#123;  alert(<span class="string">'right'</span>); &#125;</span><br><span class="line"> <span class="keyword">else</span></span><br><span class="line">    &#123;  alert(<span class="string">'wrong'</span>);  &#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+
+          
         
       
     </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
 
+    
 
     <footer class="post-footer">
       
@@ -832,6 +1179,10 @@
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -844,7 +1195,7 @@
   </nav>
 
 
-          
+
           </div>
           
 
@@ -864,70 +1215,71 @@
   </div>
 
   <aside id="sidebar" class="sidebar">
+    
     <div class="sidebar-inner">
 
       
 
       
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
-        <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image" src="/images/head.jpg" alt="chen-xt">
-          <p class="site-author-name" itemprop="name">chen-xt</p>
-           
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">chen-xt</p>
               <p class="site-description motion-element" itemprop="description">一步一步向前走</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">32</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">31</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
           
+
+          
+
+          
+          
+
+          
+          
+
+          
+
         </div>
-        <nav class="site-state motion-element">
-
-          
-            <div class="site-state-item site-state-posts">
-              <a href="/archives">
-                <span class="site-state-item-count">32</span>
-                <span class="site-state-item-name">日志</span>
-              </a>
-            </div>
-          
-
-          
-            
-            
-            <div class="site-state-item site-state-categories">
-              <a href="/categories/index.html">
-                <span class="site-state-item-count">10</span>
-                <span class="site-state-item-name">分类</span>
-              </a>
-            </div>
-          
-
-          
-            
-            
-            <div class="site-state-item site-state-tags">
-              <a href="/tags/index.html">
-                <span class="site-state-item-count">31</span>
-                <span class="site-state-item-name">标签</span>
-              </a>
-            </div>
-          
-
-        </nav>
-
-        
-
-        <div class="links-of-author motion-element">
-          
-        </div>
-
-        
-        
-
-        
-        
-
-        
-
-
       </section>
 
       
@@ -944,19 +1296,36 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">
-  
-  &copy; 
-  <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
-    <i class="fa fa-"></i>
+    <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">chen-xt</span>
+
+  
 </div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
 
 
 
         
+
+
+
+
+
+
 
         
       </div>
@@ -968,7 +1337,9 @@
         
       </div>
     
+
     
+
   </div>
 
   
@@ -992,48 +1363,67 @@
 
 
 
-  
-  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-
-  
-  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-
-  
-  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
 
 
-  
 
 
-  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
 
-  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
 
 
 
   
   
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
 
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
   
 
   
 
+  
 
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
 
 
 
   
-
 
 
   
@@ -1059,21 +1449,31 @@
 
 
 
-  
 
 
 
-  
-  
 
-  
+
+
 
   
 
+
+
+
+
+  
+
   
 
   
 
+  
+  
+
+  
+
+  
 
   
 

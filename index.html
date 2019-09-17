@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 
 
 
@@ -6,15 +6,23 @@
 
 
 <html class="theme-next muse use-motion" lang="zh-Hans">
-<head><meta name="generator" content="Hexo 3.8.0">
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
 
 
 
 <meta http-equiv="Cache-Control" content="no-transform">
 <meta http-equiv="Cache-Control" content="no-siteapp">
+
 
 
 
@@ -37,38 +45,27 @@
 
 
 
-  
-  
-  
-  
-
-  
-    
-    
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-    
-    
-    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-  
-
-
-
 
 
 
 <link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
 
-<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css">
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
 
 
   <meta name="keywords" content="Hexo, NexT">
@@ -76,11 +73,6 @@
 
 
 
-
-
-
-
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1">
 
 
 
@@ -105,9 +97,11 @@
   var CONFIG = {
     root: '/',
     scheme: 'Muse',
-    sidebar: {"position":"left","display":"post"},
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
-    motion: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     duoshuo: {
       userId: '0',
       author: '博主'
@@ -116,8 +110,8 @@
       applicationID: '',
       apiKey: '',
       indexName: '',
-      hits: "",
-      labels: ""
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
     }
   };
 </script>
@@ -130,11 +124,7 @@
 
 
 
-  <title> 陈小婷的博客 </title>
-</head>
-
-<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
-
+  <title>陈小婷的博客</title>
   
 
 
@@ -144,29 +134,20 @@
 
 
 
+</head>
 
-
-
-  <div style="display: none;">
-    <script src="//s95.cnzz.com/z_stat.php?id=1259971316&web_id=1259971316" language="JavaScript"></script>
-  </div>
-
-
-
-
-
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
   
   
     
   
 
-  <div class="container one-collumn sidebar-position-left 
-   page-home 
- ">
+  <div class="container sidebar-position-left 
+  page-home">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
   <div class="site-meta ">
     
@@ -209,32 +190,12 @@
         </li>
       
         
-        <li class="menu-item menu-item-categories">
-          <a href="/categories" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
-            
-            分类
-          </a>
-        </li>
-      
-        
         <li class="menu-item menu-item-archives">
-          <a href="/archives" rel="section">
+          <a href="/archives/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
             
             归档
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-tags">
-          <a href="/tags" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
-            
-            标签
           </a>
         </li>
       
@@ -266,16 +227,20 @@
   
   
 
-  <article class="post post-type-normal " itemscope="" itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/16/qrcode生成二维码/">
 
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="chen-xt">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/head.jpg">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="陈小婷的博客">
     </span>
 
@@ -285,20 +250,22 @@
         
         
           <h1 class="post-title" itemprop="name headline">
-            
-            
-              
                 
-                <a class="post-title-link" href="/2019/01/16/qrcode生成二维码/" itemprop="url">
-                  qrcode生成二维码
-                </a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/2019/01/16/qrcode生成二维码/" itemprop="url">qrcode生成二维码</a></h1>
         
 
         <div class="post-meta">
           <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-16T00:32:49+08:00">
+                2019-01-16
+              </time>
             
 
             
@@ -306,6 +273,28 @@
             
           </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">javascript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -325,7 +314,9 @@
       </header>
     
 
-
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -334,28 +325,78 @@
       
         
           
-          前言&emsp;&emsp;js生成二维码有两种方法：分别是用qrcode.js和jquery.qrcode.js。
-qrcode&emsp;&emsp;qrcode.js 是一个用于生成二维码图片的插件，主要是通过获取DOM的标签，再通过 HTML5 Canvas 绘制而成，不依赖任何库，支持中文
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/01/16/qrcode生成二维码/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>&emsp;&emsp;js生成二维码有两种方法：分别是用qrcode.js和jquery.qrcode.js。</p>
+<h2 id="qrcode"><a href="#qrcode" class="headerlink" title="qrcode"></a>qrcode</h2><p>&emsp;&emsp;qrcode.js 是一个用于生成二维码图片的插件，主要是通过获取DOM的标签，再通过 HTML5 Canvas 绘制而成，不依赖任何库，<strong>支持中文内容</strong>。</p>
+<h3 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h3><ol>
+<li><p>载入js文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=&quot;qrcode.js&quot;&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>DOM 结构</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=&quot;code&quot;&gt;&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>调用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">// 简单方式</span><br><span class="line">new QRCode(document.getElementById(&apos;code&apos;), &apos;https://www.baidu.com/&apos;);</span><br><span class="line"></span><br><span class="line">// 设置参数方式</span><br><span class="line">var qrcode = new QRCode(&apos;code&apos;, &#123;</span><br><span class="line">    text: &apos;hello world!&apos;,</span><br><span class="line">    width: 200,</span><br><span class="line">    height: 200,</span><br><span class="line">    colorDark : &apos;#000&apos;,</span><br><span class="line">    colorLight : &apos;#fff&apos;,</span><br><span class="line">    correctLevel : QRCode.CorrectLevel.H</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">// 使用 API</span><br><span class="line">qrcode.clear();</span><br><span class="line">qrcode.makeCode(&apos;哈哈哈&apos;);</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h3 id="参数说明"><a href="#参数说明" class="headerlink" title="参数说明"></a>参数说明</h3><p>&emsp;&emsp;格式：<strong>new QRCode(element, option)</strong></p>
+<ol>
+<li>element：显示二维码的元素或该元素的id</li>
+<li>option：参数配置，有以下几个参数：<br>（1）text：设置二维码的内容；<br>（2）width：设置二维码宽度，默认值是256；<br>（3）height：设置二维码高度，默认值是256；<br>（4）colorDark：设置前景色，默认值是”#000”<br>（5）colorLight：设置背景色，默认值是”#fff”<br>（6）typeNumber: 设置计算模式，默认值是4<br>（7）correctLevel : 设置容错级别，默认值是QRErrorCorrectLevel.H，可设置为QRCode.CorrectLevel.L(容错率7%)、QRCode.CorrectLevel.M(容错率15%)、QRCode.CorrectLevel.Q(容错率25%)、QRCode.CorrectLevel.H(容错率30%)；<br>注意：二维码容错率即是指二维码图标被遮挡多少后，仍可以被扫描出来的能力。容错率越高，则二维码图片能被遮挡的部分越多。容错率越高，越容易被快速扫描。因此推荐使用QRErrorCorrectLevel.H。</li>
+</ol>
+<h3 id="API接口"><a href="#API接口" class="headerlink" title="API接口"></a>API接口</h3><ol>
+<li><strong>makeCode(text)</strong>：设置二维码内容</li>
+<li><strong>clear()</strong>：清除二维码（仅在不支持 Canvas 的浏览器下有效）</li>
+</ol>
+<h3 id="参考网址"><a href="#参考网址" class="headerlink" title="参考网址"></a>参考网址</h3><ul>
+<li><a href="http://code.ciaoca.com/javascript/qrcode/" target="_blank" rel="noopener">参考网址</a></li>
+</ul>
+<h2 id="jquery-qrcode-js"><a href="#jquery-qrcode-js" class="headerlink" title="jquery.qrcode.js"></a>jquery.qrcode.js</h2><p>&emsp;&emsp;jquery.qrcode.js 是把qrcode.js用jquery方式封装起来的，用它来实现图形渲染，其实就是画图（支持canvas和table两种方式）默认是canvas，canvas方式还支持右键图片下载，<strong>不支持中文内容</strong>。</p>
+<h3 id="使用方法-1"><a href="#使用方法-1" class="headerlink" title="使用方法"></a>使用方法</h3><ol>
+<li><p>载入js文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=&quot;jquery.qrcode.min.js&quot;&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>DOM 结构</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=&quot;code&quot;&gt;&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>调用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">// 简单方式</span><br><span class="line">// $(&quot;#code&quot;).qrcode(&quot;hi,chen!&quot;);</span><br><span class="line"></span><br><span class="line">// 直接生成二维码</span><br><span class="line">$(&quot;#code&quot;).qrcode(&#123;</span><br><span class="line">    render: &quot;canvas&quot;, //渲染方式</span><br><span class="line">    width: 200,  //宽度</span><br><span class="line">    height: 200, //高度</span><br><span class="line">    text: &quot;https://www.baidu.com/&quot;, //内容</span><br><span class="line">    background: &quot;#fff&quot;,  //背景色  </span><br><span class="line">    foreground: &quot;#000&quot;,   //前景色(二维码的颜色)</span><br><span class="line">    correctLevel: 1,  //容错级别</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h3 id="参数说明-1"><a href="#参数说明-1" class="headerlink" title="参数说明"></a>参数说明</h3><p>（1）render:  设置渲染方式，支持canvas和table两种方式，默认是canvas；<br>（2）text：设置二维码的内容<br>（3）width：设置二维码宽度，默认值是256；<br>（4）height：设置二维码高度，默认值是256；<br>（5）foreground: 设置前景色，默认值是”#000”<br>（6）background: 设置背景色，默认值是”#fff”<br>（7）correctLevel : 设置容错级别<br>（8）typeNumber  : 设置计算模式</p>
+<h3 id="生成二维码图片"><a href="#生成二维码图片" class="headerlink" title="生成二维码图片"></a>生成二维码图片</h3><ol>
+<li><p>载入js文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=&quot;jquery.qrcode.min.js&quot;&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>DOM 结构</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=&quot;code&quot;&gt;&lt;/div&gt;</span><br><span class="line">&lt;img id=&quot;imgOne&quot; src=&quot;&quot;&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>调用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//生成二维码图片</span><br><span class="line">var qrcode = $(&apos;#code&apos;).qrcode(&quot;https://www.baidu.com/&quot;).hide();</span><br><span class="line">var canvas = qrcode.find(&apos;canvas&apos;).get(0);</span><br><span class="line">$(&apos;#imgOne&apos;).attr(&apos;src&apos;,canvas.toDataURL(&apos;image/jpg&apos;));</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h3 id="解决无法生成中文二维码的问题"><a href="#解决无法生成中文二维码的问题" class="headerlink" title="解决无法生成中文二维码的问题"></a>解决无法生成中文二维码的问题</h3><p>&emsp;&emsp;jquery-qrcode这个库是采用 charCodeAt() 这个方式进行编码转换的，这个方法默认会获取它的Unicode编码，一般的解码器都是采用UTF-8, ISO-8859-1等方式。英文是没有问题，如果是中文，一般情况下Unicode是UTF-16实现，长度2位，而UTF-8编码是3位，这样二维码的编解码就不匹配了。 所以可以在二维码编码前把字符串转换成UTF-8，就可以解决这个问题了。<br>&emsp;&emsp;相关代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">$(&quot;#code&quot;).qrcode(&#123;</span><br><span class="line">      render: &quot;canvas&quot;, //渲染方式</span><br><span class="line">      width: 200,  //宽度</span><br><span class="line">      height: 200, //高度</span><br><span class="line">      text: utf16to8(&quot;你好啊&quot;), //内容</span><br><span class="line">      background: &quot;#fff&quot;,  //背景色  </span><br><span class="line">      foreground: &quot;#000&quot;,   //前景色(二维码的颜色)</span><br><span class="line">      correctLevel: 1,  //容错级别</span><br><span class="line">	&#125;);</span><br><span class="line"></span><br><span class="line">// 编码转换函数</span><br><span class="line">  function utf16to8(str) &#123;  </span><br><span class="line">      var out, i, len, c;  </span><br><span class="line">      out = &quot;&quot;;  </span><br><span class="line">      len = str.length;  </span><br><span class="line">      for(i = 0; i &lt; len; i++) &#123;  </span><br><span class="line">      c = str.charCodeAt(i);  </span><br><span class="line">      if ((c &gt;= 0x0001) &amp;&amp; (c &lt;= 0x007F)) &#123;  </span><br><span class="line">          out += str.charAt(i);  </span><br><span class="line">      &#125; else if (c &gt; 0x07FF) &#123;  </span><br><span class="line">          out += String.fromCharCode(0xE0 | ((c &gt;&gt; 12) &amp; 0x0F));  </span><br><span class="line">          out += String.fromCharCode(0x80 | ((c &gt;&gt;  6) &amp; 0x3F));  </span><br><span class="line">          out += String.fromCharCode(0x80 | ((c &gt;&gt;  0) &amp; 0x3F));  </span><br><span class="line">      &#125; else &#123;  </span><br><span class="line">          out += String.fromCharCode(0xC0 | ((c &gt;&gt;  6) &amp; 0x1F));  </span><br><span class="line">          out += String.fromCharCode(0x80 | ((c &gt;&gt;  0) &amp; 0x3F));  </span><br><span class="line">      &#125;  </span><br><span class="line">      &#125;  </span><br><span class="line">      return out;  </span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="参考网址-1"><a href="#参考网址-1" class="headerlink" title="参考网址"></a>参考网址</h3><ul>
+<li><a href="https://github.com/jeromeetienne/jquery-qrcode" target="_blank" rel="noopener">参考网址</a></li>
+</ul>
+
+          
         
       
     </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
 
+    
 
     <footer class="post-footer">
       
@@ -369,6 +410,10 @@ qrcode&emsp;&emsp;qrcode.js 是一个用于生成二维码图片的插件，主�
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -381,16 +426,20 @@ qrcode&emsp;&emsp;qrcode.js 是一个用于生成二维码图片的插件，主�
   
   
 
-  <article class="post post-type-normal " itemscope="" itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/09/跨域/">
 
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="chen-xt">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/head.jpg">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="陈小婷的博客">
     </span>
 
@@ -400,20 +449,22 @@ qrcode&emsp;&emsp;qrcode.js 是一个用于生成二维码图片的插件，主�
         
         
           <h1 class="post-title" itemprop="name headline">
-            
-            
-              
                 
-                <a class="post-title-link" href="/2019/01/09/跨域/" itemprop="url">
-                  跨域
-                </a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/2019/01/09/跨域/" itemprop="url">跨域</a></h1>
         
 
         <div class="post-meta">
           <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-09T22:01:16+08:00">
+                2019-01-09
+              </time>
             
 
             
@@ -421,6 +472,28 @@ qrcode&emsp;&emsp;qrcode.js 是一个用于生成二维码图片的插件，主�
             
           </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">javascript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -440,7 +513,9 @@ qrcode&emsp;&emsp;qrcode.js 是一个用于生成二维码图片的插件，主�
       </header>
     
 
-
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -449,28 +524,39 @@ qrcode&emsp;&emsp;qrcode.js 是一个用于生成二维码图片的插件，主�
       
         
           
-          什么是同源策略&emsp;&emsp;限制一个源加载的文档或脚本与来自另一个源的资源进行交互。要求源相同才能正常进行通信，即协议、域名、端口号（HTTP协议的默认端口是80）都完全一致。
-同源策略限制的内容及原因限制不同源发请求&emsp;&emsp;不能向工作在不同源的的服务请求数据(client
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/01/09/跨域/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+            <h2 id="什么是同源策略"><a href="#什么是同源策略" class="headerlink" title="什么是同源策略"></a>什么是同源策略</h2><p>&emsp;&emsp;限制一个源加载的文档或脚本与来自另一个源的资源进行交互。要求源相同才能正常进行通信，即协议、域名、端口号（HTTP协议的默认端口是80）都完全一致。</p>
+<h2 id="同源策略限制的内容及原因"><a href="#同源策略限制的内容及原因" class="headerlink" title="同源策略限制的内容及原因"></a>同源策略限制的内容及原因</h2><h3 id="限制不同源发请求"><a href="#限制不同源发请求" class="headerlink" title="限制不同源发请求"></a>限制不同源发请求</h3><p>&emsp;&emsp;不能向工作在不同源的的服务请求数据(client to server)。<br>&emsp;&emsp;<strong>原因：</strong>假设用户登陆了a.com，同时打开了b.com，如果没有任何限制，b.com可以向a.com请求到任何信息，进而就可以在b.com向a发转账请求等。这里是限制了读u，而没有限制写，因为如果连请求都发不出去了，也就无法做跨域资源共享了，无法读取返回结果，b就无法继续下一步的操作，如获取转账请求的一些必要的验证信息。</p>
+<h3 id="限制跨域的DOM读取"><a href="#限制跨域的DOM读取" class="headerlink" title="限制跨域的DOM读取"></a>限制跨域的DOM读取</h3><p>&emsp;&emsp;无法获取不同源的document/cookie等BOM和DOM，可以说任何有关另外一个源的信息都无法得到 (client to client)。<br>&emsp;&emsp;<strong>原因：</strong>如果不限制的话，那么很容易就可以伪装其它的网站，如套一个iframe或者通过window.open的方法，从而得到用户的操作和输入，如账户、密码。<br>&emsp;&emsp;<strong>小技巧：</strong>添加这个http头—“X-Frame-Options: SAMEORIGIN”，可以限制别人把你的网站套成它的iframe。</p>
+<h2 id="什么是跨域"><a href="#什么是跨域" class="headerlink" title="什么是跨域"></a>什么是跨域</h2><p>&emsp;&emsp;跨域是由浏览器的同源策略引起的，只有源(协议、域名、端口号)相同才能正常进行通信，域名、端口、协议任一不同，都是跨域。跨域只存在于浏览器端，不存在于安卓/ios/Node.js/python/ java等其它环境。以下列举几种情况都属于跨域：</p>
+<ol>
+<li><p>同一域名，不同协议</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://www.a.com/b.js ---&gt; http://www.a.com/a.js</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>域名和域名对应ip</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://70.32.92.74/b.js  ---&gt; http://www.a.com/a.js</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>同一域名，不同端口</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://www.a.com:8000/a.js  ---&gt; http://www.a.com/b.js</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>不同域名</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://www.cnblogs.com/a.js  ---&gt; http://www.a.com/b.js</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h2 id="跨域的解决"><a href="#跨域的解决" class="headerlink" title="跨域的解决"></a>跨域的解决</h2>
+          
         
       
     </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
 
+    
 
     <footer class="post-footer">
       
@@ -484,6 +570,10 @@ qrcode&emsp;&emsp;qrcode.js 是一个用于生成二维码图片的插件，主�
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -496,16 +586,20 @@ qrcode&emsp;&emsp;qrcode.js 是一个用于生成二维码图片的插件，主�
   
   
 
-  <article class="post post-type-normal " itemscope="" itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/06/HTML媒体捕获实例/">
 
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="chen-xt">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/head.jpg">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="陈小婷的博客">
     </span>
 
@@ -515,20 +609,22 @@ qrcode&emsp;&emsp;qrcode.js 是一个用于生成二维码图片的插件，主�
         
         
           <h1 class="post-title" itemprop="name headline">
-            
-            
-              
                 
-                <a class="post-title-link" href="/2018/11/06/HTML媒体捕获实例/" itemprop="url">
-                  HTML媒体捕获实例
-                </a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/2018/11/06/HTML媒体捕获实例/" itemprop="url">HTML媒体捕获实例</a></h1>
         
 
         <div class="post-meta">
           <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-06T23:06:21+08:00">
+                2018-11-06
+              </time>
             
 
             
@@ -536,6 +632,28 @@ qrcode&emsp;&emsp;qrcode.js 是一个用于生成二维码图片的插件，主�
             
           </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/html5/" itemprop="url" rel="index">
+                    <span itemprop="name">html5</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -555,7 +673,9 @@ qrcode&emsp;&emsp;qrcode.js 是一个用于生成二维码图片的插件，主�
       </header>
     
 
-
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -564,30 +684,76 @@ qrcode&emsp;&emsp;qrcode.js 是一个用于生成二维码图片的插件，主�
       
         
           
-          accept属性&emsp;&emsp;规定了可通过文件上传提交的服务器接受的文件类型，仅适用于&lt;input type=&quot;file&quot;&gt;。
+            <h2 id="accept属性"><a href="#accept属性" class="headerlink" title="accept属性"></a>accept属性</h2><p>&emsp;&emsp;规定了可通过文件上传提交的服务器接受的文件类型，仅适用于<code>&lt;input type=&quot;file&quot;&gt;</code>。</p>
+<ol>
+<li><p><code>audio/*</code> ：接受所有的声音文件。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=&quot;file&quot; accept=&quot;audio/*&quot;&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>video/*</code> ：接受所有的视频文件。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=&quot;file&quot; accept=&quot;video/*&quot;&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>image/*</code> ：接受所有的图像文件。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=&quot;file&quot; accept=&quot;image/*&quot;&gt;</span><br></pre></td></tr></table></figure>
 
-audio/* ：接受所有的声音文件。
-1&lt;input type=&quot;file&quot; accept=&quo
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/11/06/HTML媒体捕获实例/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+</li>
+</ol>
+<h2 id="capture属性"><a href="#capture属性" class="headerlink" title="capture属性"></a>capture属性</h2><p>&emsp;&emsp;可以捕获到系统默认的设备。</p>
+<ol>
+<li><p><code>camera</code> ：照相机。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=&quot;file&quot; accept=&quot;image/*&quot; capture=&quot;camera&quot;&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>camcorder</code> ：摄像机。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=&quot;file&quot; accept=&quot;video/*&quot; capture=&quot;camcorder&quot;&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>microphone</code> ：录音。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=&quot;file&quot; accept=&quot;audio/*&quot; capture=&quot;microphone&quot;&gt;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p>&emsp;&emsp;注：<code>input:file</code>标签有个<code>multiple</code>属性，表示可以支持多选。加了这个属性，<code>capture</code>就没效果了。</p>
+<h2 id="常见例子"><a href="#常见例子" class="headerlink" title="常见例子"></a>常见例子</h2><ol>
+<li><p>调用拍照：微信环境及浏览器环境下，苹果手机、安卓手机均可以拍照。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type =”file”  accept =”image / *”  capture&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>调用录像：微信环境及浏览器环境下，苹果手机、安卓手机均可以录像。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type =”file”  accept =”video / *”  capture&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>调用音频：微信环境，苹果手机、安卓手机均可以调起录音机和文件；浏览器环境，苹果手机、安卓手机均只能调起录音机。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type =”file”  accept =”audio / *”  capture&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>高级用例：在标记中指定capture属性，并通过XMLHttpRequest在脚本中处理文件上载。微信环境及浏览器环境下，苹果手机、安卓手机均可以拍照。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type =”file”  accept =”image / *”  capture&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>无capture：微信环境，苹果手机、安卓手机均可以调起拍照和文件；浏览器环境，苹果手机可以调起拍照和相册，安卓手机可以调起拍照和文件。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type =”file”  accept =”image / *”&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>无capture：微信环境，苹果手机、安卓手机均可以调起文件；浏览器环境，苹果手机可以调起拍照、相册和文件，安卓手机可以调起拍照和文件。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type =”file”&gt;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h2 id="浏览器环境判断"><a href="#浏览器环境判断" class="headerlink" title="浏览器环境判断"></a>浏览器环境判断</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">var ua = navigator.userAgent.toLowerCase();//获取浏览器的userAgent</span><br><span class="line">if(ua.match(/MicroMessenger/i) == &quot;micromessenger&quot;) &#123;</span><br><span class="line">    // true为微信环境</span><br><span class="line">    alert(&quot;微信环境&quot;);</span><br><span class="line">&#125;</span><br><span class="line">else&#123;</span><br><span class="line">   // false为浏览器环境</span><br><span class="line">    alert(&quot;浏览器环境&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="苹果、安卓设备判断"><a href="#苹果、安卓设备判断" class="headerlink" title="苹果、安卓设备判断"></a>苹果、安卓设备判断</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">   var ua = navigator.userAgent.toLowerCase();//获取浏览器的userAgent</span><br><span class="line">var isIos = (ua.indexOf(&apos;iphone&apos;) != -1) || (ua.indexOf(&apos;ipad&apos;) != -1);</span><br><span class="line">   if (isIos) &#123;</span><br><span class="line">       //true为苹果</span><br><span class="line">   alert(&quot;苹果手机&quot;);</span><br><span class="line">   &#125;</span><br><span class="line">   else&#123;</span><br><span class="line">       // false为安卓</span><br><span class="line">       alert(&quot;安卓手机&quot;);</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="参考地址"><a href="#参考地址" class="headerlink" title="参考地址"></a>参考地址</h2><ul>
+<li><a href="http://anssiko.github.io/html-media-capture/" target="_blank" rel="noopener">参考网址1</a></li>
+<li><a href="https://blog.csdn.net/bbt_yyc/article/details/78337501" target="_blank" rel="noopener">参考网址2</a></li>
+</ul>
+
+          
         
       
     </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
 
+    
 
     <footer class="post-footer">
       
@@ -601,6 +767,10 @@ audio/* ：接受所有的声音文件。
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -613,16 +783,20 @@ audio/* ：接受所有的声音文件。
   
   
 
-  <article class="post post-type-normal " itemscope="" itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/31/layer弹层组件之移动版/">
 
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="chen-xt">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/head.jpg">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="陈小婷的博客">
     </span>
 
@@ -632,20 +806,22 @@ audio/* ：接受所有的声音文件。
         
         
           <h1 class="post-title" itemprop="name headline">
-            
-            
-              
                 
-                <a class="post-title-link" href="/2017/08/31/layer弹层组件之移动版/" itemprop="url">
-                  layer弹层组件之移动版
-                </a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/2017/08/31/layer弹层组件之移动版/" itemprop="url">layer弹层组件之移动版</a></h1>
         
 
         <div class="post-meta">
           <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-31T22:19:47+08:00">
+                2017-08-31
+              </time>
             
 
             
@@ -653,6 +829,28 @@ audio/* ：接受所有的声音文件。
             
           </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/layer/" itemprop="url" rel="index">
+                    <span itemprop="name">layer</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -672,7 +870,9 @@ audio/* ：接受所有的声音文件。
       </header>
     
 
-
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -681,27 +881,100 @@ audio/* ：接受所有的声音文件。
       
         
           
-          简介&emsp;&emsp;layer弹层组件分移动版和PC版，这边主要讲的是移动版的layer，PC版的后续再进行补充。移动版是为移动设备量身定做的弹层UI，并且完全独立于PC版的layer。与PC版的layer不同的是，移动版的layer只提供一个核心调用方法，即layer.open(optio
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/08/31/layer弹层组件之移动版/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+            <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>&emsp;&emsp;layer弹层组件分移动版和PC版，这边主要讲的是移动版的layer，PC版的后续再进行补充。移动版是为移动设备量身定做的弹层UI，并且完全独立于PC版的layer。与PC版的layer不同的是，移动版的layer只提供一个核心调用方法，即<code>layer.open(options)</code>，通过对参数<code>options</code>进行设置来实现各种不同的弹层。</p>
+<h2 id="快速上手"><a href="#快速上手" class="headerlink" title="快速上手"></a>快速上手</h2><p>&emsp;&emsp;第一步，下载。要去<a href="http://layer.layui.com/mobile/" target="_blank" rel="noopener">官网</a>下载layer的相关文件，主要是<code>layer.js</code>文件，<code>layer.css</code>文件可以根据需要引入，但是<code>layer.js</code>文件是必需的。<br>&emsp;&emsp;第二步，引入。将layer的相关文件引入项目中，这里需要注意的是，不能去挪动layer里面的文件结构，因为它们是不可拆散的组合，直接整个引入就可以。由于layer是基于jQuery的，在引入<code>layer.js</code>文件之前，必须先引入<strong>jQuery1.8</strong>或以上版本。<br>&emsp;&emsp;第三步，使用。下面是一个简单的layer弹层例子。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&lt;!doctype html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">	&lt;head&gt;</span><br><span class="line">	  &lt;title&gt;开始使用layer&lt;/title&gt;</span><br><span class="line">	&lt;/head&gt;</span><br><span class="line">	&lt;body&gt;</span><br><span class="line">	  &lt;button id=&quot;test&quot;&gt;小小提示层&lt;/button&gt;</span><br><span class="line"></span><br><span class="line">	  &lt;script src=&quot;jQuery的路径&quot;&gt;&lt;/script&gt;</span><br><span class="line">	  &lt;script src=&quot;layer.js的路径&quot;&gt;&lt;/script&gt;</span><br><span class="line">	  &lt;script&gt;</span><br><span class="line">		$(&apos;#test&apos;).on(&apos;click&apos;, function()&#123;</span><br><span class="line">		  layer.open(&#123;</span><br><span class="line">			type: 1,</span><br><span class="line">			area: [&apos;600px&apos;, &apos;360px&apos;],</span><br><span class="line">			shadeClose: true, //点击遮罩关闭</span><br><span class="line">			content: &apos;\&lt;\div style=&quot;padding:20px;&quot;&gt;自定义内容\&lt;\/div&gt;&apos;</span><br><span class="line">		  &#125;);</span><br><span class="line">		&#125;);</span><br><span class="line">	  &lt;/script&gt;</span><br><span class="line">	&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h2><p>&emsp;&emsp;这里所谈到的参数指的就是核心接口<code>layer.open(options)</code>中的<strong>options</strong>。</p>
+<h3 id="type"><a href="#type" class="headerlink" title="type"></a>type</h3><p>&emsp;&emsp;type参数用于设置弹层的类型。其类型为<code>Number</code>型，默认值为<code>0</code>（<strong>0</strong>表示信息框，<strong>1</strong>表示页面层，<strong>2</strong>表示加载层）。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">type: 1</span><br></pre></td></tr></table></figure>
+
+<h3 id="content"><a href="#content" class="headerlink" title="content"></a>content</h3><p>&emsp;&emsp;content参数用于设置弹层内容。其类型为<code>String</code>型，这个参数为必选参数。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">content:  &apos;layer弹层组件&apos;</span><br></pre></td></tr></table></figure>
+
+<h3 id="title"><a href="#title" class="headerlink" title="title"></a>title</h3><p>&emsp;&emsp;title参数用于设置弹层标题。其类型为<code>String</code>型或<code>Array</code>型，默认值为<code>空</code>，值可以为字符串或者数组，为空则不显示。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">//格式</span><br><span class="line">	title: &apos;标题&apos;</span><br><span class="line">	title: [&apos;标题&apos;, &apos;background-color: #eee;&apos;] //第二个参数可以自定义标题的样式 </span><br><span class="line"></span><br><span class="line">//举例</span><br><span class="line">	title:  &apos;layer&apos;</span><br><span class="line">	title:  [&apos;layer&apos;, &apos;color: #eee;&apos;]</span><br></pre></td></tr></table></figure>
+
+<h3 id="time"><a href="#time" class="headerlink" title="time"></a>time</h3><p>&emsp;&emsp;time参数用于控制自动关闭层所需秒数。其类型为<code>Number</code>型，默认不开启，支持整数和浮点数。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">time:  5  //5秒后关闭</span><br></pre></td></tr></table></figure>
+
+<h3 id="style"><a href="#style" class="headerlink" title="style"></a>style</h3><p>&emsp;&emsp;style参数用于设置自定义层的样式。其类型为<code>String</code>型。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">style:  &apos;border:none; background-color:#78BA32; color:#fff;&apos;</span><br></pre></td></tr></table></figure>
+
+<h3 id="skin"><a href="#skin" class="headerlink" title="skin"></a>skin</h3><p>&emsp;&emsp;skin参数用于设定弹层显示风格。其类型为<code>String</code>型，目前支持配置<code>footer</code>(即底部对话框风格)、<code>msg</code>(普通提示)两种风格。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">skin: &apos;footer&apos;</span><br></pre></td></tr></table></figure>
+
+<h3 id="className"><a href="#className" class="headerlink" title="className"></a>className</h3><p>&emsp;&emsp;className参数用于自定义一个css类。其类型为<code>String</code>型，用于自定义样式。自定义一个css类后，就可以在css里面通过设置这个类的样式来控制该弹层的风格。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">className:  &apos;modal&apos;</span><br></pre></td></tr></table></figure>
+
+<h3 id="btn"><a href="#btn" class="headerlink" title="btn"></a>btn</h3><p>&emsp;&emsp;btn参数用于设置按钮。其类型为<code>String</code>型或<code>Array</code>型，不设置则不显示按钮。如果只需要一个按钮，则<code>btn: &#39;按钮&#39;</code>，如果有两个，则<code>btn: [&#39;按钮一&#39;, &#39;按钮二&#39;]</code>。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//设置两个按钮</span><br><span class="line">btn:  [&apos;马上开启&apos;,&apos;稍后再说&apos; ]</span><br></pre></td></tr></table></figure>
+
+<h3 id="anim"><a href="#anim" class="headerlink" title="anim"></a>anim</h3><p>&emsp;&emsp;anim参数用于设置动画类型。其类型为<code>String</code>型或<code>Boolean</code>型，可支持的支持两种动画配置<code>scale</code>(默认)和<code>up</code>(从下往上弹出)，如果不开启动画，设置<code>false</code>即可。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">anim:  &apos;up&apos;</span><br></pre></td></tr></table></figure>
+
+<h3 id="shade"><a href="#shade" class="headerlink" title="shade"></a>shade</h3><p>&emsp;&emsp;shade参数用于控制遮罩展现。其类型为<code>String</code>型或<code>Boolean</code>型，默认为<code>true</code>，显示遮罩，并且可以自定义遮罩风格。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">shade:  &apos;background-color: rgba(0,0,0,.6) &apos;  //遮罩的颜色以及透明度</span><br></pre></td></tr></table></figure>
+
+<h3 id="shadeClose"><a href="#shadeClose" class="headerlink" title="shadeClose"></a>shadeClose</h3><p>&emsp;&emsp;shadeClose参数用于设置点击遮罩时是否关闭层。其类型为<code>Boolean</code>型，默认为<code>true</code>，即点击遮罩时关闭层。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">shadeClose:  false  //点击遮罩时不关闭层</span><br></pre></td></tr></table></figure>
+
+<h3 id="fixed-amp-amp-top"><a href="#fixed-amp-amp-top" class="headerlink" title="fixed &amp;&amp;  top"></a>fixed &amp;&amp;  top</h3><p>&emsp;&emsp;fixed参数用于设置是否固定层的位置，需要与top参数一起使用。其类型为<code>Boolean</code>型，默认为<code>true</code>，不固定层的位置。而top参数用于控制层的纵坐标，其类型为<code>Number</code>型，默认为<code>无</code>，一般情况下不需要设置，因为层会始终垂直水平居中，只有当<code>fixed: false</code>时top才有效。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">fixed : false,</span><br><span class="line">top: 10</span><br></pre></td></tr></table></figure>
+
+<h3 id="success-amp-amp-end"><a href="#success-amp-amp-end" class="headerlink" title="success &amp;&amp;  end"></a>success &amp;&amp;  end</h3><p>&emsp;&emsp;success参数用于设置层成功弹出层的回调，该回调参数返回一个参数为当前层元素对象。其类型为<code>Function</code>型。end参数与success参数用法类似，只是它刚好与success参数相反，是用于设置层彻底销毁后的回调函数。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">//格式</span><br><span class="line">	success: function(elem)&#123;</span><br><span class="line">		console.log(elem);   //弹层成功弹出时候提示弹出	</span><br><span class="line">	&#125;</span><br><span class="line">	end: function(elem)&#123;</span><br><span class="line">		console.log(elem);   //弹层销毁时提示销毁</span><br><span class="line">	&#125;</span><br><span class="line">//举例</span><br><span class="line">	success: function()&#123;</span><br><span class="line">		alert(&apos;弹出&apos;);   </span><br><span class="line">	&#125;,</span><br><span class="line">	end:function(index)&#123;</span><br><span class="line">		  alert(&quot;销毁&quot;); </span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="yes-amp-amp-no"><a href="#yes-amp-amp-no" class="headerlink" title="yes &amp;&amp;  no"></a>yes &amp;&amp;  no</h3><p>&emsp;&emsp;yes参数用于设置点击确定按钮触发的回调函数，返回一个参数为当前层的索引。其类型为<code>Function</code>型。no参数与yes参数用法类似，只是它刚好与yes参数相反，用于设置点击取消按钮触发的回调函数。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">//格式：</span><br><span class="line">	yes: function(index)&#123;</span><br><span class="line">	  alert(&apos;点击了是&apos;)</span><br><span class="line">	  layer.close(index)</span><br><span class="line">	&#125;</span><br><span class="line">	no: function(index)&#123;</span><br><span class="line">	  alert(&apos;点击了否&apos;)</span><br><span class="line">	  layer.close(index)</span><br><span class="line">	&#125;</span><br><span class="line">//举例</span><br><span class="line">	yes: function()&#123;  //点击确定时候弹出“好的”提示</span><br><span class="line">	    layer.open(&#123;</span><br><span class="line">	      content: &apos;好的&apos;</span><br><span class="line">	      ,time: 2</span><br><span class="line">	      ,skin: &apos;msg&apos;</span><br><span class="line">	    &#125;);</span><br><span class="line">	&#125;,</span><br><span class="line">	no: function(index)&#123;			  </span><br><span class="line">		window.location.href=&quot;https://www.baidu.com/&quot;; //点击取消跳转到必应</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="其它内置方法-属性"><a href="#其它内置方法-属性" class="headerlink" title="其它内置方法/属性"></a>其它内置方法/属性</h2><h3 id="layer-v"><a href="#layer-v" class="headerlink" title="layer.v"></a>layer.v</h3><p>&emsp;&emsp;layer.v用于返回当前使用的layer mobile版本号。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">yes: function(index)&#123;</span><br><span class="line">    alert(layer.v);   //弹出“2.0”，当前的版本为2.0</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="layer-close-index"><a href="#layer-close-index" class="headerlink" title="layer.close(index)"></a>layer.close(index)</h3><p>&emsp;&emsp;layer.close(index)用于关闭特定层，index为该特定层的索引。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">yes: function(index)&#123;</span><br><span class="line">	layer.close(index);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="layer-closeAll"><a href="#layer-closeAll" class="headerlink" title="layer.closeAll()"></a>layer.closeAll()</h3><p>&emsp;&emsp;layer.closeAll()用于关闭页面所有layer的层。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">yes: function(index)&#123;</span><br><span class="line">    layer.closeAll();</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h2><ol>
+<li><p>信息框</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">layer.open(&#123;</span><br><span class="line">    content: &apos;我是layer移动版&apos;,</span><br><span class="line">    btn: &apos;知道了&apos;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>提示</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">layer.open(&#123;</span><br><span class="line">    content: &apos;你好&apos;,</span><br><span class="line">    skin: &apos;msg&apos;,</span><br><span class="line">    time: 3 //3秒后自动关闭</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>询问框</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">layer.open(&#123;</span><br><span class="line">    content: &apos;您确定要刷新一下本页面吗？&apos;,</span><br><span class="line">    btn: [&apos;刷新&apos;, &apos;不要&apos;],</span><br><span class="line">    yes: function(index)&#123;</span><br><span class="line">      location.reload();</span><br><span class="line">      layer.close(index);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>底部对话框</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">layer.open(&#123;</span><br><span class="line">    content: &apos;这是一个底部弹出的询问提示&apos;,</span><br><span class="line">    btn: [&apos;删除&apos;, &apos;取消&apos;],</span><br><span class="line">    skin: &apos;footer&apos;,</span><br><span class="line">    yes: function(index)&#123;</span><br><span class="line">      layer.open(&#123;content: &apos;执行删除操作&apos;&#125;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>页面层</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">layer.open(&#123;</span><br><span class="line">    type: 1,</span><br><span class="line">    content: &apos;可传入任何内容，支持html。一般用于手机页面中&apos;,</span><br><span class="line">    anim: &apos;up&apos;,</span><br><span class="line">    style: &apos;position:fixed; bottom:0; left:0; width: 100%; height: 200px; padding:10px 0; border:none;&apos;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>loading带文字</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">layer.open(&#123;</span><br><span class="line">    type: 2,</span><br><span class="line">    content: &apos;加载中&apos; //如果没有content的话，则只有几个加载的小圆点</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h2 id="参考地址"><a href="#参考地址" class="headerlink" title="参考地址"></a>参考地址</h2><ul>
+<li><a href="http://layer.layui.com/mobile/api.html" target="_blank" rel="noopener">参考网址</a></li>
+</ul>
+
+          
         
       
     </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
 
+    
 
     <footer class="post-footer">
       
@@ -715,6 +988,10 @@ audio/* ：接受所有的声音文件。
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -727,16 +1004,20 @@ audio/* ：接受所有的声音文件。
   
   
 
-  <article class="post post-type-normal " itemscope="" itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/18/bootstrap-datetimepicker日期插件/">
 
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="chen-xt">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/head.jpg">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="陈小婷的博客">
     </span>
 
@@ -746,20 +1027,22 @@ audio/* ：接受所有的声音文件。
         
         
           <h1 class="post-title" itemprop="name headline">
-            
-            
-              
                 
-                <a class="post-title-link" href="/2017/07/18/bootstrap-datetimepicker日期插件/" itemprop="url">
-                  bootstrap-datetimepicker日期插件
-                </a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/2017/07/18/bootstrap-datetimepicker日期插件/" itemprop="url">bootstrap-datetimepicker日期插件</a></h1>
         
 
         <div class="post-meta">
           <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-18T22:44:55+08:00">
+                2017-07-18
+              </time>
             
 
             
@@ -767,6 +1050,28 @@ audio/* ：接受所有的声音文件。
             
           </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/bootstrap/" itemprop="url" rel="index">
+                    <span itemprop="name">bootstrap</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -786,7 +1091,9 @@ audio/* ：接受所有的声音文件。
       </header>
     
 
-
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -795,32 +1102,120 @@ audio/* ：接受所有的声音文件。
       
         
           
-          简介&emsp;&emsp;Bootstrap下的datetimepicker插件是一款日期选择器插件，使用起来方便而且界面也是很好看的。
-属性format&emsp;&emsp;时间格式，默认值为mm/dd/yyyy。有几种格式：
+            <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>&emsp;&emsp;Bootstrap下的datetimepicker插件是一款日期选择器插件，使用起来方便而且界面也是很好看的。</p>
+<h2 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h2><h3 id="format"><a href="#format" class="headerlink" title="format"></a>format</h3><p>&emsp;&emsp;时间格式，默认值为<code>mm/dd/yyyy</code>。有几种格式：</p>
+<ol>
+<li>yyyy-mm-dd</li>
+<li>yyyy-mm-dd hh:ii</li>
+<li>yyyy-mm-ddThh:ii</li>
+<li>yyyy-mm-dd hh:ii:ss</li>
+<li>yyyy-mm-ddThh:ii:ssZ<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">format: &apos;yyyy-mm-dd hh:ii&apos; //时间显示到分钟</span><br></pre></td></tr></table></figure>
 
-yyyy-mm-dd
-yyyy-mm-dd hh:ii
-yyyy
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/07/18/bootstrap-datetimepicker日期插件/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+</li>
+</ol>
+<h3 id="weekStart"><a href="#weekStart" class="headerlink" title="weekStart"></a>weekStart</h3><p>&emsp;&emsp;默认值为0。一周从哪一天开始0（星期日）到6（星期六）。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">weekStart:  &apos;1&apos;	//一周从周一开始</span><br></pre></td></tr></table></figure>
+
+<h3 id="startDate"><a href="#startDate" class="headerlink" title="startDate"></a>startDate</h3><p>&emsp;&emsp;开始时间。可以选择的最早日期，这个日期之前的日期都无法被选择。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">startDate: &apos;2017-08-15 14:45&apos; 	//选择的日期最早只能是这个</span><br></pre></td></tr></table></figure>
+
+<h3 id="endDate"><a href="#endDate" class="headerlink" title="endDate"></a>endDate</h3><p>&emsp;&emsp;结束时间。可能选择的最新日期，这个日期以后的日期都无法被选择。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">endDate: &apos;2017-09-08 14:45&apos;	   //选择的日期最新只能是这个</span><br></pre></td></tr></table></figure>
+
+<h3 id="daysOfWeekDisabled"><a href="#daysOfWeekDisabled" class="headerlink" title="daysOfWeekDisabled"></a>daysOfWeekDisabled</h3><p>&emsp;&emsp;禁用星期几。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">daysOfWeekDisabled: &apos;0,6&apos;	//禁用周末，周六、周日的日期无法被选择</span><br></pre></td></tr></table></figure>
+
+<h3 id="autoclose"><a href="#autoclose" class="headerlink" title="autoclose"></a>autoclose</h3><p>&emsp;&emsp;默认值为false，不关闭。当选择好一个日期之后是否立即关闭此日期时间选择器。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">autoclose: &apos;true&apos;	//选好日期后关闭日期时间选择器</span><br></pre></td></tr></table></figure>
+
+<h3 id="startView"><a href="#startView" class="headerlink" title="startView"></a>startView</h3><p>&emsp;&emsp;默认值为2, 首先显示的视图是月份视图。0是小时视图，1是日视图，2是月份视图，3是年视图，4是十年视图。日期时间选择器打开之后首先显示的视图。0小时或小时。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">startView:  &apos;1&apos;    //日视图</span><br></pre></td></tr></table></figure>
+
+<h3 id="minView"><a href="#minView" class="headerlink" title="minView"></a>minView</h3><p>&emsp;&emsp;默认值为0，小时视图。日期时间选择器所能够提供的最精确的时间选择视图。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">minView: &apos;1&apos;   //最精确是到日视图</span><br></pre></td></tr></table></figure>
+
+<h3 id="maxView"><a href="#maxView" class="headerlink" title="maxView"></a>maxView</h3><p>&emsp;&emsp;默认值为4，十年视图。日期时间选择器最高能展示的选择范围视图。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">maxView: &apos;1&apos;   //最高能展示的是日视图</span><br></pre></td></tr></table></figure>
+
+<h3 id="todayBtn"><a href="#todayBtn" class="headerlink" title="todayBtn"></a>todayBtn</h3><p>&emsp;&emsp;默认值为false。如果此值为true 或 “linked”，则在日期时间选择器组件的底部显示一个 <code>Today</code> 按钮用以选择当前日期。如果是true的话，<code>Today</code>按钮仅仅将视图转到当天的日期，如果是<code>linked</code>，当天日期将会被选中。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">todayBtn: &apos;true&apos;</span><br></pre></td></tr></table></figure>
+
+<h3 id="keyboardNavigation"><a href="#keyboardNavigation" class="headerlink" title="keyboardNavigation"></a>keyboardNavigation</h3><p>&emsp;&emsp;默认值为true。是否允许通过方向键改变日期。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">keyboardNavigation: &apos;false&apos;  //无法通过方向键改变日期</span><br></pre></td></tr></table></figure>
+
+<h3 id="minuteStep"><a href="#minuteStep" class="headerlink" title="minuteStep"></a>minuteStep</h3><p>&emsp;&emsp;默认值为5。小时视图中的可以选择的分钟数间隔为5分钟。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">minuteStep: &apos;10&apos;</span><br></pre></td></tr></table></figure>
+
+<h3 id="showMeridian"><a href="#showMeridian" class="headerlink" title="showMeridian"></a>showMeridian</h3><p>&emsp;&emsp;默认值为false。用于小时视图和日视图，为true视图会显示上下午（AM，PM）。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">showMeridian: &apos;true&apos;</span><br></pre></td></tr></table></figure>
+
+<h2 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h2><p>&emsp;&emsp;.datetimepicker(options)：初始化日期时间选择器。options的值有以下几个值可以选择。</p>
+<h3 id="remove"><a href="#remove" class="headerlink" title="remove"></a>remove</h3><p>&emsp;&emsp;无参数，移除日期时间选择器。同时移除已经绑定的event、内部绑定的对象和HTML元素。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$(‘.form_datetime’).datetimepicker(&apos;remove&apos;);  //视图无法显示。时间无法选择</span><br></pre></td></tr></table></figure>
+
+<h3 id="show"><a href="#show" class="headerlink" title="show"></a>show</h3><p>&emsp;&emsp;无参数，显示日期时间选择器。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$(‘.form_datetime’).datetimepicker(&apos;show&apos;);  //页面一加载，视图就已经显示</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="hide"><a href="#hide" class="headerlink" title="hide"></a>hide</h3><p>&emsp;&emsp;无参数，隐藏日期时间选择器。 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$(‘.form_datetime’).datetimepicker(&apos;hide&apos;);  //页面加载完成时，视图是隐藏的</span><br></pre></td></tr></table></figure>
+
+<h3 id="update"><a href="#update" class="headerlink" title="update"></a>update</h3><p>&emsp;&emsp;无参数，使用当前输入框中的值更新日期时间选择器。  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$(‘.form_datetime’).datetimepicker(&apos;update&apos;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="setStartDate"><a href="#setStartDate" class="headerlink" title="setStartDate"></a>setStartDate</h3><p>&emsp;&emsp;startDate (String)。给日期时间选择器设置一个新的起始日期。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$(&quot;.form_datetime&quot;).datetimepicker(&apos;setStartDate&apos;, &apos;2012-01-01&apos;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="setEndDate"><a href="#setEndDate" class="headerlink" title="setEndDate"></a>setEndDate</h3><p>&emsp;&emsp;endDate (String)。给日期时间选择器设置结束日期。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$(&quot;.form_datetime&quot;).datetimepicker(&apos;setEndDate&apos;, &apos;2012-01-01&apos;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="setDaysOfWeekDisabled"><a href="#setDaysOfWeekDisabled" class="headerlink" title="setDaysOfWeekDisabled"></a>setDaysOfWeekDisabled</h3><p>&emsp;&emsp;daysOfWeekDisabled (String|Array)。设置禁用日期，无法被选择的日期。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$(&quot;.form_datetime&quot;).datetimepicker(&apos;setDaysOfWeekDisabled&apos;, [0,6]);</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="事件"><a href="#事件" class="headerlink" title="事件"></a>事件</h2><h3 id="show-1"><a href="#show-1" class="headerlink" title="show"></a>show</h3><p>&emsp;&emsp;当选择器显示时被触发。</p>
+<h3 id="hide-1"><a href="#hide-1" class="headerlink" title="hide"></a>hide</h3><p>&emsp;&emsp;当选择器隐藏时被触发。</p>
+<h3 id="changeDate"><a href="#changeDate" class="headerlink" title="changeDate"></a>changeDate</h3><p>&emsp;&emsp;当日期被改变时被触发。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$(&apos;#date-end&apos;)</span><br><span class="line"> .datetimepicker()</span><br><span class="line">   .on(&apos;changeDate&apos;, function(ev)&#123;</span><br><span class="line">    if (ev.date.valueOf() &lt; date-start-display.valueOf())&#123;</span><br><span class="line">        ....</span><br><span class="line">    &#125;    </span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="changeYear"><a href="#changeYear" class="headerlink" title="changeYear"></a>changeYear</h3><p>&emsp;&emsp;当十年视图上的年视图被改变时触发。</p>
+<h3 id="changeMonth"><a href="#changeMonth" class="headerlink" title="changeMonth"></a>changeMonth</h3><p>&emsp;&emsp;当年视图上的月视图被改变时触发。</p>
+<h3 id="outOfRange"><a href="#outOfRange" class="headerlink" title="outOfRange"></a>outOfRange</h3><p>&emsp;&emsp;当用户选择的日期超出<code>startDate</code>或<code>endDate</code>时，或者通过<code>setDate</code> 或<code>setUTCDate</code>方法设置日期超出范围时被触发。</p>
+<h2 id="键盘支持"><a href="#键盘支持" class="headerlink" title="键盘支持"></a>键盘支持</h2><h3 id="up-down-left-right方向键"><a href="#up-down-left-right方向键" class="headerlink" title="up/down/left/right方向键"></a>up/down/left/right方向键</h3><p>&emsp;&emsp;<code>left/right</code>向后/向前 一天，<code>up/down</code>向后/向前一周。配合shift键，<code>up/left</code>向后退一个月，<code>down/right</code>向前进一个月。配置ctrl键，<code>up/left</code>向后退一年，<code>down/right</code> 向前进一年。<code>Shift+ctrl</code>和<code>ctrl</code>同等效果，即不能同时改变月和年，只能单独改变年。</p>
+<h3 id="escape键"><a href="#escape键" class="headerlink" title="escape键"></a>escape键</h3><p>&emsp;&emsp;可以用来隐藏、重新显示日期时间选择器。</p>
+<h3 id="enter键"><a href="#enter键" class="headerlink" title="enter键"></a>enter键</h3><p>&emsp;&emsp;当选择器处于显示状态时，enter键只是将其隐藏。当选择器处于隐藏状态时，enter键发挥通常的功能 - 提交当前表单，或者其他。</p>
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><ul>
+<li><p>绑定输入框，并设置format选项</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=&quot;text&quot; value=&quot;2012-05-15 21:05&quot; class=&quot;form_datetime&quot;&gt;</span><br><span class="line"></span><br><span class="line">$(&apos;.form_datetime&apos;).datetimepicker(&#123;</span><br><span class="line">    format: &apos;yyyy-mm-dd hh:ii&apos;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>绑定输入框，并设置format标记</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=&quot;text&quot; value=&quot;2012-05-15 21:05&quot; class=&quot;form_datetime&quot; data-date-format=&quot;yyyy-mm-dd hh:ii&quot;&gt;</span><br><span class="line"></span><br><span class="line">$(&apos;.form_datetime&apos;).datetimepicker();</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>作为组件使用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&quot;input-append date&quot; class=&quot;form_datetime&quot; data-date=&quot;12-02-2012&quot; data-date-format=&quot;dd-mm-yyyy&quot;&gt;</span><br><span class="line">    &lt;input size=&quot;16&quot; type=&quot;text&quot; value=&quot;12-02-2012&quot; readonly&gt;</span><br><span class="line">    &lt;span class=&quot;add-on&quot;&gt;&lt;i class=&quot;icon-th&quot;&gt;&lt;/i&gt;&lt;/span&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">$(&apos;.form_datetime&apos;).datetimepicker();</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>作为内联日期时间选择器</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&quot;form_datetime&quot;&gt;&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">$(&apos;.form_datetime&apos;).datetimepicker();</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
+<li><a href="http://www.bootcss.com/p/bootstrap-datetimepicker/index.htm" target="_blank" rel="noopener">参考网址</a></li>
+</ul>
+
+          
         
       
     </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
 
+    
 
     <footer class="post-footer">
       
@@ -834,6 +1229,10 @@ yyyy
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -846,7 +1245,7 @@ yyyy
   </nav>
 
 
-          
+
           </div>
           
 
@@ -866,70 +1265,71 @@ yyyy
   </div>
 
   <aside id="sidebar" class="sidebar">
+    
     <div class="sidebar-inner">
 
       
 
       
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
-        <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image" src="/images/head.jpg" alt="chen-xt">
-          <p class="site-author-name" itemprop="name">chen-xt</p>
-           
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">chen-xt</p>
               <p class="site-description motion-element" itemprop="description">一步一步向前走</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">32</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">31</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
           
+
+          
+
+          
+          
+
+          
+          
+
+          
+
         </div>
-        <nav class="site-state motion-element">
-
-          
-            <div class="site-state-item site-state-posts">
-              <a href="/archives">
-                <span class="site-state-item-count">32</span>
-                <span class="site-state-item-name">日志</span>
-              </a>
-            </div>
-          
-
-          
-            
-            
-            <div class="site-state-item site-state-categories">
-              <a href="/categories/index.html">
-                <span class="site-state-item-count">10</span>
-                <span class="site-state-item-name">分类</span>
-              </a>
-            </div>
-          
-
-          
-            
-            
-            <div class="site-state-item site-state-tags">
-              <a href="/tags/index.html">
-                <span class="site-state-item-count">31</span>
-                <span class="site-state-item-name">标签</span>
-              </a>
-            </div>
-          
-
-        </nav>
-
-        
-
-        <div class="links-of-author motion-element">
-          
-        </div>
-
-        
-        
-
-        
-        
-
-        
-
-
       </section>
 
       
@@ -946,19 +1346,36 @@ yyyy
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">
-  
-  &copy; 
-  <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
-    <i class="fa fa-"></i>
+    <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">chen-xt</span>
+
+  
 </div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
 
 
 
         
+
+
+
+
+
+
 
         
       </div>
@@ -970,7 +1387,9 @@ yyyy
         
       </div>
     
+
     
+
   </div>
 
   
@@ -994,48 +1413,67 @@ yyyy
 
 
 
-  
-  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-
-  
-  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-
-  
-  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
 
 
-  
 
 
-  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
 
-  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
 
 
 
   
   
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
 
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
   
 
   
 
+  
 
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
 
 
 
   
-
 
 
   
@@ -1061,21 +1499,31 @@ yyyy
 
 
 
-  
 
 
 
-  
-  
 
-  
+
+
 
   
 
+
+
+
+
+  
+
   
 
   
 
+  
+  
+
+  
+
+  
 
   
 

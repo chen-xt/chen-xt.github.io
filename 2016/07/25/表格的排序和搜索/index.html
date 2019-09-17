@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 
 
 
@@ -6,15 +6,23 @@
 
 
 <html class="theme-next muse use-motion" lang="zh-Hans">
-<head><meta name="generator" content="Hexo 3.8.0">
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
 
 
 
 <meta http-equiv="Cache-Control" content="no-transform">
 <meta http-equiv="Cache-Control" content="no-siteapp">
+
 
 
 
@@ -37,38 +45,27 @@
 
 
 
-  
-  
-  
-  
-
-  
-    
-    
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-    
-    
-    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-  
-
-
-
 
 
 
 <link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
 
-<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css">
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
 
 
   <meta name="keywords" content="DOM操作———表格,">
@@ -80,25 +77,20 @@
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1">
 
 
-
-
-
-
-<meta name="description" content="这两天学习了DOM的高级操作，主要是以对表格的一些排序和搜索处理为例子来进行学习的。 排序表格的排序主要分为三个步骤:转换————排序————插入。第一步，转换成数组。只有将获得的对象元素转换成数组才能进行大小的比较。1234for(i=0;i&amp;lt;oTab.tBodies[0].rows.length;i++)        &amp;#123;            arr[i]=oTab.tBod">
+<meta name="description" content="这两天学习了DOM的高级操作，主要是以对表格的一些排序和搜索处理为例子来进行学习的。 排序表格的排序主要分为三个步骤:转换————排序————插入。第一步，转换成数组。只有将获得的对象元素转换成数组才能进行大小的比较。 1234for(i=0;i&amp;lt;oTab.tBodies[0].rows.length;i++)        &amp;#123;            arr[i]=oTab.tBo">
 <meta name="keywords" content="DOM操作———表格">
 <meta property="og:type" content="article">
 <meta property="og:title" content="表格的排序和搜索">
 <meta property="og:url" content="http://yoursite.com/2016/07/25/表格的排序和搜索/index.html">
 <meta property="og:site_name" content="陈小婷的博客">
-<meta property="og:description" content="这两天学习了DOM的高级操作，主要是以对表格的一些排序和搜索处理为例子来进行学习的。 排序表格的排序主要分为三个步骤:转换————排序————插入。第一步，转换成数组。只有将获得的对象元素转换成数组才能进行大小的比较。1234for(i=0;i&amp;lt;oTab.tBodies[0].rows.length;i++)        &amp;#123;            arr[i]=oTab.tBod">
+<meta property="og:description" content="这两天学习了DOM的高级操作，主要是以对表格的一些排序和搜索处理为例子来进行学习的。 排序表格的排序主要分为三个步骤:转换————排序————插入。第一步，转换成数组。只有将获得的对象元素转换成数组才能进行大小的比较。 1234for(i=0;i&amp;lt;oTab.tBodies[0].rows.length;i++)        &amp;#123;            arr[i]=oTab.tBo">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2016-07-26T05:37:30.493Z">
+<meta property="og:updated_time" content="2016-07-26T05:37:30.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="表格的排序和搜索">
-<meta name="twitter:description" content="这两天学习了DOM的高级操作，主要是以对表格的一些排序和搜索处理为例子来进行学习的。 排序表格的排序主要分为三个步骤:转换————排序————插入。第一步，转换成数组。只有将获得的对象元素转换成数组才能进行大小的比较。1234for(i=0;i&amp;lt;oTab.tBodies[0].rows.length;i++)        &amp;#123;            arr[i]=oTab.tBod">
+<meta name="twitter:description" content="这两天学习了DOM的高级操作，主要是以对表格的一些排序和搜索处理为例子来进行学习的。 排序表格的排序主要分为三个步骤:转换————排序————插入。第一步，转换成数组。只有将获得的对象元素转换成数组才能进行大小的比较。 1234for(i=0;i&amp;lt;oTab.tBodies[0].rows.length;i++)        &amp;#123;            arr[i]=oTab.tBo">
 
 
 
@@ -107,9 +99,11 @@
   var CONFIG = {
     root: '/',
     scheme: 'Muse',
-    sidebar: {"position":"left","display":"post"},
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
-    motion: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     duoshuo: {
       userId: '0',
       author: '博主'
@@ -118,8 +112,8 @@
       applicationID: '',
       apiKey: '',
       indexName: '',
-      hits: "",
-      labels: ""
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
     }
   };
 </script>
@@ -132,11 +126,7 @@
 
 
 
-  <title> 表格的排序和搜索 | 陈小婷的博客 </title>
-</head>
-
-<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
-
+  <title>表格的排序和搜索 | 陈小婷的博客</title>
   
 
 
@@ -146,27 +136,19 @@
 
 
 
+</head>
 
-
-
-  <div style="display: none;">
-    <script src="//s95.cnzz.com/z_stat.php?id=1259971316&web_id=1259971316" language="JavaScript"></script>
-  </div>
-
-
-
-
-
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
   
   
     
   
 
-  <div class="container one-collumn sidebar-position-left page-post-detail ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
   <div class="site-meta ">
     
@@ -209,32 +191,12 @@
         </li>
       
         
-        <li class="menu-item menu-item-categories">
-          <a href="/categories" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
-            
-            分类
-          </a>
-        </li>
-      
-        
         <li class="menu-item menu-item-archives">
-          <a href="/archives" rel="section">
+          <a href="/archives/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
             
             归档
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-tags">
-          <a href="/tags" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
-            
-            标签
           </a>
         </li>
       
@@ -266,16 +228,20 @@
   
   
 
-  <article class="post post-type-normal " itemscope="" itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/07/25/表格的排序和搜索/">
 
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="chen-xt">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/head.jpg">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="陈小婷的博客">
     </span>
 
@@ -284,18 +250,21 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                表格的排序和搜索
-              
-            
-          </h1>
+          <h1 class="post-title" itemprop="name headline">表格的排序和搜索</h1>
         
 
         <div class="post-meta">
           <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-07-25T21:29:31+08:00">
+                2016-07-25
+              </time>
             
 
             
@@ -303,6 +272,28 @@
             
           </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">javascript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -322,7 +313,9 @@
       </header>
     
 
-
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -330,32 +323,42 @@
 
       
         <p>这两天学习了DOM的高级操作，主要是以对表格的一些排序和搜索处理为例子来进行学习的。</p>
-<h3 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h3><p>表格的排序主要分为三个步骤:转换————排序————插入。<br>第一步，转换成数组。只有将获得的对象元素转换成数组才能进行大小的比较。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;oTab.tBodies[<span class="number">0</span>].rows.length;i++)</span><br><span class="line">        &#123;</span><br><span class="line">            arr[i]=oTab.tBodies[<span class="number">0</span>].rows[i];</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure></p>
-<p>第二步，数组排序。这里是升序排列的。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">arr.sort(<span class="function"><span class="keyword">function</span> (<span class="params">tr1, tr2</span>)</span>&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="built_in">parseInt</span>(tr1.cells[<span class="number">0</span>].innerHTML)-<span class="built_in">parseInt</span>(tr2.cells[<span class="number">0</span>].innerHTML);</span><br><span class="line">        &#125;);</span><br></pre></td></tr></table></figure></p>
-<p>第三步，重新插入。将排列好的数组插入到表格中。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;arr.length;i++)</span><br><span class="line">        &#123;</span><br><span class="line">          oTab.tBodies[<span class="number">0</span>].appendChild(arr[i]);</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure></p>
-<p>上述代码已经能实现将表格进行升序排列，若还想实现降序排列需要如下的改进。先创建一个布尔变量，当值为true时，进行升序排列，否则为降序排列。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> bAsc=<span class="literal">true</span>;<span class="comment">//判断是否升序排列</span></span><br></pre></td></tr></table></figure></p>
-<p>然后，添加降序排列代码，就可以通过if-else语句判断是降序排列还是升序排列。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">return</span> <span class="built_in">parseInt</span>(tr2.cells[<span class="number">0</span>].innerHTML)-<span class="built_in">parseInt</span>(tr1.cells[<span class="number">0</span>].innerHTML);</span><br></pre></td></tr></table></figure></p>
-<p>最后，就是添加以下一行代码，就可以实现通过按钮的点击来交替实现两种排列方式。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bAsc=!bAsc;</span><br></pre></td></tr></table></figure></p>
-<h3 id="搜索"><a href="#搜索" class="headerlink" title="搜索"></a>搜索</h3><p>表格的搜索是通过将文本框的字符串与表格指定位置的字符串进行比较，如果是相等的，则将那行的背景颜色变为黄色(也可以是其他颜色）。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;oTab.tBodies[<span class="number">0</span>].rows.length;i++)</span><br><span class="line">&#123;   <span class="comment">//全部化成小写(大写也行)再比较，实现不区分大小写</span></span><br><span class="line">  <span class="keyword">var</span> sValueInTab=oTab.tBodies[<span class="number">0</span>].rows[i].cells[<span class="number">1</span>].innerHTML.toLowerCase();</span><br><span class="line">  <span class="keyword">var</span> sValueInTxt=oTxt.value.toLowerCase();</span><br><span class="line">    <span class="keyword">if</span>(sValueInTab==sValueInTxt)</span><br><span class="line">    &#123;</span><br><span class="line">       oTab.tBodies[<span class="number">0</span>].rows[i].style.background=<span class="string">'yellow'</span>;</span><br><span class="line">     &#125;</span><br><span class="line">     <span class="keyword">else</span></span><br><span class="line">     &#123;</span><br><span class="line">       oTab.tBodies[<span class="number">0</span>].rows[i].style.background=<span class="string">''</span>;</span><br><span class="line">       &#125;   &#125;</span><br></pre></td></tr></table></figure></p>
-<p>但是如果想实现多关键词搜索，还需要做以下的改进，先将文本框的关键字用空格作为分割的标记对输入的关键字进行分割，然后利用search()方法去搜索，看看表格的字符串与文本框的字符串是否有一样的，如果搜索不到一样的字符串，则返回-1。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr=sValueInTxt.split(<span class="string">' '</span>);<span class="comment">//将关键字分割</span></span><br><span class="line"><span class="keyword">var</span> bFound=<span class="literal">false</span>;</span><br><span class="line"> <span class="keyword">for</span>(j=<span class="number">0</span>;j&lt;arr.length;j++)</span><br><span class="line"> &#123;</span><br><span class="line">   <span class="keyword">if</span>(sValueInTab.search(arr[j])!=<span class="number">-1</span>)</span><br><span class="line">   &#123;   <span class="comment">//搜索不到</span></span><br><span class="line">       bFound=<span class="literal">true</span>;</span><br><span class="line">       <span class="keyword">break</span>;</span><br><span class="line">    &#125;      &#125;</span><br><span class="line">  <span class="keyword">if</span>(bFound)</span><br><span class="line">   &#123;</span><br><span class="line">     oTab.tBodies[<span class="number">0</span>].rows[i].style.background=<span class="string">'yellow'</span>;</span><br><span class="line">    &#125;</span><br><span class="line">   <span class="keyword">else</span></span><br><span class="line">   &#123;</span><br><span class="line">    oTab.tBodies[<span class="number">0</span>].rows[i].style.background=<span class="string">''</span>;</span><br><span class="line">           &#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h3><p>表格的排序主要分为三个步骤:转换————排序————插入。<br>第一步，转换成数组。只有将获得的对象元素转换成数组才能进行大小的比较。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;oTab.tBodies[<span class="number">0</span>].rows.length;i++)</span><br><span class="line">        &#123;</span><br><span class="line">            arr[i]=oTab.tBodies[<span class="number">0</span>].rows[i];</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+
+<p>第二步，数组排序。这里是升序排列的。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">arr.sort(<span class="function"><span class="keyword">function</span> (<span class="params">tr1, tr2</span>)</span>&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="built_in">parseInt</span>(tr1.cells[<span class="number">0</span>].innerHTML)-<span class="built_in">parseInt</span>(tr2.cells[<span class="number">0</span>].innerHTML);</span><br><span class="line">        &#125;);</span><br></pre></td></tr></table></figure>
+
+<p>第三步，重新插入。将排列好的数组插入到表格中。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;arr.length;i++)</span><br><span class="line">        &#123;</span><br><span class="line">          oTab.tBodies[<span class="number">0</span>].appendChild(arr[i]);</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+
+<p>上述代码已经能实现将表格进行升序排列，若还想实现降序排列需要如下的改进。先创建一个布尔变量，当值为true时，进行升序排列，否则为降序排列。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> bAsc=<span class="literal">true</span>;<span class="comment">//判断是否升序排列</span></span><br></pre></td></tr></table></figure>
+
+<p>然后，添加降序排列代码，就可以通过if-else语句判断是降序排列还是升序排列。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">return</span> <span class="built_in">parseInt</span>(tr2.cells[<span class="number">0</span>].innerHTML)-<span class="built_in">parseInt</span>(tr1.cells[<span class="number">0</span>].innerHTML);</span><br></pre></td></tr></table></figure>
+
+<p>最后，就是添加以下一行代码，就可以实现通过按钮的点击来交替实现两种排列方式。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bAsc=!bAsc;</span><br></pre></td></tr></table></figure>
+
+<h3 id="搜索"><a href="#搜索" class="headerlink" title="搜索"></a>搜索</h3><p>表格的搜索是通过将文本框的字符串与表格指定位置的字符串进行比较，如果是相等的，则将那行的背景颜色变为黄色(也可以是其他颜色）。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;oTab.tBodies[<span class="number">0</span>].rows.length;i++)</span><br><span class="line">&#123;   <span class="comment">//全部化成小写(大写也行)再比较，实现不区分大小写</span></span><br><span class="line">  <span class="keyword">var</span> sValueInTab=oTab.tBodies[<span class="number">0</span>].rows[i].cells[<span class="number">1</span>].innerHTML.toLowerCase();</span><br><span class="line">  <span class="keyword">var</span> sValueInTxt=oTxt.value.toLowerCase();</span><br><span class="line">    <span class="keyword">if</span>(sValueInTab==sValueInTxt)</span><br><span class="line">    &#123;</span><br><span class="line">       oTab.tBodies[<span class="number">0</span>].rows[i].style.background=<span class="string">'yellow'</span>;</span><br><span class="line">     &#125;</span><br><span class="line">     <span class="keyword">else</span></span><br><span class="line">     &#123;</span><br><span class="line">       oTab.tBodies[<span class="number">0</span>].rows[i].style.background=<span class="string">''</span>;</span><br><span class="line">       &#125;   &#125;</span><br></pre></td></tr></table></figure>
+
+<p>但是如果想实现多关键词搜索，还需要做以下的改进，先将文本框的关键字用空格作为分割的标记对输入的关键字进行分割，然后利用search()方法去搜索，看看表格的字符串与文本框的字符串是否有一样的，如果搜索不到一样的字符串，则返回-1。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr=sValueInTxt.split(<span class="string">' '</span>);<span class="comment">//将关键字分割</span></span><br><span class="line"><span class="keyword">var</span> bFound=<span class="literal">false</span>;</span><br><span class="line"> <span class="keyword">for</span>(j=<span class="number">0</span>;j&lt;arr.length;j++)</span><br><span class="line"> &#123;</span><br><span class="line">   <span class="keyword">if</span>(sValueInTab.search(arr[j])!=<span class="number">-1</span>)</span><br><span class="line">   &#123;   <span class="comment">//搜索不到</span></span><br><span class="line">       bFound=<span class="literal">true</span>;</span><br><span class="line">       <span class="keyword">break</span>;</span><br><span class="line">    &#125;      &#125;</span><br><span class="line">  <span class="keyword">if</span>(bFound)</span><br><span class="line">   &#123;</span><br><span class="line">     oTab.tBodies[<span class="number">0</span>].rows[i].style.background=<span class="string">'yellow'</span>;</span><br><span class="line">    &#125;</span><br><span class="line">   <span class="keyword">else</span></span><br><span class="line">   &#123;</span><br><span class="line">    oTab.tBodies[<span class="number">0</span>].rows[i].style.background=<span class="string">''</span>;</span><br><span class="line">           &#125;</span><br></pre></td></tr></table></figure>
+
 
       
     </div>
+    
+    
+    
 
-    <div>
-      
-        
+    
 
-      
-    </div>
+    
 
-    <div>
-      
-        
-
-      
-    </div>
-
+    
 
     <footer class="post-footer">
       
@@ -367,7 +370,7 @@
       
 
       
-        
+      
       
 
       
@@ -395,6 +398,10 @@
       
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -404,15 +411,15 @@
     </div>
   </div>
 
-          
+
           </div>
           
 
 
           
-  <div class="comments" id="comments">
-    
-  </div>
+
+  
+
 
 
         </div>
@@ -428,6 +435,7 @@
   </div>
 
   <aside id="sidebar" class="sidebar">
+    
     <div class="sidebar-inner">
 
       
@@ -437,70 +445,70 @@
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
             文章目录
           </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
             站点概览
           </li>
         </ul>
       
 
-      <section class="site-overview sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image" src="/images/head.jpg" alt="chen-xt">
-          <p class="site-author-name" itemprop="name">chen-xt</p>
-           
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">chen-xt</p>
               <p class="site-description motion-element" itemprop="description">一步一步向前走</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">32</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">31</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
           
+
+          
+
+          
+          
+
+          
+          
+
+          
+
         </div>
-        <nav class="site-state motion-element">
-
-          
-            <div class="site-state-item site-state-posts">
-              <a href="/archives">
-                <span class="site-state-item-count">32</span>
-                <span class="site-state-item-name">日志</span>
-              </a>
-            </div>
-          
-
-          
-            
-            
-            <div class="site-state-item site-state-categories">
-              <a href="/categories/index.html">
-                <span class="site-state-item-count">10</span>
-                <span class="site-state-item-name">分类</span>
-              </a>
-            </div>
-          
-
-          
-            
-            
-            <div class="site-state-item site-state-tags">
-              <a href="/tags/index.html">
-                <span class="site-state-item-count">31</span>
-                <span class="site-state-item-name">标签</span>
-              </a>
-            </div>
-          
-
-        </nav>
-
-        
-
-        <div class="links-of-author motion-element">
-          
-        </div>
-
-        
-        
-
-        
-        
-
-        
-
-
       </section>
 
       
@@ -533,19 +541,36 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">
-  
-  &copy; 
-  <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
-    <i class="fa fa-"></i>
+    <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">chen-xt</span>
+
+  
 </div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
 
 
 
         
+
+
+
+
+
+
 
         
       </div>
@@ -557,7 +582,9 @@
         
       </div>
     
+
     
+
   </div>
 
   
@@ -581,52 +608,71 @@
 
 
 
-  
-  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-
-  
-  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-
-  
-  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
 
 
-  
 
 
-  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
 
-  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
 
 
 
   
   
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
-
-
-
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
   
 
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
 
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
 
 
 
   
 
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
 
 
   
@@ -652,21 +698,31 @@
 
 
 
-  
 
 
 
-  
-  
 
-  
+
+
 
   
 
+
+
+
+
+  
+
   
 
   
 
+  
+  
+
+  
+
+  
 
   
 
