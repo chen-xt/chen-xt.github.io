@@ -345,133 +345,20 @@
       
         
           
-            <h4 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h4><p><em>正则表达式(RegExp)</em>是强大的字符串匹配工具，可以极大地简化普通字符串操作容易出问题的东西。正则表达式只能操作字符串，且区分大小写。</p>
-<h4 id="基本语法"><a href="#基本语法" class="headerlink" title="基本语法"></a>基本语法</h4><ol>
-<li><p>直接量语法: /pattern/attributes</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> re=<span class="regexp">/a/i</span>;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>创建 RegExp 对象的语法：：new RegExp(pattern, attributes);</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> re=<span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">'A'</span>,<span class="string">'i'</span>);</span><br></pre></td></tr></table></figure>
+          概念正则表达式(RegExp)是强大的字符串匹配工具，可以极大地简化普通字符串操作容易出问题的东西。正则表达式只能操作字符串，且区分大小写。
+基本语法
+直接量语法: /pattern/attributes
+1var re=/a/i;
 
-</li>
-</ol>
-<p>注意：参数 pattern 是一个字符串，指定了正则表达式的模式或其他正则表达式。参数 attributes 是一个可选的字符串，包含属性 “g”、”i” 和 “m”，分别用于指定全局匹配、区分大小写的匹配和多行匹配。</p>
-<h4 id="RegExp对象方法："><a href="#RegExp对象方法：" class="headerlink" title="RegExp对象方法："></a>RegExp对象方法：</h4><ol>
-<li><p>test()方法：检测一个字符串是否匹配某个模式。返回值是 true 或 false。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> patt1=<span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">"e"</span>);</span><br><span class="line"><span class="built_in">document</span>.write(patt1.test(<span class="string">"The best "</span>)); <span class="comment">//该字符串中存在字母 "e"，所以输出是true</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>exec()方法：检索字符串中的正则表达式的匹配。返回值是被找到的值。如果没有发现匹配，则返回 null。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> patt1=<span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">"e"</span>);</span><br><span class="line"><span class="built_in">document</span>.write(patt1.exec(<span class="string">"The best "</span>)); <span class="comment">//该字符串中存在字母 "e"，所以输出是e</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>compile()方法：改变正则表达式的模式。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//在字符串中全局搜索 "man"，并用 "person" 替换。然后通过 compile() 方法，改变正则表达式，用 "person" 替换 "man" 或 "woman"，</span></span><br><span class="line"><span class="keyword">var</span> str=<span class="string">"Every man in the world! Every woman on earth!"</span>;</span><br><span class="line">patt=<span class="regexp">/(wo)?man/g</span>;</span><br><span class="line">patt.compile(patt);</span><br><span class="line">Str2=str.replace(patt,<span class="string">"person"</span>);<span class="comment">//用 "person" 替换 "man" 或 "woman"，：</span></span><br><span class="line"><span class="built_in">document</span>.write(str2);</span><br></pre></td></tr></table></figure>
-
-</li>
-</ol>
-<h4 id="支持正则表达式的-String-对象的方法"><a href="#支持正则表达式的-String-对象的方法" class="headerlink" title="支持正则表达式的 String 对象的方法"></a>支持正则表达式的 String 对象的方法</h4><ol>
-<li><p>Search()方法：检索与正则表达式相匹配的值。不执行全局匹配，它将忽略标志 g，同时它也没有regexp对象的lastIndex的属性，且总是从字符串开始位置进行查找，总是返回匹配的第一个位置。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str=<span class="string">"hello,world!"</span></span><br><span class="line"><span class="built_in">document</span>.write(str.search(<span class="regexp">/world/</span>)); <span class="comment">//结果返回6，即w所在的位置</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>match()方法：找到一个或多个正则表达式的匹配,返回指定的值，而不是字符串的位置。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str=<span class="string">'abcd 3458 gea2 ef'</span>;</span><br><span class="line"><span class="built_in">document</span>.write(str.match(<span class="regexp">/\d+/g</span>));<span class="comment">//结果为3548,2</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Replace()方法：查找并替换与正则表达式匹配的子串。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str=<span class="string">"good girl"</span></span><br><span class="line"><span class="built_in">document</span>.write(str.replace(<span class="regexp">/girl/</span>, <span class="string">"boy"</span>));<span class="comment">//使用boy替换girl</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Split()方法：把一个字符串分割为字符串数组。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str=<span class="string">"How are you ?"</span></span><br><span class="line"><span class="built_in">document</span>.write(str.split(<span class="string">""</span>) + <span class="string">"&lt;br /&gt;"</span>);<span class="comment">//结果为"H,o,w, ,a,r,e, ,y,o,u, ,?"</span></span><br></pre></td></tr></table></figure>
-
-</li>
-</ol>
-<h4 id="元字符"><a href="#元字符" class="headerlink" title="元字符"></a>元字符</h4><p><em>元字符</em>是拥有特殊含义的字符，javascript中常见的元字符如下：</p>
-<ol>
-<li><p>元字符<em>.</em> ：用于匹配任何单个字符(除了换行符以外)。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = “abcde”;</span><br><span class="line"><span class="built_in">document</span>.write(str.match(<span class="regexp">/a.c/</span>)); <span class="comment">// 结果为“abc”</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>\w：查找任意一个字母或数字或下划线。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = “abcde”;<span class="comment">// 匹配单个字符，找到一个直接返回</span></span><br><span class="line"><span class="built_in">document</span>.write(str.match(<span class="regexp">/\w/</span>)); <span class="comment">//结果为“a”</span></span><br><span class="line"><span class="built_in">document</span>.write(str.match(<span class="regexp">/\w+/</span>)); <span class="comment">//结果为“abcde”</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>\W：查找非单词的字符.</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = “abcde”;<span class="comment">// 匹配单个字符，没有找到返回null</span></span><br><span class="line"><span class="built_in">document</span>.write(str.match(<span class="regexp">/\W/</span>)); <span class="comment">// 结果为“null”</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>\d：匹配一个数字字符。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = “abcde111”;</span><br><span class="line"><span class="built_in">document</span>.write(<span class="regexp">/\d/g</span>.exec(str)); <span class="comment">//结果为“1”</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>\D：匹配一个非数字字符。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = “abcde111”;</span><br><span class="line"><span class="built_in">document</span>.write(<span class="regexp">/\D+/g</span>.exec(str)); <span class="comment">//结果为“abcde”</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>\s：匹配任何空白字符，包括空格，制表符，换行符等等。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str=”Is <span class="keyword">this</span> all there is?”;</span><br><span class="line"><span class="built_in">document</span>.write(<span class="regexp">/\s/g</span>.exec(str)); <span class="comment">// 结果为“ ”</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>\S：匹配任何非空白字符。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str=”Is <span class="keyword">this</span> all there is?”;</span><br><span class="line"><span class="built_in">document</span>.write(<span class="regexp">/\S+/g</span>.exec(str)); <span class="comment">//结果为“Is”</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>\b：匹配一个单词边界，也就是指单词和空格间的位置。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str=”Is <span class="keyword">this</span> all there is?”;</span><br><span class="line"><span class="built_in">document</span>.write(<span class="regexp">/\bthis\b/g</span>.exec(str)); <span class="comment">//结果为“this”</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>\B：匹配非单词边界。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str=”Is <span class="keyword">this</span> all there is?”;</span><br><span class="line"><span class="built_in">document</span>.write(<span class="regexp">/\Bhi/g</span>.exec(str)); <span class="comment">// 结果为“hi”</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>\n：匹配一个换行符;返回换行符被找到的位置。如果未找到匹配，则返回 -1。 </p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str=”Is <span class="keyword">this</span> all \nthere is?”;</span><br><span class="line"><span class="built_in">document</span>.write(<span class="regexp">/\n/g</span>.exec(str));</span><br></pre></td></tr></table></figure>
-
-</li>
-</ol>
-<h4 id="正则的方括号"><a href="#正则的方括号" class="headerlink" title="正则的方括号"></a>正则的方括号</h4><p>方括号包含一系列字符，能够匹配其中任意一个字符,如[abc]可以匹配abc中任意一个字符，使用[^abc]包含的字符abc，则能够匹配abc字符之外的任何一个字符，只能是一个字符。常见的几种方括号的用法如下：</p>
-<ul>
-<li>[abc]：查找在方括号中的任意一个字符；</li>
-<li>[^abc]: 查找不在方括号中的任意一个字符；</li>
-<li>[0-9]: 查找0-9中的任意一个数字；</li>
-<li>[a-z]: 查找从小写a到z中的任意一个字符。</li>
-</ul>
-<h4 id="量词"><a href="#量词" class="headerlink" title="量词"></a>量词</h4><ol>
-<li><p>n*：匹配零个或者多个n的字符串。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">"hello longen hello"</span>;</span><br><span class="line"><span class="built_in">document</span>.write(str.match(<span class="regexp">/el*/g</span>)); <span class="comment">//结果为"ell"</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>n+：匹配至少包含一个或者多个n的字符串。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">"hello longen"</span>;</span><br><span class="line"><span class="built_in">document</span>.write(str.match(<span class="regexp">/l+/g</span>)); <span class="comment">//结果为"ll"</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>n？：匹配零个或者1个n的字符串，可以匹配n字符串，也可以只匹配一个n；先尽量匹配，如没有匹配到，就回溯，再进行不匹配；</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">"hello longen hello"</span>;</span><br><span class="line"><span class="built_in">document</span>.write(str.match(<span class="regexp">/hu?/g</span>)); <span class="comment">//结果为"h"</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>n{x}：匹配包含x个的n的序列字符串。X必须是数字。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str=<span class="string">"100, 1000 or 10000?"</span>;</span><br><span class="line"><span class="built_in">document</span>.write(str.match(<span class="regexp">/\d&#123;4&#125;/g</span>)); <span class="comment">//结果为["1000", "1000"]</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>n{x,y}：匹配包含至少x个的n字符串，最多y个n字符串。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str=<span class="string">"100, 1000 or 10000?"</span>;</span><br><span class="line"><span class="built_in">document</span>.write(str.match(<span class="regexp">/\d&#123;3,&#125;/g</span>)); <span class="comment">//结果为["100", "1000", "1000"]</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>n{x,}：匹配至少包含x个n序列的字符串；</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str=<span class="string">"100, 1000 or 10000?"</span>;</span><br><span class="line"><span class="built_in">document</span>.write(str.match(<span class="regexp">/d&#123;3,&#125;/g</span>)); <span class="comment">//结果为["100", "1000", "1000"]</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>n$：匹配任何以n结尾的字符串；</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str=<span class="string">"my name is longen"</span>;</span><br><span class="line"><span class="built_in">document</span>.write(str.match(<span class="regexp">/en$/g</span>)); <span class="comment">//结果为["en"]</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>^n：匹配任何以n开头的字符串；</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str=<span class="string">"my name is longen"</span>;</span><br><span class="line"><span class="built_in">document</span>.write(str.match(<span class="regexp">/^my/g</span>)); <span class="comment">//结果为"my"</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>?=n：匹配任何其后紧接指定字符串n的字符串；</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str=<span class="string">"my name is longen"</span>;</span><br><span class="line"><span class="built_in">document</span>.write(str.match(<span class="regexp">/na(?=m)/g</span>)); <span class="comment">//结果为"na"</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>?!n：匹配任何其后不紧接n的字符串 </p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str=<span class="string">"my name is longen"</span>;</span><br><span class="line"><span class="built_in">document</span>.write(str.match(<span class="regexp">/na(?!ma)/g</span>)); <span class="comment">//结果为"na"</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>^ 以字符串开始的地方匹配，不匹配任何字符；</p>
-</li>
-<li><p>$ 以字符串结束的地方匹配，不匹配任何字符；</p>
-</li>
-</ol>
-<h4 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h4><p>正则表达式在javascript中的应用挺广泛的，可以说带来很多的方便，这里就列举两个应用：</p>
-<ol>
-<li><p><em>行首行尾去空格</em></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str=<span class="string">' www ee  d;fl  '</span>;</span><br><span class="line"><span class="keyword">var</span> re=<span class="regexp">/^\s+|S+&amp;/</span>;<span class="comment">//行首行尾去空格</span></span><br><span class="line"><span class="built_in">document</span>.write(<span class="string">'('</span>+str.replace(re,<span class="string">''</span>));</span><br></pre></td></tr></table></figure>
-</li>
-<li><p><em>校验邮箱</em></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> re=<span class="regexp">/^\w+@[a-z0-9]+\.[a-z]&#123;2-4&#125;$/</span>;</span><br><span class="line">  <span class="keyword">if</span>(re.test(oTxt.value))</span><br><span class="line">    &#123;  alert(<span class="string">'right'</span>); &#125;</span><br><span class="line"> <span class="keyword">else</span></span><br><span class="line">    &#123;  alert(<span class="string">'wrong'</span>);  &#125;</span><br></pre></td></tr></table></figure>
-
-</li>
-</ol>
-
-          
+创建 RegExp 对象的语法：：new RegExp(patt
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/07/30/初识正则表达式/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -611,29 +498,15 @@
       
         
           
-            <h4 id="Javascript的异常处理"><a href="#Javascript的异常处理" class="headerlink" title="Javascript的异常处理"></a>Javascript的异常处理</h4><p>Javascript的异常就是当javascript引擎执行javascript代码时，发生了错误，导致程序停止运行的一种现象。当异常产生时，会创建一个异常类对象，该异常类对象将被提交给浏览器，这个过程称为“抛出异常”。当浏览器接收到异常对象时，会寻找能处理这一异常的代码并把当前异常对象提交给其处理，这一过程被称为“捕获异常”。<br>Javascript使用try..catch..finally语句来进行异常的捕获，try..catch..finally语句的基本语法格式为： </p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span>&#123;</span><br><span class="line">    <span class="comment">//可能抛出异常的代码 </span></span><br><span class="line">    &#125;<span class="keyword">catch</span>(error)&#123;</span><br><span class="line">     <span class="comment">//如果发生异常会执行的代码，error为发生的异常类对象 </span></span><br><span class="line">    &#125;<span class="keyword">finally</span>&#123;</span><br><span class="line">    <span class="comment">//无条件执行的代码 </span></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
-<p>try块中的语句首先被执行。如果运行中发生了错误，控制就会转移到位于catch块中语句，其中括号中的error参数被作为例外变量传递。否则，catch块的语句被跳过不执行。无论是发生错误时catch块中的语句执行完毕，或者没有发生错误try块中的语句执行完毕，最后将执行 finally块中的语句。在try..catch..finally语句中，try是必需的，catch和finally均为可选语句，但catch和finally中必须至少出现一个。<br>下面例子为捕获到的是变量未定义的异常：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">demo</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">        </span>&#123;   <span class="keyword">var</span> str=<span class="string">"你好"</span>; <span class="comment">//没有声明str的话会有异常</span></span><br><span class="line">            <span class="keyword">try</span>&#123;</span><br><span class="line">                alert(str);</span><br><span class="line">            &#125;<span class="keyword">catch</span>(er)&#123;</span><br><span class="line">                alert(er);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        demo();</span><br></pre></td></tr></table></figure>
-
-<p>Javascript抛出异常使用的是throw语句，可创建一个自定义异常。将throw语句于try..catch..finally语句结合使用，能够控制程序流，并生成自定义的错误消息。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">demo</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">        </span>&#123;   </span><br><span class="line">            <span class="keyword">try</span>&#123;</span><br><span class="line">                <span class="keyword">var</span> e=<span class="built_in">document</span>.getElementById(<span class="string">'txt'</span>).value;</span><br><span class="line">                <span class="keyword">if</span>(e==<span class="string">''</span>)</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="keyword">throw</span> <span class="string">"第一个用户输入异常==空"</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;<span class="keyword">catch</span>(er)&#123;</span><br><span class="line">                alert(er);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        demo();</span><br></pre></td></tr></table></figure>
-
-<h4 id="Javascript的事件处理"><a href="#Javascript的事件处理" class="headerlink" title="Javascript的事件处理"></a>Javascript的事件处理</h4><p>事件指的是文档或者浏览器窗口中发生的一些特定交互瞬间。与浏览器进行交互的时候浏览器就会触发各种事件。比如当我们打开某一个网页的时候，浏览器加载完成了这个网页，就会触发一个load事件；当我们点击页面中的某一个“地方”，浏览器就会在那个“地方”触发一个 click 事件。这里列举了Javascript几个常用的事件：    </p>
-<ul>
-<li>onClick：鼠标点击触发的事件，多用在某个对象控制的范围内的鼠标点击</li>
-<li>onMouseOver：鼠标移入元素时触发的事件。</li>
-<li>onMouseOut：鼠标移开元素时触发的事件。</li>
-<li>onChnange：当文本内容改变时触发的事件。</li>
-<li>onSelect：当文本框被选中时触发的事件。</li>
-<li>onFocus：光标聚集事件，即在对象获得焦点时触发的事件。</li>
-<li>onBlur：移开光标事件，即在对象失去焦点时触发的事件。</li>
-<li>onLoad：网页加载事件，即在网页加载完成触发的事件。</li>
-<li>onUnload：关闭网页事件，即退出网页时触发的事件</li>
-</ul>
-
-          
+          Javascript的异常处理Javascript的异常就是当javascript引擎执行javascript代码时，发生了错误，导致程序停止运行的一种现象。当异常产生时，会创建一个异常类对象，该异常类对象将被提交给浏览器，这个过程称为“抛出异常”。当浏览器接收到异常对象时，会寻找能处理这一异常的代
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/07/29/Javascript的异常处理和事件处理/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -773,21 +646,17 @@
       
         
           
-            <p>虽说自己学的是前端，但是关于前后端的一些交互还是有必要做简单的了解的。这两天学会了简单的PHP加上MySql数据库来实现动态页面，在WAMP的集成环境下设计了一个简单的注册页面，并将注册信息通过后端传送到数据库。</p>
-<ol>
-<li><p>首先创建好数据库，在WAMP的环境下，建立数据库“register”，并创建具有两个字段的“message”表，存放用户名(username)及密码(password)。当有用户注册填写相关信息时，所填信息会被保存到该数据库中。</p>
-</li>
-<li><p>首先创建”register.php”文件，在里面编写相关的前端代码。创建两个文本框分别为用户的姓名输入框和密码输入框，再加一个注册按钮，为注册按钮添加调用ajax的相关语句。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">oBtn.onclick=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"> </span>&#123;</span><br><span class="line"><span class="keyword">var</span> url=<span class="string">'register_post.php?act=add&amp;username='</span>+oTxt1.value+<span class="string">'&amp;password='</span>+oTxt2.value;</span><br><span class="line">ajax(url, <span class="function"><span class="keyword">function</span> (<span class="params">str</span>)</span>&#123;          </span><br><span class="line">        &#125;);</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>创建”register_post.php”文件，在里面编写与数据库连接的代码以及数据库的执行操作语句。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">switch($_GET[&apos;act&apos;])</span><br><span class="line">&#123;</span><br><span class="line"> case &apos;add&apos;:</span><br><span class="line">  $username=$_GET[&apos;username&apos;];//接收前端上传的数据</span><br><span class="line">  $password=$_GET[&apos;password&apos;];</span><br><span class="line">  $sql=&quot;INSERT INTO message (username, password) VALUES(&apos;&#123;$username&#125;&apos;, &apos;&#123;$password&#125;&apos;)&quot;;</span><br><span class="line">  mysql_connect(&apos;localhost&apos;, &apos;root&apos;, &apos;&apos;);</span><br><span class="line">  mysql_select_db(&apos;register&apos;);</span><br><span class="line">  mysql_query($sql);</span><br><span class="line">  break;</span><br><span class="line">&#125;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>执行”register.php”文件，输入用户名和密码，点击注册按钮，即可发现数据库多了所填写的用户名和密码字段，到此，一个小的动态注册页面完成。这里只是通过简单的做个小例子来让自己明白前后端的一些交互方式，并不做深入的学习。</p>
-</li>
-</ol>
+          虽说自己学的是前端，但是关于前后端的一些交互还是有必要做简单的了解的。这两天学会了简单的PHP加上MySql数据库来实现动态页面，在WAMP的集成环境下设计了一个简单的注册页面，并将注册信息通过后端传送到数据库。
 
-          
+首先创建好数据库，在WAMP的环境下，建立数据库“register”，并创建具有两个
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/07/27/简单的PHP-MySql实现动态页面/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -927,33 +796,17 @@
       
         
           
-            <p>这两天学习了DOM的高级操作，主要是以对表格的一些排序和搜索处理为例子来进行学习的。</p>
-<h3 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h3><p>表格的排序主要分为三个步骤:转换————排序————插入。<br>第一步，转换成数组。只有将获得的对象元素转换成数组才能进行大小的比较。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;oTab.tBodies[<span class="number">0</span>].rows.length;i++)</span><br><span class="line">        &#123;</span><br><span class="line">            arr[i]=oTab.tBodies[<span class="number">0</span>].rows[i];</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
-
-<p>第二步，数组排序。这里是升序排列的。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">arr.sort(<span class="function"><span class="keyword">function</span> (<span class="params">tr1, tr2</span>)</span>&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="built_in">parseInt</span>(tr1.cells[<span class="number">0</span>].innerHTML)-<span class="built_in">parseInt</span>(tr2.cells[<span class="number">0</span>].innerHTML);</span><br><span class="line">        &#125;);</span><br></pre></td></tr></table></figure>
-
-<p>第三步，重新插入。将排列好的数组插入到表格中。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;arr.length;i++)</span><br><span class="line">        &#123;</span><br><span class="line">          oTab.tBodies[<span class="number">0</span>].appendChild(arr[i]);</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
-
-<p>上述代码已经能实现将表格进行升序排列，若还想实现降序排列需要如下的改进。先创建一个布尔变量，当值为true时，进行升序排列，否则为降序排列。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> bAsc=<span class="literal">true</span>;<span class="comment">//判断是否升序排列</span></span><br></pre></td></tr></table></figure>
-
-<p>然后，添加降序排列代码，就可以通过if-else语句判断是降序排列还是升序排列。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">return</span> <span class="built_in">parseInt</span>(tr2.cells[<span class="number">0</span>].innerHTML)-<span class="built_in">parseInt</span>(tr1.cells[<span class="number">0</span>].innerHTML);</span><br></pre></td></tr></table></figure>
-
-<p>最后，就是添加以下一行代码，就可以实现通过按钮的点击来交替实现两种排列方式。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bAsc=!bAsc;</span><br></pre></td></tr></table></figure>
-
-<h3 id="搜索"><a href="#搜索" class="headerlink" title="搜索"></a>搜索</h3><p>表格的搜索是通过将文本框的字符串与表格指定位置的字符串进行比较，如果是相等的，则将那行的背景颜色变为黄色(也可以是其他颜色）。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;oTab.tBodies[<span class="number">0</span>].rows.length;i++)</span><br><span class="line">&#123;   <span class="comment">//全部化成小写(大写也行)再比较，实现不区分大小写</span></span><br><span class="line">  <span class="keyword">var</span> sValueInTab=oTab.tBodies[<span class="number">0</span>].rows[i].cells[<span class="number">1</span>].innerHTML.toLowerCase();</span><br><span class="line">  <span class="keyword">var</span> sValueInTxt=oTxt.value.toLowerCase();</span><br><span class="line">    <span class="keyword">if</span>(sValueInTab==sValueInTxt)</span><br><span class="line">    &#123;</span><br><span class="line">       oTab.tBodies[<span class="number">0</span>].rows[i].style.background=<span class="string">'yellow'</span>;</span><br><span class="line">     &#125;</span><br><span class="line">     <span class="keyword">else</span></span><br><span class="line">     &#123;</span><br><span class="line">       oTab.tBodies[<span class="number">0</span>].rows[i].style.background=<span class="string">''</span>;</span><br><span class="line">       &#125;   &#125;</span><br></pre></td></tr></table></figure>
-
-<p>但是如果想实现多关键词搜索，还需要做以下的改进，先将文本框的关键字用空格作为分割的标记对输入的关键字进行分割，然后利用search()方法去搜索，看看表格的字符串与文本框的字符串是否有一样的，如果搜索不到一样的字符串，则返回-1。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr=sValueInTxt.split(<span class="string">' '</span>);<span class="comment">//将关键字分割</span></span><br><span class="line"><span class="keyword">var</span> bFound=<span class="literal">false</span>;</span><br><span class="line"> <span class="keyword">for</span>(j=<span class="number">0</span>;j&lt;arr.length;j++)</span><br><span class="line"> &#123;</span><br><span class="line">   <span class="keyword">if</span>(sValueInTab.search(arr[j])!=<span class="number">-1</span>)</span><br><span class="line">   &#123;   <span class="comment">//搜索不到</span></span><br><span class="line">       bFound=<span class="literal">true</span>;</span><br><span class="line">       <span class="keyword">break</span>;</span><br><span class="line">    &#125;      &#125;</span><br><span class="line">  <span class="keyword">if</span>(bFound)</span><br><span class="line">   &#123;</span><br><span class="line">     oTab.tBodies[<span class="number">0</span>].rows[i].style.background=<span class="string">'yellow'</span>;</span><br><span class="line">    &#125;</span><br><span class="line">   <span class="keyword">else</span></span><br><span class="line">   &#123;</span><br><span class="line">    oTab.tBodies[<span class="number">0</span>].rows[i].style.background=<span class="string">''</span>;</span><br><span class="line">           &#125;</span><br></pre></td></tr></table></figure>
-
-
-          
+          这两天学习了DOM的高级操作，主要是以对表格的一些排序和搜索处理为例子来进行学习的。
+排序表格的排序主要分为三个步骤:转换————排序————插入。第一步，转换成数组。只有将获得的对象元素转换成数组才能进行大小的比较。
+1234for(i=0;i&lt;oTab.tBodies[0].rows.le
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/07/25/表格的排序和搜索/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1093,12 +946,16 @@
       
         
           
-            <p>今天学习了JS面向对象的一个特性–继承。JS是一门基于面向对象的语言，也就是说，JS并非真正的面向对象，相对的，Java，PHP5以上等的编程语言则是真正面向对象的、真正意义上的面向对象语言。所以这里通过对PHP语言的继承的学习来延伸到对JS继承的学习。</p>
-<p>PHP是一门常用的后端开发语言，因为学习JS的继承，让我有机会第一次接触到这门语言。PHP的工作过程就是服务器先读取PHP文件，把服务器端的标记（如<?php ...?>）里面的内容选出来运行，再把结果返回来给客户端，所以客户端看不到服务端程序的源码，这就是PHP保密性好的原因。出于只是为了帮助对JS继承的学习的出发点，所以只对PHP一些简单语法进行学习与了解。PHP中用echo来进行输出，跟JS中的alert作用是一样的；PHP定义变量一定要用美元符号，如定义值为12 的变量a，则写作“$a=12”。PHP有两个比较特别的地方，其一，在PHP中，字符串两边可以不加引号，如“echo abc”；其二，JS中要连接两个字符串可以使用加号，但是PHP中加号只能是数字相加，所以要做字符串连接要用点，如“$a.$b”。那么又有新的疑问出现了，PHP中用点来连接两个字符串，点在JS中常用来访问对象的属性，那么PHP中用什么符号访问对象的属性呢？答案是-&gt;，如“$this-&gt;name”。PHP学起来还是蛮有意思的。</p>
-<p>接下来就是学习PHP的继承。所谓继承，就是从已有的类去派生出新的类，说白点就是把其他类的内容copy过来，再加上自己的东西，由此产生属于自己的类。对象由属性和方法组成，所以要继承一个对象，需要继承那个对象的属性和方法。PHP的继承是先创建一个父类，里面添加好属性和方法，然后用extends关键字让子类去继承父类的属性和方法，再添加子类自己独有的属性和方法，最终形成独有的子类。过程其实并不难。</p>
-<p>最后由PHP的继承类比到JS的继承，同样的先创建一个父类，利用构造函数添加其属性，利用原型添加其方法。接着也是利用extends关键字让子类去继承父类，通过调用父类的构造函数来继承父类的属性，这里采用call方法，如“Person.call(this,name,sex);”；通过原型来继承父类的方法，如“Worker.prototype=Person.prototype;”。然后添加子类自己的属性和方法，一个完整的子类就创建好了。JS的继承里面涉及到两个重要的知识点，call()方法和原型链，这将通过后续的学习再进一步掌握。</p>
-
-          
+          今天学习了JS面向对象的一个特性–继承。JS是一门基于面向对象的语言，也就是说，JS并非真正的面向对象，相对的，Java，PHP5以上等的编程语言则是真正面向对象的、真正意义上的面向对象语言。所以这里通过对PHP语言的继承的学习来延伸到对JS继承的学习。
+PHP是一门常用的后端开发语言，因为学习JS
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/07/23/JS之面向对象2/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>

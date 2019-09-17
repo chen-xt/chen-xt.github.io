@@ -345,75 +345,16 @@
       
         
           
-            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>&emsp;&emsp;结课考试后，学校安排了一次为期10天的实训，实训方向有安卓和PHP，我选择了PHP，因为PHP跟前端还是有关系的。实训虽然讲的内容不多，但还是从中得到一些收获，并最终做出一个包含增删改查功能的简历投递系统，特此写个总结。</p>
-<h2 id="PHP环境配置"><a href="#PHP环境配置" class="headerlink" title="PHP环境配置"></a>PHP环境配置</h2><p>&emsp;&emsp;主要用到三个软件：PhpStorm—-开发工具，phpStudy—-开发环境，Navicat for MySQL—-MySQL数据库。</p>
-<h3 id="phpStudy的安装"><a href="#phpStudy的安装" class="headerlink" title="phpStudy的安装"></a>phpStudy的安装</h3><ol>
-<li><p>点击安装包，一直next直至安装完成。</p>
-</li>
-<li><p>打开phpStudy—&gt;其他选项菜单—&gt;打开配置文件—&gt;找到vhosts.conf文件—&gt;粘贴配置代码—&gt;保存—&gt;重启phpStudy。配置代码如下(其中路径为phpstudy安装目录下www文件所在的路径，如<code>D:\phpstudy\WWW</code>，域名可以自己取，如<code>www.cxt.com</code>)：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;VirtualHost *:80&gt;</span><br><span class="line">    DocumentRoot &quot;路径&quot;</span><br><span class="line">    ServerName 域名</span><br><span class="line">  &lt;Directory &quot;路径&quot;&gt;</span><br><span class="line">      Options +Indexes +FollowSymLinks +ExecCGI</span><br><span class="line">      AllowOverride All</span><br><span class="line">      Order allow,deny</span><br><span class="line">      Allow from all</span><br><span class="line">      Require all granted</span><br><span class="line">  &lt;/Directory&gt;</span><br><span class="line">&lt;/VirtualHost&gt;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>找到路径 <code>C:\Windows\System32\drivers\etc\hosts</code>，对hosts文件进行配置：在最后一行加上<code>127.0.0.1 域名</code>。</p>
-</li>
-<li><p>打开phpStudy—&gt;其他选项菜单—&gt;PHP扩展及配置—&gt;PHP扩展—&gt;将php_openssl打钩。</p>
-</li>
-<li><p>通过域名或者路径“127.0.1.1”或者路径“localhost”打开浏览器，会有欢迎方面，表示安装成功。</p>
-</li>
-<li><p>如果想创建多个域名，只要参照(1)(2)步下来即可。</p>
-</li>
-</ol>
-<h3 id="PhpStorm的安装"><a href="#PhpStorm的安装" class="headerlink" title="PhpStorm的安装"></a>PhpStorm的安装</h3><ol>
-<li><p>点击安装包，一直next直至安装完成。</p>
-</li>
-<li><p>打开PhpStorm—&gt;输入以下License进行破解：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">User name:</span><br><span class="line">        EMBRACE</span><br><span class="line"></span><br><span class="line">     License key:</span><br><span class="line">        ===== LICENSE BEGIN =====</span><br><span class="line">        43136-12042010随机加上一串数字，防止验证码冲突(数字随便写几个)</span><br><span class="line">        00002UsvSON704l&quot;dILe1PVx3y4&quot;B3</span><br><span class="line">        49AU6oSDJrsjE8nMOQh&quot;8HTDJHIUUh</span><br><span class="line">        gd1BebYc5U&quot;6OxDbVsALB4Eb10PW8&quot;</span><br><span class="line">        ===== LICENSE END =====</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>将软件关闭进行汉化：找到phpstorm安装位置，找到里面的<code>\lib\messages</code>,把汉化包<code>resources_cn.jar</code>放入进去，重启phpstrom，即可发现汉化成功。</p>
-</li>
-</ol>
-<h3 id="Navicat-for-MySQL的安装"><a href="#Navicat-for-MySQL的安装" class="headerlink" title="Navicat for MySQL的安装"></a>Navicat for MySQL的安装</h3><ol>
-<li>点击安装包，一直next直至安装完成。</li>
-<li>打开数据库—&gt;连接—&gt;设置连接名和密码都为<code>root</code>—&gt;连接测试—&gt;确定测试成功。</li>
-<li>根据需要创建数据库和表。</li>
-</ol>
-<h2 id="MySQL常用语句"><a href="#MySQL常用语句" class="headerlink" title="MySQL常用语句"></a>MySQL常用语句</h2><h3 id="插入一条数据"><a href="#插入一条数据" class="headerlink" title="插入一条数据"></a>插入一条数据</h3><p>格式：insert  into  表名（字段1，字段2，字段3……）values(值1，值2，值3……)<br>如：<code>insert into type(name) values (&#39;生物&#39;)</code></p>
-<h3 id="查看数据"><a href="#查看数据" class="headerlink" title="查看数据"></a>查看数据</h3><p>格式：select 字段1，字段2，……from  表名<br>&emsp;&emsp;字段之间用<code>,</code>隔开，如果查询所有的字段用<code>*</code>来代替。<br>如：<code>select * from books</code></p>
-<h3 id="修改数据"><a href="#修改数据" class="headerlink" title="修改数据"></a>修改数据</h3><p>格式：update  表名  set 字段名1=‘新值1’，字段名2=‘新值2’ where=’条件’<br>&emsp;&emsp;如果不加where条件那么将会把所有的记录的值都修改掉。<br>如：update type set name=’生物’ where name=’地理’</p>
-<h3 id="删除数据"><a href="#删除数据" class="headerlink" title="删除数据"></a>删除数据</h3><p>格式：delete  from  表名 where 条件<br>&emsp;&emsp;如果不加where条件那么将会把所有的记录都删除掉。<br>如：delete from type where name=’生物’</p>
-<h2 id="PHP知识点"><a href="#PHP知识点" class="headerlink" title="PHP知识点"></a>PHP知识点</h2><p>&emsp;&emsp;这里只列举一些本次实训所用到的PHP知识点。</p>
-<ol>
-<li><p>PHP中所有的变量必须用<code>$</code>来修饰</p>
-</li>
-<li><p>php定界符是<code>&lt;?php ?&gt;</code>，也就是说PHP代码中以<code>&lt;?php</code>开始，以<code>?&gt;</code>结束。</p>
-</li>
-<li><p>隐藏域：不会显示在页面上，但是会被提交过去。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=’hidden’ name=’hide’value=“eeee”&gt;  //php接收:$_POST[‘hide’]</span><br></pre></td></tr></table></figure>
-</li>
-<li><p><code>$_POST[]</code>接收所有以<code>post</code>方式传递的值，<code>$_GET[]</code>接收所有以<code>get</code>方式传递的值。</p>
-</li>
-<li><p>mysql_query() 函数：执行一条 MySQL 查询。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$data=mysql_query($sql);</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>mysql_fetch_assoc() 函数：从结果集中取得一行作为关联数组,其实就是将取得的结果以数组形式返回。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$data=mysql_fetch_assoc($data);</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>include文件：将 PHP 文件的内容插入到另一个 PHP 文件中。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">include(&quot;mysql.php&quot;);</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>die(status) 函数：输出一条消息，并退出当前脚本。如果 status 是字符串，则该函数会在退出前输出字符串；如果 status 是整数，这个值会被用作退出状态。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$link=mysql_connect(&quot;127.0.0.1&quot;,&quot;root&quot;,&quot;root&quot;) or die(&quot;数据库连接失败&quot;);//连接数据库</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>isset()函数： 一般用来检测变量是否设置。若变量已存在则返回 true 值。其它情形返回 false 值。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$tel=isset($_POST[&quot;tel&quot;])?$_POST[&quot;tel&quot;]:&quot;&quot;;//三元运算符，如果变量值未设置就返回空值</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>explode()：将字符串分割成为数组.有两个参数，第一个是分割符号，第二个是字符串名，返回值为一个分割后的新数组。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$arr=explode(&quot;.&quot;,$_FILES[&quot;myfile&quot;][&quot;name&quot;]);</span><br></pre></td></tr></table></figure>
-
-</li>
-</ol>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>&emsp;&emsp;通过完成一个简单的小项目–<a href="https://github.com/chen-xt/resume" target="_blank" rel="noopener">简历投递系统</a>，我发现用PHP做增删改查功能的原理大致是：处理页面去获取用户提交的值或者路径的参数值，然后执行sql语句，再转入指定的结果显示的页面。而且经常需要手动去添加路径的参数值，以便能被获取到。<br>&emsp;&emsp;明白了原理之后再去做项目其实并不会特别难，但是常常因为变量未获取，sql语句语法出现错误等等各种原因导致错误，所以在敲代码的时候认真细心还是非常重要的，这点还需要后面慢慢去培养。</p>
-
-          
+          前言&emsp;&emsp;结课考试后，学校安排了一次为期10天的实训，实训方向有安卓和PHP，我选择了PHP，因为PHP跟前端还是有关系的。实训虽然讲的内容不多，但还是从中得到一些收获，并最终做出一个包含增删改查功能的简历投递系统，特此写个总结。
+PHP环境配置&emsp;&emsp;主要用到三个
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/12/08/PHP实训总结/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -553,16 +494,16 @@
       
         
           
-            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>&emsp;&emsp;最近一个月都没有发布文章到hexo博客上，今天发布一篇学习笔记到博客，本地测试正常，但是部署到github上，再进行测试却发现博客全部空白了。网上找了好多资料，终于找到解决方法了。</p>
-<h2 id="问题出现原因"><a href="#问题出现原因" class="headerlink" title="问题出现原因"></a>问题出现原因</h2><p>&emsp;&emsp;由于 GitHub 升级 gitpage，Next主题下面下<code>source/vendors</code>目录的访问受限。</p>
-<h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><ul>
-<li>将<code>source/vendors</code>目录修改成<code>source/lib</code> （不一定是lib，也可以是其他的名称）。</li>
-<li>修改下Next主题配置文件<code>_config.yml</code>， 将<code>_internal: vendors</code> 改成所修改的名字<code>_internal: lib</code>（其他名称的只需将lib替换即可）。</li>
-<li>修改 next 底下所有引用<code>source/vendors</code>路径为<code>source/lib</code>：<br> 1.Hexo\themes\next.bowerrc<br> 2.Hexo\themes\next.gitignore<br> 3.Hexo\themes\next.javascript_ignore<br> 4.Hexo\themes\next\bower.json </li>
-<li>最后刷新下，然后<code>hexo g</code>，再<code>hexo d</code>，打开博客，发现内容正常显示。</li>
-</ul>
-
-          
+          前言&emsp;&emsp;最近一个月都没有发布文章到hexo博客上，今天发布一篇学习笔记到博客，本地测试正常，但是部署到github上，再进行测试却发现博客全部空白了。网上找了好多资料，终于找到解决方法了。
+问题出现原因&emsp;&emsp;由于 GitHub 升级 gitpage，Next主题
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/11/19/解决Next主题主页空白/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -702,34 +643,18 @@
       
         
           
-            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>&emsp;&emsp;在表单类的操作中，客户端的HTTP请求通常会通过GET或POST提交一些数据到服务端，所以需要在服务端识别这些数据并进行处理。常利用request对象的三个方法来进行操作。</p>
-<h2 id="req-params"><a href="#req-params" class="headerlink" title="req.params"></a>req.params</h2><p>&emsp;&emsp;获取请求路径。</p>
-<ul>
-<li>例1<pre><code>浏览器访问：localhost:3000/login
-服务端侦听：app.use(&apos;/:key&apos;,function(req,res){});
-则：req.params.key为login。</code></pre></li>
-<li>例2<pre><code>浏览器访问：localhost:3000/user/tom
-服务端侦听：app.use(&apos;/user/:name&apos;,function(req,res){});
-则：req.params.name为tom。</code></pre></li>
-</ul>
-<h2 id="req-query"><a href="#req-query" class="headerlink" title="req.query"></a>req.query</h2><p>&emsp;&emsp;获取GET请求的参数（即地址栏传递的参数）。</p>
-<ul>
-<li>例<pre><code>浏览器访问：http://localhost:3000/login?username=Tom&amp;&amp;password=123
-服务端侦听：app.use(&apos;/:key&apos;,function(req,res){});
-则：req.query.usename和req.query.password分别为Jack和123。</code></pre></li>
-</ul>
-<h2 id="req-body"><a href="#req-body" class="headerlink" title="req.body"></a>req.body</h2><p>&emsp;&emsp;获取POST请求的参数。</p>
-<ul>
-<li>例<pre><code>浏览器访问：http://localhost:3000/login，通过表单POST参数username=Tom &amp;&amp; password=123
-服务端侦听：app.use(&apos;/:key&apos;,function(req,res){});
-则：req.body.usename和req.body.password分别为Tom和123。</code></pre></li>
-</ul>
-<h2 id="注意点"><a href="#注意点" class="headerlink" title="注意点"></a>注意点</h2><ol>
-<li>req.params和req.query的主要区别：<br>  req.params包含路由参数（在URL的路径部分），而req.query包含URL的查询参数（在URL的？后的参数）。</li>
-<li>req.param()方法已经被弃用。</li>
-</ol>
+          前言&emsp;&emsp;在表单类的操作中，客户端的HTTP请求通常会通过GET或POST提交一些数据到服务端，所以需要在服务端识别这些数据并进行处理。常利用request对象的三个方法来进行操作。
+req.params&emsp;&emsp;获取请求路径。
 
-          
+例1浏览器访问：localhost:
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/11/19/Express中request对象参数获取/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -869,41 +794,16 @@
       
         
           
-            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>&emsp;&emsp;其实并没有一个官方的文档规定Node.js应用程序代码的风格，但Node.js代码分割有着一些“事实上的约定”，大多数项目的代码都一定程度上遵循了这一标准。 所以遵守这些约定还是有一定的必要的，因为它可能会让你的程序避免很多意外的错误和性能损失。</p>
-<h2 id="缩进"><a href="#缩进" class="headerlink" title="缩进"></a>缩进</h2><p>&emsp;&emsp;选择<strong>两空格</strong>作为Node.js代码的缩进标记。为什么不用常见的四空格缩进呢？因为Node.js代码中很容易写出深层的函数嵌套，过多的空格会给阅读带来不便。</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">//正确的缩进</span><br><span class="line">function func(boolVar) &#123;</span><br><span class="line">   if (boolVar) &#123;</span><br><span class="line">     console.log('True');</span><br><span class="line">   &#125; else &#123;</span><br><span class="line">     console.log('False');</span><br><span class="line">   &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">//错误的缩进</span><br><span class="line">function func(boolVar)</span><br><span class="line">&#123;</span><br><span class="line">     if (boolVar)</span><br><span class="line">    &#123;</span><br><span class="line">       console.log('True');</span><br><span class="line">     &#125;</span><br><span class="line">    else</span><br><span class="line">    &#123;</span><br><span class="line">       console.log('False');</span><br><span class="line">     &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<h2 id="行宽"><a href="#行宽" class="headerlink" title="行宽"></a>行宽</h2><p>&emsp;&emsp;建议把行宽限制为<strong>80个字符</strong>，可以保证在任何设备上都可以方便地阅读。</p>
-<h2 id="语句分隔符"><a href="#语句分隔符" class="headerlink" title="语句分隔符"></a>语句分隔符</h2><p>&emsp;&emsp; JavaScript不仅支持像C语言一样的分号<code>;</code>作为语句之间的分隔符，还支持像Python语言那样的换行作为语句之间的界限。但是建议一律使用<strong>分号</strong>，哪怕一行只有一个语句，也不要省略分号。</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">//正确的语句分隔</span><br><span class="line">var a = 1;</span><br><span class="line">var b = 'world';</span><br><span class="line">var c = function(x) &#123;</span><br><span class="line">    console.log('hello ' + x + a);</span><br><span class="line">&#125;;</span><br><span class="line">c(b);</span><br><span class="line"></span><br><span class="line">//错误的语句分隔</span><br><span class="line">var a = 1</span><br><span class="line">var b = 'world'</span><br><span class="line">var c = function(x) &#123;</span><br><span class="line">    console.log('hello ' + x + a)</span><br><span class="line">&#125;</span><br><span class="line">c(b)</span><br></pre></td></tr></table></figure>
-
-<h2 id="变量定义"><a href="#变量定义" class="headerlink" title="变量定义"></a>变量定义</h2><p>（1）不要通过赋值隐式定义变量，因为通过赋值隐式定义的变量总是全局变量，会造成命名空间污染。所以要通过 <code>var</code> 把所有变量定义为局部变量。<br>（2）使用<code>var</code>定义多个变量时，不要通过逗号<code>,</code>把多个变量隔开。</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">//正确的变量定义格式</span><br><span class="line">var foo;</span><br><span class="line">var bar;</span><br><span class="line">var arr = [40, 'foo'];</span><br><span class="line">var obj = &#123;&#125;;</span><br><span class="line"></span><br><span class="line">//错误的变量定义格式</span><br><span class="line">var foo, bar;</span><br><span class="line">var arr = [40, 'foo'],</span><br><span class="line">obj = &#123;&#125;;</span><br></pre></td></tr></table></figure>
-
-<h2 id="变量名和属性名"><a href="#变量名和属性名" class="headerlink" title="变量名和属性名"></a>变量名和属性名</h2><p>&emsp;&emsp;使用<strong>小驼峰式命名法</strong>作为所有变量和属性的命名规则。小驼峰式命名法，即第一个单字以小写字母开始，第二个单字的首字母大写，如firstName。</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">//正确的命名</span><br><span class="line">var yourName = 'BYVoid';</span><br><span class="line"></span><br><span class="line">//错误的命名</span><br><span class="line">var YourName = 'BYVoid';</span><br><span class="line">//或者</span><br><span class="line">var your_name = 'BYVoid';</span><br></pre></td></tr></table></figure>
-
-<h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><p>&emsp;&emsp;对于<strong>一般的函数</strong>我们使用小驼峰式命名法。但对于<strong>对象的构造函数</strong>名称（或者不严格地说“类”的名称），使用大驼峰式命名法。大驼峰式命名法，即每一个单字的首字母都采用大写字母，如FirstName。</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">//正确</span><br><span class="line">var someFunction = function() &#123;</span><br><span class="line">   return 'something';</span><br><span class="line">&#125;;</span><br><span class="line">function anotherFunction() &#123;</span><br><span class="line">   return 'anything';</span><br><span class="line">&#125;</span><br><span class="line">function DataStructure() &#123;</span><br><span class="line">   this.someProperty = 'initialized';</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//错误</span><br><span class="line">var SomeFunction = function()</span><br><span class="line">&#123;</span><br><span class="line">   return 'something';</span><br><span class="line">&#125;;</span><br><span class="line">function another_function () &#123;</span><br><span class="line">   return 'anything';</span><br><span class="line">&#125;</span><br><span class="line">function dataStructure() &#123;</span><br><span class="line">this.someProperty = 'initialized';&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="引号"><a href="#引号" class="headerlink" title="引号"></a>引号</h2><p>&emsp;&emsp;在JavaScript中单引号<code>&#39;</code>和双引号<code>&quot;</code>没有任何语义区别，两者都是可用的。建议用<strong>单引号</strong>，因为JSON、 XML都规定了必须是双引号，这样便于无转义地直接引用。</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">//正确的引号用法</span><br><span class="line">console.log('Hello world.');</span><br><span class="line"></span><br><span class="line">//错误的引号用法</span><br><span class="line">console.log("Hello world.");</span><br></pre></td></tr></table></figure>
-
-<h2 id="关联数组的初始化"><a href="#关联数组的初始化" class="headerlink" title="关联数组的初始化"></a>关联数组的初始化</h2><p>&emsp;&emsp;按<code>var = { 放在一行，下面每行一对键值，保持两空格的缩进，以分号结尾， };</code>的形式，最后单独另起一行。对于每对键值，除非键名之中有空格或者有非法字符，否则一律不用引号。</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">//正确</span><br><span class="line">var anObject = &#123;</span><br><span class="line">    name: 'BYVoid',</span><br><span class="line">    website: 'http://www.byvoid.com/',</span><br><span class="line">    'is good': true,</span><br><span class="line">&#125;;</span><br><span class="line">//错误</span><br><span class="line">    var anObject = &#123;'name': 'BYVoid',</span><br><span class="line">    website: 'http://www.byvoid.com/'</span><br><span class="line">    , "is good": true&#125;;</span><br></pre></td></tr></table></figure>
-
-<h2 id="等号"><a href="#等号" class="headerlink" title="等号"></a>等号</h2><p>&emsp;&emsp;尽量使用 <code>===</code>而不是<code>==</code>来判断相等，因为<code>==</code> 包含了隐式类型转换，很多时候可能会出错。</p>
-<h2 id="命名函数"><a href="#命名函数" class="headerlink" title="命名函数"></a>命名函数</h2><p>&emsp;&emsp;尽量给构造函数和回调函数命名。对于回调函数，Node.js的API和各个第三方的模块通常约定回调函数的第一个参数是错误对象<code>err</code>，如果没有错误发生，其值为 <code>undefined</code>。</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">//正确</span><br><span class="line">req.on('end', function onEnd(err, message) &#123;</span><br><span class="line">   if (err) &#123;</span><br><span class="line">    console.log('Error.');</span><br><span class="line">   &#125;</span><br><span class="line">&#125;);</span><br><span class="line">function FooObj() &#123;</span><br><span class="line">    this.foo = 'bar';</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//错误</span><br><span class="line">req.on('end', function (message, err) &#123;</span><br><span class="line">    if (err === false) &#123;</span><br><span class="line">      console.log('Error.');</span><br><span class="line">   &#125;</span><br><span class="line">&#125;);</span><br><span class="line">var FooObj = function() &#123;</span><br><span class="line">this.foo = 'bar';</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="对象定义"><a href="#对象定义" class="headerlink" title="对象定义"></a>对象定义</h2><p>&emsp;&emsp;尽量将所有的成员函数通过原型定义，将属性在构造函数内定义，然后对构造函数使用<code>new</code>关键字创建对象。避免把成员函数定义在构造函数内部，否则会有运行时的闭包开销。</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">//正确:</span><br><span class="line">function FooObj(bar) &#123;</span><br><span class="line">//在构造函数中初始化属性</span><br><span class="line">    this.bar = bar;</span><br><span class="line">    this.arr = [1, 2, 3];</span><br><span class="line">&#125;</span><br><span class="line">//使用原型定义成员函数</span><br><span class="line">FooObj.prototype.func = function() &#123;</span><br><span class="line">    console.log(this.arr);</span><br><span class="line">&#125;;</span><br><span class="line">var obj1 = new FooObj('obj1');</span><br><span class="line">var obj2 = new FooObj('obj2');</span><br><span class="line">obj1.arr.push(4);</span><br><span class="line">obj1.func(); // [1, 2, 3, 4]</span><br><span class="line">obj2.func(); // [1, 2, 3]</span><br><span class="line"></span><br><span class="line">//错误：</span><br><span class="line">function FooObj(bar) &#123;</span><br><span class="line">    this.bar = bar;</span><br><span class="line">this.func = function() &#123;</span><br><span class="line">    console.log(this.arr);</span><br><span class="line">&#125;;</span><br><span class="line">&#125;</span><br><span class="line">FooObj.prototype.arr = [1, 2, 3];</span><br><span class="line">var obj1 = new FooObj('obj1');</span><br><span class="line">var obj2 = new FooObj('obj2');</span><br><span class="line">obj1.arr.push(4);</span><br><span class="line">obj1.func(); // [1, 2, 3, 4]</span><br><span class="line">obj2.func(); // [1, 2, 3, 4]</span><br></pre></td></tr></table></figure>
-
-<h2 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h2><p>&emsp;&emsp;避免使用复杂的<strong>继承</strong>，如果的确需要继承，那么尽量使用Node.js的util模块中提供的<code>inherits</code>函数。</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var util = require('util');</span><br><span class="line">var events = require('events');</span><br><span class="line">function Foo() &#123;</span><br><span class="line">   &#125;</span><br><span class="line">util.inherits(Foo, events.EventEmitter); //让Foo继承EventEmitter</span><br></pre></td></tr></table></figure>
-
-
-          
+          前言&emsp;&emsp;其实并没有一个官方的文档规定Node.js应用程序代码的风格，但Node.js代码分割有着一些“事实上的约定”，大多数项目的代码都一定程度上遵循了这一标准。 所以遵守这些约定还是有一定的必要的，因为它可能会让你的程序避免很多意外的错误和性能损失。
+缩进&emsp;&ems
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/10/14/Node.js-编程规范/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1043,84 +943,16 @@
       
         
           
-            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>Git是一个开源的分布式版本控制系统，用以有效、高速的处理从很小到非常大的项目版本管理。在使用Git之前，你需要去<a href="https://github.com/" target="_blank" rel="noopener">github官网</a>去注册个账号。</p>
-<h2 id="Git安装"><a href="#Git安装" class="headerlink" title="Git安装"></a>Git安装</h2><p>Git的安装很简单，直接<a href="https://git-for-windows.github.io/" target="_blank" rel="noopener">下载</a>一个git安装包，然后安装的时候一直next到finish就OK了。<br>Git安装完成后需要做要一下设置，设置<code>username</code>和<code>email</code>：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ git config --global user.name &quot;your name&quot;  </span><br><span class="line">  //your name为github注册的名字</span><br><span class="line">$ git  config --global user.email &quot;your_email@youremail.com&quot; </span><br><span class="line">  //your_email@youremail.com为github注册的邮箱</span><br></pre></td></tr></table></figure>
-
-<h2 id="创建版本库"><a href="#创建版本库" class="headerlink" title="创建版本库"></a>创建版本库</h2><p>版本库又名仓库，你可以简单理解成一个目录，这个目录里面的所有文件都可以被Git管理起来，每个文件的修改、删除，Git都能跟踪，以便任何时刻都可以追踪历史，或者在将来某个时刻可以“还原”。</p>
-<ol>
-<li><p>选择一个合适的地方，创建一个空目录<code>source</code>(版本库的名字可以随意取)，在我电脑上，我的仓库位于<code>E:\source</code>。</p>
-</li>
-<li><p>通过<code>git init</code>命令把这个目录变成Git可以管理的仓库。执行完命令后可以发现当前目录下多了一个<code>.git</code>的目录，这个目录是Git来跟踪管理版本库的，所以没事千万不要手动修改这个目录里面的文件，不然改乱了，就把Git仓库给破坏了。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git init</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>添加文件到Git仓库，需要两步(这里以test.md文件为例)：</p>
-</li>
-</ol>
-<ul>
-<li><p>第一步，使用命令<code>git add &lt;file&gt;</code>，将文件test.md添加到仓库：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git add test.md</span><br></pre></td></tr></table></figure>
-
-<p> 这个命令可反复多次使用，添加多个文件。</p>
-</li>
-<li><p>第二步，使用命令<code>git commit -m “xxx”</code>，其中<code>-m</code>后面输入的是本次提交的说明，可以输入任意内容，不添加说明也是可以的。通过这个命令将文件提交到仓库：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git commit -m &quot;test1&quot;</span><br><span class="line">[master 2140772] test1</span><br><span class="line">1 file changed, 1 insertion(+), 1 deletion(-)</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<p>这个时候，问题来了：为什么Git添加文件需要<code>add</code>、<code>commit</code>一共两步呢？因为<code>commit</code>可以一次提交很多文件，所以你可以多次<code>add</code>不同的文件，比如：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git add file1.txt</span><br><span class="line">$ git add file2.txt </span><br><span class="line">$ git commit -m &quot;add 3 files.&quot;  //2个文件都被提交</span><br></pre></td></tr></table></figure>
-
-<h2 id="管理文件"><a href="#管理文件" class="headerlink" title="管理文件"></a>管理文件</h2><h3 id="查看文件"><a href="#查看文件" class="headerlink" title="查看文件"></a>查看文件</h3><p><code>Cat</code>命令可以查看文件的内容</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ cat test.md</span><br><span class="line">hello！</span><br></pre></td></tr></table></figure>
-
-<p>上面的命令告诉我们test.md文件的内容为<code>hello！</code>。</p>
-<h3 id="删除文件"><a href="#删除文件" class="headerlink" title="删除文件"></a>删除文件</h3><p><code>git rm</code>命令可以删除文件，它有2种删除方式。先新建一个文件，命名为delete.md，然后通过<code>git rm</code>命令的2种方式来删除该文件。<br>（1） <code>git rm &lt;file&gt;</code> 从暂存区和仓库中都删除某文件：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ git rm delete.md</span><br><span class="line">  rm &apos;delete.md&apos;</span><br><span class="line"></span><br><span class="line">$ git commit -m &quot;del1&quot;</span><br><span class="line"> [master 25d0ea2] del1</span><br><span class="line"> 1 file changed, 1 deletion(-)</span><br><span class="line"> delete mode 100644 delete.md</span><br></pre></td></tr></table></figure>
-
-<p>执行上面的命令后，会删除文件跟踪并且删除仓库中的文件delete.md，当你提交删除动作后，git不再管理该文件。去查看本地仓库，发现delete.md文件已经不存在了。</p>
-<p>（2） <code>git rm --cached &lt;file&gt;</code>从暂存区删除某文件：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ git rm --cached delete.md</span><br><span class="line">   rm &apos;delete.md&apos;</span><br><span class="line">     </span><br><span class="line">$ git commit -m &quot;del2&quot;</span><br><span class="line">[master 5deede4] del2</span><br><span class="line"> 1 file changed, 1 deletion(-)</span><br><span class="line"> delete mode 100644 delete.md</span><br></pre></td></tr></table></figure>
-
-<p>执行上面的命令后，删除文件跟踪但不删除仓库的文件delete.md，当你提交删除动作后，git不再管理该文件，但是文件系统中还是有delete.md文件。查看本地仓库，发现delete.md文件还是存在的。</p>
-<h2 id="查看仓库状态"><a href="#查看仓库状态" class="headerlink" title="查看仓库状态"></a>查看仓库状态</h2><p><code>git status</code>命令可以让我们时刻掌握仓库当前的状态，修改test.md的内容，执行该命令如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$ git status</span><br><span class="line">On branch master</span><br><span class="line">Changes not staged for commit:</span><br><span class="line">  (use &quot;git add &lt;file&gt;...&quot; to update what will be committed)</span><br><span class="line">  (use &quot;git checkout -- &lt;file&gt;...&quot; to discard changes in working directory)</span><br><span class="line"></span><br><span class="line">        modified:   test.md</span><br><span class="line"></span><br><span class="line">no changes added to commit (use &quot;git add&quot; and/or &quot;git commit -a&quot;)</span><br></pre></td></tr></table></figure>
-
-<p>上面的命令告诉我们，test.md文件被修改过了，但还没有准备提交修改。接下来我们可以使用<code>git diff</code>命令来查看具体修改的内容：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$ git diff</span><br><span class="line">diff --git a/test.md b/test.md</span><br><span class="line">index bc7774a..0000000</span><br><span class="line">--- a/test.md</span><br><span class="line">+++ b/test.md</span><br><span class="line">@@ -1 +1 @@</span><br><span class="line">-hello！</span><br><span class="line">\ No newline at end of file</span><br><span class="line">+hello world！</span><br><span class="line">\ No newline at end of file</span><br></pre></td></tr></table></figure>
-
-<p>上面的命令告诉我们，test.md文件原本内容是<code>hello!</code>,现在被修改为<code>hello world！</code>。只要再使用<code>git add</code>和<code>git commit</code>两个命令即可完成修改文件的提交。</p>
-<h2 id="版本回退"><a href="#版本回退" class="headerlink" title="版本回退"></a>版本回退</h2><p>刚才我们对test.md文件进行了1次修改,为了能够有个明显的对照，再次对test.md进行一次修改(将内容<code>hello world！</code>改为<code>world!</code>)。也就是说，现在仓库里保存着test.md的3个版本，可以通过<code>git log</code>命令查看从最近到最远的提交日志。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">$ git log</span><br><span class="line">commit f11d47a998c6b66bf6ee6b2ba0ad41b3bbf1af7a</span><br><span class="line">Author: chen-xt &lt;1250548605@qq.com&gt;</span><br><span class="line">Date:   Tue Sep 27 21:25:27 2016 +0800</span><br><span class="line"></span><br><span class="line">    test3</span><br><span class="line"></span><br><span class="line">commit 41b8298cff37c388eaba6a36822daf39e012968f</span><br><span class="line">Author: chen-xt &lt;1250548605@qq.com&gt;</span><br><span class="line">Date:   Tue Sep 27 21:23:30 2016 +0800</span><br><span class="line"></span><br><span class="line">    test2</span><br><span class="line"></span><br><span class="line">commit 21407720a1f2e4cf53a1c79f943b43b057eccd2f</span><br><span class="line">Author: chen-xt &lt;1250548605@qq.com&gt;</span><br><span class="line">Date:   Tue Sep 27 21:21:03 2016 +0800</span><br><span class="line"></span><br><span class="line">test1</span><br></pre></td></tr></table></figure>
-
-<p>从提交日志中我们可以看到3次提交，最近的一次是test3，上一次是test2，最早的一次是test1，而跟在commit后面的一大串类似21407720a…的是<code>commit id</code>（版本号)。</p>
-<h3 id="回退过去"><a href="#回退过去" class="headerlink" title="回退过去"></a>回退过去</h3><p>现在是在版本test3，而如果我们想退回上一个版本，也就是test2，那么可以怎么做呢？只要一句命令<code>$ git reset --hard HEAD^</code>即可：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git reset --hard HEAD^</span><br><span class="line">HEAD is now at 41b8298 test2</span><br></pre></td></tr></table></figure>
-
-<p>此时再查看日志，可以看到test3版本已经不存在了</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">$ git log</span><br><span class="line">commit 41b8298cff37c388eaba6a36822daf39e012968f</span><br><span class="line">Author: chen-xt &lt;1250548605@qq.com&gt;</span><br><span class="line">Date:   Tue Sep 27 21:23:30 2016 +0800</span><br><span class="line"></span><br><span class="line">    test2</span><br><span class="line"></span><br><span class="line">commit 21407720a1f2e4cf53a1c79f943b43b057eccd2f</span><br><span class="line">Author: chen-xt &lt;1250548605@qq.com&gt;</span><br><span class="line">Date:   Tue Sep 27 21:21:03 2016 +0800</span><br><span class="line"></span><br><span class="line">    test1</span><br></pre></td></tr></table></figure>
-
-<p>在Git中，用<code>HEAD</code>表示当前版本，上一个版本就是<code>HEAD^</code>，上上一个版本就是<code>HEAD^^</code>，当然往上100个版本写100个^比较容易数不过来，所以写成<code>HEAD~100</code>。</p>
-<h3 id="重返未来"><a href="#重返未来" class="headerlink" title="重返未来"></a>重返未来</h3><p>（1） 命令行窗口未关掉<br>如上现在处于版本test2，如果想回去刚最新的版本又该如何呢？办法还是有的，只要你上面的命令行窗口还没有被关掉，就可以找到test3版本的版本号<code>f11d47a998c6b66bf6ee6b2ba0ad41b3bbf1af7a</code>，那么使用如下命令即可回去最新的版本。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git reset --hard f11d47a998</span><br><span class="line">HEAD is now at f11d47a test3</span><br></pre></td></tr></table></figure>
-
-<p>如上命令所示，现在处于版本test3，命令中版本号不需要写全，只需要前面几位即可，Git会自动去找。</p>
-<p>（2） 命令行窗口已关掉<br>Git提供了一个命令<code>git reflog</code>用来记录你的每一次命令，所以如果命令行已经关掉的话，可以通过这个命令来找回要回去的版本号，然后再执行命令<code>$ git reset --hard commit-id</code>。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ git reflog</span><br><span class="line">f11d47a HEAD@&#123;0&#125;: reset: moving to f11d47a998</span><br><span class="line">41b8298 HEAD@&#123;1&#125;: reset: moving to HEAD^</span><br><span class="line">f11d47a HEAD@&#123;2&#125;: commit: test3</span><br><span class="line">41b8298 HEAD@&#123;3&#125;: commit: test2</span><br><span class="line">2140772 HEAD@&#123;4&#125;: commit: test1</span><br></pre></td></tr></table></figure>
-
-<h2 id="远程仓库"><a href="#远程仓库" class="headerlink" title="远程仓库"></a>远程仓库</h2><h3 id="在GitHub创建一个Git仓库"><a href="#在GitHub创建一个Git仓库" class="headerlink" title="在GitHub创建一个Git仓库"></a>在GitHub创建一个Git仓库</h3><p>登录<a href="https://github.com/" target="_blank" rel="noopener">GitHub</a>，然后，在右上角找到<code>Create a new repo</code>按钮，创建一个新的仓库，命名为<code>source</code>。</p>
-<h3 id="配置ssh-key"><a href="#配置ssh-key" class="headerlink" title="配置ssh key"></a>配置ssh key</h3><p>（1） 在本地创建ssh key</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-keygen -t rsa -C &quot;your_email@youremail.com&quot;</span><br></pre></td></tr></table></figure>
-
-<p>其中<code>your_email@youremail.com</code>改为你的邮箱，也是在github上注册的那个邮箱。</p>
-<p>（2） 接下来就是回车回车，直到出现命令完成，提示可以进行下一条命令。</p>
-<p>（3） 打开<code>.ssh</code>文件，打开<code>id_rsa.pub</code>，复制里面的key。里面的key是一对看不懂的字符数字组合，不用管它，直接复制。</p>
-<p>（4） 回到github网站，进入<code>Account Settings</code>，左边选择<code>SSH Keys</code>，<code>Add SSH Key</code>，title随便填，在key里粘贴刚copy的那一段看不懂的字符。</p>
-<p>（5） 验证是否成功，在<code>git bash</code>下输入<code>$ ssh -T git@github.com</code>。出现<code>Are you sure you want to continue connecting (yes/no)?</code>填<code>yes</code>。回车就会看到：<code>You’ve successfully authenticated, but GitHub does not provide shell access</code>。这就表示已成功连上github。刷新github网站，会发现<code>ssh key</code> 的钥匙标志由灰色变成绿色。</p>
-<h3 id="把本地仓库的内容推送到GitHub仓库"><a href="#把本地仓库的内容推送到GitHub仓库" class="headerlink" title="把本地仓库的内容推送到GitHub仓库"></a>把本地仓库的内容推送到GitHub仓库</h3><p>使用<code>$ git remote add origin git@github.com:yourName/yourRepo.git</code>命令关联一个远程库。其中<code>yourName</code>和<code>yourRepo</code>表示你在github的用户名和刚才新建的仓库，推送完之后进入.git文件夹，打开config文件，这里会多出一个<code>remote “origin”</code>内容，这就是刚才添加的远程地址，也可以直接修改config文件来配置远程地址。</p>
-<h3 id="把本地仓库的所有内容推送到远程库上"><a href="#把本地仓库的所有内容推送到远程库上" class="headerlink" title="把本地仓库的所有内容推送到远程库上"></a>把本地仓库的所有内容推送到远程库上</h3><p>推送的前提是文件已经被添加到本地仓库，也就是说已经<code>git add</code>和<code>git commit</code>操作了。<br>使用<code>git push origin master</code>命令将文件推送到远程库上。推送成功后，可以立刻在GitHub页面中看到远程库的内容已经和本地一模一样。<br><em>注意</em>：由于远程库是空的，我们第一次推送master分支时，加上了<code>-u</code>参数，也就是使用<code>git push -u origin master</code>Git不但会把本地的<code>master</code>分支内容推送的远程新的master分支，还会把本地的master分支和远程的master分支关联起来，在以后的推送时就可以省去<code>-u</code>参数。</p>
-
-          
+          前言Git是一个开源的分布式版本控制系统，用以有效、高速的处理从很小到非常大的项目版本管理。在使用Git之前，你需要去github官网去注册个账号。
+Git安装Git的安装很简单，直接下载一个git安装包，然后安装的时候一直next到finish就OK了。Git安装完成后需要做要一下设置，设置use
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/09/28/Git的基本使用/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
