@@ -53,16 +53,16 @@
 <link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
 
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/favicon.ico?v=5.1.4">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
 
 
-  <link rel="mask-icon" href="/favicon.ico?v=5.1.4" color="#222">
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
 
 
 
@@ -199,26 +199,6 @@
           </a>
         </li>
       
-        
-        <li class="menu-item menu-item-tags">
-          <a href="/tags/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
-            
-            标签
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-categories">
-          <a href="/categories/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
-            
-            分类
-          </a>
-        </li>
-      
 
       
     </ul>
@@ -257,7 +237,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="chen-xt">
       <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/head.jpg">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -345,15 +325,35 @@
       
         
           
-          今天学习了JS的面向对象部分内容。首先是理解面向对象的概念，因为之前在学校学的几门编程语言都有接触面向对象这个概念，所以理解起来相对来说还是比较容易的。面向对象只关注对象提供的功能，不关注其内部细节，就像我们使用收音机时不需要知道收音机里面的构造以及连线方式，而只需要知道收音机各个按钮的功能即可，收
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2016/07/21/JS之面向对象1/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+            <p>今天学习了JS的面向对象部分内容。首先是理解面向对象的概念，因为之前在学校学的几门编程语言都有接触面向对象这个概念，所以理解起来相对来说还是比较容易的。面向对象只关注对象提供的功能，不关注其内部细节，就像我们使用收音机时不需要知道收音机里面的构造以及连线方式，而只需要知道收音机各个按钮的功能即可，收音机就是一个对象。面向对象具有三个特性：封装，继承，多态，并且由方法和属性组成。这些大都已经记在心中了，考过好几次了。</p>
+<p>接着就是学会用工厂方式构造对象，分为三步：</p>
+<ol>
+<li><p>工厂制作产品首先需要的是原料，对应的我们需要创建一个空白的对象；</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj=<span class="keyword">new</span> <span class="built_in">Object</span>();</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>对原料进行加工，即对应的我们需要为对象添加属性和方法；</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">obj.name=name;</span><br><span class="line">obj.sex=sex;</span><br><span class="line">obj.showName=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    alert(<span class="string">'我的名字叫'</span>+<span class="keyword">this</span>.name);</span><br><span class="line">&#125;</span><br><span class="line">obj.showSex=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    alert(<span class="string">'我是'</span>+<span class="keyword">this</span>.sex+<span class="string">'的'</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>将加工好的产品送出厂，所以我们需要返回对象。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">return</span> obj;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p>虽然工厂方式看起来挺完美的，但是还是存在两个问题：其一，没有new；其二，函数重复定义，即每个对象都有一套自己的函数，浪费资源。问题一解决相对来说比较简单，添加一个new即可，主要还是问题二的解决。问题二可以用原型prototype为对象添加方法，原型prototype又是今天新学到的一个概念，通过原型添加方法可以在已有对象中加入自己的方法，可以扩展系统对象，添加一些本不支持的方法。用原型添加方法不仅给构造函数于极度的简化，而且使所有同类的对象都只有一套方法，节省了大量的资源，有效地解决了工厂方法的第二个问题。所以对上述的工厂方法进行改进，首先是将原来的构造函数删除部分，再将剩下的关于属性的部分稍微修改成如下形式：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name,sex</span>)//构造函数，添加属性</span></span><br><span class="line"><span class="function">        </span>&#123;</span><br><span class="line">            <span class="keyword">this</span>.name=name;</span><br><span class="line">            <span class="keyword">this</span>.sex=sex;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+
+<p>接着就是解决问题一了，加new，如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> p=<span class="keyword">new</span> Person(<span class="string">'Rose'</span>,<span class="string">'女'</span>);</span><br></pre></td></tr></table></figure>
+
+<p>然后就是解决问题二了，用原型为对象添加方法：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Person.prototype.showName=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)//原型，添加方法</span></span><br><span class="line"><span class="function">        </span>&#123;</span><br><span class="line">            alert(<span class="keyword">this</span>.name);</span><br><span class="line">        &#125;</span><br><span class="line">        Person.prototype.showSex=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">        </span>&#123;</span><br><span class="line">            alert(<span class="keyword">this</span>.sex);</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+
+<p>最后，调用方法即可，这样子一来，一套相对比较完美的构造对象方法就出炉了。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">p.showName();</span><br><span class="line">p.showSex();</span><br></pre></td></tr></table></figure>
+
+<p>以上就是今天主要学到的三方面的内容：面向对象概念，工厂方法构造对象，原型添加方法。原型为对象添加方法真的很好用，今天学到的可能只是一小部分，更多的需要后期接触再去深入学习了。</p>
+
+          
         
       
     </div>
@@ -405,7 +405,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="chen-xt">
       <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/head.jpg">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -493,15 +493,32 @@
       
         
           
-          今天继续了JS运动的学习，本来以为昨天总结的运动函数startMove()是最完整的了，才发现昨天那个还是存在欠缺部分，只能实现单个div单个运动。今天将这个运动函数进行改进，实现了多个div运动以及同一个div的多值运动。改进版运动函数跟之前的差别不大，首先是参数的改变，由原来的2个变成3个，参数
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2016/07/20/JS之运动2/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+            <p>今天继续了JS运动的学习，本来以为昨天总结的运动函数startMove()是最完整的了，才发现昨天那个还是存在欠缺部分，只能实现单个div单个运动。今天将这个运动函数进行改进，实现了多个div运动以及同一个div的多值运动。改进版运动函数跟之前的差别不大，首先是参数的改变，由原来的2个变成3个，参数类型也变了,”function startMove(obj,json,fn)”。其次是多了个布尔变量bStop，该变量用来判断运动是否结束；最后是添加一个if语句，判断是否传入fn参数，以此来决定执行不执行fn,”if(fn){fn();}”。</p>
+<p>然后学到的就是图片轮换播放，这是今天最大的收获了。下面就是实现图片轮换播放的过程。</p>
+<ol>
+<li><p>用class名称选取元素，需要注意，js中的class是关键字，所以必须写成className。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getByClass</span>(<span class="params">oParent, sClass</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">var</span> aEle=<span class="built_in">document</span>.getElementsByTagName(<span class="string">'*'</span>); <span class="comment">//选出父节点下的所有元素</span></span><br><span class="line">    <span class="keyword">var</span> i=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">var</span> aResult=[];   <span class="comment">//定义一个空的数组，用来装所有的选出元素</span></span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;aEle.length;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(aEle[i].className==sClass)</span><br><span class="line">        &#123;</span><br><span class="line">            aResult.push(aEle[i]);  <span class="comment">//将选出的所有元素装入数组中</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> aResult;  <span class="comment">//  循环完成后，返回数组里的值</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>点击实现上下张图片的左右按钮，通过改变其透明度的大小，实现鼠标移入移出渐隐渐现功能。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">oBtnPrev.onmouseover=oMarkLeft.onmouseover=<span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        startMove(oBtnPrev, <span class="string">'opacity'</span>, <span class="number">100</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    oBtnPrev.onmouseout=oMarkLeft.onmouseout=<span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        startMove(oBtnPrev, <span class="string">'opacity'</span>, <span class="number">0</span>);</span><br><span class="line">    &#125;   </span><br><span class="line">    oBtnNext.onmouseover=oMarkRight.onmouseover=<span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        startMove(oBtnNext, <span class="string">'opacity'</span>, <span class="number">100</span>);</span><br><span class="line">    &#125;   </span><br><span class="line">    oBtnNext.onmouseout=oMarkRight.onmouseout=<span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        startMove(oBtnNext, <span class="string">'opacity'</span>, <span class="number">0</span>);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>实现小图移入渐隐渐现效果，配合点击时的变化功能，当重复点击同一张图片时，不做任何处理。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">aSmallLi[i].onmouseover=<span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span></span><br><span class="line"><span class="function"> </span>&#123;</span><br><span class="line">     startMove(<span class="keyword">this</span>, <span class="string">'opacity'</span>, <span class="number">100</span>);</span><br><span class="line"> &#125;</span><br><span class="line"> aSmallLi[i].onmouseout=<span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span></span><br><span class="line"><span class="function"> </span>&#123;</span><br><span class="line">     <span class="keyword">if</span>(<span class="keyword">this</span>.index!=iNow)<span class="comment">//在非当前图片移入移出</span></span><br><span class="line">     &#123;</span><br><span class="line">         startMove(<span class="keyword">this</span>, <span class="string">'opacity'</span>, <span class="number">60</span>);</span><br><span class="line">     &#125;</span><br><span class="line"> &#125;   </span><br><span class="line"> aSmallLi[i].onclick=<span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span></span><br><span class="line"><span class="function"> </span>&#123;</span><br><span class="line">     <span class="keyword">if</span>(<span class="keyword">this</span>.index==iNow)<span class="keyword">return</span>;  <span class="comment">//重复点击同一张图片，不做处理</span></span><br><span class="line">     iNow=<span class="keyword">this</span>.index; <span class="comment">//更新   </span></span><br><span class="line">     tab();</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>当点击小图时，对应大图进行切换。这里要注意的是需要给每张图片加层级，点击即将要显示的图片必须让它的Zindex值比当前显示的图片大，这样才能覆盖当前图片显示。还有利用运动函数让大图的高度由0开始增大，实现大图下拉显示的效果。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;aSmallLi.length;i++)</span><br><span class="line">            &#123;</span><br><span class="line">                startMove(aSmallLi[i], <span class="string">'opacity'</span>, <span class="number">60</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            startMove(aSmallLi[iNow], <span class="string">'opacity'</span>, <span class="number">100</span>);</span><br><span class="line">            aBigLi[iNow].style.zIndex=iMinZindex++; <span class="comment">//加层级，否则只会显示第一张图片，其他都会被挡住</span></span><br><span class="line">            aBigLi[iNow].style.height=<span class="number">0</span>; <span class="comment">//使图片从上往下显示</span></span><br><span class="line">            startMove(aBigLi[iNow], <span class="string">'height'</span>, oBigUl.offsetHeight);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>随着点击下一张图片时，发生居中切换的效果。首尾图片的位置需要做特殊处理，避免出现前后的空白。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(iNow==<span class="number">0</span>) </span><br><span class="line">        &#123; <span class="comment">//第0张，移动到0，否则会前面有空白</span></span><br><span class="line">            startMove(oSmallUl, <span class="string">'left'</span>, <span class="number">0</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(iNow==<span class="number">1</span>) <span class="comment">//第二张</span></span><br><span class="line">        &#123;</span><br><span class="line">            startMove(oSmallUl, <span class="string">'left'</span>, <span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(iNow==aSmallLi.length<span class="number">-1</span>) <span class="comment">//最后一张</span></span><br><span class="line">        &#123;</span><br><span class="line">            startMove(oSmallUl, <span class="string">'left'</span>, -(iNow<span class="number">-3</span>)*aSmallLi[<span class="number">0</span>].offsetWidth);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            startMove(oSmallUl, <span class="string">'left'</span>, -(iNow<span class="number">-2</span>)*aSmallLi[<span class="number">0</span>].offsetWidth);</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>给左右按钮添加点击动作，点击第一张图片时，跳到最后一张，点击最后一张时，跳到第一张。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">oBtnPrev.onclick=<span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span></span><br><span class="line"><span class="function">  </span>&#123;</span><br><span class="line">      iNow--;</span><br><span class="line">      <span class="keyword">if</span>(iNow==<span class="number">-1</span>)  <span class="comment">//到0张，直接到最后一张</span></span><br><span class="line">      &#123;</span><br><span class="line">          iNow=aSmallLi.length<span class="number">-1</span>;</span><br><span class="line">      &#125;       </span><br><span class="line">      tab();</span><br><span class="line">  &#125;</span><br><span class="line">  oBtnNext.onclick=<span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span></span><br><span class="line"><span class="function">  </span>&#123;</span><br><span class="line">      iNow++;</span><br><span class="line">      <span class="keyword">if</span>(iNow==aSmallLi.length) <span class="comment">//到最后一张，直接到第0张</span></span><br><span class="line">      &#123;</span><br><span class="line">          iNow=<span class="number">0</span>;</span><br><span class="line">      &#125;           </span><br><span class="line">      tab();</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>执行完以上六个步骤，得到如下效果图:<br><img src="/images/1.png" alt="效果图1"><br>以上代码为参考课程所给案例进行编写测试的，对其进行修改，将底下小图片显示的个数增加到四张，首先是通过样式改变小图的宽度，此时第一张及最后一张都会出现空白，所以还需要对图片的位置进行上述步骤五的处理，如下，这样一个图片轮播的效果就出来了。<br><img src="/images/2.png" alt="效果图2"><br>运动函数以及图片轮播经常在一些网站上出现，所以个人感觉学会它们是很有必要的，目前学到也只是初步的一些东西，后面还是需要进行一些深入学习与练习才能真正掌握它们。</p>
+</li>
+</ol>
+
+          
         
       
     </div>
@@ -553,7 +570,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="chen-xt">
       <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/head.jpg">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -641,15 +658,37 @@
       
         
           
-          今天学习了JS的运动，从最简单的一个div运动到多个div运动开始，到后面通过div的运动实现常见的侧边栏的隐藏与显示，最后还实现图片或者div块的淡入淡出。最终总结起来其实都是一个运动函数startMove()的套用，涉及定时器的关与开。仔细观察下每个例子的startMove()运动函数，会发现都
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2016/07/19/JS之运动1/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+            <p>今天学习了JS的运动，从最简单的一个div运动到多个div运动开始，到后面通过div的运动实现常见的侧边栏的隐藏与显示，最后还实现图片或者div块的淡入淡出。最终总结起来其实都是一个运动函数startMove()的套用，涉及定时器的关与开。仔细观察下每个例子的startMove()运动函数，会发现都是大同小异的，所以将startMove()运动函数封装起来，当需要的时候导入，再修改下相应的参数即可，这样可以大大实现代码的简洁性。下面就是封装该函数的一个过程。</p>
+<p> 首先，获取样式表指定对象的属性值，其中涉及浏览器兼容性问题，利用if-else语句来解决兼容性问题。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getStyle</span>(<span class="params">obj,attr</span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(obj.currentStyle)</span><br><span class="line">        &#123;</span><br><span class="line">          <span class="keyword">return</span> obj.currentStyle[attr]; <span class="comment">//只支持IE浏览器</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">return</span> getComputedStyle(obj,<span class="literal">false</span>)[attr]; <span class="comment">//支持火狐，谷歌等浏览器，IE浏览器不支持</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>然后，就是设置startMove()函数里面包含的真正内容了，</p>
+<ol>
+<li><p>设置三个参数值，分别为obj（对象），attr（属性值），iTarget（目标值）</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">startMove</span>(<span class="params">obj, attr, iTarget</span>)</span>&#123;&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>设置定时器。开启一个定时器前应该先关闭定时器，因为如果没有先关闭定时器，那么当重复点击运动按钮时，会重复执行startMove()运动函数，即一起开启多个定时器，导致运动的重复和混乱。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">clearInterval(obj.timer);</span><br><span class="line">        obj.timer=setInterval(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">        </span>&#123;  ... &#125;,<span class="number">30</span>);      &#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>设置定时器内部的内容。这里要注意一点，如果设置的是透明度的值，因为有可能会是小数点，所以需要用parseFloat；反之，如果设置的是非透明度值，则用parseInt。（iCur的初值为0，为所指定属性的值）</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(attr==<span class="string">'opacity'</span>)</span><br><span class="line">            &#123;</span><br><span class="line">             <span class="comment">//iCur=parseFloat(getStyle(obj,attr))*100;//结果是小数，会出现闪烁</span></span><br><span class="line">             iCur=<span class="built_in">parseInt</span>(<span class="built_in">parseFloat</span>(getStyle(obj,attr))*<span class="number">100</span>);<span class="comment">//将小数部分去掉，解决闪烁</span></span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123;    <span class="comment">//传进来的参数不是透明度，采用parseInt方法</span></span><br><span class="line">                iCur=<span class="built_in">parseInt</span>(getStyle(obj,attr));</span><br><span class="line">            &#125;</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ol>
+<p>然后设置运动速度，这里设置速度值iSpeed为目标值与当前属性值的差再除以8，当速度值大于0时，将其向上取整，否则向下取整。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> iSpeed=(json[attr]-iCur)/<span class="number">8</span>;</span><br><span class="line">iSpeed=iSpeed&gt;<span class="number">0</span>?<span class="built_in">Math</span>.ceil(iSpeed):<span class="built_in">Math</span>.floor(iSpeed);</span><br></pre></td></tr></table></figure>
+
+<p>最后就是将指定属性的当前值与目标值做判断，等于目标值时关闭定时器，否则将属性的当前值加上速度值形成最新的值。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(iCur==iTarget)</span><br><span class="line">            &#123;</span><br><span class="line">                clearInterval(obj.timer);         </span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span>(attr==<span class="string">'opacity'</span>)</span><br><span class="line">                &#123;</span><br><span class="line">                    obj.style.filter=<span class="string">'alpha(opacity:'</span>+(iCur+iSpeed)+<span class="string">')'</span>;</span><br><span class="line">                    obj.style.opacity=(iCur+iSpeed)/<span class="number">100</span>; </span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span></span><br><span class="line">                &#123;</span><br><span class="line">                    obj.style[attr]=iCur+iSpeed+<span class="string">'px'</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br></pre></td></tr></table></figure>
+
+<p> 到此一个运动函数搞定了，当需要导入到html文档时，只要添加如下命令，再修改下参数即可。<br> <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"move2.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>如下面例子中，改变oDiv1中的opacity属性，使其达到100。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">startMove(oDiv1,&apos;opacity&apos;,100);</span><br></pre></td></tr></table></figure>
+
+<p>总结下，今天主要收获是学习并一定程度掌握了JS的运动框架。</p>
+
+          
         
       
     </div>
@@ -722,8 +761,6 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <img class="site-author-image" itemprop="image" src="/images/head.jpg" alt="chen-xt">
-            
               <p class="site-author-name" itemprop="name">chen-xt</p>
               <p class="site-description motion-element" itemprop="description">一步一步向前走</p>
           </div>
@@ -794,7 +831,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
