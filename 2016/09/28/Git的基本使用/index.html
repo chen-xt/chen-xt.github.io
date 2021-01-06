@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.1/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"chen-xt.github.io","root":"/","images":"/images","scheme":"Muse","version":"8.1.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}};
+  </script>
+<meta name="description" content="前言Git是一个开源的分布式版本控制系统，用以有效、高速的处理从很小到非常大的项目版本管理。在使用Git之前，你需要去github官网去注册个账号。 Git安装Git的安装很简单，直接下载一个git安装包，然后安装的时候一直next到finish就OK了。Git安装完成后需要做要一下设置，设置username和email： 1234$ git config --global user.name &amp;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Git的基本使用">
+<meta property="og:url" content="https://chen-xt.github.io/2016/09/28/Git%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/index.html">
+<meta property="og:site_name" content="陈小婷的博客">
+<meta property="og:description" content="前言Git是一个开源的分布式版本控制系统，用以有效、高速的处理从很小到非常大的项目版本管理。在使用Git之前，你需要去github官网去注册个账号。 Git安装Git的安装很简单，直接下载一个git安装包，然后安装的时候一直next到finish就OK了。Git安装完成后需要做要一下设置，设置username和email： 1234$ git config --global user.name &amp;">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2016-09-28T07:33:52.000Z">
+<meta property="article:modified_time" content="2020-12-10T09:57:46.693Z">
+<meta property="article:author" content="chen-xt">
+<meta property="article:tag" content="Git">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://chen-xt.github.io/2016/09/28/Git%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/">
+
+
+<script class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+<title>Git的基本使用 | 陈小婷的博客</title>
+  
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">陈小婷的博客</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">前端开发</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <section class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Git%E5%AE%89%E8%A3%85"><span class="nav-number">2.</span> <span class="nav-text">Git安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E7%89%88%E6%9C%AC%E5%BA%93"><span class="nav-number">3.</span> <span class="nav-text">创建版本库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%A1%E7%90%86%E6%96%87%E4%BB%B6"><span class="nav-number">4.</span> <span class="nav-text">管理文件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B%E6%96%87%E4%BB%B6"><span class="nav-number">4.1.</span> <span class="nav-text">查看文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%A0%E9%99%A4%E6%96%87%E4%BB%B6"><span class="nav-number">4.2.</span> <span class="nav-text">删除文件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B%E4%BB%93%E5%BA%93%E7%8A%B6%E6%80%81"><span class="nav-number">5.</span> <span class="nav-text">查看仓库状态</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%89%88%E6%9C%AC%E5%9B%9E%E9%80%80"><span class="nav-number">6.</span> <span class="nav-text">版本回退</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%9E%E9%80%80%E8%BF%87%E5%8E%BB"><span class="nav-number">6.1.</span> <span class="nav-text">回退过去</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%87%8D%E8%BF%94%E6%9C%AA%E6%9D%A5"><span class="nav-number">6.2.</span> <span class="nav-text">重返未来</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93"><span class="nav-number">7.</span> <span class="nav-text">远程仓库</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9C%A8GitHub%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AAGit%E4%BB%93%E5%BA%93"><span class="nav-number">7.1.</span> <span class="nav-text">在GitHub创建一个Git仓库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%85%8D%E7%BD%AEssh-key"><span class="nav-number">7.2.</span> <span class="nav-text">配置ssh key</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8A%8A%E6%9C%AC%E5%9C%B0%E4%BB%93%E5%BA%93%E7%9A%84%E5%86%85%E5%AE%B9%E6%8E%A8%E9%80%81%E5%88%B0GitHub%E4%BB%93%E5%BA%93"><span class="nav-number">7.3.</span> <span class="nav-text">把本地仓库的内容推送到GitHub仓库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8A%8A%E6%9C%AC%E5%9C%B0%E4%BB%93%E5%BA%93%E7%9A%84%E6%89%80%E6%9C%89%E5%86%85%E5%AE%B9%E6%8E%A8%E9%80%81%E5%88%B0%E8%BF%9C%E7%A8%8B%E5%BA%93%E4%B8%8A"><span class="nav-number">7.4.</span> <span class="nav-text">把本地仓库的所有内容推送到远程库上</span></a></li></ol></li></ol></div>
+        </section>
+        <!--/noindex-->
+
+        <section class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="chen-xt"
+      src="/images/head.jpg">
+  <p class="site-author-name" itemprop="name">chen-xt</p>
+  <div class="site-description" itemprop="description">一步一步向前走</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">34</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">32</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+        </section>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://chen-xt.github.io/2016/09/28/Git%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/head.jpg">
+      <meta itemprop="name" content="chen-xt">
+      <meta itemprop="description" content="一步一步向前走">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="陈小婷的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Git的基本使用
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2016-09-28 15:33:52" itemprop="dateCreated datePublished" datetime="2016-09-28T15:33:52+08:00">2016-09-28</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2020-12-10 17:57:46" itemprop="dateModified" datetime="2020-12-10T17:57:46+08:00">2020-12-10</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Git/" itemprop="url" rel="index"><span itemprop="name">Git</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>Git是一个开源的分布式版本控制系统，用以有效、高速的处理从很小到非常大的项目版本管理。在使用Git之前，你需要去<a target="_blank" rel="noopener" href="https://github.com/">github官网</a>去注册个账号。</p>
+<h2 id="Git安装"><a href="#Git安装" class="headerlink" title="Git安装"></a>Git安装</h2><p>Git的安装很简单，直接<a target="_blank" rel="noopener" href="https://git-for-windows.github.io/">下载</a>一个git安装包，然后安装的时候一直next到finish就OK了。<br>Git安装完成后需要做要一下设置，设置<code>username</code>和<code>email</code>：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ git config --global user.name &quot;your name&quot;  </span><br><span class="line">  &#x2F;&#x2F;your name为github注册的名字</span><br><span class="line">$ git  config --global user.email &quot;your_email@youremail.com&quot; </span><br><span class="line">  &#x2F;&#x2F;your_email@youremail.com为github注册的邮箱</span><br></pre></td></tr></table></figure>
+
+<h2 id="创建版本库"><a href="#创建版本库" class="headerlink" title="创建版本库"></a>创建版本库</h2><p>版本库又名仓库，你可以简单理解成一个目录，这个目录里面的所有文件都可以被Git管理起来，每个文件的修改、删除，Git都能跟踪，以便任何时刻都可以追踪历史，或者在将来某个时刻可以“还原”。</p>
+<ol>
+<li>选择一个合适的地方，创建一个空目录<code>source</code>(版本库的名字可以随意取)，在我电脑上，我的仓库位于<code>E:\source</code>。</li>
+<li>通过<code>git init</code>命令把这个目录变成Git可以管理的仓库。执行完命令后可以发现当前目录下多了一个<code>.git</code>的目录，这个目录是Git来跟踪管理版本库的，所以没事千万不要手动修改这个目录里面的文件，不然改乱了，就把Git仓库给破坏了。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git init</span><br></pre></td></tr></table></figure></li>
+<li>添加文件到Git仓库，需要两步(这里以test.md文件为例)：</li>
+</ol>
+<ul>
+<li>第一步，使用命令<code>git add &lt;file&gt;</code>，将文件test.md添加到仓库：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git add test.md</span><br></pre></td></tr></table></figure>
+ 这个命令可反复多次使用，添加多个文件。</li>
+<li>第二步，使用命令<code>git commit -m “xxx”</code>，其中<code>-m</code>后面输入的是本次提交的说明，可以输入任意内容，不添加说明也是可以的。通过这个命令将文件提交到仓库：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git commit -m &quot;test1&quot;</span><br><span class="line">[master 2140772] test1</span><br><span class="line">1 file changed, 1 insertion(+), 1 deletion(-)</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>这个时候，问题来了：为什么Git添加文件需要<code>add</code>、<code>commit</code>一共两步呢？因为<code>commit</code>可以一次提交很多文件，所以你可以多次<code>add</code>不同的文件，比如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ git add file1.txt</span><br><span class="line">$ git add file2.txt </span><br><span class="line">$ git commit -m &quot;add 3 files.&quot;  &#x2F;&#x2F;2个文件都被提交 </span><br><span class="line">         </span><br></pre></td></tr></table></figure>
+
+<h2 id="管理文件"><a href="#管理文件" class="headerlink" title="管理文件"></a>管理文件</h2><h3 id="查看文件"><a href="#查看文件" class="headerlink" title="查看文件"></a>查看文件</h3><p><code>Cat</code>命令可以查看文件的内容</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ cat test.md</span><br><span class="line">hello！</span><br></pre></td></tr></table></figure>
+<p>上面的命令告诉我们test.md文件的内容为<code>hello！</code>。</p>
+<h3 id="删除文件"><a href="#删除文件" class="headerlink" title="删除文件"></a>删除文件</h3><p><code>git rm</code>命令可以删除文件，它有2种删除方式。先新建一个文件，命名为delete.md，然后通过<code>git rm</code>命令的2种方式来删除该文件。<br>（1） <code>git rm &lt;file&gt;</code> 从暂存区和仓库中都删除某文件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ git rm delete.md</span><br><span class="line">  rm &#39;delete.md&#39;</span><br><span class="line"></span><br><span class="line">$ git commit -m &quot;del1&quot;</span><br><span class="line"> [master 25d0ea2] del1</span><br><span class="line"> 1 file changed, 1 deletion(-)</span><br><span class="line"> delete mode 100644 delete.md</span><br></pre></td></tr></table></figure>
+<p>执行上面的命令后，会删除文件跟踪并且删除仓库中的文件delete.md，当你提交删除动作后，git不再管理该文件。去查看本地仓库，发现delete.md文件已经不存在了。</p>
+<p>（2） <code>git rm --cached &lt;file&gt;</code>从暂存区删除某文件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ git rm --cached delete.md</span><br><span class="line">   rm &#39;delete.md&#39;</span><br><span class="line">     </span><br><span class="line">$ git commit -m &quot;del2&quot;</span><br><span class="line">[master 5deede4] del2</span><br><span class="line"> 1 file changed, 1 deletion(-)</span><br><span class="line"> delete mode 100644 delete.md</span><br></pre></td></tr></table></figure>
+<p>执行上面的命令后，删除文件跟踪但不删除仓库的文件delete.md，当你提交删除动作后，git不再管理该文件，但是文件系统中还是有delete.md文件。查看本地仓库，发现delete.md文件还是存在的。</p>
+<h2 id="查看仓库状态"><a href="#查看仓库状态" class="headerlink" title="查看仓库状态"></a>查看仓库状态</h2><p><code>git status</code>命令可以让我们时刻掌握仓库当前的状态，修改test.md的内容，执行该命令如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$ git status</span><br><span class="line">On branch master</span><br><span class="line">Changes not staged for commit:</span><br><span class="line">  (use &quot;git add &lt;file&gt;...&quot; to update what will be committed)</span><br><span class="line">  (use &quot;git checkout -- &lt;file&gt;...&quot; to discard changes in working directory)</span><br><span class="line"></span><br><span class="line">        modified:   test.md</span><br><span class="line"></span><br><span class="line">no changes added to commit (use &quot;git add&quot; and&#x2F;or &quot;git commit -a&quot;)</span><br></pre></td></tr></table></figure>
+<p>上面的命令告诉我们，test.md文件被修改过了，但还没有准备提交修改。接下来我们可以使用<code>git diff</code>命令来查看具体修改的内容：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$ git diff</span><br><span class="line">diff --git a&#x2F;test.md b&#x2F;test.md</span><br><span class="line">index bc7774a..0000000</span><br><span class="line">--- a&#x2F;test.md</span><br><span class="line">+++ b&#x2F;test.md</span><br><span class="line">@@ -1 +1 @@</span><br><span class="line">-hello！</span><br><span class="line">\ No newline at end of file</span><br><span class="line">+hello world！</span><br><span class="line">\ No newline at end of file</span><br></pre></td></tr></table></figure>
+<p>上面的命令告诉我们，test.md文件原本内容是<code>hello!</code>,现在被修改为<code>hello world！</code>。只要再使用<code>git add</code>和<code>git commit</code>两个命令即可完成修改文件的提交。</p>
+<h2 id="版本回退"><a href="#版本回退" class="headerlink" title="版本回退"></a>版本回退</h2><p>刚才我们对test.md文件进行了1次修改,为了能够有个明显的对照，再次对test.md进行一次修改(将内容<code>hello world！</code>改为<code>world!</code>)。也就是说，现在仓库里保存着test.md的3个版本，可以通过<code>git log</code>命令查看从最近到最远的提交日志。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">$ git log</span><br><span class="line">commit f11d47a998c6b66bf6ee6b2ba0ad41b3bbf1af7a</span><br><span class="line">Author: chen-xt &lt;1250548605@qq.com&gt;</span><br><span class="line">Date:   Tue Sep 27 21:25:27 2016 +0800</span><br><span class="line"></span><br><span class="line">    test3</span><br><span class="line"></span><br><span class="line">commit 41b8298cff37c388eaba6a36822daf39e012968f</span><br><span class="line">Author: chen-xt &lt;1250548605@qq.com&gt;</span><br><span class="line">Date:   Tue Sep 27 21:23:30 2016 +0800</span><br><span class="line"></span><br><span class="line">    test2</span><br><span class="line"></span><br><span class="line">commit 21407720a1f2e4cf53a1c79f943b43b057eccd2f</span><br><span class="line">Author: chen-xt &lt;1250548605@qq.com&gt;</span><br><span class="line">Date:   Tue Sep 27 21:21:03 2016 +0800</span><br><span class="line"></span><br><span class="line">test1</span><br></pre></td></tr></table></figure>
+<p>从提交日志中我们可以看到3次提交，最近的一次是test3，上一次是test2，最早的一次是test1，而跟在commit后面的一大串类似21407720a…的是<code>commit id</code>（版本号)。</p>
+<h3 id="回退过去"><a href="#回退过去" class="headerlink" title="回退过去"></a>回退过去</h3><p>现在是在版本test3，而如果我们想退回上一个版本，也就是test2，那么可以怎么做呢？只要一句命令<code>$ git reset --hard HEAD^</code>即可：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git reset --hard HEAD^</span><br><span class="line">HEAD is now at 41b8298 test2</span><br></pre></td></tr></table></figure>
+<p>此时再查看日志，可以看到test3版本已经不存在了</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">$ git log</span><br><span class="line">commit 41b8298cff37c388eaba6a36822daf39e012968f</span><br><span class="line">Author: chen-xt &lt;1250548605@qq.com&gt;</span><br><span class="line">Date:   Tue Sep 27 21:23:30 2016 +0800</span><br><span class="line"></span><br><span class="line">    test2</span><br><span class="line"></span><br><span class="line">commit 21407720a1f2e4cf53a1c79f943b43b057eccd2f</span><br><span class="line">Author: chen-xt &lt;1250548605@qq.com&gt;</span><br><span class="line">Date:   Tue Sep 27 21:21:03 2016 +0800</span><br><span class="line"></span><br><span class="line">    test1</span><br></pre></td></tr></table></figure>
+<p>在Git中，用<code>HEAD</code>表示当前版本，上一个版本就是<code>HEAD^</code>，上上一个版本就是<code>HEAD^^</code>，当然往上100个版本写100个^比较容易数不过来，所以写成<code>HEAD~100</code>。</p>
+<h3 id="重返未来"><a href="#重返未来" class="headerlink" title="重返未来"></a>重返未来</h3><p>（1） 命令行窗口未关掉<br>如上现在处于版本test2，如果想回去刚最新的版本又该如何呢？办法还是有的，只要你上面的命令行窗口还没有被关掉，就可以找到test3版本的版本号<code>f11d47a998c6b66bf6ee6b2ba0ad41b3bbf1af7a</code>，那么使用如下命令即可回去最新的版本。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git reset --hard f11d47a998</span><br><span class="line">HEAD is now at f11d47a test3</span><br></pre></td></tr></table></figure>
+<p>如上命令所示，现在处于版本test3，命令中版本号不需要写全，只需要前面几位即可，Git会自动去找。</p>
+<p>（2） 命令行窗口已关掉<br>Git提供了一个命令<code>git reflog</code>用来记录你的每一次命令，所以如果命令行已经关掉的话，可以通过这个命令来找回要回去的版本号，然后再执行命令<code>$ git reset --hard commit-id</code>。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ git reflog</span><br><span class="line">f11d47a HEAD@&#123;0&#125;: reset: moving to f11d47a998</span><br><span class="line">41b8298 HEAD@&#123;1&#125;: reset: moving to HEAD^</span><br><span class="line">f11d47a HEAD@&#123;2&#125;: commit: test3</span><br><span class="line">41b8298 HEAD@&#123;3&#125;: commit: test2</span><br><span class="line">2140772 HEAD@&#123;4&#125;: commit: test1</span><br></pre></td></tr></table></figure>
+
+<h2 id="远程仓库"><a href="#远程仓库" class="headerlink" title="远程仓库"></a>远程仓库</h2><h3 id="在GitHub创建一个Git仓库"><a href="#在GitHub创建一个Git仓库" class="headerlink" title="在GitHub创建一个Git仓库"></a>在GitHub创建一个Git仓库</h3><p>登录<a target="_blank" rel="noopener" href="https://github.com/">GitHub</a>，然后，在右上角找到<code>Create a new repo</code>按钮，创建一个新的仓库，命名为<code>source</code>。</p>
+<h3 id="配置ssh-key"><a href="#配置ssh-key" class="headerlink" title="配置ssh key"></a>配置ssh key</h3><p>（1） 在本地创建ssh key</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-keygen -t rsa -C &quot;your_email@youremail.com&quot;</span><br></pre></td></tr></table></figure>
+<p>其中<code>your_email@youremail.com </code>改为你的邮箱，也是在github上注册的那个邮箱。</p>
+<p>（2） 接下来就是回车回车，直到出现命令完成，提示可以进行下一条命令。</p>
+<p>（3） 打开<code>.ssh</code>文件，打开<code>id_rsa.pub</code>，复制里面的key。里面的key是一对看不懂的字符数字组合，不用管它，直接复制。</p>
+<p>（4） 回到github网站，进入<code>Account Settings</code>，左边选择<code>SSH Keys</code>，<code>Add SSH Key</code>，title随便填，在key里粘贴刚copy的那一段看不懂的字符。</p>
+<p>（5） 验证是否成功，在<code>git bash</code>下输入<code>$ ssh -T git@github.com</code>。出现<code>Are you sure you want to continue connecting (yes/no)? </code>填<code>yes</code>。回车就会看到：<code>You’ve successfully authenticated, but GitHub does not provide shell access</code>。这就表示已成功连上github。刷新github网站，会发现<code>ssh key</code> 的钥匙标志由灰色变成绿色。</p>
+<h3 id="把本地仓库的内容推送到GitHub仓库"><a href="#把本地仓库的内容推送到GitHub仓库" class="headerlink" title="把本地仓库的内容推送到GitHub仓库"></a>把本地仓库的内容推送到GitHub仓库</h3><p>使用<code>$ git remote add origin git@github.com:yourName/yourRepo.git</code>命令关联一个远程库。其中<code>yourName</code>和<code>yourRepo</code>表示你在github的用户名和刚才新建的仓库，推送完之后进入.git文件夹，打开config文件，这里会多出一个<code>remote “origin”</code>内容，这就是刚才添加的远程地址，也可以直接修改config文件来配置远程地址。</p>
+<h3 id="把本地仓库的所有内容推送到远程库上"><a href="#把本地仓库的所有内容推送到远程库上" class="headerlink" title="把本地仓库的所有内容推送到远程库上"></a>把本地仓库的所有内容推送到远程库上</h3><p>推送的前提是文件已经被添加到本地仓库，也就是说已经<code>git add</code>和<code>git commit</code>操作了。<br>使用<code>git push origin master</code>命令将文件推送到远程库上。推送成功后，可以立刻在GitHub页面中看到远程库的内容已经和本地一模一样。<br><em>注意</em>：由于远程库是空的，我们第一次推送master分支时，加上了<code>-u</code>参数，也就是使用<code>git push -u origin master</code>Git不但会把本地的<code>master</code>分支内容推送的远程新的master分支，还会把本地的master分支和远程的master分支关联起来，在以后的推送时就可以省去<code>-u</code>参数。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Git/" rel="tag"># Git</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2016/09/13/Nodejs%E4%B9%8BUrl%E6%A8%A1%E5%9D%97&QueryString%E6%A8%A1%E5%9D%97/" rel="prev" title="Nodejs之Url模块&QueryString模块">
+                  <i class="fa fa-chevron-left"></i> Nodejs之Url模块&QueryString模块
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2016/10/14/Node.js-%E7%BC%96%E7%A8%8B%E8%A7%84%E8%8C%83/" rel="next" title="Node.js 编程规范">
+                  Node.js 编程规范 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">chen-xt</span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+</body>
+</html>

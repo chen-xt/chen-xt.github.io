@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.1/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"chen-xt.github.io","root":"/","images":"/images","scheme":"Muse","version":"8.1.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}};
+  </script>
+<meta name="description" content="简介&amp;emsp;&amp;emsp;layer弹层组件分移动版和PC版，这边主要讲的是移动版的layer，PC版的后续再进行补充。移动版是为移动设备量身定做的弹层UI，并且完全独立于PC版的layer。与PC版的layer不同的是，移动版的layer只提供一个核心调用方法，即layer.open(options)，通过对参数options进行设置来实现各种不同的弹层。 快速上手&amp;emsp;&amp;emsp;第一">
+<meta property="og:type" content="article">
+<meta property="og:title" content="layer弹层组件之移动版">
+<meta property="og:url" content="https://chen-xt.github.io/2017/08/31/layer%E5%BC%B9%E5%B1%82%E7%BB%84%E4%BB%B6%E4%B9%8B%E7%A7%BB%E5%8A%A8%E7%89%88/index.html">
+<meta property="og:site_name" content="陈小婷的博客">
+<meta property="og:description" content="简介&amp;emsp;&amp;emsp;layer弹层组件分移动版和PC版，这边主要讲的是移动版的layer，PC版的后续再进行补充。移动版是为移动设备量身定做的弹层UI，并且完全独立于PC版的layer。与PC版的layer不同的是，移动版的layer只提供一个核心调用方法，即layer.open(options)，通过对参数options进行设置来实现各种不同的弹层。 快速上手&amp;emsp;&amp;emsp;第一">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2017-08-31T14:19:47.000Z">
+<meta property="article:modified_time" content="2020-12-10T09:57:56.494Z">
+<meta property="article:author" content="chen-xt">
+<meta property="article:tag" content="layer">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://chen-xt.github.io/2017/08/31/layer%E5%BC%B9%E5%B1%82%E7%BB%84%E4%BB%B6%E4%B9%8B%E7%A7%BB%E5%8A%A8%E7%89%88/">
+
+
+<script class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+<title>layer弹层组件之移动版 | 陈小婷的博客</title>
+  
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">陈小婷的博客</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">前端开发</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <section class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E4%BB%8B"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B"><span class="nav-number">2.</span> <span class="nav-text">快速上手</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E6%95%B0"><span class="nav-number">3.</span> <span class="nav-text">参数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#type"><span class="nav-number">3.1.</span> <span class="nav-text">type</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#content"><span class="nav-number">3.2.</span> <span class="nav-text">content</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#title"><span class="nav-number">3.3.</span> <span class="nav-text">title</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#time"><span class="nav-number">3.4.</span> <span class="nav-text">time</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#style"><span class="nav-number">3.5.</span> <span class="nav-text">style</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#skin"><span class="nav-number">3.6.</span> <span class="nav-text">skin</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#className"><span class="nav-number">3.7.</span> <span class="nav-text">className</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#btn"><span class="nav-number">3.8.</span> <span class="nav-text">btn</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#anim"><span class="nav-number">3.9.</span> <span class="nav-text">anim</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#shade"><span class="nav-number">3.10.</span> <span class="nav-text">shade</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#shadeClose"><span class="nav-number">3.11.</span> <span class="nav-text">shadeClose</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#fixed-amp-amp-top"><span class="nav-number">3.12.</span> <span class="nav-text">fixed &amp;&amp;  top</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#success-amp-amp-end"><span class="nav-number">3.13.</span> <span class="nav-text">success &amp;&amp;  end</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#yes-amp-amp-no"><span class="nav-number">3.14.</span> <span class="nav-text">yes &amp;&amp;  no</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B6%E5%AE%83%E5%86%85%E7%BD%AE%E6%96%B9%E6%B3%95-%E5%B1%9E%E6%80%A7"><span class="nav-number">4.</span> <span class="nav-text">其它内置方法&#x2F;属性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#layer-v"><span class="nav-number">4.1.</span> <span class="nav-text">layer.v</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#layer-close-index"><span class="nav-number">4.2.</span> <span class="nav-text">layer.close(index)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#layer-closeAll"><span class="nav-number">4.3.</span> <span class="nav-text">layer.closeAll()</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9E%E4%BE%8B"><span class="nav-number">5.</span> <span class="nav-text">实例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E5%9C%B0%E5%9D%80"><span class="nav-number">6.</span> <span class="nav-text">参考地址</span></a></li></ol></div>
+        </section>
+        <!--/noindex-->
+
+        <section class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="chen-xt"
+      src="/images/head.jpg">
+  <p class="site-author-name" itemprop="name">chen-xt</p>
+  <div class="site-description" itemprop="description">一步一步向前走</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">34</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">32</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+        </section>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://chen-xt.github.io/2017/08/31/layer%E5%BC%B9%E5%B1%82%E7%BB%84%E4%BB%B6%E4%B9%8B%E7%A7%BB%E5%8A%A8%E7%89%88/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/head.jpg">
+      <meta itemprop="name" content="chen-xt">
+      <meta itemprop="description" content="一步一步向前走">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="陈小婷的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          layer弹层组件之移动版
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2017-08-31 22:19:47" itemprop="dateCreated datePublished" datetime="2017-08-31T22:19:47+08:00">2017-08-31</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2020-12-10 17:57:56" itemprop="dateModified" datetime="2020-12-10T17:57:56+08:00">2020-12-10</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/layer/" itemprop="url" rel="index"><span itemprop="name">layer</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>&emsp;&emsp;layer弹层组件分移动版和PC版，这边主要讲的是移动版的layer，PC版的后续再进行补充。移动版是为移动设备量身定做的弹层UI，并且完全独立于PC版的layer。与PC版的layer不同的是，移动版的layer只提供一个核心调用方法，即<code>layer.open(options)</code>，通过对参数<code>options</code>进行设置来实现各种不同的弹层。</p>
+<h2 id="快速上手"><a href="#快速上手" class="headerlink" title="快速上手"></a>快速上手</h2><p>&emsp;&emsp;第一步，下载。要去<a target="_blank" rel="noopener" href="http://layer.layui.com/mobile/">官网</a>下载layer的相关文件，主要是<code>layer.js</code>文件，<code>layer.css</code>文件可以根据需要引入，但是<code>layer.js</code>文件是必需的。<br>&emsp;&emsp;第二步，引入。将layer的相关文件引入项目中，这里需要注意的是，不能去挪动layer里面的文件结构，因为它们是不可拆散的组合，直接整个引入就可以。由于layer是基于jQuery的，在引入<code>layer.js</code>文件之前，必须先引入<strong>jQuery1.8</strong>或以上版本。<br>&emsp;&emsp;第三步，使用。下面是一个简单的layer弹层例子。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&lt;!doctype html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">	&lt;head&gt;</span><br><span class="line">	  &lt;title&gt;开始使用layer&lt;&#x2F;title&gt;</span><br><span class="line">	&lt;&#x2F;head&gt;</span><br><span class="line">	&lt;body&gt;</span><br><span class="line">	  &lt;button id&#x3D;&quot;test&quot;&gt;小小提示层&lt;&#x2F;button&gt;</span><br><span class="line"></span><br><span class="line">	  &lt;script src&#x3D;&quot;jQuery的路径&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">	  &lt;script src&#x3D;&quot;layer.js的路径&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">	  &lt;script&gt;</span><br><span class="line">		$(&#39;#test&#39;).on(&#39;click&#39;, function()&#123;</span><br><span class="line">		  layer.open(&#123;</span><br><span class="line">			type: 1,</span><br><span class="line">			area: [&#39;600px&#39;, &#39;360px&#39;],</span><br><span class="line">			shadeClose: true, &#x2F;&#x2F;点击遮罩关闭</span><br><span class="line">			content: &#39;\&lt;\div style&#x3D;&quot;padding:20px;&quot;&gt;自定义内容\&lt;\&#x2F;div&gt;&#39;</span><br><span class="line">		  &#125;);</span><br><span class="line">		&#125;);</span><br><span class="line">	  &lt;&#x2F;script&gt;</span><br><span class="line">	&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt; </span><br></pre></td></tr></table></figure>
+
+<h2 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h2><p>&emsp;&emsp;这里所谈到的参数指的就是核心接口<code>layer.open(options)</code>中的<strong>options</strong>。</p>
+<h3 id="type"><a href="#type" class="headerlink" title="type"></a>type</h3><p>&emsp;&emsp;type参数用于设置弹层的类型。其类型为<code>Number</code>型，默认值为<code>0</code>（<strong>0</strong>表示信息框，<strong>1</strong>表示页面层，<strong>2</strong>表示加载层）。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">type: 1</span><br></pre></td></tr></table></figure>
+
+<h3 id="content"><a href="#content" class="headerlink" title="content"></a>content</h3><p>&emsp;&emsp;content参数用于设置弹层内容。其类型为<code>String</code>型，这个参数为必选参数。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">content:  &#39;layer弹层组件&#39;  </span><br></pre></td></tr></table></figure>
+
+<h3 id="title"><a href="#title" class="headerlink" title="title"></a>title</h3><p>&emsp;&emsp;title参数用于设置弹层标题。其类型为<code>String</code>型或<code>Array</code>型，默认值为<code>空</code>，值可以为字符串或者数组，为空则不显示。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;格式</span><br><span class="line">	title: &#39;标题&#39;</span><br><span class="line">	title: [&#39;标题&#39;, &#39;background-color: #eee;&#39;] &#x2F;&#x2F;第二个参数可以自定义标题的样式 </span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;举例</span><br><span class="line">	title:  &#39;layer&#39;</span><br><span class="line">	title:  [&#39;layer&#39;, &#39;color: #eee;&#39;]  </span><br></pre></td></tr></table></figure>
+
+<h3 id="time"><a href="#time" class="headerlink" title="time"></a>time</h3><p>&emsp;&emsp;time参数用于控制自动关闭层所需秒数。其类型为<code>Number</code>型，默认不开启，支持整数和浮点数。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">time:  5  &#x2F;&#x2F;5秒后关闭  </span><br></pre></td></tr></table></figure>
+
+<h3 id="style"><a href="#style" class="headerlink" title="style"></a>style</h3><p>&emsp;&emsp;style参数用于设置自定义层的样式。其类型为<code>String</code>型。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">style:  &#39;border:none; background-color:#78BA32; color:#fff;&#39;  </span><br></pre></td></tr></table></figure>
+
+<h3 id="skin"><a href="#skin" class="headerlink" title="skin"></a>skin</h3><p>&emsp;&emsp;skin参数用于设定弹层显示风格。其类型为<code>String</code>型，目前支持配置<code>footer</code>(即底部对话框风格)、<code>msg</code>(普通提示)两种风格。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">skin: &#39;footer&#39;  </span><br></pre></td></tr></table></figure>
+
+<h3 id="className"><a href="#className" class="headerlink" title="className"></a>className</h3><p>&emsp;&emsp;className参数用于自定义一个css类。其类型为<code>String</code>型，用于自定义样式。自定义一个css类后，就可以在css里面通过设置这个类的样式来控制该弹层的风格。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">className:  &#39;modal&#39;  </span><br></pre></td></tr></table></figure>
+
+<h3 id="btn"><a href="#btn" class="headerlink" title="btn"></a>btn</h3><p>&emsp;&emsp;btn参数用于设置按钮。其类型为<code>String</code>型或<code>Array</code>型，不设置则不显示按钮。如果只需要一个按钮，则<code>btn: &#39;按钮&#39;</code>，如果有两个，则<code>btn: [&#39;按钮一&#39;, &#39;按钮二&#39;]</code>。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;设置两个按钮</span><br><span class="line">btn:  [&#39;马上开启&#39;,&#39;稍后再说&#39; ]  </span><br></pre></td></tr></table></figure>
+
+<h3 id="anim"><a href="#anim" class="headerlink" title="anim"></a>anim</h3><p>&emsp;&emsp;anim参数用于设置动画类型。其类型为<code>String</code>型或<code>Boolean</code>型，可支持的支持两种动画配置<code>scale</code>(默认)和<code>up</code>(从下往上弹出)，如果不开启动画，设置<code>false</code>即可。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">anim:  &#39;up&#39;</span><br></pre></td></tr></table></figure>
+
+<h3 id="shade"><a href="#shade" class="headerlink" title="shade"></a>shade</h3><p>&emsp;&emsp;shade参数用于控制遮罩展现。其类型为<code>String</code>型或<code>Boolean</code>型，默认为<code>true</code>，显示遮罩，并且可以自定义遮罩风格。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">shade:  &#39;background-color: rgba(0,0,0,.6) &#39;  &#x2F;&#x2F;遮罩的颜色以及透明度</span><br></pre></td></tr></table></figure>
+
+<h3 id="shadeClose"><a href="#shadeClose" class="headerlink" title="shadeClose"></a>shadeClose</h3><p>&emsp;&emsp;shadeClose参数用于设置点击遮罩时是否关闭层。其类型为<code>Boolean</code>型，默认为<code>true</code>，即点击遮罩时关闭层。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">shadeClose:  false  &#x2F;&#x2F;点击遮罩时不关闭层  </span><br></pre></td></tr></table></figure>
+
+<h3 id="fixed-amp-amp-top"><a href="#fixed-amp-amp-top" class="headerlink" title="fixed &amp;&amp;  top"></a>fixed &amp;&amp;  top</h3><p>&emsp;&emsp;fixed参数用于设置是否固定层的位置，需要与top参数一起使用。其类型为<code>Boolean</code>型，默认为<code>true</code>，不固定层的位置。而top参数用于控制层的纵坐标，其类型为<code>Number</code>型，默认为<code>无</code>，一般情况下不需要设置，因为层会始终垂直水平居中，只有当<code>fixed: false</code>时top才有效。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">fixed : false,</span><br><span class="line">top: 10</span><br></pre></td></tr></table></figure>
+
+<h3 id="success-amp-amp-end"><a href="#success-amp-amp-end" class="headerlink" title="success &amp;&amp;  end"></a>success &amp;&amp;  end</h3><p>&emsp;&emsp;success参数用于设置层成功弹出层的回调，该回调参数返回一个参数为当前层元素对象。其类型为<code>Function</code>型。end参数与success参数用法类似，只是它刚好与success参数相反，是用于设置层彻底销毁后的回调函数。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;格式</span><br><span class="line">	success: function(elem)&#123;</span><br><span class="line">		console.log(elem);   &#x2F;&#x2F;弹层成功弹出时候提示弹出	</span><br><span class="line">	&#125;</span><br><span class="line">	end: function(elem)&#123;</span><br><span class="line">		console.log(elem);   &#x2F;&#x2F;弹层销毁时提示销毁</span><br><span class="line">	&#125;</span><br><span class="line">&#x2F;&#x2F;举例</span><br><span class="line">	success: function()&#123;</span><br><span class="line">		alert(&#39;弹出&#39;);   </span><br><span class="line">	&#125;,</span><br><span class="line">	end:function(index)&#123;</span><br><span class="line">		  alert(&quot;销毁&quot;); </span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="yes-amp-amp-no"><a href="#yes-amp-amp-no" class="headerlink" title="yes &amp;&amp;  no"></a>yes &amp;&amp;  no</h3><p>&emsp;&emsp;yes参数用于设置点击确定按钮触发的回调函数，返回一个参数为当前层的索引。其类型为<code>Function</code>型。no参数与yes参数用法类似，只是它刚好与yes参数相反，用于设置点击取消按钮触发的回调函数。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;格式：</span><br><span class="line">	yes: function(index)&#123;</span><br><span class="line">	  alert(&#39;点击了是&#39;)</span><br><span class="line">	  layer.close(index)</span><br><span class="line">	&#125;</span><br><span class="line">	no: function(index)&#123;</span><br><span class="line">	  alert(&#39;点击了否&#39;)</span><br><span class="line">	  layer.close(index)</span><br><span class="line">	&#125;</span><br><span class="line">&#x2F;&#x2F;举例</span><br><span class="line">	yes: function()&#123;  &#x2F;&#x2F;点击确定时候弹出“好的”提示</span><br><span class="line">	    layer.open(&#123;</span><br><span class="line">	      content: &#39;好的&#39;</span><br><span class="line">	      ,time: 2</span><br><span class="line">	      ,skin: &#39;msg&#39;</span><br><span class="line">	    &#125;);</span><br><span class="line">	&#125;,</span><br><span class="line">	no: function(index)&#123;			  </span><br><span class="line">		window.location.href&#x3D;&quot;https:&#x2F;&#x2F;www.baidu.com&#x2F;&quot;; &#x2F;&#x2F;点击取消跳转到必应</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="其它内置方法-属性"><a href="#其它内置方法-属性" class="headerlink" title="其它内置方法/属性"></a>其它内置方法/属性</h2><h3 id="layer-v"><a href="#layer-v" class="headerlink" title="layer.v"></a>layer.v</h3><p>&emsp;&emsp;layer.v用于返回当前使用的layer mobile版本号。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">yes: function(index)&#123;</span><br><span class="line">    alert(layer.v);   &#x2F;&#x2F;弹出“2.0”，当前的版本为2.0</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="layer-close-index"><a href="#layer-close-index" class="headerlink" title="layer.close(index)"></a>layer.close(index)</h3><p>&emsp;&emsp;layer.close(index)用于关闭特定层，index为该特定层的索引。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">yes: function(index)&#123;</span><br><span class="line">	layer.close(index);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="layer-closeAll"><a href="#layer-closeAll" class="headerlink" title="layer.closeAll()"></a>layer.closeAll()</h3><p>&emsp;&emsp;layer.closeAll()用于关闭页面所有layer的层。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">yes: function(index)&#123;</span><br><span class="line">    layer.closeAll();</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h2><ol>
+<li><p>信息框</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">layer.open(&#123;</span><br><span class="line">    content: &#39;我是layer移动版&#39;,</span><br><span class="line">    btn: &#39;知道了&#39;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>提示</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">layer.open(&#123;</span><br><span class="line">    content: &#39;你好&#39;,</span><br><span class="line">    skin: &#39;msg&#39;,</span><br><span class="line">    time: 3 &#x2F;&#x2F;3秒后自动关闭</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>询问框</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">layer.open(&#123;</span><br><span class="line">    content: &#39;您确定要刷新一下本页面吗？&#39;,</span><br><span class="line">    btn: [&#39;刷新&#39;, &#39;不要&#39;],</span><br><span class="line">    yes: function(index)&#123;</span><br><span class="line">      location.reload();</span><br><span class="line">      layer.close(index);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>底部对话框</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">layer.open(&#123;</span><br><span class="line">    content: &#39;这是一个底部弹出的询问提示&#39;,</span><br><span class="line">    btn: [&#39;删除&#39;, &#39;取消&#39;],</span><br><span class="line">    skin: &#39;footer&#39;,</span><br><span class="line">    yes: function(index)&#123;</span><br><span class="line">      layer.open(&#123;content: &#39;执行删除操作&#39;&#125;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>页面层</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">layer.open(&#123;</span><br><span class="line">    type: 1,</span><br><span class="line">    content: &#39;可传入任何内容，支持html。一般用于手机页面中&#39;,</span><br><span class="line">    anim: &#39;up&#39;,</span><br><span class="line">    style: &#39;position:fixed; bottom:0; left:0; width: 100%; height: 200px; padding:10px 0; border:none;&#39;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>loading带文字</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">layer.open(&#123;</span><br><span class="line">    type: 2,</span><br><span class="line">    content: &#39;加载中&#39; &#x2F;&#x2F;如果没有content的话，则只有几个加载的小圆点</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h2 id="参考地址"><a href="#参考地址" class="headerlink" title="参考地址"></a>参考地址</h2><ul>
+<li><a target="_blank" rel="noopener" href="http://layer.layui.com/mobile/api.html">参考网址</a></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/layer/" rel="tag"># layer</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2017/07/18/bootstrap-datetimepicker%E6%97%A5%E6%9C%9F%E6%8F%92%E4%BB%B6/" rel="prev" title="bootstrap-datetimepicker日期插件">
+                  <i class="fa fa-chevron-left"></i> bootstrap-datetimepicker日期插件
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2018/11/06/HTML%E5%AA%92%E4%BD%93%E6%8D%95%E8%8E%B7%E5%AE%9E%E4%BE%8B/" rel="next" title="HTML媒体捕获实例">
+                  HTML媒体捕获实例 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">chen-xt</span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+</body>
+</html>

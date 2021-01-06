@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.1/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"chen-xt.github.io","root":"/","images":"/images","scheme":"Muse","version":"8.1.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}};
+  </script>
+<meta name="description" content="前言&amp;emsp;&amp;emsp;js 生成二维码有两种方法：分别是用 qrcode.js 和 jquery.qrcode.js。 qrcode&amp;emsp;&amp;emsp;qrcode.js 是一个用于生成二维码图片的插件，主要是通过获取 DOM 的标签，再通过 HTML5 Canvas 绘制而成，不依赖任何库，支持中文内容。 使用方法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="qrcode生成二维码">
+<meta property="og:url" content="https://chen-xt.github.io/2019/01/16/qrcode%E7%94%9F%E6%88%90%E4%BA%8C%E7%BB%B4%E7%A0%81/index.html">
+<meta property="og:site_name" content="陈小婷的博客">
+<meta property="og:description" content="前言&amp;emsp;&amp;emsp;js 生成二维码有两种方法：分别是用 qrcode.js 和 jquery.qrcode.js。 qrcode&amp;emsp;&amp;emsp;qrcode.js 是一个用于生成二维码图片的插件，主要是通过获取 DOM 的标签，再通过 HTML5 Canvas 绘制而成，不依赖任何库，支持中文内容。 使用方法">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-01-15T16:32:49.000Z">
+<meta property="article:modified_time" content="2021-01-05T15:22:00.404Z">
+<meta property="article:author" content="chen-xt">
+<meta property="article:tag" content="二维码">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://chen-xt.github.io/2019/01/16/qrcode%E7%94%9F%E6%88%90%E4%BA%8C%E7%BB%B4%E7%A0%81/">
+
+
+<script class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+<title>qrcode生成二维码 | 陈小婷的博客</title>
+  
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">陈小婷的博客</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">前端开发</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <section class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#qrcode"><span class="nav-number">2.</span> <span class="nav-text">qrcode</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95"><span class="nav-number">2.1.</span> <span class="nav-text">使用方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E6%95%B0%E8%AF%B4%E6%98%8E"><span class="nav-number">2.2.</span> <span class="nav-text">参数说明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#API-%E6%8E%A5%E5%8F%A3"><span class="nav-number">2.3.</span> <span class="nav-text">API 接口</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#jquery-qrcode-js"><span class="nav-number">3.</span> <span class="nav-text">jquery.qrcode.js</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95-1"><span class="nav-number">3.1.</span> <span class="nav-text">使用方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E6%95%B0%E8%AF%B4%E6%98%8E-1"><span class="nav-number">3.2.</span> <span class="nav-text">参数说明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%9F%E6%88%90%E4%BA%8C%E7%BB%B4%E7%A0%81%E5%9B%BE%E7%89%87"><span class="nav-number">3.3.</span> <span class="nav-text">生成二维码图片</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%A3%E5%86%B3%E6%97%A0%E6%B3%95%E7%94%9F%E6%88%90%E4%B8%AD%E6%96%87%E4%BA%8C%E7%BB%B4%E7%A0%81%E7%9A%84%E9%97%AE%E9%A2%98"><span class="nav-number">3.4.</span> <span class="nav-text">解决无法生成中文二维码的问题</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E7%BD%91%E5%9D%80"><span class="nav-number">4.</span> <span class="nav-text">参考网址</span></a></li></ol></div>
+        </section>
+        <!--/noindex-->
+
+        <section class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="chen-xt"
+      src="/images/head.jpg">
+  <p class="site-author-name" itemprop="name">chen-xt</p>
+  <div class="site-description" itemprop="description">一步一步向前走</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">34</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">32</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+        </section>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://chen-xt.github.io/2019/01/16/qrcode%E7%94%9F%E6%88%90%E4%BA%8C%E7%BB%B4%E7%A0%81/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/head.jpg">
+      <meta itemprop="name" content="chen-xt">
+      <meta itemprop="description" content="一步一步向前走">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="陈小婷的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          qrcode生成二维码
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2019-01-16 00:32:49" itemprop="dateCreated datePublished" datetime="2019-01-16T00:32:49+08:00">2019-01-16</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-01-05 23:22:00" itemprop="dateModified" datetime="2021-01-05T23:22:00+08:00">2021-01-05</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/javascript/" itemprop="url" rel="index"><span itemprop="name">javascript</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>&emsp;&emsp;js 生成二维码有两种方法：分别是用 qrcode.js 和 jquery.qrcode.js。</p>
+<h1 id="qrcode"><a href="#qrcode" class="headerlink" title="qrcode"></a>qrcode</h1><p>&emsp;&emsp;qrcode.js 是一个用于生成二维码图片的插件，主要是通过获取 DOM 的标签，再通过 HTML5 Canvas 绘制而成，不依赖任何库，<strong>支持中文内容</strong>。</p>
+<h2 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h2><ol>
+<li>载入 js 文件</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src&#x3D;&quot;qrcode.js&quot;&gt;&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>DOM 结构</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id&#x3D;&quot;code&quot;&gt;&lt;&#x2F;div&gt;</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>调用</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 简单方式</span><br><span class="line">new QRCode(document.getElementById(&#39;code&#39;), &#39;https:&#x2F;&#x2F;www.baidu.com&#x2F;&#39;);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 设置参数方式</span><br><span class="line">var qrcode &#x3D; new QRCode(&#39;code&#39;, &#123;</span><br><span class="line">    text: &#39;hello world!&#39;,</span><br><span class="line">    width: 200,</span><br><span class="line">    height: 200,</span><br><span class="line">    colorDark : &#39;#000&#39;,</span><br><span class="line">    colorLight : &#39;#fff&#39;,</span><br><span class="line">    correctLevel : QRCode.CorrectLevel.H</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 使用 API</span><br><span class="line">qrcode.clear();</span><br><span class="line">qrcode.makeCode(&#39;哈哈哈&#39;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="参数说明"><a href="#参数说明" class="headerlink" title="参数说明"></a>参数说明</h2><p>&emsp;&emsp;格式：<strong>new QRCode(element, option)</strong></p>
+<ol>
+<li>element：显示二维码的元素或该元素的 id</li>
+<li>option：参数配置，有以下几个参数：<br>（1）text：设置二维码的内容；<br>（2）width：设置二维码宽度，默认值是 256；<br>（3）height：设置二维码高度，默认值是 256；<br>（4）colorDark：设置前景色，默认值是”#000”<br>（5）colorLight：设置背景色，默认值是”#fff”<br>（6）typeNumber: 设置计算模式，默认值是 4<br>（7）correctLevel : 设置容错级别，默认值是 QRErrorCorrectLevel.H，可设置为 QRCode.CorrectLevel.L(容错率 7%)、QRCode.CorrectLevel.M(容错率 15%)、QRCode.CorrectLevel.Q(容错率 25%)、QRCode.CorrectLevel.H(容错率 30%)；<br>注意：二维码容错率即是指二维码图标被遮挡多少后，仍可以被扫描出来的能力。容错率越高，则二维码图片能被遮挡的部分越多。容错率越高，越容易被快速扫描。因此推荐使用 QRErrorCorrectLevel.H。</li>
+</ol>
+<h2 id="API-接口"><a href="#API-接口" class="headerlink" title="API 接口"></a>API 接口</h2><ol>
+<li><strong>makeCode(text)：</strong>设置二维码内容</li>
+<li><strong>clear()：</strong>清除二维码（仅在不支持 Canvas 的浏览器下有效）</li>
+</ol>
+<h1 id="jquery-qrcode-js"><a href="#jquery-qrcode-js" class="headerlink" title="jquery.qrcode.js"></a>jquery.qrcode.js</h1><p>&emsp;&emsp;jquery.qrcode.js 是把 qrcode.js 用 jquery 方式封装起来的，用它来实现图形渲染，其实就是画图（支持 canvas 和 table 两种方式）默认是 canvas，canvas 方式还支持右键图片下载，<strong>不支持中文内容</strong>。</p>
+<h2 id="使用方法-1"><a href="#使用方法-1" class="headerlink" title="使用方法"></a>使用方法</h2><ol>
+<li>载入 js 文件</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src&#x3D;&quot;jquery.qrcode.min.js&quot;&gt;&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>DOM 结构</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id&#x3D;&quot;code&quot;&gt;&lt;&#x2F;div&gt;</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>调用</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 简单方式</span><br><span class="line">&#x2F;&#x2F; $(&quot;#code&quot;).qrcode(&quot;hi,chen!&quot;);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 直接生成二维码</span><br><span class="line">$(&quot;#code&quot;).qrcode(&#123;</span><br><span class="line">    render: &quot;canvas&quot;, &#x2F;&#x2F;渲染方式</span><br><span class="line">    width: 200,  &#x2F;&#x2F;宽度</span><br><span class="line">    height: 200, &#x2F;&#x2F;高度</span><br><span class="line">    text: &quot;https:&#x2F;&#x2F;www.baidu.com&#x2F;&quot;, &#x2F;&#x2F;内容</span><br><span class="line">    background: &quot;#fff&quot;,  &#x2F;&#x2F;背景色</span><br><span class="line">    foreground: &quot;#000&quot;,   &#x2F;&#x2F;前景色(二维码的颜色)</span><br><span class="line">    correctLevel: 1,  &#x2F;&#x2F;容错级别</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="参数说明-1"><a href="#参数说明-1" class="headerlink" title="参数说明"></a>参数说明</h2><p>（1）render: 设置渲染方式，支持 canvas 和 table 两种方式，默认是 canvas；<br>（2）text：设置二维码的内容<br>（3）width：设置二维码宽度，默认值是 256；<br>（4）height：设置二维码高度，默认值是 256；<br>（5）foreground: 设置前景色，默认值是”#000”<br>（6）background: 设置背景色，默认值是”#fff”<br>（7）correctLevel : 设置容错级别<br>（8）typeNumber : 设置计算模式</p>
+<h2 id="生成二维码图片"><a href="#生成二维码图片" class="headerlink" title="生成二维码图片"></a>生成二维码图片</h2><ol>
+<li>载入 js 文件</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src&#x3D;&quot;jquery.qrcode.min.js&quot;&gt;&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>DOM 结构</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id&#x3D;&quot;code&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">&lt;img id&#x3D;&quot;imgOne&quot; src&#x3D;&quot;&quot;&gt;</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>调用</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;生成二维码图片</span><br><span class="line">var qrcode &#x3D; $(&#39;#code&#39;).qrcode(&quot;https:&#x2F;&#x2F;www.baidu.com&#x2F;&quot;).hide();</span><br><span class="line">var canvas &#x3D; qrcode.find(&#39;canvas&#39;).get(0);</span><br><span class="line">$(&#39;#imgOne&#39;).attr(&#39;src&#39;,canvas.toDataURL(&#39;image&#x2F;jpg&#39;));</span><br></pre></td></tr></table></figure>
+
+<h2 id="解决无法生成中文二维码的问题"><a href="#解决无法生成中文二维码的问题" class="headerlink" title="解决无法生成中文二维码的问题"></a>解决无法生成中文二维码的问题</h2><p>&emsp;&emsp;jquery-qrcode 这个库是采用 charCodeAt() 这个方式进行编码转换的，这个方法默认会获取它的 Unicode 编码，一般的解码器都是采用 UTF-8, ISO-8859-1 等方式。英文是没有问题，如果是中文，一般情况下 Unicode 是 UTF-16 实现，长度 2 位，而 UTF-8 编码是 3 位，这样二维码的编解码就不匹配了。 所以可以在二维码编码前把字符串转换成 UTF-8，就可以解决这个问题了。<br>&emsp;&emsp;相关代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">$(&quot;#code&quot;).qrcode(&#123;</span><br><span class="line">      render: &quot;canvas&quot;, &#x2F;&#x2F;渲染方式</span><br><span class="line">      width: 200,  &#x2F;&#x2F;宽度</span><br><span class="line">      height: 200, &#x2F;&#x2F;高度</span><br><span class="line">      text: utf16to8(&quot;你好啊&quot;), &#x2F;&#x2F;内容</span><br><span class="line">      background: &quot;#fff&quot;,  &#x2F;&#x2F;背景色</span><br><span class="line">      foreground: &quot;#000&quot;,   &#x2F;&#x2F;前景色(二维码的颜色)</span><br><span class="line">      correctLevel: 1,  &#x2F;&#x2F;容错级别</span><br><span class="line">	&#125;);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 编码转换函数</span><br><span class="line">  function utf16to8(str) &#123;</span><br><span class="line">      var out, i, len, c;</span><br><span class="line">      out &#x3D; &quot;&quot;;</span><br><span class="line">      len &#x3D; str.length;</span><br><span class="line">      for(i &#x3D; 0; i &lt; len; i++) &#123;</span><br><span class="line">      c &#x3D; str.charCodeAt(i);</span><br><span class="line">      if ((c &gt;&#x3D; 0x0001) &amp;&amp; (c &lt;&#x3D; 0x007F)) &#123;</span><br><span class="line">          out +&#x3D; str.charAt(i);</span><br><span class="line">      &#125; else if (c &gt; 0x07FF) &#123;</span><br><span class="line">          out +&#x3D; String.fromCharCode(0xE0 | ((c &gt;&gt; 12) &amp; 0x0F));</span><br><span class="line">          out +&#x3D; String.fromCharCode(0x80 | ((c &gt;&gt;  6) &amp; 0x3F));</span><br><span class="line">          out +&#x3D; String.fromCharCode(0x80 | ((c &gt;&gt;  0) &amp; 0x3F));</span><br><span class="line">      &#125; else &#123;</span><br><span class="line">          out +&#x3D; String.fromCharCode(0xC0 | ((c &gt;&gt;  6) &amp; 0x1F));</span><br><span class="line">          out +&#x3D; String.fromCharCode(0x80 | ((c &gt;&gt;  0) &amp; 0x3F));</span><br><span class="line">      &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      return out;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="参考网址"><a href="#参考网址" class="headerlink" title="参考网址"></a>参考网址</h1><ul>
+<li><a target="_blank" rel="noopener" href="http://code.ciaoca.com/javascript/qrcode/">qrcode.js 参考网址</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/jeromeetienne/jquery-qrcode">jquery.qrcode.js 参考网址</a></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E4%BA%8C%E7%BB%B4%E7%A0%81/" rel="tag"># 二维码</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2019/01/09/%E8%B7%A8%E5%9F%9F/" rel="prev" title="跨域">
+                  <i class="fa fa-chevron-left"></i> 跨域
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2019/09/17/github%20%E5%92%8C%20gitblit%20%E5%B9%B6%E5%AD%98/" rel="next" title="github 和 gitblit 并存">
+                  github 和 gitblit 并存 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">chen-xt</span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+</body>
+</html>

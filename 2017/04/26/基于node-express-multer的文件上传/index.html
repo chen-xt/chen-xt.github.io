@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.1/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"chen-xt.github.io","root":"/","images":"/images","scheme":"Muse","version":"8.1.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}};
+  </script>
+<meta name="description" content="简介&amp;emsp;&amp;emsp;multer是一个用以处理 multipart&#x2F;form-data 请求的node.js中间件，主要用于上传文件。它基于 busboy 开发以提供最高的性能。本篇文章是基于 multer的1.3.0版本，express的4.13.4版本进行操作的，其中index.js是路由文件，用来处理文件上传请求，form.ejs是前端页面，用来上传文件。 安装1npm instal">
+<meta property="og:type" content="article">
+<meta property="og:title" content="基于node-express-multer的文件上传">
+<meta property="og:url" content="https://chen-xt.github.io/2017/04/26/%E5%9F%BA%E4%BA%8Enode-express-multer%E7%9A%84%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/index.html">
+<meta property="og:site_name" content="陈小婷的博客">
+<meta property="og:description" content="简介&amp;emsp;&amp;emsp;multer是一个用以处理 multipart&#x2F;form-data 请求的node.js中间件，主要用于上传文件。它基于 busboy 开发以提供最高的性能。本篇文章是基于 multer的1.3.0版本，express的4.13.4版本进行操作的，其中index.js是路由文件，用来处理文件上传请求，form.ejs是前端页面，用来上传文件。 安装1npm instal">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2017-04-26T14:03:07.000Z">
+<meta property="article:modified_time" content="2020-12-10T09:58:01.555Z">
+<meta property="article:author" content="chen-xt">
+<meta property="article:tag" content="multer">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://chen-xt.github.io/2017/04/26/%E5%9F%BA%E4%BA%8Enode-express-multer%E7%9A%84%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/">
+
+
+<script class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+<title>基于node-express-multer的文件上传 | 陈小婷的博客</title>
+  
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">陈小婷的博客</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">前端开发</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <section class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E4%BB%8B"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85"><span class="nav-number">2.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9index-js"><span class="nav-number">3.</span> <span class="nav-text">修改index.js</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%8A%E4%BC%A0%E5%8D%95%E4%B8%AA%E6%96%87%E4%BB%B6"><span class="nav-number">4.</span> <span class="nav-text">上传单个文件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#form-ejs"><span class="nav-number">4.1.</span> <span class="nav-text">form.ejs</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#index-js"><span class="nav-number">4.2.</span> <span class="nav-text">index.js</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%8A%E4%BC%A0%E5%A4%9A%E4%B8%AA%E7%9B%B8%E5%90%8Cname%E5%80%BC%E7%9A%84%E6%96%87%E4%BB%B6"><span class="nav-number">5.</span> <span class="nav-text">上传多个相同name值的文件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#form-ejs-1"><span class="nav-number">5.1.</span> <span class="nav-text">form.ejs</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#index-js-1"><span class="nav-number">5.2.</span> <span class="nav-text">index.js</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%8A%E4%BC%A0%E5%A4%9A%E4%B8%AA%E4%B8%8D%E5%90%8Cname%E5%80%BC%E7%9A%84%E6%96%87%E4%BB%B6"><span class="nav-number">6.</span> <span class="nav-text">上传多个不同name值的文件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#form-ejs-2"><span class="nav-number">6.1.</span> <span class="nav-text">form.ejs</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#index-js-2"><span class="nav-number">6.2.</span> <span class="nav-text">index.js</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E6%96%87%E4%BB%B6%E5%90%8D%EF%BC%88filename%EF%BC%89%E5%92%8C%E6%96%87%E4%BB%B6%E4%BF%9D%E5%AD%98%E8%B7%AF%E5%BE%84"><span class="nav-number">7.</span> <span class="nav-text">自定义文件名（filename）和文件保存路径</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E6%A1%A3"><span class="nav-number">8.</span> <span class="nav-text">参考文档</span></a></li></ol></div>
+        </section>
+        <!--/noindex-->
+
+        <section class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="chen-xt"
+      src="/images/head.jpg">
+  <p class="site-author-name" itemprop="name">chen-xt</p>
+  <div class="site-description" itemprop="description">一步一步向前走</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">34</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">32</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+        </section>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://chen-xt.github.io/2017/04/26/%E5%9F%BA%E4%BA%8Enode-express-multer%E7%9A%84%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/head.jpg">
+      <meta itemprop="name" content="chen-xt">
+      <meta itemprop="description" content="一步一步向前走">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="陈小婷的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          基于node-express-multer的文件上传
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2017-04-26 22:03:07" itemprop="dateCreated datePublished" datetime="2017-04-26T22:03:07+08:00">2017-04-26</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2020-12-10 17:58:01" itemprop="dateModified" datetime="2020-12-10T17:58:01+08:00">2020-12-10</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Node-js/" itemprop="url" rel="index"><span itemprop="name">Node.js</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>&emsp;&emsp;<strong>multer</strong>是一个用以处理 <strong>multipart/form-data</strong> 请求的node.js中间件，主要用于上传文件。它基于 busboy 开发以提供最高的性能。本篇文章是基于 multer的1.3.0版本，express的4.13.4版本进行操作的，其中<strong>index.js</strong>是路由文件，用来处理文件上传请求，<strong>form.ejs</strong>是前端页面，用来上传文件。</p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save multer</span><br></pre></td></tr></table></figure>
+
+<h2 id="修改index-js"><a href="#修改index-js" class="headerlink" title="修改index.js"></a>修改index.js</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var multer  &#x3D; require(&#39;multer&#39;)</span><br><span class="line">var upload &#x3D; multer(&#123; dest: &#39;upload&#x2F;&#39; &#125;);&#x2F;&#x2F;dest 是上传的文件所在的目录,可以自定义</span><br></pre></td></tr></table></figure>
+
+<h2 id="上传单个文件"><a href="#上传单个文件" class="headerlink" title="上传单个文件"></a>上传单个文件</h2><p>&emsp;&emsp;<strong>.single(fieldname)：</strong>接受一个名称的文件fieldname。单个文件将存储在req.file。</p>
+<h3 id="form-ejs"><a href="#form-ejs" class="headerlink" title="form.ejs"></a>form.ejs</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;form action&#x3D;&quot;&#x2F;upload&quot; method&#x3D;&quot;post&quot; enctype&#x3D;&quot;multipart&#x2F;form-data&quot;&gt;</span><br><span class="line">    &lt;h2&gt;单个文件上传&lt;&#x2F;h2&gt;</span><br><span class="line">    &lt;input type&#x3D;&quot;file&quot;  name&#x3D;&quot;logo&quot;&gt;</span><br><span class="line">    &lt;input type&#x3D;&quot;submit&quot; value&#x3D;&quot;提交&quot;&gt;</span><br><span class="line">&lt;&#x2F;form&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="index-js"><a href="#index-js" class="headerlink" title="index.js"></a>index.js</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">router.post(&#39;&#x2F;upload&#39;, upload.single(&#39;logo&#39;), function(req, res, next)&#123;</span><br><span class="line">&#x2F;&#x2F;logo为图片的name属性</span><br><span class="line">      res.redirect(&#39;&#x2F;form&#39;);</span><br><span class="line">      console.log(req.file.filename); &#x2F;&#x2F;获取文件的filename值，其他属性类似</span><br><span class="line">      console.log(&#39;单个文件上传&#39;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="上传多个相同name值的文件"><a href="#上传多个相同name值的文件" class="headerlink" title="上传多个相同name值的文件"></a>上传多个相同name值的文件</h2><p>&emsp;&emsp;<strong>.array(fieldname[, maxCount])：</strong>接受一系列的文件，所有的名称fieldname。如果多于maxCount上传文件，可以选择是错误输出。文件数组将存储在 req.files。</p>
+<h3 id="form-ejs-1"><a href="#form-ejs-1" class="headerlink" title="form.ejs"></a>form.ejs</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;form action&#x3D;&quot;&#x2F;upload&quot; method&#x3D;&quot;post&quot; enctype&#x3D;&quot;multipart&#x2F;form-data&quot;&gt;</span><br><span class="line">    &lt;h2&gt;多个文件上传&lt;&#x2F;h2&gt;</span><br><span class="line">    &lt;input type&#x3D;&quot;file&quot; name&#x3D;&quot;logo&quot;&gt;</span><br><span class="line">    &lt;input type&#x3D;&quot;file&quot; name&#x3D;&quot;logo&quot;&gt;</span><br><span class="line">    &lt;input type&#x3D;&quot;submit&quot; value&#x3D;&quot;提交&quot;&gt;</span><br><span class="line">&lt;&#x2F;form&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="index-js-1"><a href="#index-js-1" class="headerlink" title="index.js"></a>index.js</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">router.post(&#39;&#x2F;upload&#39;, upload.array(&#39;logo&#39;, 2), function(req, res, next)&#123;</span><br><span class="line">    res.redirect(&#39;&#x2F;form&#39;);</span><br><span class="line">    console.log(rreq.files[0].filename); &#x2F;&#x2F;获取文件的filename值，其他属性类似</span><br><span class="line">    console.log(&#39;多个文件上传&#39;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="上传多个不同name值的文件"><a href="#上传多个不同name值的文件" class="headerlink" title="上传多个不同name值的文件"></a>上传多个不同name值的文件</h2><p>&emsp;&emsp;<strong>.fields(fields)：</strong>接受指定的文件混合fields。具有文件数组的对象将被存储req.files。fields应该是一个数组的对象name和可选的maxCount。</p>
+<h3 id="form-ejs-2"><a href="#form-ejs-2" class="headerlink" title="form.ejs"></a>form.ejs</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;form action&#x3D;&quot;&#x2F;upload&quot; method&#x3D;&quot;post&quot; enctype&#x3D;&quot;multipart&#x2F;form-data&quot;&gt;</span><br><span class="line">    &lt;h2&gt;多个不同name值文件上传&lt;&#x2F;h2&gt;</span><br><span class="line">    &lt;input type&#x3D;&quot;file&quot; name&#x3D;&quot;file1&quot;&gt;</span><br><span class="line">    &lt;input type&#x3D;&quot;file&quot; name&#x3D;&quot;file2&quot;&gt;</span><br><span class="line">    &lt;input type&#x3D;&quot;file&quot; name&#x3D;&quot;file3&quot;&gt;</span><br><span class="line">    &lt;input type&#x3D;&quot;file&quot; name&#x3D;&quot;file4&quot;&gt;</span><br><span class="line">    &lt;input type&#x3D;&quot;file&quot; name&#x3D;&quot;file5&quot;&gt;</span><br><span class="line">    &lt;input type&#x3D;&quot;submit&quot; value&#x3D;&quot;提交&quot;&gt;</span><br><span class="line">&lt;&#x2F;form&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="index-js-2"><a href="#index-js-2" class="headerlink" title="index.js"></a>index.js</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">router.post(&#39;&#x2F;upload&#39;, upload.fields([</span><br><span class="line">    &#123;name: &#39;file1&#39;&#125;,</span><br><span class="line">    &#123;name: &#39;file2&#39;&#125;,</span><br><span class="line">    &#123;name: &#39;file3&#39;&#125;,</span><br><span class="line">    &#123;name: &#39;file4&#39;&#125;,</span><br><span class="line">    &#123;name: &#39;file5&#39;&#125;</span><br><span class="line">]), function(req, res, next)&#123;</span><br><span class="line">     for(var i in req.files)&#123;</span><br><span class="line">        console.log(req.files[i]);&#x2F;&#x2F;输出每个文件的信息</span><br><span class="line">        var a&#x3D;req.files[i];</span><br><span class="line">        console.log(a[0].filename);&#x2F;&#x2F;获取文件的filename值，其他属性类似</span><br><span class="line">    &#125;</span><br><span class="line">    res.redirect(&#39;&#x2F;form&#39;);</span><br><span class="line">    &#x2F;&#x2F; console.log(&#39;多个不同name值文件&#39;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;每个文件对象包括以下信息:</p>
+<ul>
+<li>fieldname: ‘file5’,//在form表单中指定的name属性值</li>
+<li>originalname: ‘good5.jpg’,//原始文件名</li>
+<li>encoding: ‘7bit’,//文件的编码类型</li>
+<li>mimetype: ‘image/jpeg’, //多媒体类型</li>
+<li>destination: ‘upload/‘, //文件已被保存到的文件夹(ben)</li>
+<li>filename: ‘7df920656f2aea54d6f62f51f58db037’, //保存在本地的文件名(保存后的名称)</li>
+<li>path: ‘upload\7df920656f2aea54d6f62f51f58db037’,//文件保存的完整路径</li>
+<li>size: 88400 //文件大小，单位b</li>
+</ul>
+<h2 id="自定义文件名（filename）和文件保存路径"><a href="#自定义文件名（filename）和文件保存路径" class="headerlink" title="自定义文件名（filename）和文件保存路径"></a>自定义文件名（filename）和文件保存路径</h2><p>&emsp;&emsp;multer 提供了 <strong>storage</strong> 这个参数来对资源保存的路径、文件名进行自定义的设置。<br>将<strong>index.js</strong>文件中的<code>var upload = multer(&#123; dest: &#39;upload/&#39; &#125;);</code><br>替换成如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">var storage &#x3D; multer.diskStorage(&#123;</span><br><span class="line">  destination: function (req, file, cb) &#123;</span><br><span class="line">    cb(null, &#39;.&#x2F;files&#39;);  &#x2F;&#x2F;保存的路径，备注：需要自己创建</span><br><span class="line">  &#125;,</span><br><span class="line">  filename: function (req, file, cb) &#123;</span><br><span class="line">    cb(null, file.originalname);&#x2F;&#x2F;文件名，这里设置成和原始名字一样</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line">var upload &#x3D; multer(&#123; storage: storage &#125;);</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;上述代码的执行结果：所有上传的文件都会保存到files文件夹中，且名字都和原始名字一样。</p>
+<h2 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h2><p>&emsp;&emsp;multer官方文档：<a target="_blank" rel="noopener" href="https://github.com/expressjs/multer">https://github.com/expressjs/multer</a></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/multer/" rel="tag"># multer</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2017/04/04/%E8%B5%B0%E8%BF%9Bcanvas/" rel="prev" title="走进canvas">
+                  <i class="fa fa-chevron-left"></i> 走进canvas
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2017/07/18/bootstrap-datetimepicker%E6%97%A5%E6%9C%9F%E6%8F%92%E4%BB%B6/" rel="next" title="bootstrap-datetimepicker日期插件">
+                  bootstrap-datetimepicker日期插件 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">chen-xt</span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+</body>
+</html>
