@@ -1,50 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>JS之运动1</title>
-    <url>/2016/07/19/JS%E4%B9%8B%E8%BF%90%E5%8A%A81/</url>
-    <content><![CDATA[<p>今天学习了 JS 的运动，从最简单的一个 div 运动到多个 div 运动开始，到后面通过 div 的运动实现常见的侧边栏的隐藏与显示，最后还实现图片或者 div 块的淡入淡出。最终总结起来其实都是一个运动函数 startMove()的套用，涉及定时器的关与开。仔细观察下每个例子的 startMove()运动函数，会发现都是大同小异的，所以将 startMove()运动函数封装起来，当需要的时候导入，再修改下相应的参数即可，这样可以大大实现代码的简洁性。下面就是封装该函数的一个过程。</p>
-<p>首先，获取样式表指定对象的属性值，其中涉及浏览器兼容性问题，利用 if-else 语句来解决兼容性问题。</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getStyle</span>(<span class="params">obj, attr</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (obj.currentStyle) &#123;</span><br><span class="line">		<span class="keyword">return</span> obj.currentStyle[attr]; <span class="comment">//只支持IE浏览器</span></span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> getComputedStyle(obj, <span class="literal">false</span>)[attr]; <span class="comment">//支持火狐，谷歌等浏览器，IE浏览器不支持</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>然后，就是设置 startMove()函数里面包含的真正内容了，</p>
-<ol>
-<li>设置三个参数值，分别为 obj（对象），attr（属性值），iTarget（目标值）</li>
-</ol>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">startMove</span>(<span class="params">obj, attr, iTarget</span>) </span>&#123;&#125;</span><br></pre></td></tr></table></figure>
-
-<ol start="2">
-<li>设置定时器。开启一个定时器前应该先关闭定时器，因为如果没有先关闭定时器，那么当重复点击运动按钮时，会重复执行 startMove()运动函数，即一起开启多个定时器，导致运动的重复和混乱。</li>
-</ol>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">clearInterval</span>(obj.timer);</span><br><span class="line">        obj.timer=<span class="built_in">setInterval</span>(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">        </span>&#123;  ... &#125;,<span class="number">30</span>);      &#125;</span><br></pre></td></tr></table></figure>
-
-<ol start="3">
-<li>设置定时器内部的内容。这里要注意一点，如果设置的是透明度的值，因为有可能会是小数点，所以需要用 parseFloat；反之，如果设置的是非透明度值，则用 parseInt。（iCur 的初值为 0，为所指定属性的值）</li>
-</ol>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> (attr == <span class="string">&quot;opacity&quot;</span>) &#123;</span><br><span class="line">	<span class="comment">//iCur=parseFloat(getStyle(obj,attr))*100;//结果是小数，会出现闪烁</span></span><br><span class="line">	iCur = <span class="built_in">parseInt</span>(<span class="built_in">parseFloat</span>(getStyle(obj, attr)) * <span class="number">100</span>); <span class="comment">//将小数部分去掉，解决闪烁</span></span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">	<span class="comment">//传进来的参数不是透明度，采用parseInt方法</span></span><br><span class="line">	iCur = <span class="built_in">parseInt</span>(getStyle(obj, attr));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>然后设置运动速度，这里设置速度值 iSpeed 为目标值与当前属性值的差再除以 8，当速度值大于 0 时，将其向上取整，否则向下取整。</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> iSpeed = (json[attr] - iCur) / <span class="number">8</span>;</span><br><span class="line">iSpeed = iSpeed &gt; <span class="number">0</span> ? <span class="built_in">Math</span>.ceil(iSpeed) : <span class="built_in">Math</span>.floor(iSpeed);</span><br></pre></td></tr></table></figure>
-
-<p>最后就是将指定属性的当前值与目标值做判断，等于目标值时关闭定时器，否则将属性的当前值加上速度值形成最新的值。</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> (iCur == iTarget) &#123;</span><br><span class="line">	<span class="built_in">clearInterval</span>(obj.timer);</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">	<span class="keyword">if</span> (attr == <span class="string">&quot;opacity&quot;</span>) &#123;</span><br><span class="line">		obj.style.filter = <span class="string">&quot;alpha(opacity:&quot;</span> + (iCur + iSpeed) + <span class="string">&quot;)&quot;</span>;</span><br><span class="line">		obj.style.opacity = (iCur + iSpeed) / <span class="number">100</span>;</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		obj.style[attr] = iCur + iSpeed + <span class="string">&quot;px&quot;</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>到此一个运动函数搞定了，当需要导入到 html 文档时，只要添加如下命令，再修改下参数即可。</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;move2.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>如下面例子中，改变 oDiv1 中的 opacity 属性，使其达到 100。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">startMove(oDiv1,&#39;opacity&#39;,100);</span><br></pre></td></tr></table></figure>
-
-<p>总结下，今天主要收获是学习并一定程度掌握了 JS 的运动框架。</p>
-]]></content>
-      <categories>
-        <category>javascript</category>
-      </categories>
-      <tags>
-        <tag>运动框架</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Ajax详解</title>
     <url>/2016/08/21/Ajax%E8%AF%A6%E8%A7%A3/</url>
     <content><![CDATA[<h2 id="什么是Ajax"><a href="#什么是Ajax" class="headerlink" title="什么是Ajax?"></a>什么是Ajax?</h2><p><strong>Ajax</strong> (Asynchronous JavaScript and XML)，是一种使网页实现异步更新的技术。Ajax的核心对象是<strong>XMLHttpRequest对象</strong>，XMLHttpRequest通过在后台与服务器进行少量数据交换，可以实现在不重新加载整个网页的情况下，对网页的某部分进行更新。<br>传统的网页（不用Ajax技术的网页），想要更新内容或者提交一个表单，就要重新载入页面。而如果让网页使用Ajax技术，通过后台跟服务器进行少量的数据交换，网页就可以实现异步局部更新。我们身边有很多Ajax的应用案例，如新浪微博、开心网等等。</p>
@@ -80,6 +36,47 @@
       </categories>
       <tags>
         <tag>Ajax</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title> Express中request对象参数获取</title>
+    <url>/2016/11/19/Express%E4%B8%ADrequest%E5%AF%B9%E8%B1%A1%E5%8F%82%E6%95%B0%E8%8E%B7%E5%8F%96/</url>
+    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>&emsp;&emsp;在表单类的操作中，客户端的HTTP请求通常会通过GET或POST提交一些数据到服务端，所以需要在服务端识别这些数据并进行处理。常利用request对象的三个方法来进行操作。</p>
+<h2 id="req-params"><a href="#req-params" class="headerlink" title="req.params"></a>req.params</h2><p>&emsp;&emsp;获取请求路径。</p>
+<ul>
+<li>例1<pre><code> 浏览器访问：localhost:3000/login
+ 服务端侦听：app.use(&#39;/:key&#39;,function(req,res)&#123;&#125;);
+ 则：req.params.key为login。</code></pre>
+</li>
+<li>例2<pre><code> 浏览器访问：localhost:3000/user/tom
+ 服务端侦听：app.use(&#39;/user/:name&#39;,function(req,res)&#123;&#125;);
+ 则：req.params.name为tom。</code></pre>
+</li>
+</ul>
+<h2 id="req-query"><a href="#req-query" class="headerlink" title="req.query"></a>req.query</h2><p>&emsp;&emsp;获取GET请求的参数（即地址栏传递的参数）。</p>
+<ul>
+<li>例<pre><code>浏览器访问：http://localhost:3000/login?username=Tom&amp;&amp;password=123
+服务端侦听：app.use(&#39;/:key&#39;,function(req,res)&#123;&#125;);
+则：req.query.usename和req.query.password分别为Jack和123。</code></pre>
+</li>
+</ul>
+<h2 id="req-body"><a href="#req-body" class="headerlink" title="req.body"></a>req.body</h2><p>&emsp;&emsp;获取POST请求的参数。</p>
+<ul>
+<li>例<pre><code>浏览器访问：http://localhost:3000/login，通过表单POST参数username=Tom &amp;&amp; password=123
+服务端侦听：app.use(&#39;/:key&#39;,function(req,res)&#123;&#125;);
+则：req.body.usename和req.body.password分别为Tom和123。</code></pre>
+</li>
+</ul>
+<h2 id="注意点"><a href="#注意点" class="headerlink" title="注意点"></a>注意点</h2><ol>
+<li>req.params和req.query的主要区别：<br>  req.params包含路由参数（在URL的路径部分），而req.query包含URL的查询参数（在URL的？后的参数）。</li>
+<li>req.param()方法已经被弃用。</li>
+</ol>
+]]></content>
+      <categories>
+        <category>Node.js</category>
+      </categories>
+      <tags>
+        <tag>express</tag>
       </tags>
   </entry>
   <entry>
@@ -149,47 +146,6 @@
       </categories>
       <tags>
         <tag>Git</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title> Express中request对象参数获取</title>
-    <url>/2016/11/19/Express%E4%B8%ADrequest%E5%AF%B9%E8%B1%A1%E5%8F%82%E6%95%B0%E8%8E%B7%E5%8F%96/</url>
-    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>&emsp;&emsp;在表单类的操作中，客户端的HTTP请求通常会通过GET或POST提交一些数据到服务端，所以需要在服务端识别这些数据并进行处理。常利用request对象的三个方法来进行操作。</p>
-<h2 id="req-params"><a href="#req-params" class="headerlink" title="req.params"></a>req.params</h2><p>&emsp;&emsp;获取请求路径。</p>
-<ul>
-<li>例1<pre><code> 浏览器访问：localhost:3000/login
- 服务端侦听：app.use(&#39;/:key&#39;,function(req,res)&#123;&#125;);
- 则：req.params.key为login。</code></pre>
-</li>
-<li>例2<pre><code> 浏览器访问：localhost:3000/user/tom
- 服务端侦听：app.use(&#39;/user/:name&#39;,function(req,res)&#123;&#125;);
- 则：req.params.name为tom。</code></pre>
-</li>
-</ul>
-<h2 id="req-query"><a href="#req-query" class="headerlink" title="req.query"></a>req.query</h2><p>&emsp;&emsp;获取GET请求的参数（即地址栏传递的参数）。</p>
-<ul>
-<li>例<pre><code>浏览器访问：http://localhost:3000/login?username=Tom&amp;&amp;password=123
-服务端侦听：app.use(&#39;/:key&#39;,function(req,res)&#123;&#125;);
-则：req.query.usename和req.query.password分别为Jack和123。</code></pre>
-</li>
-</ul>
-<h2 id="req-body"><a href="#req-body" class="headerlink" title="req.body"></a>req.body</h2><p>&emsp;&emsp;获取POST请求的参数。</p>
-<ul>
-<li>例<pre><code>浏览器访问：http://localhost:3000/login，通过表单POST参数username=Tom &amp;&amp; password=123
-服务端侦听：app.use(&#39;/:key&#39;,function(req,res)&#123;&#125;);
-则：req.body.usename和req.body.password分别为Tom和123。</code></pre>
-</li>
-</ul>
-<h2 id="注意点"><a href="#注意点" class="headerlink" title="注意点"></a>注意点</h2><ol>
-<li>req.params和req.query的主要区别：<br>  req.params包含路由参数（在URL的路径部分），而req.query包含URL的查询参数（在URL的？后的参数）。</li>
-<li>req.param()方法已经被弃用。</li>
-</ol>
-]]></content>
-      <categories>
-        <category>Node.js</category>
-      </categories>
-      <tags>
-        <tag>express</tag>
       </tags>
   </entry>
   <entry>
@@ -380,18 +336,108 @@
       </tags>
   </entry>
   <entry>
+    <title>JS之绑定事件</title>
+    <url>/2016/08/01/JS%E4%B9%8B%E7%BB%91%E5%AE%9A%E4%BA%8B%E4%BB%B6/</url>
+    <content><![CDATA[<p>当我们给一个元素绑定一个方法后，再绑定一个方法时，第一个方法往往会被覆盖掉。如下例子，结果只会执行第二个方法，也就是说只弹出“b”。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">window</span>.onload=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    alert(<span class="string">&#x27;a&#x27;</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">window</span>.onload=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    alert(<span class="string">&#x27;b&#x27;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>因此为了保证两个及以上的方法能够正常执行，可以对元素进行事件绑定。<br>绑定事件有两个函数，attachEvent()和addEventListener()。</p>
+<ol>
+<li>attachEvent(事件名称, 函数)，IE浏览器兼容，这个函数的执行顺序是相反的，即先绑定的方法后面执行。<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">oBtn.attachEvent(<span class="string">&#x27;onclick&#x27;</span>,bb);</span><br><span class="line">oBtn.attachEvent(<span class="string">&#x27;onclick&#x27;</span>,aa);<span class="comment">//先执行方法aa,再执行方法bb</span></span><br></pre></td></tr></table></figure></li>
+<li>addEventListener(事件名称,函数, 捕获)，ff和chrome浏览器兼容，这个函数的执行顺序是按正常的顺序执行的，即先绑定的方法先执行。<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">oBtn.addEventListener(<span class="string">&#x27;click&#x27;</span>,aa,<span class="literal">false</span>);</span><br><span class="line">oBtn.addEventListener(<span class="string">&#x27;click&#x27;</span>,bb,<span class="literal">false</span>);<span class="comment">//先执行方法aa,再执行方法bb</span></span><br></pre></td></tr></table></figure>
+为了解决浏览器兼容性问题，使用if-else语句来处理兼容性，使其兼容所有的浏览器。这里要注意一点，attachEvent()的事件名称要比addEventListener()的事件名称前面多了个‘on’。<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"> <span class="keyword">if</span>(oBtn.attachEvent)<span class="comment">//IE</span></span><br><span class="line"> &#123;</span><br><span class="line">     oBtn.attachEvent(<span class="string">&#x27;onclick&#x27;</span>,bb);</span><br><span class="line">     oBtn.attachEvent(<span class="string">&#x27;onclick&#x27;</span>,aa);</span><br><span class="line"> &#125;</span><br><span class="line"><span class="keyword">else</span><span class="comment">//ff、chrome</span></span><br><span class="line"> &#123;</span><br><span class="line">     oBtn.addEventListener(<span class="string">&#x27;click&#x27;</span>,aa,<span class="literal">false</span>);</span><br><span class="line">     oBtn.addEventListener(<span class="string">&#x27;click&#x27;</span>,bb,<span class="literal">false</span>);</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+到此一个事件绑定就完成了，但是为了使代码更加简洁明了，且方便调用，可以将此解决兼容性的if-else语句封装成一个函数。<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">myAddEvent</span>(<span class="params">obj,sEvent,fn</span>)</span></span><br><span class="line"><span class="function">        </span>&#123;</span><br><span class="line">            <span class="keyword">if</span>(obj.attachEvent)</span><br><span class="line">            &#123;</span><br><span class="line">                obj.attachEvent(<span class="string">&#x27;on&#x27;</span>+sEvent,fn);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123;</span><br><span class="line">                obj.addEventListener(sEvent,fn,<span class="literal">false</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+之后就可以根据需要调用该封装函数了。<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">myAddEvent(oBtn,<span class="string">&#x27;click&#x27;</span>,aa)</span><br><span class="line">myAddEvent(oBtn,<span class="string">&#x27;click&#x27;</span>,bb);</span><br></pre></td></tr></table></figure>
+既然可以对元素进行事件绑定，当然也可以解除绑定。解除绑定同样有两个函数detachEvent(事件名称, 函数)和removeEventListener(事件名称, 函数, 捕获)，分别对应attachEvent()和addEventListener()的解绑。由于二者的用法同attachEvent()和addEventListener()的用法类似，所以这里就不再进行详细的说明了。</li>
+</ol>
+]]></content>
+      <categories>
+        <category>javascript</category>
+      </categories>
+      <tags>
+        <tag>事件</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>JS之运动1</title>
+    <url>/2016/07/19/JS%E4%B9%8B%E8%BF%90%E5%8A%A81/</url>
+    <content><![CDATA[<p>今天学习了 JS 的运动，从最简单的一个 div 运动到多个 div 运动开始，到后面通过 div 的运动实现常见的侧边栏的隐藏与显示，最后还实现图片或者 div 块的淡入淡出。最终总结起来其实都是一个运动函数 startMove()的套用，涉及定时器的关与开。仔细观察下每个例子的 startMove()运动函数，会发现都是大同小异的，所以将 startMove()运动函数封装起来，当需要的时候导入，再修改下相应的参数即可，这样可以大大实现代码的简洁性。下面就是封装该函数的一个过程。</p>
+<p>首先，获取样式表指定对象的属性值，其中涉及浏览器兼容性问题，利用 if-else 语句来解决兼容性问题。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getStyle</span>(<span class="params">obj, attr</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (obj.currentStyle) &#123;</span><br><span class="line">		<span class="keyword">return</span> obj.currentStyle[attr]; <span class="comment">//只支持IE浏览器</span></span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> getComputedStyle(obj, <span class="literal">false</span>)[attr]; <span class="comment">//支持火狐，谷歌等浏览器，IE浏览器不支持</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>然后，就是设置 startMove()函数里面包含的真正内容了，</p>
+<ol>
+<li>设置三个参数值，分别为 obj（对象），attr（属性值），iTarget（目标值）</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">startMove</span>(<span class="params">obj, attr, iTarget</span>) </span>&#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>设置定时器。开启一个定时器前应该先关闭定时器，因为如果没有先关闭定时器，那么当重复点击运动按钮时，会重复执行 startMove()运动函数，即一起开启多个定时器，导致运动的重复和混乱。</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">clearInterval</span>(obj.timer);</span><br><span class="line">        obj.timer=<span class="built_in">setInterval</span>(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">        </span>&#123;  ... &#125;,<span class="number">30</span>);      &#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>设置定时器内部的内容。这里要注意一点，如果设置的是透明度的值，因为有可能会是小数点，所以需要用 parseFloat；反之，如果设置的是非透明度值，则用 parseInt。（iCur 的初值为 0，为所指定属性的值）</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> (attr == <span class="string">&quot;opacity&quot;</span>) &#123;</span><br><span class="line">	<span class="comment">//iCur=parseFloat(getStyle(obj,attr))*100;//结果是小数，会出现闪烁</span></span><br><span class="line">	iCur = <span class="built_in">parseInt</span>(<span class="built_in">parseFloat</span>(getStyle(obj, attr)) * <span class="number">100</span>); <span class="comment">//将小数部分去掉，解决闪烁</span></span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">	<span class="comment">//传进来的参数不是透明度，采用parseInt方法</span></span><br><span class="line">	iCur = <span class="built_in">parseInt</span>(getStyle(obj, attr));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>然后设置运动速度，这里设置速度值 iSpeed 为目标值与当前属性值的差再除以 8，当速度值大于 0 时，将其向上取整，否则向下取整。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> iSpeed = (json[attr] - iCur) / <span class="number">8</span>;</span><br><span class="line">iSpeed = iSpeed &gt; <span class="number">0</span> ? <span class="built_in">Math</span>.ceil(iSpeed) : <span class="built_in">Math</span>.floor(iSpeed);</span><br></pre></td></tr></table></figure>
+
+<p>最后就是将指定属性的当前值与目标值做判断，等于目标值时关闭定时器，否则将属性的当前值加上速度值形成最新的值。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> (iCur == iTarget) &#123;</span><br><span class="line">	<span class="built_in">clearInterval</span>(obj.timer);</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">	<span class="keyword">if</span> (attr == <span class="string">&quot;opacity&quot;</span>) &#123;</span><br><span class="line">		obj.style.filter = <span class="string">&quot;alpha(opacity:&quot;</span> + (iCur + iSpeed) + <span class="string">&quot;)&quot;</span>;</span><br><span class="line">		obj.style.opacity = (iCur + iSpeed) / <span class="number">100</span>;</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		obj.style[attr] = iCur + iSpeed + <span class="string">&quot;px&quot;</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>到此一个运动函数搞定了，当需要导入到 html 文档时，只要添加如下命令，再修改下参数即可。</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;move2.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>如下面例子中，改变 oDiv1 中的 opacity 属性，使其达到 100。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">startMove(oDiv1,&#39;opacity&#39;,100);</span><br></pre></td></tr></table></figure>
+
+<p>总结下，今天主要收获是学习并一定程度掌握了 JS 的运动框架。</p>
+]]></content>
+      <categories>
+        <category>javascript</category>
+      </categories>
+      <tags>
+        <tag>运动框架</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>JS之运动2</title>
     <url>/2016/07/20/JS%E4%B9%8B%E8%BF%90%E5%8A%A82/</url>
-    <content><![CDATA[<p>今天继续了JS运动的学习，本来以为昨天总结的运动函数startMove()是最完整的了，才发现昨天那个还是存在欠缺部分，只能实现单个div单个运动。今天将这个运动函数进行改进，实现了多个div运动以及同一个div的多值运动。改进版运动函数跟之前的差别不大，首先是参数的改变，由原来的2个变成3个，参数类型也变了,”function startMove(obj,json,fn)”。其次是多了个布尔变量bStop，该变量用来判断运动是否结束；最后是添加一个if语句，判断是否传入fn参数，以此来决定执行不执行fn,”if(fn){fn();}”。</p>
+    <content><![CDATA[<p>今天继续了 JS 运动的学习，本来以为昨天总结的运动函数 startMove()是最完整的了，才发现昨天那个还是存在欠缺部分，只能实现单个 div 单个运动。今天将这个运动函数进行改进，实现了多个 div 运动以及同一个 div 的多值运动。改进版运动函数跟之前的差别不大，首先是参数的改变，由原来的 2 个变成 3 个，参数类型也变了,”function startMove(obj,json,fn)”。其次是多了个布尔变量 bStop，该变量用来判断运动是否结束；最后是添加一个 if 语句，判断是否传入 fn 参数，以此来决定执行不执行 fn,”if(fn){fn();}”。</p>
 <p>然后学到的就是图片轮换播放，这是今天最大的收获了。下面就是实现图片轮换播放的过程。</p>
 <ol>
-<li>用class名称选取元素，需要注意，js中的class是关键字，所以必须写成className。<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getByClass</span>(<span class="params">oParent, sClass</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">var</span> aEle=<span class="built_in">document</span>.getElementsByTagName(<span class="string">&#x27;*&#x27;</span>); <span class="comment">//选出父节点下的所有元素</span></span><br><span class="line">    <span class="keyword">var</span> i=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">var</span> aResult=[];   <span class="comment">//定义一个空的数组，用来装所有的选出元素</span></span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;aEle.length;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(aEle[i].className==sClass)</span><br><span class="line">        &#123;</span><br><span class="line">            aResult.push(aEle[i]);  <span class="comment">//将选出的所有元素装入数组中</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> aResult;  <span class="comment">//  循环完成后，返回数组里的值</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li>点击实现上下张图片的左右按钮，通过改变其透明度的大小，实现鼠标移入移出渐隐渐现功能。<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">oBtnPrev.onmouseover=oMarkLeft.onmouseover=<span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        startMove(oBtnPrev, <span class="string">&#x27;opacity&#x27;</span>, <span class="number">100</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    oBtnPrev.onmouseout=oMarkLeft.onmouseout=<span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        startMove(oBtnPrev, <span class="string">&#x27;opacity&#x27;</span>, <span class="number">0</span>);</span><br><span class="line">    &#125;   </span><br><span class="line">    oBtnNext.onmouseover=oMarkRight.onmouseover=<span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        startMove(oBtnNext, <span class="string">&#x27;opacity&#x27;</span>, <span class="number">100</span>);</span><br><span class="line">    &#125;   </span><br><span class="line">    oBtnNext.onmouseout=oMarkRight.onmouseout=<span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        startMove(oBtnNext, <span class="string">&#x27;opacity&#x27;</span>, <span class="number">0</span>);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></li>
-<li>实现小图移入渐隐渐现效果，配合点击时的变化功能，当重复点击同一张图片时，不做任何处理。<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">aSmallLi[i].onmouseover=<span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span></span><br><span class="line"><span class="function"> </span>&#123;</span><br><span class="line">     startMove(<span class="built_in">this</span>, <span class="string">&#x27;opacity&#x27;</span>, <span class="number">100</span>);</span><br><span class="line"> &#125;</span><br><span class="line"> aSmallLi[i].onmouseout=<span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span></span><br><span class="line"><span class="function"> </span>&#123;</span><br><span class="line">     <span class="keyword">if</span>(<span class="built_in">this</span>.index!=iNow)<span class="comment">//在非当前图片移入移出</span></span><br><span class="line">     &#123;</span><br><span class="line">         startMove(<span class="built_in">this</span>, <span class="string">&#x27;opacity&#x27;</span>, <span class="number">60</span>);</span><br><span class="line">     &#125;</span><br><span class="line"> &#125;   </span><br><span class="line"> aSmallLi[i].onclick=<span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span></span><br><span class="line"><span class="function"> </span>&#123;</span><br><span class="line">     <span class="keyword">if</span>(<span class="built_in">this</span>.index==iNow)<span class="keyword">return</span>;  <span class="comment">//重复点击同一张图片，不做处理</span></span><br><span class="line">     iNow=<span class="built_in">this</span>.index; <span class="comment">//更新   </span></span><br><span class="line">     tab();</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure></li>
-<li>当点击小图时，对应大图进行切换。这里要注意的是需要给每张图片加层级，点击即将要显示的图片必须让它的Zindex值比当前显示的图片大，这样才能覆盖当前图片显示。还有利用运动函数让大图的高度由0开始增大，实现大图下拉显示的效果。<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;aSmallLi.length;i++)</span><br><span class="line">            &#123;</span><br><span class="line">                startMove(aSmallLi[i], <span class="string">&#x27;opacity&#x27;</span>, <span class="number">60</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            startMove(aSmallLi[iNow], <span class="string">&#x27;opacity&#x27;</span>, <span class="number">100</span>);</span><br><span class="line">            aBigLi[iNow].style.zIndex=iMinZindex++; <span class="comment">//加层级，否则只会显示第一张图片，其他都会被挡住</span></span><br><span class="line">            aBigLi[iNow].style.height=<span class="number">0</span>; <span class="comment">//使图片从上往下显示</span></span><br><span class="line">            startMove(aBigLi[iNow], <span class="string">&#x27;height&#x27;</span>, oBigUl.offsetHeight);</span><br></pre></td></tr></table></figure></li>
-<li>随着点击下一张图片时，发生居中切换的效果。首尾图片的位置需要做特殊处理，避免出现前后的空白。<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span>(iNow==<span class="number">0</span>) </span><br><span class="line">        &#123; <span class="comment">//第0张，移动到0，否则会前面有空白</span></span><br><span class="line">            startMove(oSmallUl, <span class="string">&#x27;left&#x27;</span>, <span class="number">0</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(iNow==<span class="number">1</span>) <span class="comment">//第二张</span></span><br><span class="line">        &#123;</span><br><span class="line">            startMove(oSmallUl, <span class="string">&#x27;left&#x27;</span>, <span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(iNow==aSmallLi.length-<span class="number">1</span>) <span class="comment">//最后一张</span></span><br><span class="line">        &#123;</span><br><span class="line">            startMove(oSmallUl, <span class="string">&#x27;left&#x27;</span>, -(iNow-<span class="number">3</span>)*aSmallLi[<span class="number">0</span>].offsetWidth);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            startMove(oSmallUl, <span class="string">&#x27;left&#x27;</span>, -(iNow-<span class="number">2</span>)*aSmallLi[<span class="number">0</span>].offsetWidth);</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure></li>
-<li>给左右按钮添加点击动作，点击第一张图片时，跳到最后一张，点击最后一张时，跳到第一张。<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">oBtnPrev.onclick=<span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span></span><br><span class="line"><span class="function">  </span>&#123;</span><br><span class="line">      iNow--;</span><br><span class="line">      <span class="keyword">if</span>(iNow==-<span class="number">1</span>)  <span class="comment">//到0张，直接到最后一张</span></span><br><span class="line">      &#123;</span><br><span class="line">          iNow=aSmallLi.length-<span class="number">1</span>;</span><br><span class="line">      &#125;       </span><br><span class="line">      tab();</span><br><span class="line">  &#125;</span><br><span class="line">  oBtnNext.onclick=<span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span></span><br><span class="line"><span class="function">  </span>&#123;</span><br><span class="line">      iNow++;</span><br><span class="line">      <span class="keyword">if</span>(iNow==aSmallLi.length) <span class="comment">//到最后一张，直接到第0张</span></span><br><span class="line">      &#123;</span><br><span class="line">          iNow=<span class="number">0</span>;</span><br><span class="line">      &#125;           </span><br><span class="line">      tab();</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure></li>
-<li>执行完以上六个步骤，得到如下效果图:<br><img src="/images/1.png" alt="效果图1"><br>以上代码为参考课程所给案例进行编写测试的，对其进行修改，将底下小图片显示的个数增加到四张，首先是通过样式改变小图的宽度，此时第一张及最后一张都会出现空白，所以还需要对图片的位置进行上述步骤五的处理，如下，这样一个图片轮播的效果就出来了。<br><img src="/images/2.png" alt="效果图2"><br>运动函数以及图片轮播经常在一些网站上出现，所以个人感觉学会它们是很有必要的，目前学到也只是初步的一些东西，后面还是需要进行一些深入学习与练习才能真正掌握它们。</li>
+<li>用 class 名称选取元素，需要注意，js 中的 class 是关键字，所以必须写成 className。</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getByClass</span>(<span class="params">oParent, sClass</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">var</span> aEle = <span class="built_in">document</span>.getElementsByTagName(<span class="string">&quot;*&quot;</span>); <span class="comment">//选出父节点下的所有元素</span></span><br><span class="line">	<span class="keyword">var</span> i = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">var</span> aResult = []; <span class="comment">//定义一个空的数组，用来装所有的选出元素</span></span><br><span class="line">	<span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; aEle.length; i++) &#123;</span><br><span class="line">		<span class="keyword">if</span> (aEle[i].className == sClass) &#123;</span><br><span class="line">			aResult.push(aEle[i]); <span class="comment">//将选出的所有元素装入数组中</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> aResult; <span class="comment">//  循环完成后，返回数组里的值</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>点击实现上下张图片的左右按钮，通过改变其透明度的大小，实现鼠标移入移出渐隐渐现功能。</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">oBtnPrev.onmouseover = oMarkLeft.onmouseover = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">	startMove(oBtnPrev, <span class="string">&quot;opacity&quot;</span>, <span class="number">100</span>);</span><br><span class="line">&#125;;</span><br><span class="line">oBtnPrev.onmouseout = oMarkLeft.onmouseout = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">	startMove(oBtnPrev, <span class="string">&quot;opacity&quot;</span>, <span class="number">0</span>);</span><br><span class="line">&#125;;</span><br><span class="line">oBtnNext.onmouseover = oMarkRight.onmouseover = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">	startMove(oBtnNext, <span class="string">&quot;opacity&quot;</span>, <span class="number">100</span>);</span><br><span class="line">&#125;;</span><br><span class="line">oBtnNext.onmouseout = oMarkRight.onmouseout = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">	startMove(oBtnNext, <span class="string">&quot;opacity&quot;</span>, <span class="number">0</span>);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>实现小图移入渐隐渐现效果，配合点击时的变化功能，当重复点击同一张图片时，不做任何处理。</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">aSmallLi[i].onmouseover = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">	startMove(<span class="built_in">this</span>, <span class="string">&quot;opacity&quot;</span>, <span class="number">100</span>);</span><br><span class="line">&#125;;</span><br><span class="line">aSmallLi[i].onmouseout = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (<span class="built_in">this</span>.index != iNow) &#123;</span><br><span class="line">		<span class="comment">//在非当前图片移入移出</span></span><br><span class="line">		startMove(<span class="built_in">this</span>, <span class="string">&quot;opacity&quot;</span>, <span class="number">60</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line">aSmallLi[i].onclick = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (<span class="built_in">this</span>.index == iNow) <span class="keyword">return</span>; <span class="comment">//重复点击同一张图片，不做处理</span></span><br><span class="line">	iNow = <span class="built_in">this</span>.index; <span class="comment">//更新</span></span><br><span class="line">	tab();</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>当点击小图时，对应大图进行切换。这里要注意的是需要给每张图片加层级，点击即将要显示的图片必须让它的 Zindex 值比当前显示的图片大，这样才能覆盖当前图片显示。还有利用运动函数让大图的高度由 0 开始增大，实现大图下拉显示的效果。</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; aSmallLi.length; i++) &#123;</span><br><span class="line">	startMove(aSmallLi[i], <span class="string">&quot;opacity&quot;</span>, <span class="number">60</span>);</span><br><span class="line">&#125;</span><br><span class="line">startMove(aSmallLi[iNow], <span class="string">&quot;opacity&quot;</span>, <span class="number">100</span>);</span><br><span class="line">aBigLi[iNow].style.zIndex = iMinZindex++; <span class="comment">//加层级，否则只会显示第一张图片，其他都会被挡住</span></span><br><span class="line">aBigLi[iNow].style.height = <span class="number">0</span>; <span class="comment">//使图片从上往下显示</span></span><br><span class="line">startMove(aBigLi[iNow], <span class="string">&quot;height&quot;</span>, oBigUl.offsetHeight);</span><br></pre></td></tr></table></figure>
+
+<ol start="5">
+<li>随着点击下一张图片时，发生居中切换的效果。首尾图片的位置需要做特殊处理，避免出现前后的空白。</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> (iNow == <span class="number">0</span>) &#123;</span><br><span class="line">	<span class="comment">//第0张，移动到0，否则会前面有空白</span></span><br><span class="line">	startMove(oSmallUl, <span class="string">&quot;left&quot;</span>, <span class="number">0</span>);</span><br><span class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span> (iNow == <span class="number">1</span>) &#123;</span><br><span class="line">	<span class="comment">//第二张</span></span><br><span class="line">	startMove(oSmallUl, <span class="string">&quot;left&quot;</span>, <span class="number">1</span>);</span><br><span class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span> (iNow == aSmallLi.length - <span class="number">1</span>) &#123;</span><br><span class="line">	<span class="comment">//最后一张</span></span><br><span class="line">	startMove(oSmallUl, <span class="string">&quot;left&quot;</span>, -(iNow - <span class="number">3</span>) * aSmallLi[<span class="number">0</span>].offsetWidth);</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">	startMove(oSmallUl, <span class="string">&quot;left&quot;</span>, -(iNow - <span class="number">2</span>) * aSmallLi[<span class="number">0</span>].offsetWidth);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="6">
+<li>给左右按钮添加点击动作，点击第一张图片时，跳到最后一张，点击最后一张时，跳到第一张。</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">oBtnPrev.onclick = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">	iNow--;</span><br><span class="line">	<span class="keyword">if</span> (iNow == -<span class="number">1</span>) &#123;</span><br><span class="line">		<span class="comment">//到0张，直接到最后一张</span></span><br><span class="line">		iNow = aSmallLi.length - <span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	tab();</span><br><span class="line">&#125;;</span><br><span class="line">oBtnNext.onclick = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">	iNow++;</span><br><span class="line">	<span class="keyword">if</span> (iNow == aSmallLi.length) &#123;</span><br><span class="line">		<span class="comment">//到最后一张，直接到第0张</span></span><br><span class="line">		iNow = <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	tab();</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<ol start="7">
+<li>执行完以上六个步骤，得到如下效果图:<br><img src="/images/content/1.png" alt="效果图1"><br>以上代码为参考课程所给案例进行编写测试的，对其进行修改，将底下小图片显示的个数增加到四张，首先是通过样式改变小图的宽度，此时第一张及最后一张都会出现空白，所以还需要对图片的位置进行上述步骤五的处理，如下，这样一个图片轮播的效果就出来了。<br><img src="/images/content/2.png" alt="效果图2"><br>运动函数以及图片轮播经常在一些网站上出现，所以个人感觉学会它们是很有必要的，目前学到也只是初步的一些东西，后面还是需要进行一些深入学习与练习才能真正掌握它们。</li>
 </ol>
 ]]></content>
       <categories>
@@ -399,35 +445,6 @@
       </categories>
       <tags>
         <tag>图片轮播</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>JS之面向对象1</title>
-    <url>/2016/07/21/JS%E4%B9%8B%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A11/</url>
-    <content><![CDATA[<p>今天学习了JS的面向对象部分内容。首先是理解面向对象的概念，因为之前在学校学的几门编程语言都有接触面向对象这个概念，所以理解起来相对来说还是比较容易的。面向对象只关注对象提供的功能，不关注其内部细节，就像我们使用收音机时不需要知道收音机里面的构造以及连线方式，而只需要知道收音机各个按钮的功能即可，收音机就是一个对象。面向对象具有三个特性：封装，继承，多态，并且由方法和属性组成。这些大都已经记在心中了，考过好几次了。</p>
-<p>接着就是学会用工厂方式构造对象，分为三步：</p>
-<ol>
-<li>工厂制作产品首先需要的是原料，对应的我们需要创建一个空白的对象；<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> obj=<span class="keyword">new</span> <span class="built_in">Object</span>();</span><br></pre></td></tr></table></figure></li>
-<li>对原料进行加工，即对应的我们需要为对象添加属性和方法；<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">obj.name=name;</span><br><span class="line">obj.sex=sex;</span><br><span class="line">obj.showName=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    alert(<span class="string">&#x27;我的名字叫&#x27;</span>+<span class="built_in">this</span>.name);</span><br><span class="line">&#125;</span><br><span class="line">obj.showSex=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    alert(<span class="string">&#x27;我是&#x27;</span>+<span class="built_in">this</span>.sex+<span class="string">&#x27;的&#x27;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li>将加工好的产品送出厂，所以我们需要返回对象。<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">return</span> obj;</span><br></pre></td></tr></table></figure>
-
-</li>
-</ol>
-<p>虽然工厂方式看起来挺完美的，但是还是存在两个问题：其一，没有new；其二，函数重复定义，即每个对象都有一套自己的函数，浪费资源。问题一解决相对来说比较简单，添加一个new即可，主要还是问题二的解决。问题二可以用原型prototype为对象添加方法，原型prototype又是今天新学到的一个概念，通过原型添加方法可以在已有对象中加入自己的方法，可以扩展系统对象，添加一些本不支持的方法。用原型添加方法不仅给构造函数于极度的简化，而且使所有同类的对象都只有一套方法，节省了大量的资源，有效地解决了工厂方法的第二个问题。所以对上述的工厂方法进行改进，首先是将原来的构造函数删除部分，再将剩下的关于属性的部分稍微修改成如下形式：</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name,sex</span>)//构造函数，添加属性</span></span><br><span class="line"><span class="function">        </span>&#123;</span><br><span class="line">            <span class="built_in">this</span>.name=name;</span><br><span class="line">            <span class="built_in">this</span>.sex=sex;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
-<p>接着就是解决问题一了，加new，如下：</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> p=<span class="keyword">new</span> Person(<span class="string">&#x27;Rose&#x27;</span>,<span class="string">&#x27;女&#x27;</span>);</span><br></pre></td></tr></table></figure>
-<p>然后就是解决问题二了，用原型为对象添加方法：</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">Person.prototype.showName=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)//原型，添加方法</span></span><br><span class="line"><span class="function">        </span>&#123;</span><br><span class="line">            alert(<span class="built_in">this</span>.name);</span><br><span class="line">        &#125;</span><br><span class="line">        Person.prototype.showSex=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">        </span>&#123;</span><br><span class="line">            alert(<span class="built_in">this</span>.sex);</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
-<p>最后，调用方法即可，这样子一来，一套相对比较完美的构造对象方法就出炉了。</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">p.showName();</span><br><span class="line">p.showSex();</span><br></pre></td></tr></table></figure>
-<p>以上就是今天主要学到的三方面的内容：面向对象概念，工厂方法构造对象，原型添加方法。原型为对象添加方法真的很好用，今天学到的可能只是一小部分，更多的需要后期接触再去深入学习了。</p>
-]]></content>
-      <categories>
-        <category>javascript</category>
-      </categories>
-      <tags>
-        <tag>工厂方式</tag>
       </tags>
   </entry>
   <entry>
@@ -478,6 +495,65 @@
       </tags>
   </entry>
   <entry>
+    <title>JS之面向对象1</title>
+    <url>/2016/07/21/JS%E4%B9%8B%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A11/</url>
+    <content><![CDATA[<p>今天学习了JS的面向对象部分内容。首先是理解面向对象的概念，因为之前在学校学的几门编程语言都有接触面向对象这个概念，所以理解起来相对来说还是比较容易的。面向对象只关注对象提供的功能，不关注其内部细节，就像我们使用收音机时不需要知道收音机里面的构造以及连线方式，而只需要知道收音机各个按钮的功能即可，收音机就是一个对象。面向对象具有三个特性：封装，继承，多态，并且由方法和属性组成。这些大都已经记在心中了，考过好几次了。</p>
+<p>接着就是学会用工厂方式构造对象，分为三步：</p>
+<ol>
+<li>工厂制作产品首先需要的是原料，对应的我们需要创建一个空白的对象；<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> obj=<span class="keyword">new</span> <span class="built_in">Object</span>();</span><br></pre></td></tr></table></figure></li>
+<li>对原料进行加工，即对应的我们需要为对象添加属性和方法；<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">obj.name=name;</span><br><span class="line">obj.sex=sex;</span><br><span class="line">obj.showName=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    alert(<span class="string">&#x27;我的名字叫&#x27;</span>+<span class="built_in">this</span>.name);</span><br><span class="line">&#125;</span><br><span class="line">obj.showSex=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    alert(<span class="string">&#x27;我是&#x27;</span>+<span class="built_in">this</span>.sex+<span class="string">&#x27;的&#x27;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>将加工好的产品送出厂，所以我们需要返回对象。<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">return</span> obj;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p>虽然工厂方式看起来挺完美的，但是还是存在两个问题：其一，没有new；其二，函数重复定义，即每个对象都有一套自己的函数，浪费资源。问题一解决相对来说比较简单，添加一个new即可，主要还是问题二的解决。问题二可以用原型prototype为对象添加方法，原型prototype又是今天新学到的一个概念，通过原型添加方法可以在已有对象中加入自己的方法，可以扩展系统对象，添加一些本不支持的方法。用原型添加方法不仅给构造函数于极度的简化，而且使所有同类的对象都只有一套方法，节省了大量的资源，有效地解决了工厂方法的第二个问题。所以对上述的工厂方法进行改进，首先是将原来的构造函数删除部分，再将剩下的关于属性的部分稍微修改成如下形式：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name,sex</span>)//构造函数，添加属性</span></span><br><span class="line"><span class="function">        </span>&#123;</span><br><span class="line">            <span class="built_in">this</span>.name=name;</span><br><span class="line">            <span class="built_in">this</span>.sex=sex;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+<p>接着就是解决问题一了，加new，如下：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> p=<span class="keyword">new</span> Person(<span class="string">&#x27;Rose&#x27;</span>,<span class="string">&#x27;女&#x27;</span>);</span><br></pre></td></tr></table></figure>
+<p>然后就是解决问题二了，用原型为对象添加方法：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">Person.prototype.showName=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)//原型，添加方法</span></span><br><span class="line"><span class="function">        </span>&#123;</span><br><span class="line">            alert(<span class="built_in">this</span>.name);</span><br><span class="line">        &#125;</span><br><span class="line">        Person.prototype.showSex=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">        </span>&#123;</span><br><span class="line">            alert(<span class="built_in">this</span>.sex);</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+<p>最后，调用方法即可，这样子一来，一套相对比较完美的构造对象方法就出炉了。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">p.showName();</span><br><span class="line">p.showSex();</span><br></pre></td></tr></table></figure>
+<p>以上就是今天主要学到的三方面的内容：面向对象概念，工厂方法构造对象，原型添加方法。原型为对象添加方法真的很好用，今天学到的可能只是一小部分，更多的需要后期接触再去深入学习了。</p>
+]]></content>
+      <categories>
+        <category>javascript</category>
+      </categories>
+      <tags>
+        <tag>工厂方式</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Javascript的异常处理和事件处理</title>
+    <url>/2016/07/29/Javascript%E7%9A%84%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86%E5%92%8C%E4%BA%8B%E4%BB%B6%E5%A4%84%E7%90%86/</url>
+    <content><![CDATA[<h4 id="Javascript的异常处理"><a href="#Javascript的异常处理" class="headerlink" title="Javascript的异常处理"></a>Javascript的异常处理</h4><p>Javascript的异常就是当javascript引擎执行javascript代码时，发生了错误，导致程序停止运行的一种现象。当异常产生时，会创建一个异常类对象，该异常类对象将被提交给浏览器，这个过程称为“抛出异常”。当浏览器接收到异常对象时，会寻找能处理这一异常的代码并把当前异常对象提交给其处理，这一过程被称为“捕获异常”。<br>Javascript使用try..catch..finally语句来进行异常的捕获，try..catch..finally语句的基本语法格式为： </p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">try</span>&#123;</span><br><span class="line">    <span class="comment">//可能抛出异常的代码 </span></span><br><span class="line">    &#125;<span class="keyword">catch</span>(error)&#123;</span><br><span class="line">     <span class="comment">//如果发生异常会执行的代码，error为发生的异常类对象 </span></span><br><span class="line">    &#125;<span class="keyword">finally</span>&#123;</span><br><span class="line">    <span class="comment">//无条件执行的代码 </span></span><br><span class="line">    &#125; </span><br></pre></td></tr></table></figure>
+<p>try块中的语句首先被执行。如果运行中发生了错误，控制就会转移到位于catch块中语句，其中括号中的error参数被作为例外变量传递。否则，catch块的语句被跳过不执行。无论是发生错误时catch块中的语句执行完毕，或者没有发生错误try块中的语句执行完毕，最后将执行 finally块中的语句。在try..catch..finally语句中，try是必需的，catch和finally均为可选语句，但catch和finally中必须至少出现一个。<br>下面例子为捕获到的是变量未定义的异常：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">demo</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">        </span>&#123;   <span class="keyword">var</span> str=<span class="string">&quot;你好&quot;</span>; <span class="comment">//没有声明str的话会有异常</span></span><br><span class="line">            <span class="keyword">try</span>&#123;</span><br><span class="line">                alert(str);</span><br><span class="line">            &#125;<span class="keyword">catch</span>(er)&#123;</span><br><span class="line">                alert(er);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        demo();</span><br></pre></td></tr></table></figure>
+<p>Javascript抛出异常使用的是throw语句，可创建一个自定义异常。将throw语句于try..catch..finally语句结合使用，能够控制程序流，并生成自定义的错误消息。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">demo</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">        </span>&#123;   </span><br><span class="line">            <span class="keyword">try</span>&#123;</span><br><span class="line">                <span class="keyword">var</span> e=<span class="built_in">document</span>.getElementById(<span class="string">&#x27;txt&#x27;</span>).value;</span><br><span class="line">                <span class="keyword">if</span>(e==<span class="string">&#x27;&#x27;</span>)</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="keyword">throw</span> <span class="string">&quot;第一个用户输入异常==空&quot;</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;<span class="keyword">catch</span>(er)&#123;</span><br><span class="line">                alert(er);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        demo();</span><br></pre></td></tr></table></figure>
+
+<h4 id="Javascript的事件处理"><a href="#Javascript的事件处理" class="headerlink" title="Javascript的事件处理"></a>Javascript的事件处理</h4><p>事件指的是文档或者浏览器窗口中发生的一些特定交互瞬间。与浏览器进行交互的时候浏览器就会触发各种事件。比如当我们打开某一个网页的时候，浏览器加载完成了这个网页，就会触发一个load事件；当我们点击页面中的某一个“地方”，浏览器就会在那个“地方”触发一个 click 事件。这里列举了Javascript几个常用的事件：    </p>
+<ul>
+<li>onClick：鼠标点击触发的事件，多用在某个对象控制的范围内的鼠标点击</li>
+<li>onMouseOver：鼠标移入元素时触发的事件。</li>
+<li>onMouseOut：鼠标移开元素时触发的事件。</li>
+<li>onChnange：当文本内容改变时触发的事件。</li>
+<li>onSelect：当文本框被选中时触发的事件。</li>
+<li>onFocus：光标聚集事件，即在对象获得焦点时触发的事件。</li>
+<li>onBlur：移开光标事件，即在对象失去焦点时触发的事件。</li>
+<li>onLoad：网页加载事件，即在网页加载完成触发的事件。</li>
+<li>onUnload：关闭网页事件，即退出网页时触发的事件</li>
+</ul>
+]]></content>
+      <categories>
+        <category>javascript</category>
+      </categories>
+      <tags>
+        <tag>异常处理</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>JS之面向对象2</title>
     <url>/2016/07/23/JS%E4%B9%8B%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A12/</url>
     <content><![CDATA[<p>今天学习了JS面向对象的一个特性–继承。JS是一门基于面向对象的语言，也就是说，JS并非真正的面向对象，相对的，Java，PHP5以上等的编程语言则是真正面向对象的、真正意义上的面向对象语言。所以这里通过对PHP语言的继承的学习来延伸到对JS继承的学习。</p>
@@ -490,28 +566,6 @@
       </categories>
       <tags>
         <tag>继承</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>JS之绑定事件</title>
-    <url>/2016/08/01/JS%E4%B9%8B%E7%BB%91%E5%AE%9A%E4%BA%8B%E4%BB%B6/</url>
-    <content><![CDATA[<p>当我们给一个元素绑定一个方法后，再绑定一个方法时，第一个方法往往会被覆盖掉。如下例子，结果只会执行第二个方法，也就是说只弹出“b”。</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">window</span>.onload=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    alert(<span class="string">&#x27;a&#x27;</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">window</span>.onload=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    alert(<span class="string">&#x27;b&#x27;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>因此为了保证两个及以上的方法能够正常执行，可以对元素进行事件绑定。<br>绑定事件有两个函数，attachEvent()和addEventListener()。</p>
-<ol>
-<li>attachEvent(事件名称, 函数)，IE浏览器兼容，这个函数的执行顺序是相反的，即先绑定的方法后面执行。<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">oBtn.attachEvent(<span class="string">&#x27;onclick&#x27;</span>,bb);</span><br><span class="line">oBtn.attachEvent(<span class="string">&#x27;onclick&#x27;</span>,aa);<span class="comment">//先执行方法aa,再执行方法bb</span></span><br></pre></td></tr></table></figure></li>
-<li>addEventListener(事件名称,函数, 捕获)，ff和chrome浏览器兼容，这个函数的执行顺序是按正常的顺序执行的，即先绑定的方法先执行。<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">oBtn.addEventListener(<span class="string">&#x27;click&#x27;</span>,aa,<span class="literal">false</span>);</span><br><span class="line">oBtn.addEventListener(<span class="string">&#x27;click&#x27;</span>,bb,<span class="literal">false</span>);<span class="comment">//先执行方法aa,再执行方法bb</span></span><br></pre></td></tr></table></figure>
-为了解决浏览器兼容性问题，使用if-else语句来处理兼容性，使其兼容所有的浏览器。这里要注意一点，attachEvent()的事件名称要比addEventListener()的事件名称前面多了个‘on’。<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"> <span class="keyword">if</span>(oBtn.attachEvent)<span class="comment">//IE</span></span><br><span class="line"> &#123;</span><br><span class="line">     oBtn.attachEvent(<span class="string">&#x27;onclick&#x27;</span>,bb);</span><br><span class="line">     oBtn.attachEvent(<span class="string">&#x27;onclick&#x27;</span>,aa);</span><br><span class="line"> &#125;</span><br><span class="line"><span class="keyword">else</span><span class="comment">//ff、chrome</span></span><br><span class="line"> &#123;</span><br><span class="line">     oBtn.addEventListener(<span class="string">&#x27;click&#x27;</span>,aa,<span class="literal">false</span>);</span><br><span class="line">     oBtn.addEventListener(<span class="string">&#x27;click&#x27;</span>,bb,<span class="literal">false</span>);</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
-到此一个事件绑定就完成了，但是为了使代码更加简洁明了，且方便调用，可以将此解决兼容性的if-else语句封装成一个函数。<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">myAddEvent</span>(<span class="params">obj,sEvent,fn</span>)</span></span><br><span class="line"><span class="function">        </span>&#123;</span><br><span class="line">            <span class="keyword">if</span>(obj.attachEvent)</span><br><span class="line">            &#123;</span><br><span class="line">                obj.attachEvent(<span class="string">&#x27;on&#x27;</span>+sEvent,fn);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123;</span><br><span class="line">                obj.addEventListener(sEvent,fn,<span class="literal">false</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
-之后就可以根据需要调用该封装函数了。<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">myAddEvent(oBtn,<span class="string">&#x27;click&#x27;</span>,aa)</span><br><span class="line">myAddEvent(oBtn,<span class="string">&#x27;click&#x27;</span>,bb);</span><br></pre></td></tr></table></figure>
-既然可以对元素进行事件绑定，当然也可以解除绑定。解除绑定同样有两个函数detachEvent(事件名称, 函数)和removeEventListener(事件名称, 函数, 捕获)，分别对应attachEvent()和addEventListener()的解绑。由于二者的用法同attachEvent()和addEventListener()的用法类似，所以这里就不再进行详细的说明了。</li>
-</ol>
-]]></content>
-      <categories>
-        <category>javascript</category>
-      </categories>
-      <tags>
-        <tag>事件</tag>
       </tags>
   </entry>
   <entry>
@@ -603,36 +657,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Javascript的异常处理和事件处理</title>
-    <url>/2016/07/29/Javascript%E7%9A%84%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86%E5%92%8C%E4%BA%8B%E4%BB%B6%E5%A4%84%E7%90%86/</url>
-    <content><![CDATA[<h4 id="Javascript的异常处理"><a href="#Javascript的异常处理" class="headerlink" title="Javascript的异常处理"></a>Javascript的异常处理</h4><p>Javascript的异常就是当javascript引擎执行javascript代码时，发生了错误，导致程序停止运行的一种现象。当异常产生时，会创建一个异常类对象，该异常类对象将被提交给浏览器，这个过程称为“抛出异常”。当浏览器接收到异常对象时，会寻找能处理这一异常的代码并把当前异常对象提交给其处理，这一过程被称为“捕获异常”。<br>Javascript使用try..catch..finally语句来进行异常的捕获，try..catch..finally语句的基本语法格式为： </p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">try</span>&#123;</span><br><span class="line">    <span class="comment">//可能抛出异常的代码 </span></span><br><span class="line">    &#125;<span class="keyword">catch</span>(error)&#123;</span><br><span class="line">     <span class="comment">//如果发生异常会执行的代码，error为发生的异常类对象 </span></span><br><span class="line">    &#125;<span class="keyword">finally</span>&#123;</span><br><span class="line">    <span class="comment">//无条件执行的代码 </span></span><br><span class="line">    &#125; </span><br></pre></td></tr></table></figure>
-<p>try块中的语句首先被执行。如果运行中发生了错误，控制就会转移到位于catch块中语句，其中括号中的error参数被作为例外变量传递。否则，catch块的语句被跳过不执行。无论是发生错误时catch块中的语句执行完毕，或者没有发生错误try块中的语句执行完毕，最后将执行 finally块中的语句。在try..catch..finally语句中，try是必需的，catch和finally均为可选语句，但catch和finally中必须至少出现一个。<br>下面例子为捕获到的是变量未定义的异常：</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">demo</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">        </span>&#123;   <span class="keyword">var</span> str=<span class="string">&quot;你好&quot;</span>; <span class="comment">//没有声明str的话会有异常</span></span><br><span class="line">            <span class="keyword">try</span>&#123;</span><br><span class="line">                alert(str);</span><br><span class="line">            &#125;<span class="keyword">catch</span>(er)&#123;</span><br><span class="line">                alert(er);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        demo();</span><br></pre></td></tr></table></figure>
-<p>Javascript抛出异常使用的是throw语句，可创建一个自定义异常。将throw语句于try..catch..finally语句结合使用，能够控制程序流，并生成自定义的错误消息。</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">demo</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">        </span>&#123;   </span><br><span class="line">            <span class="keyword">try</span>&#123;</span><br><span class="line">                <span class="keyword">var</span> e=<span class="built_in">document</span>.getElementById(<span class="string">&#x27;txt&#x27;</span>).value;</span><br><span class="line">                <span class="keyword">if</span>(e==<span class="string">&#x27;&#x27;</span>)</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="keyword">throw</span> <span class="string">&quot;第一个用户输入异常==空&quot;</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;<span class="keyword">catch</span>(er)&#123;</span><br><span class="line">                alert(er);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        demo();</span><br></pre></td></tr></table></figure>
-
-<h4 id="Javascript的事件处理"><a href="#Javascript的事件处理" class="headerlink" title="Javascript的事件处理"></a>Javascript的事件处理</h4><p>事件指的是文档或者浏览器窗口中发生的一些特定交互瞬间。与浏览器进行交互的时候浏览器就会触发各种事件。比如当我们打开某一个网页的时候，浏览器加载完成了这个网页，就会触发一个load事件；当我们点击页面中的某一个“地方”，浏览器就会在那个“地方”触发一个 click 事件。这里列举了Javascript几个常用的事件：    </p>
-<ul>
-<li>onClick：鼠标点击触发的事件，多用在某个对象控制的范围内的鼠标点击</li>
-<li>onMouseOver：鼠标移入元素时触发的事件。</li>
-<li>onMouseOut：鼠标移开元素时触发的事件。</li>
-<li>onChnange：当文本内容改变时触发的事件。</li>
-<li>onSelect：当文本框被选中时触发的事件。</li>
-<li>onFocus：光标聚集事件，即在对象获得焦点时触发的事件。</li>
-<li>onBlur：移开光标事件，即在对象失去焦点时触发的事件。</li>
-<li>onLoad：网页加载事件，即在网页加载完成触发的事件。</li>
-<li>onUnload：关闭网页事件，即退出网页时触发的事件</li>
-</ul>
-]]></content>
-      <categories>
-        <category>javascript</category>
-      </categories>
-      <tags>
-        <tag>异常处理</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Node.js 编程规范</title>
     <url>/2016/10/14/Node.js-%E7%BC%96%E7%A8%8B%E8%A7%84%E8%8C%83/</url>
     <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>&emsp;&emsp;其实并没有一个官方的文档规定Node.js应用程序代码的风格，但Node.js代码分割有着一些“事实上的约定”，大多数项目的代码都一定程度上遵循了这一标准。 所以遵守这些约定还是有一定的必要的，因为它可能会让你的程序避免很多意外的错误和性能损失。</p>
@@ -664,6 +688,43 @@
       </categories>
       <tags>
         <tag>node规范</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Nodejs之Url模块&amp;QueryString模块</title>
+    <url>/2016/09/13/Nodejs%E4%B9%8BUrl%E6%A8%A1%E5%9D%97&amp;QueryString%E6%A8%A1%E5%9D%97/</url>
+    <content><![CDATA[<h2 id="Url模块"><a href="#Url模块" class="headerlink" title="Url模块"></a>Url模块</h2><h3 id="url-parse-urlStr-parseQueryString-slashesDenoteHost"><a href="#url-parse-urlStr-parseQueryString-slashesDenoteHost" class="headerlink" title="url.parse(urlStr, [parseQueryString], [slashesDenoteHost])"></a>url.parse(urlStr, [parseQueryString], [slashesDenoteHost])</h3><p>将URL字符串转换为对象。有3个参数：</p>
+<ul>
+<li>urlStr： url字符串。</li>
+<li>parseQueryString：可选。设置为true时，会使用querystring模块来解析URL中德查询字符串部分，默认为 false。</li>
+<li>slashesDenoteHost：可选。默认为false，//foo/bar 形式的字符串将被解释成 { pathname: ‘//foo/bar’ }；<br>如果设置成true，//foo/bar 形式的字符串将被解释成  { host: ‘foo’, pathname: ‘/bar’ }。<figure class="highlight html"><table><tr><td class="code"><pre><span class="line">url.parse(&#x27;http://www.jb51.net/article/61637.htm&#x27;)</span><br><span class="line">//结果</span><br><span class="line">url &#123;</span><br><span class="line">  protocol: &#x27;http:&#x27;,</span><br><span class="line">  slashes: true,</span><br><span class="line">  auth: null,</span><br><span class="line">  host: &#x27;www.jb51.net&#x27;,</span><br><span class="line">  port: null,</span><br><span class="line">  hostname: &#x27;www.jb51.net&#x27;,</span><br><span class="line">  hash: null,</span><br><span class="line">  search: null,</span><br><span class="line">  query: null,</span><br><span class="line">  pathname: &#x27;/article/61637.htm&#x27;,</span><br><span class="line">  path: &#x27;/article/61637.htm&#x27;,</span><br><span class="line">  href: &#x27;http://www.jb51.net/article/61637.htm&#x27; &#125;</span><br></pre></td></tr></table></figure>
+<h3 id="url-format-urlObj"><a href="#url-format-urlObj" class="headerlink" title="url.format(urlObj)"></a>url.format(urlObj)</h3>将对象格式化为URL字符串，与url.parse()方法刚好相反。只有1个参数——urlObj，表示 URL对象。<br>下面代码会将一串对象格式化为URL字符串：<figure class="highlight html"><table><tr><td class="code"><pre><span class="line">url.format(&#123;protocol: &#x27;http:&#x27;,slashes: true,auth: null,host: &#x27;www.jb51.net&#x27;,port: null,hostname: &#x27;www.jb51.net&#x27;,hash: null,search: null,query: null, pathname: &#x27;/article/61637.htm&#x27;,path: &#x27;/article/61637.htm&#x27;,href:&#x27;http://www.jb51.net/article/61637.htm&#x27;&#125;)</span><br><span class="line">//结果</span><br><span class="line">&#x27;http://www.jb51.net/article/61637.htm&#x27;</span><br></pre></td></tr></table></figure>
+<h3 id="url-resolve-from-to"><a href="#url-resolve-from-to" class="headerlink" title="url.resolve(from, to)"></a>url.resolve(from, to)</h3>为URL或 href 插入或替换原有的标签。有2个参数:</li>
+<li>from：源地址。</li>
+<li>to：需要添加或替换的标签。<figure class="highlight html"><table><tr><td class="code"><pre><span class="line">url.resolve(&#x27;/one/two&#x27;,&#x27;three&#x27;)</span><br><span class="line">//结果</span><br><span class="line">&#x27;/one/three&#x27;</span><br><span class="line"></span><br><span class="line">url.resolve(&#x27;http://example.com&#x27;,&#x27;two&#x27;)</span><br><span class="line">//结果</span><br><span class="line">&#x27;http://example.com/two&#x27;</span><br><span class="line"></span><br><span class="line">url.resolve(&#x27;http://example.com/two&#x27;,&#x27;three&#x27;)</span><br><span class="line">//结果</span><br><span class="line">&#x27;http://example.com/three&#x27;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="QueryString模块"><a href="#QueryString模块" class="headerlink" title="QueryString模块"></a>QueryString模块</h2><h3 id="querystring-stringify-obj-sep-eq"><a href="#querystring-stringify-obj-sep-eq" class="headerlink" title="querystring.stringify(obj, [sep], [eq])"></a>querystring.stringify(obj, [sep], [eq])</h3><p>将对象转换成字符串，字符串里多个参数将用 ‘&amp;’ 分隔，将用 ‘=’ 赋值。有3个参数：</p>
+<ul>
+<li>obj： 欲转换的对象。</li>
+<li>sep：可选。设置分隔符，默认为 ‘&amp;’。</li>
+<li>eq：可选。设置赋值符，默认为 ‘=’。<figure class="highlight html"><table><tr><td class="code"><pre><span class="line">querystring.stringify(&#123;name:&#x27;rose&#x27;,sex:&#x27;girl&#x27;&#125;)</span><br><span class="line">//结果</span><br><span class="line">&#x27;name=rose&amp;sex=girl&#x27;</span><br><span class="line"></span><br><span class="line">querystring.stringify(&#123;name:&#x27;rose&#x27;,sex:&#x27;girl&#x27;&#125;,&#x27;;&#x27;,&#x27;:&#x27;)//用分号分隔，用冒 号赋值</span><br><span class="line">//结果</span><br><span class="line">&#x27;name:rose;sex:girl&#x27;</span><br></pre></td></tr></table></figure>
+<h3 id="querystring-parse-str-sep-eq-options"><a href="#querystring-parse-str-sep-eq-options" class="headerlink" title="querystring.parse(str, [sep], [eq], [options])"></a>querystring.parse(str, [sep], [eq], [options])</h3>与querystring.stringify()刚好相反，将字符串转换成对象。有4个参数：</li>
+<li>str：欲转换的字符串。</li>
+<li>sep：可选。设置分隔符，默认为 ‘&amp;’。</li>
+<li>eq：可选。设置赋值符，默认为 ‘=’。</li>
+<li>options：maxKeys可接受字符串的最大长度，默认为1000，如果将其设置为0则表示没这个限制。<figure class="highlight html"><table><tr><td class="code"><pre><span class="line">querystring.parse(&#x27;name=rose&amp;sex=girl&#x27;)</span><br><span class="line">//结果</span><br><span class="line">&#123; name: &#x27;rose&#x27;, sex: &#x27;girl&#x27; &#125;</span><br></pre></td></tr></table></figure>
+<h3 id="querystring-escape"><a href="#querystring-escape" class="headerlink" title="querystring.escape()"></a>querystring.escape()</h3>转义。将传入的字符串进行编码返回相应的编码串。<figure class="highlight html"><table><tr><td class="code"><pre><span class="line">querystring.escape(&#x27;&lt;哈哈&gt;&#x27;)</span><br><span class="line">//结果</span><br><span class="line">&#x27;%3C%E5%93%88%E5%93%88%3E&#x27;</span><br></pre></td></tr></table></figure>
+<h3 id="querystring-unescape"><a href="#querystring-unescape" class="headerlink" title="querystring.unescape()"></a>querystring.unescape()</h3>反转义。将传入的编码字符串反转回原始字符串。<figure class="highlight html"><table><tr><td class="code"><pre><span class="line">querystring.unescape(&#x27;%3C%E5%93%88%E5%93%88%3E&#x27;)</span><br><span class="line">//结果</span><br><span class="line">&#x27;&lt;哈哈&gt;&#x27;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Node.js</category>
+      </categories>
+      <tags>
+        <tag>URL模块&amp;queryString模块</tag>
       </tags>
   </entry>
   <entry>
@@ -859,6 +920,37 @@
       </tags>
   </entry>
   <entry>
+    <title>github 和 gitblit 并存</title>
+    <url>/2019/09/17/github%20%E5%92%8C%20gitblit%20%E5%B9%B6%E5%AD%98/</url>
+    <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>&emsp;&emsp;由于工作需要，一台电脑需要同时存在 github 和 gitblit 账号，因为需要配置多个 ssh key，以满足个人和工作上的需要。</p>
+<h1 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h1><h2 id="分别创建-github-和-gitblit-账号的公钥"><a href="#分别创建-github-和-gitblit-账号的公钥" class="headerlink" title="分别创建 github 和 gitblit 账号的公钥"></a>分别创建 github 和 gitblit 账号的公钥</h2><ol>
+<li><p>创建 github 账号公钥<br>&emsp;&emsp;输入命令 <code>ssh-keygen -t rsa -C &quot;GitEmail@example.com&quot;</code>，然后 enter 键。（图略）<br>&emsp;&emsp;这里先不要回车，输入<code>/Users/cxiaoting/.ssh/id_rsa_github</code>（id_rsa_github 为自定义的名字），然后 enter 键，会提示输入 2 次密码，根据实际情况输入密码即可。</p>
+</li>
+<li><p>创建 gitblit 账号公钥<br>&emsp;&emsp;输入命令<code>ssh-keygen -t rsa -C &quot;GitEmail@example.com&quot;</code>，然后 enter 键。（图略）<br>&emsp;&emsp;这里先不要回车，输入<code>/Users/cxiaoting/.ssh/id_rsa_gitblit</code>（id_rsa_gitblit 为自定义的名字），然后 enter 键，会提示输入 2 次密码，根据实际情况输入密码即可。</p>
+</li>
+</ol>
+<h2 id="创建并配置-config-文件"><a href="#创建并配置-config-文件" class="headerlink" title="创建并配置 config 文件"></a>创建并配置 config 文件</h2><ol>
+<li>打开.ssh 目录<br>&emsp;&emsp;输入命令<code>open ~/.ssh</code>，进入.ssh 目录。</li>
+<li>创建 config 文件<br>&emsp;&emsp;输入命令<code>touch config</code>，将以下内容复制进去到 config 文件中，其中 username 为账户名。</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Host github</span><br><span class="line">HostName github.com</span><br><span class="line">PreferredAuthentications publickey</span><br><span class="line">IdentityFile ~&#x2F;.ssh&#x2F;id_rsa_github</span><br><span class="line">User username1</span><br><span class="line"></span><br><span class="line">Host gitblit</span><br><span class="line">HostName gitblit.com</span><br><span class="line">PreferredAuthentications publickey</span><br><span class="line">IdentityFile ~&#x2F;.ssh&#x2F;id_rsa_gitblit</span><br><span class="line">User username2</span><br></pre></td></tr></table></figure>
+
+<h2 id="将公钥添加到系统"><a href="#将公钥添加到系统" class="headerlink" title="将公钥添加到系统"></a>将公钥添加到系统</h2><ol>
+<li>把 2 个账号公钥添加到系统<br>&emsp;&emsp;输入命令<code>ssh-add id_rsa_gitblit id_rsa_github</code>，然后会提示你分别输入两个账号的密码，按照提示输入。</li>
+<li>查看 2 个公钥是否成功添加到系统<br>&emsp;&emsp;输入命令<code>ssh-add -l</code>，添加成功则会显示 2 条记录。</li>
+</ol>
+<h2 id="将公钥添加到线上的-sshkey"><a href="#将公钥添加到线上的-sshkey" class="headerlink" title="将公钥添加到线上的 sshkey"></a>将公钥添加到线上的 sshkey</h2><p>&emsp;&emsp;这里举例 github 账号,新建一个 ssh key，然后将 id_rsa_github.pub 的内容（即公钥）复制一份放到对应的 key 里面，保存。gitblit 账号也是同样的做法。（图略）</p>
+<h2 id="测试连接是否成功"><a href="#测试连接是否成功" class="headerlink" title="测试连接是否成功"></a>测试连接是否成功</h2><p>&emsp;&emsp;测试 github 账号，输入命令<code>ssh -T git@github</code>；测试 gitblit 账号，输入命令<code>ssh -T git@gitblit</code>,出现如下图即表示成功。（图略）</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>&emsp;&emsp;成功完成以上步骤，就可以无需账号密码，尽情操作 github 和 gitblit 了。</p>
+]]></content>
+      <categories>
+        <category>Git</category>
+      </categories>
+      <tags>
+        <tag>Git</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>layer弹层组件之移动版</title>
     <url>/2017/08/31/layer%E5%BC%B9%E5%B1%82%E7%BB%84%E4%BB%B6%E4%B9%8B%E7%A7%BB%E5%8A%A8%E7%89%88/</url>
     <content><![CDATA[<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>&emsp;&emsp;layer弹层组件分移动版和PC版，这边主要讲的是移动版的layer，PC版的后续再进行补充。移动版是为移动设备量身定做的弹层UI，并且完全独立于PC版的layer。与PC版的layer不同的是，移动版的layer只提供一个核心调用方法，即<code>layer.open(options)</code>，通过对参数<code>options</code>进行设置来实现各种不同的弹层。</p>
@@ -963,7 +1055,7 @@
 </ol>
 <h2 id="安装-item2"><a href="#安装-item2" class="headerlink" title="安装 item2"></a>安装 item2</h2><p>&emsp;&emsp;进入<a href="https://iterm2.com/">官网</a>，按照一步步操作即可。</p>
 <h2 id="安装-iterm2-zmodem"><a href="#安装-iterm2-zmodem" class="headerlink" title="安装 iterm2-zmodem"></a>安装 iterm2-zmodem</h2><p>&emsp;&emsp;手动添加这个<code>iterm2-send-zmodem.sh</code>和<code>iterm2-recv-zmodem.sh</code>2 个脚本文件到<code>/usr/local/bin/</code>路径下，并使用命令<code>chmod 777 iterm2-recv-zmodem.sh</code>和<code>chmod 777 iterm2-send-zmodem.sh</code>分别分配权限。脚本内容可参照<a href="https://www.bookstack.cn/read/mac-best-app/iTerm2-01.md">地址</a>。</p>
-<h2 id="配置-item2"><a href="#配置-item2" class="headerlink" title="配置 item2"></a>配置 item2</h2><p><img src="/images/macSet1.png" alt="配置图1"><br><img src="/images/macSet2.png" alt="配置图2"><br><strong>附 triggers 中填入的文本</strong></p>
+<h2 id="配置-item2"><a href="#配置-item2" class="headerlink" title="配置 item2"></a>配置 item2</h2><p><img src="/images/content/macSet1.png" alt="配置图1"><br><img src="/images/content/macSet2.png" alt="配置图2"><br><strong>附 triggers 中填入的文本</strong></p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Regular expression: \*\*B0100</span><br><span class="line">Action: Run Silent Coprocess</span><br><span class="line">Parameters: &#x2F;usr&#x2F;local&#x2F;bin&#x2F;iterm2-send-zmodem.sh</span><br><span class="line"></span><br><span class="line">Regular expression: \*\*B00000000000000</span><br><span class="line">Action: Run Silent Coprocess</span><br><span class="line">Parameters: &#x2F;usr&#x2F;local&#x2F;bin&#x2F;iterm2-recv-zmodem.sh</span><br></pre></td></tr></table></figure>
 
 <h2 id="参照地址"><a href="#参照地址" class="headerlink" title="参照地址"></a>参照地址</h2><ul>
@@ -979,40 +1071,79 @@
       </tags>
   </entry>
   <entry>
-    <title>Nodejs之Url模块&amp;QueryString模块</title>
-    <url>/2016/09/13/Nodejs%E4%B9%8BUrl%E6%A8%A1%E5%9D%97&amp;QueryString%E6%A8%A1%E5%9D%97/</url>
-    <content><![CDATA[<h2 id="Url模块"><a href="#Url模块" class="headerlink" title="Url模块"></a>Url模块</h2><h3 id="url-parse-urlStr-parseQueryString-slashesDenoteHost"><a href="#url-parse-urlStr-parseQueryString-slashesDenoteHost" class="headerlink" title="url.parse(urlStr, [parseQueryString], [slashesDenoteHost])"></a>url.parse(urlStr, [parseQueryString], [slashesDenoteHost])</h3><p>将URL字符串转换为对象。有3个参数：</p>
-<ul>
-<li>urlStr： url字符串。</li>
-<li>parseQueryString：可选。设置为true时，会使用querystring模块来解析URL中德查询字符串部分，默认为 false。</li>
-<li>slashesDenoteHost：可选。默认为false，//foo/bar 形式的字符串将被解释成 { pathname: ‘//foo/bar’ }；<br>如果设置成true，//foo/bar 形式的字符串将被解释成  { host: ‘foo’, pathname: ‘/bar’ }。<figure class="highlight html"><table><tr><td class="code"><pre><span class="line">url.parse(&#x27;http://www.jb51.net/article/61637.htm&#x27;)</span><br><span class="line">//结果</span><br><span class="line">url &#123;</span><br><span class="line">  protocol: &#x27;http:&#x27;,</span><br><span class="line">  slashes: true,</span><br><span class="line">  auth: null,</span><br><span class="line">  host: &#x27;www.jb51.net&#x27;,</span><br><span class="line">  port: null,</span><br><span class="line">  hostname: &#x27;www.jb51.net&#x27;,</span><br><span class="line">  hash: null,</span><br><span class="line">  search: null,</span><br><span class="line">  query: null,</span><br><span class="line">  pathname: &#x27;/article/61637.htm&#x27;,</span><br><span class="line">  path: &#x27;/article/61637.htm&#x27;,</span><br><span class="line">  href: &#x27;http://www.jb51.net/article/61637.htm&#x27; &#125;</span><br></pre></td></tr></table></figure>
-<h3 id="url-format-urlObj"><a href="#url-format-urlObj" class="headerlink" title="url.format(urlObj)"></a>url.format(urlObj)</h3>将对象格式化为URL字符串，与url.parse()方法刚好相反。只有1个参数——urlObj，表示 URL对象。<br>下面代码会将一串对象格式化为URL字符串：<figure class="highlight html"><table><tr><td class="code"><pre><span class="line">url.format(&#123;protocol: &#x27;http:&#x27;,slashes: true,auth: null,host: &#x27;www.jb51.net&#x27;,port: null,hostname: &#x27;www.jb51.net&#x27;,hash: null,search: null,query: null, pathname: &#x27;/article/61637.htm&#x27;,path: &#x27;/article/61637.htm&#x27;,href:&#x27;http://www.jb51.net/article/61637.htm&#x27;&#125;)</span><br><span class="line">//结果</span><br><span class="line">&#x27;http://www.jb51.net/article/61637.htm&#x27;</span><br></pre></td></tr></table></figure>
-<h3 id="url-resolve-from-to"><a href="#url-resolve-from-to" class="headerlink" title="url.resolve(from, to)"></a>url.resolve(from, to)</h3>为URL或 href 插入或替换原有的标签。有2个参数:</li>
-<li>from：源地址。</li>
-<li>to：需要添加或替换的标签。<figure class="highlight html"><table><tr><td class="code"><pre><span class="line">url.resolve(&#x27;/one/two&#x27;,&#x27;three&#x27;)</span><br><span class="line">//结果</span><br><span class="line">&#x27;/one/three&#x27;</span><br><span class="line"></span><br><span class="line">url.resolve(&#x27;http://example.com&#x27;,&#x27;two&#x27;)</span><br><span class="line">//结果</span><br><span class="line">&#x27;http://example.com/two&#x27;</span><br><span class="line"></span><br><span class="line">url.resolve(&#x27;http://example.com/two&#x27;,&#x27;three&#x27;)</span><br><span class="line">//结果</span><br><span class="line">&#x27;http://example.com/three&#x27;</span><br></pre></td></tr></table></figure>
+    <title>qrcode生成二维码</title>
+    <url>/2019/01/16/qrcode%E7%94%9F%E6%88%90%E4%BA%8C%E7%BB%B4%E7%A0%81/</url>
+    <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>&emsp;&emsp;js 生成二维码有两种方法：分别是用 qrcode.js 和 jquery.qrcode.js。</p>
+<h1 id="qrcode"><a href="#qrcode" class="headerlink" title="qrcode"></a>qrcode</h1><p>&emsp;&emsp;qrcode.js 是一个用于生成二维码图片的插件，主要是通过获取 DOM 的标签，再通过 HTML5 Canvas 绘制而成，不依赖任何库，<strong>支持中文内容</strong>。</p>
+<h2 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h2><ol>
+<li>载入 js 文件</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;script src&#x3D;&quot;qrcode.js&quot;&gt;&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
 
-</li>
-</ul>
-<h2 id="QueryString模块"><a href="#QueryString模块" class="headerlink" title="QueryString模块"></a>QueryString模块</h2><h3 id="querystring-stringify-obj-sep-eq"><a href="#querystring-stringify-obj-sep-eq" class="headerlink" title="querystring.stringify(obj, [sep], [eq])"></a>querystring.stringify(obj, [sep], [eq])</h3><p>将对象转换成字符串，字符串里多个参数将用 ‘&amp;’ 分隔，将用 ‘=’ 赋值。有3个参数：</p>
-<ul>
-<li>obj： 欲转换的对象。</li>
-<li>sep：可选。设置分隔符，默认为 ‘&amp;’。</li>
-<li>eq：可选。设置赋值符，默认为 ‘=’。<figure class="highlight html"><table><tr><td class="code"><pre><span class="line">querystring.stringify(&#123;name:&#x27;rose&#x27;,sex:&#x27;girl&#x27;&#125;)</span><br><span class="line">//结果</span><br><span class="line">&#x27;name=rose&amp;sex=girl&#x27;</span><br><span class="line"></span><br><span class="line">querystring.stringify(&#123;name:&#x27;rose&#x27;,sex:&#x27;girl&#x27;&#125;,&#x27;;&#x27;,&#x27;:&#x27;)//用分号分隔，用冒 号赋值</span><br><span class="line">//结果</span><br><span class="line">&#x27;name:rose;sex:girl&#x27;</span><br></pre></td></tr></table></figure>
-<h3 id="querystring-parse-str-sep-eq-options"><a href="#querystring-parse-str-sep-eq-options" class="headerlink" title="querystring.parse(str, [sep], [eq], [options])"></a>querystring.parse(str, [sep], [eq], [options])</h3>与querystring.stringify()刚好相反，将字符串转换成对象。有4个参数：</li>
-<li>str：欲转换的字符串。</li>
-<li>sep：可选。设置分隔符，默认为 ‘&amp;’。</li>
-<li>eq：可选。设置赋值符，默认为 ‘=’。</li>
-<li>options：maxKeys可接受字符串的最大长度，默认为1000，如果将其设置为0则表示没这个限制。<figure class="highlight html"><table><tr><td class="code"><pre><span class="line">querystring.parse(&#x27;name=rose&amp;sex=girl&#x27;)</span><br><span class="line">//结果</span><br><span class="line">&#123; name: &#x27;rose&#x27;, sex: &#x27;girl&#x27; &#125;</span><br></pre></td></tr></table></figure>
-<h3 id="querystring-escape"><a href="#querystring-escape" class="headerlink" title="querystring.escape()"></a>querystring.escape()</h3>转义。将传入的字符串进行编码返回相应的编码串。<figure class="highlight html"><table><tr><td class="code"><pre><span class="line">querystring.escape(&#x27;&lt;哈哈&gt;&#x27;)</span><br><span class="line">//结果</span><br><span class="line">&#x27;%3C%E5%93%88%E5%93%88%3E&#x27;</span><br></pre></td></tr></table></figure>
-<h3 id="querystring-unescape"><a href="#querystring-unescape" class="headerlink" title="querystring.unescape()"></a>querystring.unescape()</h3>反转义。将传入的编码字符串反转回原始字符串。<figure class="highlight html"><table><tr><td class="code"><pre><span class="line">querystring.unescape(&#x27;%3C%E5%93%88%E5%93%88%3E&#x27;)</span><br><span class="line">//结果</span><br><span class="line">&#x27;&lt;哈哈&gt;&#x27;</span><br></pre></td></tr></table></figure>
-</li>
+<ol start="2">
+<li>DOM 结构</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;div id&#x3D;&quot;code&quot;&gt;&lt;&#x2F;div&gt;</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>调用</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F; 简单方式</span><br><span class="line">new QRCode(document.getElementById(&#39;code&#39;), &#39;https:&#x2F;&#x2F;www.baidu.com&#x2F;&#39;);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 设置参数方式</span><br><span class="line">var qrcode &#x3D; new QRCode(&#39;code&#39;, &#123;</span><br><span class="line">    text: &#39;hello world!&#39;,</span><br><span class="line">    width: 200,</span><br><span class="line">    height: 200,</span><br><span class="line">    colorDark : &#39;#000&#39;,</span><br><span class="line">    colorLight : &#39;#fff&#39;,</span><br><span class="line">    correctLevel : QRCode.CorrectLevel.H</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 使用 API</span><br><span class="line">qrcode.clear();</span><br><span class="line">qrcode.makeCode(&#39;哈哈哈&#39;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="参数说明"><a href="#参数说明" class="headerlink" title="参数说明"></a>参数说明</h2><p>&emsp;&emsp;格式：<strong>new QRCode(element, option)</strong></p>
+<ol>
+<li>element：显示二维码的元素或该元素的 id</li>
+<li>option：参数配置，有以下几个参数：<br>（1）text：设置二维码的内容；<br>（2）width：设置二维码宽度，默认值是 256；<br>（3）height：设置二维码高度，默认值是 256；<br>（4）colorDark：设置前景色，默认值是”#000”<br>（5）colorLight：设置背景色，默认值是”#fff”<br>（6）typeNumber: 设置计算模式，默认值是 4<br>（7）correctLevel : 设置容错级别，默认值是 QRErrorCorrectLevel.H，可设置为 QRCode.CorrectLevel.L(容错率 7%)、QRCode.CorrectLevel.M(容错率 15%)、QRCode.CorrectLevel.Q(容错率 25%)、QRCode.CorrectLevel.H(容错率 30%)；<br>注意：二维码容错率即是指二维码图标被遮挡多少后，仍可以被扫描出来的能力。容错率越高，则二维码图片能被遮挡的部分越多。容错率越高，越容易被快速扫描。因此推荐使用 QRErrorCorrectLevel.H。</li>
+</ol>
+<h2 id="API-接口"><a href="#API-接口" class="headerlink" title="API 接口"></a>API 接口</h2><ol>
+<li><strong>makeCode(text)：</strong>设置二维码内容</li>
+<li><strong>clear()：</strong>清除二维码（仅在不支持 Canvas 的浏览器下有效）</li>
+</ol>
+<h1 id="jquery-qrcode-js"><a href="#jquery-qrcode-js" class="headerlink" title="jquery.qrcode.js"></a>jquery.qrcode.js</h1><p>&emsp;&emsp;jquery.qrcode.js 是把 qrcode.js 用 jquery 方式封装起来的，用它来实现图形渲染，其实就是画图（支持 canvas 和 table 两种方式）默认是 canvas，canvas 方式还支持右键图片下载，<strong>不支持中文内容</strong>。</p>
+<h2 id="使用方法-1"><a href="#使用方法-1" class="headerlink" title="使用方法"></a>使用方法</h2><ol>
+<li>载入 js 文件</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;script src&#x3D;&quot;jquery.qrcode.min.js&quot;&gt;&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>DOM 结构</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;div id&#x3D;&quot;code&quot;&gt;&lt;&#x2F;div&gt;</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>调用</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F; 简单方式</span><br><span class="line">&#x2F;&#x2F; $(&quot;#code&quot;).qrcode(&quot;hi,chen!&quot;);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 直接生成二维码</span><br><span class="line">$(&quot;#code&quot;).qrcode(&#123;</span><br><span class="line">    render: &quot;canvas&quot;, &#x2F;&#x2F;渲染方式</span><br><span class="line">    width: 200,  &#x2F;&#x2F;宽度</span><br><span class="line">    height: 200, &#x2F;&#x2F;高度</span><br><span class="line">    text: &quot;https:&#x2F;&#x2F;www.baidu.com&#x2F;&quot;, &#x2F;&#x2F;内容</span><br><span class="line">    background: &quot;#fff&quot;,  &#x2F;&#x2F;背景色</span><br><span class="line">    foreground: &quot;#000&quot;,   &#x2F;&#x2F;前景色(二维码的颜色)</span><br><span class="line">    correctLevel: 1,  &#x2F;&#x2F;容错级别</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="参数说明-1"><a href="#参数说明-1" class="headerlink" title="参数说明"></a>参数说明</h2><p>（1）render: 设置渲染方式，支持 canvas 和 table 两种方式，默认是 canvas；<br>（2）text：设置二维码的内容<br>（3）width：设置二维码宽度，默认值是 256；<br>（4）height：设置二维码高度，默认值是 256；<br>（5）foreground: 设置前景色，默认值是”#000”<br>（6）background: 设置背景色，默认值是”#fff”<br>（7）correctLevel : 设置容错级别<br>（8）typeNumber : 设置计算模式</p>
+<h2 id="生成二维码图片"><a href="#生成二维码图片" class="headerlink" title="生成二维码图片"></a>生成二维码图片</h2><ol>
+<li>载入 js 文件</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;script src&#x3D;&quot;jquery.qrcode.min.js&quot;&gt;&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>DOM 结构</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;div id&#x3D;&quot;code&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">&lt;img id&#x3D;&quot;imgOne&quot; src&#x3D;&quot;&quot;&gt;</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>调用</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F;生成二维码图片</span><br><span class="line">var qrcode &#x3D; $(&#39;#code&#39;).qrcode(&quot;https:&#x2F;&#x2F;www.baidu.com&#x2F;&quot;).hide();</span><br><span class="line">var canvas &#x3D; qrcode.find(&#39;canvas&#39;).get(0);</span><br><span class="line">$(&#39;#imgOne&#39;).attr(&#39;src&#39;,canvas.toDataURL(&#39;image&#x2F;jpg&#39;));</span><br></pre></td></tr></table></figure>
+
+<h2 id="解决无法生成中文二维码的问题"><a href="#解决无法生成中文二维码的问题" class="headerlink" title="解决无法生成中文二维码的问题"></a>解决无法生成中文二维码的问题</h2><p>&emsp;&emsp;jquery-qrcode 这个库是采用 charCodeAt() 这个方式进行编码转换的，这个方法默认会获取它的 Unicode 编码，一般的解码器都是采用 UTF-8, ISO-8859-1 等方式。英文是没有问题，如果是中文，一般情况下 Unicode 是 UTF-16 实现，长度 2 位，而 UTF-8 编码是 3 位，这样二维码的编解码就不匹配了。 所以可以在二维码编码前把字符串转换成 UTF-8，就可以解决这个问题了。<br>&emsp;&emsp;相关代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$(&quot;#code&quot;).qrcode(&#123;</span><br><span class="line">      render: &quot;canvas&quot;, &#x2F;&#x2F;渲染方式</span><br><span class="line">      width: 200,  &#x2F;&#x2F;宽度</span><br><span class="line">      height: 200, &#x2F;&#x2F;高度</span><br><span class="line">      text: utf16to8(&quot;你好啊&quot;), &#x2F;&#x2F;内容</span><br><span class="line">      background: &quot;#fff&quot;,  &#x2F;&#x2F;背景色</span><br><span class="line">      foreground: &quot;#000&quot;,   &#x2F;&#x2F;前景色(二维码的颜色)</span><br><span class="line">      correctLevel: 1,  &#x2F;&#x2F;容错级别</span><br><span class="line">	&#125;);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 编码转换函数</span><br><span class="line">  function utf16to8(str) &#123;</span><br><span class="line">      var out, i, len, c;</span><br><span class="line">      out &#x3D; &quot;&quot;;</span><br><span class="line">      len &#x3D; str.length;</span><br><span class="line">      for(i &#x3D; 0; i &lt; len; i++) &#123;</span><br><span class="line">      c &#x3D; str.charCodeAt(i);</span><br><span class="line">      if ((c &gt;&#x3D; 0x0001) &amp;&amp; (c &lt;&#x3D; 0x007F)) &#123;</span><br><span class="line">          out +&#x3D; str.charAt(i);</span><br><span class="line">      &#125; else if (c &gt; 0x07FF) &#123;</span><br><span class="line">          out +&#x3D; String.fromCharCode(0xE0 | ((c &gt;&gt; 12) &amp; 0x0F));</span><br><span class="line">          out +&#x3D; String.fromCharCode(0x80 | ((c &gt;&gt;  6) &amp; 0x3F));</span><br><span class="line">          out +&#x3D; String.fromCharCode(0x80 | ((c &gt;&gt;  0) &amp; 0x3F));</span><br><span class="line">      &#125; else &#123;</span><br><span class="line">          out +&#x3D; String.fromCharCode(0xC0 | ((c &gt;&gt;  6) &amp; 0x1F));</span><br><span class="line">          out +&#x3D; String.fromCharCode(0x80 | ((c &gt;&gt;  0) &amp; 0x3F));</span><br><span class="line">      &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      return out;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="参考网址"><a href="#参考网址" class="headerlink" title="参考网址"></a>参考网址</h1><ul>
+<li><a href="http://code.ciaoca.com/javascript/qrcode/">qrcode.js 参考网址</a></li>
+<li><a href="https://github.com/jeromeetienne/jquery-qrcode">jquery.qrcode.js 参考网址</a></li>
 </ul>
 ]]></content>
       <categories>
-        <category>Node.js</category>
+        <category>javascript</category>
       </categories>
       <tags>
-        <tag>URL模块&amp;queryString模块</tag>
+        <tag>二维码</tag>
       </tags>
   </entry>
   <entry>
@@ -1108,35 +1239,6 @@
       </tags>
   </entry>
   <entry>
-    <title>表格的排序和搜索</title>
-    <url>/2016/07/25/%E8%A1%A8%E6%A0%BC%E7%9A%84%E6%8E%92%E5%BA%8F%E5%92%8C%E6%90%9C%E7%B4%A2/</url>
-    <content><![CDATA[<p>这两天学习了DOM的高级操作，主要是以对表格的一些排序和搜索处理为例子来进行学习的。</p>
-<h3 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h3><p>表格的排序主要分为三个步骤:转换————排序————插入。<br>第一步，转换成数组。只有将获得的对象元素转换成数组才能进行大小的比较。</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;oTab.tBodies[<span class="number">0</span>].rows.length;i++)</span><br><span class="line">        &#123;</span><br><span class="line">            arr[i]=oTab.tBodies[<span class="number">0</span>].rows[i];</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
-<p>第二步，数组排序。这里是升序排列的。</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">arr.sort(<span class="function"><span class="keyword">function</span> (<span class="params">tr1, tr2</span>)</span>&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="built_in">parseInt</span>(tr1.cells[<span class="number">0</span>].innerHTML)-<span class="built_in">parseInt</span>(tr2.cells[<span class="number">0</span>].innerHTML);</span><br><span class="line">        &#125;);</span><br></pre></td></tr></table></figure>
-<p>第三步，重新插入。将排列好的数组插入到表格中。</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;arr.length;i++)</span><br><span class="line">        &#123;</span><br><span class="line">          oTab.tBodies[<span class="number">0</span>].appendChild(arr[i]);</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
-<p>上述代码已经能实现将表格进行升序排列，若还想实现降序排列需要如下的改进。先创建一个布尔变量，当值为true时，进行升序排列，否则为降序排列。</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> bAsc=<span class="literal">true</span>;<span class="comment">//判断是否升序排列</span></span><br></pre></td></tr></table></figure>
-<p>然后，添加降序排列代码，就可以通过if-else语句判断是降序排列还是升序排列。</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">return</span> <span class="built_in">parseInt</span>(tr2.cells[<span class="number">0</span>].innerHTML)-<span class="built_in">parseInt</span>(tr1.cells[<span class="number">0</span>].innerHTML);  </span><br></pre></td></tr></table></figure>
-<p>最后，就是添加以下一行代码，就可以实现通过按钮的点击来交替实现两种排列方式。</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">bAsc=!bAsc;</span><br></pre></td></tr></table></figure>
-
-<h3 id="搜索"><a href="#搜索" class="headerlink" title="搜索"></a>搜索</h3><p>表格的搜索是通过将文本框的字符串与表格指定位置的字符串进行比较，如果是相等的，则将那行的背景颜色变为黄色(也可以是其他颜色）。</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;oTab.tBodies[<span class="number">0</span>].rows.length;i++)</span><br><span class="line">&#123;   <span class="comment">//全部化成小写(大写也行)再比较，实现不区分大小写</span></span><br><span class="line">  <span class="keyword">var</span> sValueInTab=oTab.tBodies[<span class="number">0</span>].rows[i].cells[<span class="number">1</span>].innerHTML.toLowerCase();</span><br><span class="line">  <span class="keyword">var</span> sValueInTxt=oTxt.value.toLowerCase();</span><br><span class="line">    <span class="keyword">if</span>(sValueInTab==sValueInTxt)</span><br><span class="line">    &#123;</span><br><span class="line">       oTab.tBodies[<span class="number">0</span>].rows[i].style.background=<span class="string">&#x27;yellow&#x27;</span>;</span><br><span class="line">     &#125;</span><br><span class="line">     <span class="keyword">else</span></span><br><span class="line">     &#123;</span><br><span class="line">       oTab.tBodies[<span class="number">0</span>].rows[i].style.background=<span class="string">&#x27;&#x27;</span>;</span><br><span class="line">       &#125;   &#125;   </span><br></pre></td></tr></table></figure>
-<p>但是如果想实现多关键词搜索，还需要做以下的改进，先将文本框的关键字用空格作为分割的标记对输入的关键字进行分割，然后利用search()方法去搜索，看看表格的字符串与文本框的字符串是否有一样的，如果搜索不到一样的字符串，则返回-1。</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> arr=sValueInTxt.split(<span class="string">&#x27; &#x27;</span>);<span class="comment">//将关键字分割</span></span><br><span class="line"><span class="keyword">var</span> bFound=<span class="literal">false</span>;</span><br><span class="line"> <span class="keyword">for</span>(j=<span class="number">0</span>;j&lt;arr.length;j++)</span><br><span class="line"> &#123;</span><br><span class="line">   <span class="keyword">if</span>(sValueInTab.search(arr[j])!=-<span class="number">1</span>)</span><br><span class="line">   &#123;   <span class="comment">//搜索不到</span></span><br><span class="line">       bFound=<span class="literal">true</span>;</span><br><span class="line">       <span class="keyword">break</span>;</span><br><span class="line">    &#125;      &#125;</span><br><span class="line">  <span class="keyword">if</span>(bFound)</span><br><span class="line">   &#123;</span><br><span class="line">     oTab.tBodies[<span class="number">0</span>].rows[i].style.background=<span class="string">&#x27;yellow&#x27;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">   <span class="keyword">else</span></span><br><span class="line">   &#123;</span><br><span class="line">    oTab.tBodies[<span class="number">0</span>].rows[i].style.background=<span class="string">&#x27;&#x27;</span>;</span><br><span class="line">           &#125;     </span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>javascript</category>
-      </categories>
-      <tags>
-        <tag>DOM操作———表格</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>基于node-express-multer的文件上传</title>
     <url>/2017/04/26/%E5%9F%BA%E4%BA%8Enode-express-multer%E7%9A%84%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/</url>
     <content><![CDATA[<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>&emsp;&emsp;<strong>multer</strong>是一个用以处理 <strong>multipart/form-data</strong> 请求的node.js中间件，主要用于上传文件。它基于 busboy 开发以提供最高的性能。本篇文章是基于 multer的1.3.0版本，express的4.13.4版本进行操作的，其中<strong>index.js</strong>是路由文件，用来处理文件上传请求，<strong>form.ejs</strong>是前端页面，用来上传文件。</p>
@@ -1200,6 +1302,35 @@
       </categories>
       <tags>
         <tag>PHP</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>表格的排序和搜索</title>
+    <url>/2016/07/25/%E8%A1%A8%E6%A0%BC%E7%9A%84%E6%8E%92%E5%BA%8F%E5%92%8C%E6%90%9C%E7%B4%A2/</url>
+    <content><![CDATA[<p>这两天学习了DOM的高级操作，主要是以对表格的一些排序和搜索处理为例子来进行学习的。</p>
+<h3 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h3><p>表格的排序主要分为三个步骤:转换————排序————插入。<br>第一步，转换成数组。只有将获得的对象元素转换成数组才能进行大小的比较。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;oTab.tBodies[<span class="number">0</span>].rows.length;i++)</span><br><span class="line">        &#123;</span><br><span class="line">            arr[i]=oTab.tBodies[<span class="number">0</span>].rows[i];</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+<p>第二步，数组排序。这里是升序排列的。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">arr.sort(<span class="function"><span class="keyword">function</span> (<span class="params">tr1, tr2</span>)</span>&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="built_in">parseInt</span>(tr1.cells[<span class="number">0</span>].innerHTML)-<span class="built_in">parseInt</span>(tr2.cells[<span class="number">0</span>].innerHTML);</span><br><span class="line">        &#125;);</span><br></pre></td></tr></table></figure>
+<p>第三步，重新插入。将排列好的数组插入到表格中。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;arr.length;i++)</span><br><span class="line">        &#123;</span><br><span class="line">          oTab.tBodies[<span class="number">0</span>].appendChild(arr[i]);</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+<p>上述代码已经能实现将表格进行升序排列，若还想实现降序排列需要如下的改进。先创建一个布尔变量，当值为true时，进行升序排列，否则为降序排列。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> bAsc=<span class="literal">true</span>;<span class="comment">//判断是否升序排列</span></span><br></pre></td></tr></table></figure>
+<p>然后，添加降序排列代码，就可以通过if-else语句判断是降序排列还是升序排列。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">return</span> <span class="built_in">parseInt</span>(tr2.cells[<span class="number">0</span>].innerHTML)-<span class="built_in">parseInt</span>(tr1.cells[<span class="number">0</span>].innerHTML);  </span><br></pre></td></tr></table></figure>
+<p>最后，就是添加以下一行代码，就可以实现通过按钮的点击来交替实现两种排列方式。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">bAsc=!bAsc;</span><br></pre></td></tr></table></figure>
+
+<h3 id="搜索"><a href="#搜索" class="headerlink" title="搜索"></a>搜索</h3><p>表格的搜索是通过将文本框的字符串与表格指定位置的字符串进行比较，如果是相等的，则将那行的背景颜色变为黄色(也可以是其他颜色）。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;oTab.tBodies[<span class="number">0</span>].rows.length;i++)</span><br><span class="line">&#123;   <span class="comment">//全部化成小写(大写也行)再比较，实现不区分大小写</span></span><br><span class="line">  <span class="keyword">var</span> sValueInTab=oTab.tBodies[<span class="number">0</span>].rows[i].cells[<span class="number">1</span>].innerHTML.toLowerCase();</span><br><span class="line">  <span class="keyword">var</span> sValueInTxt=oTxt.value.toLowerCase();</span><br><span class="line">    <span class="keyword">if</span>(sValueInTab==sValueInTxt)</span><br><span class="line">    &#123;</span><br><span class="line">       oTab.tBodies[<span class="number">0</span>].rows[i].style.background=<span class="string">&#x27;yellow&#x27;</span>;</span><br><span class="line">     &#125;</span><br><span class="line">     <span class="keyword">else</span></span><br><span class="line">     &#123;</span><br><span class="line">       oTab.tBodies[<span class="number">0</span>].rows[i].style.background=<span class="string">&#x27;&#x27;</span>;</span><br><span class="line">       &#125;   &#125;   </span><br></pre></td></tr></table></figure>
+<p>但是如果想实现多关键词搜索，还需要做以下的改进，先将文本框的关键字用空格作为分割的标记对输入的关键字进行分割，然后利用search()方法去搜索，看看表格的字符串与文本框的字符串是否有一样的，如果搜索不到一样的字符串，则返回-1。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> arr=sValueInTxt.split(<span class="string">&#x27; &#x27;</span>);<span class="comment">//将关键字分割</span></span><br><span class="line"><span class="keyword">var</span> bFound=<span class="literal">false</span>;</span><br><span class="line"> <span class="keyword">for</span>(j=<span class="number">0</span>;j&lt;arr.length;j++)</span><br><span class="line"> &#123;</span><br><span class="line">   <span class="keyword">if</span>(sValueInTab.search(arr[j])!=-<span class="number">1</span>)</span><br><span class="line">   &#123;   <span class="comment">//搜索不到</span></span><br><span class="line">       bFound=<span class="literal">true</span>;</span><br><span class="line">       <span class="keyword">break</span>;</span><br><span class="line">    &#125;      &#125;</span><br><span class="line">  <span class="keyword">if</span>(bFound)</span><br><span class="line">   &#123;</span><br><span class="line">     oTab.tBodies[<span class="number">0</span>].rows[i].style.background=<span class="string">&#x27;yellow&#x27;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">   <span class="keyword">else</span></span><br><span class="line">   &#123;</span><br><span class="line">    oTab.tBodies[<span class="number">0</span>].rows[i].style.background=<span class="string">&#x27;&#x27;</span>;</span><br><span class="line">           &#125;     </span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>javascript</category>
+      </categories>
+      <tags>
+        <tag>DOM操作———表格</tag>
       </tags>
   </entry>
   <entry>
@@ -1301,6 +1432,41 @@
       </categories>
       <tags>
         <tag>canvas</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>跨域</title>
+    <url>/2019/01/09/%E8%B7%A8%E5%9F%9F/</url>
+    <content><![CDATA[<h1 id="什么是同源策略"><a href="#什么是同源策略" class="headerlink" title="什么是同源策略"></a>什么是同源策略</h1><p>&emsp;&emsp;限制一个源加载的文档或脚本与来自另一个源的资源进行交互。要求源相同才能正常进行通信，即协议、域名、端口号（HTTP 协议的默认端口是 80）都完全一致。</p>
+<h1 id="同源策略限制的内容及原因"><a href="#同源策略限制的内容及原因" class="headerlink" title="同源策略限制的内容及原因"></a>同源策略限制的内容及原因</h1><h2 id="限制不同源发请求"><a href="#限制不同源发请求" class="headerlink" title="限制不同源发请求"></a>限制不同源发请求</h2><p>&emsp;&emsp;不能向工作在不同源的的服务请求数据(client to server)。<br>&emsp;&emsp;<strong>原因：</strong>假设用户登陆了 a.com，同时打开了 b.com，如果没有任何限制，b.com 可以向 a.com 请求到任何信息，进而就可以在 b.com 向 a 发转账请求等。这里是限制了读 u，而没有限制写，因为如果连请求都发不出去了，也就无法做跨域资源共享了，无法读取返回结果，b 就无法继续下一步的操作，如获取转账请求的一些必要的验证信息。</p>
+<h2 id="限制跨域的-DOM-读取"><a href="#限制跨域的-DOM-读取" class="headerlink" title="限制跨域的 DOM 读取"></a>限制跨域的 DOM 读取</h2><p>&emsp;&emsp;无法获取不同源的 document/cookie 等 BOM 和 DOM，可以说任何有关另外一个源的信息都无法得到 (client to client)。<br>&emsp;&emsp;<strong>原因：</strong>如果不限制的话，那么很容易就可以伪装其它的网站，如套一个 iframe 或者通过 window.open 的方法，从而得到用户的操作和输入，如账户、密码。<br>&emsp;&emsp;<strong>小技巧：</strong>添加这个 http 头—“X-Frame-Options: SAMEORIGIN”，可以限制别人把你的网站套成它的 iframe。</p>
+<h1 id="什么是跨域"><a href="#什么是跨域" class="headerlink" title="什么是跨域"></a>什么是跨域</h1><p>&emsp;&emsp;跨域是由浏览器的同源策略引起的，只有源(协议、域名、端口号)相同才能正常进行通信，域名、端口、协议任一不同，都是跨域。跨域只存在于浏览器端，不存在于安卓/ios/Node.js/python/ java 等其它环境。以下列举几种情况都属于跨域：</p>
+<ol>
+<li>同一域名，不同协议</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">https:&#x2F;&#x2F;www.a.com&#x2F;b.js ---&gt; http:&#x2F;&#x2F;www.a.com&#x2F;a.js</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>域名和域名对应 ip</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">http:&#x2F;&#x2F;70.32.92.74&#x2F;b.js  ---&gt; http:&#x2F;&#x2F;www.a.com&#x2F;a.js</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>同一域名，不同端口</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">http:&#x2F;&#x2F;www.a.com:8000&#x2F;a.js  ---&gt; http:&#x2F;&#x2F;www.a.com&#x2F;b.js</span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>不同域名</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">http:&#x2F;&#x2F;www.cnblogs.com&#x2F;a.js  ---&gt; http:&#x2F;&#x2F;www.a.com&#x2F;b.js</span><br></pre></td></tr></table></figure>
+
+<h1 id="跨域的解决"><a href="#跨域的解决" class="headerlink" title="跨域的解决"></a>跨域的解决</h1>]]></content>
+      <categories>
+        <category>javascript</category>
+      </categories>
+      <tags>
+        <tag>跨域</tag>
       </tags>
   </entry>
   <entry>
@@ -1526,139 +1692,17 @@
       </tags>
   </entry>
   <entry>
-    <title>跨域</title>
-    <url>/2019/01/09/%E8%B7%A8%E5%9F%9F/</url>
-    <content><![CDATA[<h1 id="什么是同源策略"><a href="#什么是同源策略" class="headerlink" title="什么是同源策略"></a>什么是同源策略</h1><p>&emsp;&emsp;限制一个源加载的文档或脚本与来自另一个源的资源进行交互。要求源相同才能正常进行通信，即协议、域名、端口号（HTTP 协议的默认端口是 80）都完全一致。</p>
-<h1 id="同源策略限制的内容及原因"><a href="#同源策略限制的内容及原因" class="headerlink" title="同源策略限制的内容及原因"></a>同源策略限制的内容及原因</h1><h2 id="限制不同源发请求"><a href="#限制不同源发请求" class="headerlink" title="限制不同源发请求"></a>限制不同源发请求</h2><p>&emsp;&emsp;不能向工作在不同源的的服务请求数据(client to server)。<br>&emsp;&emsp;<strong>原因：</strong>假设用户登陆了 a.com，同时打开了 b.com，如果没有任何限制，b.com 可以向 a.com 请求到任何信息，进而就可以在 b.com 向 a 发转账请求等。这里是限制了读 u，而没有限制写，因为如果连请求都发不出去了，也就无法做跨域资源共享了，无法读取返回结果，b 就无法继续下一步的操作，如获取转账请求的一些必要的验证信息。</p>
-<h2 id="限制跨域的-DOM-读取"><a href="#限制跨域的-DOM-读取" class="headerlink" title="限制跨域的 DOM 读取"></a>限制跨域的 DOM 读取</h2><p>&emsp;&emsp;无法获取不同源的 document/cookie 等 BOM 和 DOM，可以说任何有关另外一个源的信息都无法得到 (client to client)。<br>&emsp;&emsp;<strong>原因：</strong>如果不限制的话，那么很容易就可以伪装其它的网站，如套一个 iframe 或者通过 window.open 的方法，从而得到用户的操作和输入，如账户、密码。<br>&emsp;&emsp;<strong>小技巧：</strong>添加这个 http 头—“X-Frame-Options: SAMEORIGIN”，可以限制别人把你的网站套成它的 iframe。</p>
-<h1 id="什么是跨域"><a href="#什么是跨域" class="headerlink" title="什么是跨域"></a>什么是跨域</h1><p>&emsp;&emsp;跨域是由浏览器的同源策略引起的，只有源(协议、域名、端口号)相同才能正常进行通信，域名、端口、协议任一不同，都是跨域。跨域只存在于浏览器端，不存在于安卓/ios/Node.js/python/ java 等其它环境。以下列举几种情况都属于跨域：</p>
-<ol>
-<li>同一域名，不同协议</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">https:&#x2F;&#x2F;www.a.com&#x2F;b.js ---&gt; http:&#x2F;&#x2F;www.a.com&#x2F;a.js</span><br></pre></td></tr></table></figure>
-
-<ol start="2">
-<li>域名和域名对应 ip</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">http:&#x2F;&#x2F;70.32.92.74&#x2F;b.js  ---&gt; http:&#x2F;&#x2F;www.a.com&#x2F;a.js</span><br></pre></td></tr></table></figure>
-
-<ol start="3">
-<li>同一域名，不同端口</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">http:&#x2F;&#x2F;www.a.com:8000&#x2F;a.js  ---&gt; http:&#x2F;&#x2F;www.a.com&#x2F;b.js</span><br></pre></td></tr></table></figure>
-
-<ol start="4">
-<li>不同域名</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">http:&#x2F;&#x2F;www.cnblogs.com&#x2F;a.js  ---&gt; http:&#x2F;&#x2F;www.a.com&#x2F;b.js</span><br></pre></td></tr></table></figure>
-
-<h1 id="跨域的解决"><a href="#跨域的解决" class="headerlink" title="跨域的解决"></a>跨域的解决</h1>]]></content>
-      <categories>
-        <category>javascript</category>
-      </categories>
-      <tags>
-        <tag>跨域</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>qrcode生成二维码</title>
-    <url>/2019/01/16/qrcode%E7%94%9F%E6%88%90%E4%BA%8C%E7%BB%B4%E7%A0%81/</url>
-    <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>&emsp;&emsp;js 生成二维码有两种方法：分别是用 qrcode.js 和 jquery.qrcode.js。</p>
-<h1 id="qrcode"><a href="#qrcode" class="headerlink" title="qrcode"></a>qrcode</h1><p>&emsp;&emsp;qrcode.js 是一个用于生成二维码图片的插件，主要是通过获取 DOM 的标签，再通过 HTML5 Canvas 绘制而成，不依赖任何库，<strong>支持中文内容</strong>。</p>
-<h2 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h2><ol>
-<li>载入 js 文件</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;script src&#x3D;&quot;qrcode.js&quot;&gt;&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
-
-<ol start="2">
-<li>DOM 结构</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;div id&#x3D;&quot;code&quot;&gt;&lt;&#x2F;div&gt;</span><br></pre></td></tr></table></figure>
-
-<ol start="3">
-<li>调用</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F; 简单方式</span><br><span class="line">new QRCode(document.getElementById(&#39;code&#39;), &#39;https:&#x2F;&#x2F;www.baidu.com&#x2F;&#39;);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 设置参数方式</span><br><span class="line">var qrcode &#x3D; new QRCode(&#39;code&#39;, &#123;</span><br><span class="line">    text: &#39;hello world!&#39;,</span><br><span class="line">    width: 200,</span><br><span class="line">    height: 200,</span><br><span class="line">    colorDark : &#39;#000&#39;,</span><br><span class="line">    colorLight : &#39;#fff&#39;,</span><br><span class="line">    correctLevel : QRCode.CorrectLevel.H</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 使用 API</span><br><span class="line">qrcode.clear();</span><br><span class="line">qrcode.makeCode(&#39;哈哈哈&#39;);</span><br></pre></td></tr></table></figure>
-
-<h2 id="参数说明"><a href="#参数说明" class="headerlink" title="参数说明"></a>参数说明</h2><p>&emsp;&emsp;格式：<strong>new QRCode(element, option)</strong></p>
-<ol>
-<li>element：显示二维码的元素或该元素的 id</li>
-<li>option：参数配置，有以下几个参数：<br>（1）text：设置二维码的内容；<br>（2）width：设置二维码宽度，默认值是 256；<br>（3）height：设置二维码高度，默认值是 256；<br>（4）colorDark：设置前景色，默认值是”#000”<br>（5）colorLight：设置背景色，默认值是”#fff”<br>（6）typeNumber: 设置计算模式，默认值是 4<br>（7）correctLevel : 设置容错级别，默认值是 QRErrorCorrectLevel.H，可设置为 QRCode.CorrectLevel.L(容错率 7%)、QRCode.CorrectLevel.M(容错率 15%)、QRCode.CorrectLevel.Q(容错率 25%)、QRCode.CorrectLevel.H(容错率 30%)；<br>注意：二维码容错率即是指二维码图标被遮挡多少后，仍可以被扫描出来的能力。容错率越高，则二维码图片能被遮挡的部分越多。容错率越高，越容易被快速扫描。因此推荐使用 QRErrorCorrectLevel.H。</li>
-</ol>
-<h2 id="API-接口"><a href="#API-接口" class="headerlink" title="API 接口"></a>API 接口</h2><ol>
-<li><strong>makeCode(text)：</strong>设置二维码内容</li>
-<li><strong>clear()：</strong>清除二维码（仅在不支持 Canvas 的浏览器下有效）</li>
-</ol>
-<h1 id="jquery-qrcode-js"><a href="#jquery-qrcode-js" class="headerlink" title="jquery.qrcode.js"></a>jquery.qrcode.js</h1><p>&emsp;&emsp;jquery.qrcode.js 是把 qrcode.js 用 jquery 方式封装起来的，用它来实现图形渲染，其实就是画图（支持 canvas 和 table 两种方式）默认是 canvas，canvas 方式还支持右键图片下载，<strong>不支持中文内容</strong>。</p>
-<h2 id="使用方法-1"><a href="#使用方法-1" class="headerlink" title="使用方法"></a>使用方法</h2><ol>
-<li>载入 js 文件</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;script src&#x3D;&quot;jquery.qrcode.min.js&quot;&gt;&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
-
-<ol start="2">
-<li>DOM 结构</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;div id&#x3D;&quot;code&quot;&gt;&lt;&#x2F;div&gt;</span><br></pre></td></tr></table></figure>
-
-<ol start="3">
-<li>调用</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F; 简单方式</span><br><span class="line">&#x2F;&#x2F; $(&quot;#code&quot;).qrcode(&quot;hi,chen!&quot;);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 直接生成二维码</span><br><span class="line">$(&quot;#code&quot;).qrcode(&#123;</span><br><span class="line">    render: &quot;canvas&quot;, &#x2F;&#x2F;渲染方式</span><br><span class="line">    width: 200,  &#x2F;&#x2F;宽度</span><br><span class="line">    height: 200, &#x2F;&#x2F;高度</span><br><span class="line">    text: &quot;https:&#x2F;&#x2F;www.baidu.com&#x2F;&quot;, &#x2F;&#x2F;内容</span><br><span class="line">    background: &quot;#fff&quot;,  &#x2F;&#x2F;背景色</span><br><span class="line">    foreground: &quot;#000&quot;,   &#x2F;&#x2F;前景色(二维码的颜色)</span><br><span class="line">    correctLevel: 1,  &#x2F;&#x2F;容错级别</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<h2 id="参数说明-1"><a href="#参数说明-1" class="headerlink" title="参数说明"></a>参数说明</h2><p>（1）render: 设置渲染方式，支持 canvas 和 table 两种方式，默认是 canvas；<br>（2）text：设置二维码的内容<br>（3）width：设置二维码宽度，默认值是 256；<br>（4）height：设置二维码高度，默认值是 256；<br>（5）foreground: 设置前景色，默认值是”#000”<br>（6）background: 设置背景色，默认值是”#fff”<br>（7）correctLevel : 设置容错级别<br>（8）typeNumber : 设置计算模式</p>
-<h2 id="生成二维码图片"><a href="#生成二维码图片" class="headerlink" title="生成二维码图片"></a>生成二维码图片</h2><ol>
-<li>载入 js 文件</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;script src&#x3D;&quot;jquery.qrcode.min.js&quot;&gt;&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
-
-<ol start="2">
-<li>DOM 结构</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;div id&#x3D;&quot;code&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">&lt;img id&#x3D;&quot;imgOne&quot; src&#x3D;&quot;&quot;&gt;</span><br></pre></td></tr></table></figure>
-
-<ol start="3">
-<li>调用</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F;生成二维码图片</span><br><span class="line">var qrcode &#x3D; $(&#39;#code&#39;).qrcode(&quot;https:&#x2F;&#x2F;www.baidu.com&#x2F;&quot;).hide();</span><br><span class="line">var canvas &#x3D; qrcode.find(&#39;canvas&#39;).get(0);</span><br><span class="line">$(&#39;#imgOne&#39;).attr(&#39;src&#39;,canvas.toDataURL(&#39;image&#x2F;jpg&#39;));</span><br></pre></td></tr></table></figure>
-
-<h2 id="解决无法生成中文二维码的问题"><a href="#解决无法生成中文二维码的问题" class="headerlink" title="解决无法生成中文二维码的问题"></a>解决无法生成中文二维码的问题</h2><p>&emsp;&emsp;jquery-qrcode 这个库是采用 charCodeAt() 这个方式进行编码转换的，这个方法默认会获取它的 Unicode 编码，一般的解码器都是采用 UTF-8, ISO-8859-1 等方式。英文是没有问题，如果是中文，一般情况下 Unicode 是 UTF-16 实现，长度 2 位，而 UTF-8 编码是 3 位，这样二维码的编解码就不匹配了。 所以可以在二维码编码前把字符串转换成 UTF-8，就可以解决这个问题了。<br>&emsp;&emsp;相关代码如下：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$(&quot;#code&quot;).qrcode(&#123;</span><br><span class="line">      render: &quot;canvas&quot;, &#x2F;&#x2F;渲染方式</span><br><span class="line">      width: 200,  &#x2F;&#x2F;宽度</span><br><span class="line">      height: 200, &#x2F;&#x2F;高度</span><br><span class="line">      text: utf16to8(&quot;你好啊&quot;), &#x2F;&#x2F;内容</span><br><span class="line">      background: &quot;#fff&quot;,  &#x2F;&#x2F;背景色</span><br><span class="line">      foreground: &quot;#000&quot;,   &#x2F;&#x2F;前景色(二维码的颜色)</span><br><span class="line">      correctLevel: 1,  &#x2F;&#x2F;容错级别</span><br><span class="line">	&#125;);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 编码转换函数</span><br><span class="line">  function utf16to8(str) &#123;</span><br><span class="line">      var out, i, len, c;</span><br><span class="line">      out &#x3D; &quot;&quot;;</span><br><span class="line">      len &#x3D; str.length;</span><br><span class="line">      for(i &#x3D; 0; i &lt; len; i++) &#123;</span><br><span class="line">      c &#x3D; str.charCodeAt(i);</span><br><span class="line">      if ((c &gt;&#x3D; 0x0001) &amp;&amp; (c &lt;&#x3D; 0x007F)) &#123;</span><br><span class="line">          out +&#x3D; str.charAt(i);</span><br><span class="line">      &#125; else if (c &gt; 0x07FF) &#123;</span><br><span class="line">          out +&#x3D; String.fromCharCode(0xE0 | ((c &gt;&gt; 12) &amp; 0x0F));</span><br><span class="line">          out +&#x3D; String.fromCharCode(0x80 | ((c &gt;&gt;  6) &amp; 0x3F));</span><br><span class="line">          out +&#x3D; String.fromCharCode(0x80 | ((c &gt;&gt;  0) &amp; 0x3F));</span><br><span class="line">      &#125; else &#123;</span><br><span class="line">          out +&#x3D; String.fromCharCode(0xC0 | ((c &gt;&gt;  6) &amp; 0x1F));</span><br><span class="line">          out +&#x3D; String.fromCharCode(0x80 | ((c &gt;&gt;  0) &amp; 0x3F));</span><br><span class="line">      &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      return out;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
-
-<h1 id="参考网址"><a href="#参考网址" class="headerlink" title="参考网址"></a>参考网址</h1><ul>
-<li><a href="http://code.ciaoca.com/javascript/qrcode/">qrcode.js 参考网址</a></li>
-<li><a href="https://github.com/jeromeetienne/jquery-qrcode">jquery.qrcode.js 参考网址</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>javascript</category>
-      </categories>
-      <tags>
-        <tag>二维码</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>github 和 gitblit 并存</title>
-    <url>/2019/09/17/github%20%E5%92%8C%20gitblit%20%E5%B9%B6%E5%AD%98/</url>
-    <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>&emsp;&emsp;由于工作需要，一台电脑需要同时存在 github 和 gitblit 账号，因为需要配置多个 ssh key，以满足个人和工作上的需要。</p>
-<h1 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h1><h2 id="分别创建-github-和-gitblit-账号的公钥"><a href="#分别创建-github-和-gitblit-账号的公钥" class="headerlink" title="分别创建 github 和 gitblit 账号的公钥"></a>分别创建 github 和 gitblit 账号的公钥</h2><ol>
-<li><p>创建 github 账号公钥<br>&emsp;&emsp;输入命令 <code>ssh-keygen -t rsa -C &quot;GitEmail@example.com&quot;</code>，然后 enter 键。（图略）<br>&emsp;&emsp;这里先不要回车，输入<code>/Users/cxiaoting/.ssh/id_rsa_github</code>（id_rsa_github 为自定义的名字），然后 enter 键，会提示输入 2 次密码，根据实际情况输入密码即可。</p>
+    <title>git rabase 后,提交的commit消失,如何找回</title>
+    <url>/2021/02/20/git-rabase-%E5%90%8E-%E6%8F%90%E4%BA%A4%E7%9A%84commit%E6%B6%88%E5%A4%B1-%E5%A6%82%E4%BD%95%E6%89%BE%E5%9B%9E/</url>
+    <content><![CDATA[<h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>&emsp;&emsp;在 执行 <code>git rebase</code> 操作时，如果存在冲突，使用 <code>git rebase --abort</code> 处理后，会发现 commit 的修改和记录都没有了。执行 <code>git log</code> 看不到记录(使用 <code>git rebase --skip</code> 处理，也有可能导致 commit 消失)。</p>
+<h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><ol>
+<li><p>执行<code>git reflog</code> 命令列出 log 信息，如下图<br><img src="/images/content/reflog.png" alt="截图"></p>
 </li>
-<li><p>创建 gitblit 账号公钥<br>&emsp;&emsp;输入命令<code>ssh-keygen -t rsa -C &quot;GitEmail@example.com&quot;</code>，然后 enter 键。（图略）<br>&emsp;&emsp;这里先不要回车，输入<code>/Users/cxiaoting/.ssh/id_rsa_gitblit</code>（id_rsa_gitblit 为自定义的名字），然后 enter 键，会提示输入 2 次密码，根据实际情况输入密码即可。</p>
+<li><p>使用消失的 commit 重新建立一个 branch，命名<code>bak</code><br><code> git checkout -b bak b670c33b</code><br>此时的新分支 bak 的 git log 记录就刚好在红色框那个点上</p>
+</li>
+<li><p>最后在新分支，重新提交合并，然后 push 上去就可以啦。</p>
 </li>
 </ol>
-<h2 id="创建并配置-config-文件"><a href="#创建并配置-config-文件" class="headerlink" title="创建并配置 config 文件"></a>创建并配置 config 文件</h2><ol>
-<li>打开.ssh 目录<br>&emsp;&emsp;输入命令<code>open ~/.ssh</code>，进入.ssh 目录。</li>
-<li>创建 config 文件<br>&emsp;&emsp;输入命令<code>touch config</code>，将以下内容复制进去到 config 文件中，其中 username 为账户名。</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Host github</span><br><span class="line">HostName github.com</span><br><span class="line">PreferredAuthentications publickey</span><br><span class="line">IdentityFile ~&#x2F;.ssh&#x2F;id_rsa_github</span><br><span class="line">User username1</span><br><span class="line"></span><br><span class="line">Host gitblit</span><br><span class="line">HostName gitblit.com</span><br><span class="line">PreferredAuthentications publickey</span><br><span class="line">IdentityFile ~&#x2F;.ssh&#x2F;id_rsa_gitblit</span><br><span class="line">User username2</span><br></pre></td></tr></table></figure>
-
-<h2 id="将公钥添加到系统"><a href="#将公钥添加到系统" class="headerlink" title="将公钥添加到系统"></a>将公钥添加到系统</h2><ol>
-<li>把 2 个账号公钥添加到系统<br>&emsp;&emsp;输入命令<code>ssh-add id_rsa_gitblit id_rsa_github</code>，然后会提示你分别输入两个账号的密码，按照提示输入。</li>
-<li>查看 2 个公钥是否成功添加到系统<br>&emsp;&emsp;输入命令<code>ssh-add -l</code>，添加成功则会显示 2 条记录。</li>
-</ol>
-<h2 id="将公钥添加到线上的-sshkey"><a href="#将公钥添加到线上的-sshkey" class="headerlink" title="将公钥添加到线上的 sshkey"></a>将公钥添加到线上的 sshkey</h2><p>&emsp;&emsp;这里举例 github 账号,新建一个 ssh key，然后将 id_rsa_github.pub 的内容（即公钥）复制一份放到对应的 key 里面，保存。gitblit 账号也是同样的做法。（图略）</p>
-<h2 id="测试连接是否成功"><a href="#测试连接是否成功" class="headerlink" title="测试连接是否成功"></a>测试连接是否成功</h2><p>&emsp;&emsp;测试 github 账号，输入命令<code>ssh -T git@github</code>；测试 gitblit 账号，输入命令<code>ssh -T git@gitblit</code>,出现如下图即表示成功。（图略）</p>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>&emsp;&emsp;成功完成以上步骤，就可以无需账号密码，尽情操作 github 和 gitblit 了。</p>
 ]]></content>
       <categories>
         <category>Git</category>
