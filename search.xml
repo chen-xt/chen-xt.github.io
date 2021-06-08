@@ -1711,4 +1711,23 @@
         <tag>Git</tag>
       </tags>
   </entry>
+  <entry>
+    <title>js驼峰式和下横线互转</title>
+    <url>/2021/06/08/js%E9%A9%BC%E5%B3%B0%E5%BC%8F%E5%92%8C%E4%B8%8B%E6%A8%AA%E7%BA%BF%E4%BA%92%E8%BD%AC/</url>
+    <content><![CDATA[<h1 id="什么是驼峰命名法"><a href="#什么是驼峰命名法" class="headerlink" title="什么是驼峰命名法"></a>什么是驼峰命名法</h1><p>&emsp;&emsp;<strong>1. 小驼峰命名法：</strong>除第一个单词之外，其他单词首字母大写，如<code>bizType</code>。常用于变量名，函数名。</p>
+<p>&emsp;&emsp;<strong>2. 大驼峰命名法：</strong>单词首字母都大写，如<code>BizType</code>。常用于类名，属性，命名空间等。</p>
+<h1 id="什么是下划线命名法"><a href="#什么是下划线命名法" class="headerlink" title="什么是下划线命名法"></a>什么是下划线命名法</h1><p>&emsp;&emsp;<strong>下划线命名法：</strong>名称中的每一个逻辑断点都用一个下划线来标记，如<code>biz_type</code>。</p>
+<h1 id="驼峰式转下横线"><a href="#驼峰式转下横线" class="headerlink" title="驼峰式转下横线"></a>驼峰式转下横线</h1><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">toLowerLine</span>(<span class="params">field</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">var</span> result = field.replace(<span class="regexp">/[A-Z]/g</span>, <span class="function"><span class="keyword">function</span> (<span class="params">match</span>) </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="string">&quot;_&quot;</span> + match.toLowerCase();</span><br><span class="line">	&#125;);</span><br><span class="line">	<span class="keyword">if</span> (result.slice(<span class="number">0</span>, <span class="number">1</span>) === <span class="string">&quot;_&quot;</span>) &#123;</span><br><span class="line">		<span class="comment">//如果首字母是大写，执行replace时会多一个_，这里需要去掉</span></span><br><span class="line">		result = result.slice(<span class="number">1</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(toLowerLine(<span class="string">&quot;BizType&quot;</span>)); <span class="comment">// 输出biz_type</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="下横线转小驼峰式"><a href="#下横线转小驼峰式" class="headerlink" title="下横线转小驼峰式"></a>下横线转小驼峰式</h1><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">toSmallCamel</span>(<span class="params">field</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> field.replace(<span class="regexp">/([^_])(?:_+([^_]))/g</span>, <span class="function"><span class="keyword">function</span> (<span class="params">$<span class="number">0</span>, $<span class="number">1</span>, $<span class="number">2</span></span>) </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> $<span class="number">1</span> + $<span class="number">2.</span>toUpperCase();</span><br><span class="line">	&#125;);</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(toSmallCamel(<span class="string">&quot;biz_type&quot;</span>)); <span class="comment">// 输出bizType</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="下横线转大驼峰式"><a href="#下横线转大驼峰式" class="headerlink" title="下横线转大驼峰式"></a>下横线转大驼峰式</h1><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">toBigCamel</span>(<span class="params">field</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">var</span> result = field.replace(<span class="regexp">/([^_])(?:_+([^_]))/g</span>, <span class="function"><span class="keyword">function</span> (<span class="params">$<span class="number">0</span>, $<span class="number">1</span>, $<span class="number">2</span></span>) </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> $<span class="number">1</span> + $<span class="number">2.</span>toUpperCase();</span><br><span class="line">	&#125;);</span><br><span class="line">	<span class="keyword">return</span> result.replace(result[<span class="number">0</span>], result[<span class="number">0</span>].toUpperCase());</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(toBigCamel(<span class="string">&quot;biz_type&quot;</span>)); <span class="comment">// 输出BizType</span></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>javascript</category>
+      </categories>
+      <tags>
+        <tag>js</tag>
+      </tags>
+  </entry>
 </search>

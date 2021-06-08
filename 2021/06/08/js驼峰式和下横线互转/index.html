@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.1/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"chen-xt.github.io","root":"/","images":"/images","scheme":"Muse","version":"8.1.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}};
+  </script>
+<meta name="description" content="什么是驼峰命名法&amp;emsp;&amp;emsp;1. 小驼峰命名法：除第一个单词之外，其他单词首字母大写，如bizType。常用于变量名，函数名。 &amp;emsp;&amp;emsp;2. 大驼峰命名法：单词首字母都大写，如BizType。常用于类名，属性，命名空间等。 什么是下划线命名法&amp;emsp;&amp;emsp;下划线命名法：名称中的每一个逻辑断点都用一个下划线来标记，如biz_type。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="js驼峰式和下横线互转">
+<meta property="og:url" content="https://chen-xt.github.io/2021/06/08/js%E9%A9%BC%E5%B3%B0%E5%BC%8F%E5%92%8C%E4%B8%8B%E6%A8%AA%E7%BA%BF%E4%BA%92%E8%BD%AC/index.html">
+<meta property="og:site_name" content="陈小婷的博客">
+<meta property="og:description" content="什么是驼峰命名法&amp;emsp;&amp;emsp;1. 小驼峰命名法：除第一个单词之外，其他单词首字母大写，如bizType。常用于变量名，函数名。 &amp;emsp;&amp;emsp;2. 大驼峰命名法：单词首字母都大写，如BizType。常用于类名，属性，命名空间等。 什么是下划线命名法&amp;emsp;&amp;emsp;下划线命名法：名称中的每一个逻辑断点都用一个下划线来标记，如biz_type。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-06-08T03:25:07.000Z">
+<meta property="article:modified_time" content="2021-06-08T05:58:53.360Z">
+<meta property="article:author" content="chen-xt">
+<meta property="article:tag" content="js">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://chen-xt.github.io/2021/06/08/js%E9%A9%BC%E5%B3%B0%E5%BC%8F%E5%92%8C%E4%B8%8B%E6%A8%AA%E7%BA%BF%E4%BA%92%E8%BD%AC/">
+
+
+<script class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+<title>js驼峰式和下横线互转 | 陈小婷的博客</title>
+  
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">陈小婷的博客</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">前端开发</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <section class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E9%A9%BC%E5%B3%B0%E5%91%BD%E5%90%8D%E6%B3%95"><span class="nav-number">1.</span> <span class="nav-text">什么是驼峰命名法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E4%B8%8B%E5%88%92%E7%BA%BF%E5%91%BD%E5%90%8D%E6%B3%95"><span class="nav-number">2.</span> <span class="nav-text">什么是下划线命名法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%A9%BC%E5%B3%B0%E5%BC%8F%E8%BD%AC%E4%B8%8B%E6%A8%AA%E7%BA%BF"><span class="nav-number">3.</span> <span class="nav-text">驼峰式转下横线</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%8B%E6%A8%AA%E7%BA%BF%E8%BD%AC%E5%B0%8F%E9%A9%BC%E5%B3%B0%E5%BC%8F"><span class="nav-number">4.</span> <span class="nav-text">下横线转小驼峰式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%8B%E6%A8%AA%E7%BA%BF%E8%BD%AC%E5%A4%A7%E9%A9%BC%E5%B3%B0%E5%BC%8F"><span class="nav-number">5.</span> <span class="nav-text">下横线转大驼峰式</span></a></li></ol></div>
+        </section>
+        <!--/noindex-->
+
+        <section class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="chen-xt"
+      src="/images/head.jpg">
+  <p class="site-author-name" itemprop="name">chen-xt</p>
+  <div class="site-description" itemprop="description">一步一步向前走</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">36</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">33</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+        </section>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://chen-xt.github.io/2021/06/08/js%E9%A9%BC%E5%B3%B0%E5%BC%8F%E5%92%8C%E4%B8%8B%E6%A8%AA%E7%BA%BF%E4%BA%92%E8%BD%AC/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/head.jpg">
+      <meta itemprop="name" content="chen-xt">
+      <meta itemprop="description" content="一步一步向前走">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="陈小婷的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          js驼峰式和下横线互转
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2021-06-08 11:25:07 / 修改时间：13:58:53" itemprop="dateCreated datePublished" datetime="2021-06-08T11:25:07+08:00">2021-06-08</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/javascript/" itemprop="url" rel="index"><span itemprop="name">javascript</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="什么是驼峰命名法"><a href="#什么是驼峰命名法" class="headerlink" title="什么是驼峰命名法"></a>什么是驼峰命名法</h1><p>&emsp;&emsp;<strong>1. 小驼峰命名法：</strong>除第一个单词之外，其他单词首字母大写，如<code>bizType</code>。常用于变量名，函数名。</p>
+<p>&emsp;&emsp;<strong>2. 大驼峰命名法：</strong>单词首字母都大写，如<code>BizType</code>。常用于类名，属性，命名空间等。</p>
+<h1 id="什么是下划线命名法"><a href="#什么是下划线命名法" class="headerlink" title="什么是下划线命名法"></a>什么是下划线命名法</h1><p>&emsp;&emsp;<strong>下划线命名法：</strong>名称中的每一个逻辑断点都用一个下划线来标记，如<code>biz_type</code>。</p>
+<h1 id="驼峰式转下横线"><a href="#驼峰式转下横线" class="headerlink" title="驼峰式转下横线"></a>驼峰式转下横线</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">toLowerLine</span>(<span class="params">field</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">var</span> result = field.replace(<span class="regexp">/[A-Z]/g</span>, <span class="function"><span class="keyword">function</span> (<span class="params">match</span>) </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="string">&quot;_&quot;</span> + match.toLowerCase();</span><br><span class="line">	&#125;);</span><br><span class="line">	<span class="keyword">if</span> (result.slice(<span class="number">0</span>, <span class="number">1</span>) === <span class="string">&quot;_&quot;</span>) &#123;</span><br><span class="line">		<span class="comment">//如果首字母是大写，执行replace时会多一个_，这里需要去掉</span></span><br><span class="line">		result = result.slice(<span class="number">1</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(toLowerLine(<span class="string">&quot;BizType&quot;</span>)); <span class="comment">// 输出biz_type</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="下横线转小驼峰式"><a href="#下横线转小驼峰式" class="headerlink" title="下横线转小驼峰式"></a>下横线转小驼峰式</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">toSmallCamel</span>(<span class="params">field</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> field.replace(<span class="regexp">/([^_])(?:_+([^_]))/g</span>, <span class="function"><span class="keyword">function</span> (<span class="params">$<span class="number">0</span>, $<span class="number">1</span>, $<span class="number">2</span></span>) </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> $<span class="number">1</span> + $<span class="number">2.</span>toUpperCase();</span><br><span class="line">	&#125;);</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(toSmallCamel(<span class="string">&quot;biz_type&quot;</span>)); <span class="comment">// 输出bizType</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="下横线转大驼峰式"><a href="#下横线转大驼峰式" class="headerlink" title="下横线转大驼峰式"></a>下横线转大驼峰式</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">toBigCamel</span>(<span class="params">field</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">var</span> result = field.replace(<span class="regexp">/([^_])(?:_+([^_]))/g</span>, <span class="function"><span class="keyword">function</span> (<span class="params">$<span class="number">0</span>, $<span class="number">1</span>, $<span class="number">2</span></span>) </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> $<span class="number">1</span> + $<span class="number">2.</span>toUpperCase();</span><br><span class="line">	&#125;);</span><br><span class="line">	<span class="keyword">return</span> result.replace(result[<span class="number">0</span>], result[<span class="number">0</span>].toUpperCase());</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(toBigCamel(<span class="string">&quot;biz_type&quot;</span>)); <span class="comment">// 输出BizType</span></span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/js/" rel="tag"># js</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/02/20/git-rabase-%E5%90%8E-%E6%8F%90%E4%BA%A4%E7%9A%84commit%E6%B6%88%E5%A4%B1-%E5%A6%82%E4%BD%95%E6%89%BE%E5%9B%9E/" rel="prev" title="git rabase 后,提交的commit消失,如何找回">
+                  <i class="fa fa-chevron-left"></i> git rabase 后,提交的commit消失,如何找回
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">chen-xt</span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+</body>
+</html>
