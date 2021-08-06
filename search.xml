@@ -1730,4 +1730,29 @@
         <tag>js</tag>
       </tags>
   </entry>
+  <entry>
+    <title>解决使用ESLint，出现代码中的双引号、分号不符合规范的报错</title>
+    <url>/2021/08/06/%E8%A7%A3%E5%86%B3%E4%BD%BF%E7%94%A8ESLint%EF%BC%8C%E5%87%BA%E7%8E%B0%E4%BB%A3%E7%A0%81%E4%B8%AD%E7%9A%84%E5%8F%8C%E5%BC%95%E5%8F%B7%E3%80%81%E5%88%86%E5%8F%B7%E4%B8%8D%E7%AC%A6%E5%90%88%E8%A7%84%E8%8C%83%E7%9A%84%E6%8A%A5%E9%94%99/</url>
+    <content><![CDATA[<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>&emsp;&emsp; vue-cli 构建的项目默认启用 ESLint 进行代码检测，凡是不符合它规范的就会报错，但是 vscode 代码格式化中的有些规则和 ESLint 规则相反。</p>
+<ol>
+<li>按 ESLint 的规则：单引号，末尾没有分号</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">export default &#123;</span><br><span class="line">  name: &#39;HelloWorld&#39;,</span><br><span class="line">&#125;</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>使用 vscode 的格式化：双引号，末尾带分号</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">export default &#123;</span><br><span class="line">  name: &quot;HelloWorld&quot;,</span><br><span class="line">&#125;;</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="报错"><a href="#报错" class="headerlink" title="报错"></a>报错</h2><p><img src="/images/content/eslintErr.png" alt="报错截图"></p>
+<h2 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h2><p>&emsp;&emsp; 在项目根目录创建 .prettierrc 文件，添加如下配置内容，然后重新启动项目即可</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;semi&quot;: false,</span><br><span class="line">  &quot;singleQuote&quot;: true</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Vue.js</category>
+      </categories>
+      <tags>
+        <tag>Vue</tag>
+      </tags>
+  </entry>
 </search>
