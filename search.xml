@@ -1839,4 +1839,23 @@
         <category>javascript</category>
       </categories>
   </entry>
+  <entry>
+    <title>vue中使用$once清除定时器</title>
+    <url>/2022/02/09/vue%E4%B8%AD%E4%BD%BF%E7%94%A8$once%E6%B8%85%E9%99%A4%E5%AE%9A%E6%97%B6%E5%99%A8/</url>
+    <content><![CDATA[<h1 id="清理定时器的方法"><a href="#清理定时器的方法" class="headerlink" title="清理定时器的方法"></a>清理定时器的方法</h1><p>&emsp;&emsp;在 vue 项目中，通常采用两种方法清理定时器，如下。</p>
+<h2 id="方法一：定义-data-中定义-timer"><a href="#方法一：定义-data-中定义-timer" class="headerlink" title="方法一：定义 data 中定义 timer"></a>方法一：定义 data 中定义 timer</h2><p>&emsp;&emsp;首先在 vue 实例的<code>data</code>中定义定时器的名称；然后在方法<code>methods</code>或者页面初始化<code>mounted()</code>的时候使用定时器；最后在页面销毁的生命周期函数<code>beforeDestroy()</code>中销毁定时器。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span>&#123;</span><br><span class="line">  <span class="function"><span class="title">data</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    timer:<span class="literal">null</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="function"><span class="title">mounted</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">      <span class="built_in">this</span>.timer = <span class="built_in">setInterval</span>(<span class="function">()=&gt;</span>&#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">&#x27;123&#x27;</span>);</span><br><span class="line">    &#125;,<span class="number">1000</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="title">beforeDestory</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">clearInterval</span>(<span class="built_in">this</span>.timer);</span><br><span class="line">    <span class="built_in">this</span>.timer = <span class="literal">null</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="方法二：监听事件-hook-beforeDestroy"><a href="#方法二：监听事件-hook-beforeDestroy" class="headerlink" title="方法二：监听事件 hook:beforeDestroy"></a>方法二：监听事件 hook:beforeDestroy</h2><p>&emsp;&emsp;使用<code>this.$once(‘hook:beforeDestory’,()=&gt;&#123;&#125;)</code>，直接在需要定时器的方法或者生命周期函数中声明，并销毁。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">	methods: &#123;</span><br><span class="line">		<span class="function"><span class="title">fn</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">			<span class="keyword">let</span> timer = <span class="built_in">setInterval</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">				<span class="built_in">console</span>.log(<span class="string">&quot;123&quot;</span>);</span><br><span class="line">			&#125;, <span class="number">1000</span>);</span><br><span class="line">			<span class="built_in">this</span>.$once(<span class="string">&quot;hook:beforeDestroy&quot;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">				<span class="built_in">clearInterval</span>(timer);</span><br><span class="line">				timer = <span class="literal">null</span>;</span><br><span class="line">			&#125;);</span><br><span class="line">		&#125;,</span><br><span class="line">	&#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>&emsp;&emsp;方法一需要定义定时器的实例，相对多余，而且定时器的销毁和创建代码没放一起，容易忘记清除定时器。因此<strong>推荐使用方法二</strong>。</p>
+]]></content>
+      <categories>
+        <category>Vue.js</category>
+      </categories>
+      <tags>
+        <tag>Vue</tag>
+      </tags>
+  </entry>
 </search>
